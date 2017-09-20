@@ -1,4 +1,5 @@
 module.exports = async (client, oldMessage, newMessage) => { // eslint-disable-line consistent-return max-len
+  if (oldMessage.author.id === client.user.id) return 1;
   if (!oldMessage.guild) return 1;
   const config = client.servers.get(oldMessage.guild.id);
   client.I18n.use(config.locale);
