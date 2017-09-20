@@ -45,7 +45,7 @@ exports.execute = async (client, ctx) => { // eslint-disable-line consistent-ret
     }
   } else if (first === 'list') {
     /* MEMBERS FINDER */
-    const search = ctx.args.join(' ');
+    const search = ctx.args.slice(1).join(' ');
     let { member } = ctx;
     if (ctx.mentions.members.size > 0) member = ctx.mentions.members.first();
     else if (search) {
