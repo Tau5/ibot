@@ -8,9 +8,6 @@ Welcome to the official iBot repository! Here you can find the latest version av
 
 
 Translation
--------------
-
-StackEdit stores your documents in your browser, which means all your documents are automatically saved locally and are accessible **offline!**
 
 > **Instructions:**
 
