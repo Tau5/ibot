@@ -30,12 +30,16 @@ module.exports = async (client, ctx) => { // eslint-disable-line consistent-retu
     client.I18n.use(config.locale);
     const question = ctx.content.split(/ /g).slice(1).join(' ');
     if (!question) return 1;
+    ctx.channel.startTyping();
     const cleverbot = require('cleverbot-unofficial-api');
     cleverbot(client.config.cleverbot_api, question, client.cs[ctx.author.id]).then((res) => {
       ctx.channel.send(res.output);
       client.cs[ctx.author.id] = res.cs; // eslint-disable-line no-param-reassign
       ctx.channel.stopTyping();
-    }).catch(() => delete client.cs[ctx.author.id]); // eslint-disable-line no-param-reassign
+    }).catch(() => {
+      ctx.channel.stopTyping(true);
+      delete client.cs[ctx.author.id]; // eslint-disable-line no-param-reassign
+    });
   }
 
   /* HANDLING */
