@@ -1,5 +1,6 @@
 const modUtils = {
-  Serverlog(client, guild, message, attachments = []) {
+  Serverlog(client, guild, message, attachments) {
+    if (!attachments) attachments = []; // eslint-disable-line no-param-reassign
     const config = client.servers.get(guild.id);
     if (config.switch_serverlog === 0) return;
     const channel = guild.channels.get(config.channel_serverlog);
