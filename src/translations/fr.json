@@ -229,6 +229,9 @@
     "🔥 **{0}**'s message has been deleted from {1} :": "🔥 Le message de **{0}** a été supprimé de {1} :",
     "Content": "Contenu",
     "📤 **{0}** (ID:{1}) left the server.\n__Account creation :__ {2}\n__Roles :__ {3}.": "📤 **{0}** (ID:{1}) a quitté le serveur.\n__Date de création du compte :__ {2}\n__Rôles :__ {3}.",
-    "📥 **{0}** (ID:{1}) joined the server.\n__Account creation :__ {3}": "📥 **{0}** (ID:{1}) a rejoint le serveur.\n__Date de création du compte :__ {3}"
+    "📥 **{0}** (ID:{1}) joined the server.\n__Account creation :__ {3}": "📥 **{0}** (ID:{1}) a rejoint le serveur.\n__Date de création du compte :__ {3}",
+    
+      "_note29": "help",
+      "📚 Commands list :\n```{0}.```": "📚 Liste des commandes :\n```{0}.```"
   }
 }
