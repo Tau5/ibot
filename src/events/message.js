@@ -1,10 +1,29 @@
 module.exports = async (client, ctx) => { // eslint-disable-line consistent-return
+  client.lastactive.set(ctx.author.id, new Date().getTime());
+  
   /* SECURITY */
   if (ctx.author.bot) return 1; // eslint-disable-line consistent-return
   if (ctx.channel.type !== 'text') return ctx.channel.send(client.I18n.translate`❌ You must be in a guild channel in order to use ${client.user.username}!`);
 
   /* LOCALIZATION */
   const config = client.servers.get(ctx.guild.id);
+
+  /* AFK */
+  if (client.afk.has(ctx.author.id)) {
+    client.afk.delete(ctx.author.id);
+    ctx.author.send(client.I18n.translate`👋 Welcome back! I removed your AFK status.`);
+  }
+
+  if (ctx.mentions.users.size > 0) {
+    ctx.mentions.users.forEach((u) => {
+      if (!client.afk.has(u.id)) return 1;
+      const { MessageEmbed } = require('discord.js');
+      const embed = new MessageEmbed()
+        .addField(client.I18n.translate`💤 **${u.username}** is AFK!`, client.afk.get(u.id))
+        .setColor(ctx.guild.me.displayHexColor);
+      return ctx.channel.send({ embed });
+    });
+  }
 
   /* CLEVERBOT */
   if (client.cleverbot && (ctx.content.indexOf(`<@${client.user.id}>`) === 0 || ctx.content.indexOf(`<@!${client.user.id}>`) === 0)) {
