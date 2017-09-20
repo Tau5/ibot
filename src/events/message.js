@@ -1,6 +1,6 @@
 module.exports = async (client, ctx) => { // eslint-disable-line consistent-return
   client.lastactive.set(ctx.author.id, new Date().getTime());
-  
+
   /* SECURITY */
   if (ctx.author.bot) return 1; // eslint-disable-line consistent-return
   if (ctx.channel.type !== 'text') return ctx.channel.send(client.I18n.translate`❌ You must be in a guild channel in order to use ${client.user.username}!`);
@@ -66,7 +66,7 @@ module.exports = async (client, ctx) => { // eslint-disable-line consistent-retu
       ctx.channel.send(client.I18n.translate`❌ An unhandled error has occured! I told my dad about it, don't worry and... it'll be fixed soon!`);
       require('fs').appendFile('./logs/errors.txt', `----------\r\n${require('moment-timezone')().tz('UTC').format('DD/MM/YYYY HH:mm:ss')}] Author: ${ctx.author.tag} (ID:${ctx.author.id}) - Guild: ${ctx.guild.name} (ID:${ctx.guild.id}) - Channel: ${ctx.channel.name} (ID:${ctx.channel.id}) - Command: ${command}\r\n${ctx.cleanContent}\r\n===RETURNED ERROR===\n${e}\r\n`, err => console.error(err));
     }
-  } else if (client.tags.has(command)) {
+  } else if (config.imported_tags.keyArray().indexOf(command) !== -1) {
     const args = ctx.args.join(' ');
     const tag = client.tags.get(command);
 
