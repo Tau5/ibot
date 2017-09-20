@@ -1,12 +1,13 @@
 const modUtils = {
-  Serverlog(client, guild, message) {
+  Serverlog(client, guild, message, embed) {
     const config = client.servers.get(guild.id);
     if (config.switch_serverlog === 0) return;
     const channel = guild.channels.get(config.channel_serverlog);
     if (!channel) throw new Error('NO_SERVERLOG_CHANNEL');
 
     const msg = `\`[${require('moment-timezone')().tz(config.timezone).format('HH:mm:ss')}]\` ${message}`;
-    channel.send(msg);
+    if (!embed) channel.send(msg);
+    else channel.send(msg, { embed });
   },
 
   Modlog(client, guild, message, reason, attachments = []) {
