@@ -5,6 +5,6 @@ module.exports = async (client, oldMember, newMember) => {
   if (config.switch_serverlog === 0) return 1;
 
   if (oldMember.nickname !== newMember.nickname) {
-    client.modUtil.Serverlog(oldMember.guild, client.I18n.translate`✏ **${oldMember.user.tag}**'s nickname changed from [${oldMember.nickname ? oldMember.nickname : 'None'}] to [${newMember.nickname ? newMember.nickname : 'None'}].`);
+    client.modUtil.Serverlog(client, oldMember.guild, client.I18n.translate`✏ **${oldMember.user.tag}**'s nickname changed from [${oldMember.nickname ? oldMember.nickname : 'None'}] to [${newMember.nickname ? newMember.nickname : 'None'}].`);
   }
 };

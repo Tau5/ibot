@@ -13,6 +13,6 @@ module.exports = async (client, member) => { // eslint-disable-line consistent-r
   }
 
   if (config.switch_serverlog === 1) {
-    client.modUtil.Serverlog(member.guild, client.I18n.translate`📥 **${member.user.tag}** (ID:${member.id}) joined the server.\n__Account creation :__ ${member.user.createdAt.toUTCString()}`);
+    client.modUtil.Serverlog(client, member.guild, client.I18n.translate`📥 **${member.user.tag}** (ID:${member.id}) joined the server.\n__Account creation :__ ${member.user.createdAt.toUTCString()}`);
   }
 };

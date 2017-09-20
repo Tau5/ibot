@@ -9,5 +9,5 @@ module.exports = async (client, message) => { // eslint-disable-line consistent-
     .addField(client.I18n.translate`Content`, message.content)
     .setColor('RED');
 
-  client.modUtil.Serverlog(message.guild, client.I18n.translate`🔥 **${message.author.tag}**'s message has been deleted from ${message.channel.toString()} :`, { embed });
+  client.modUtil.Serverlog(client, message.guild, client.I18n.translate`🔥 **${message.author.tag}**'s message has been deleted from ${message.channel.toString()} :`, { embed });
 };
