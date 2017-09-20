@@ -18,7 +18,7 @@ client.I18n = require('node-i18n');
 client.languages = {};
 
 /* CLEVERBOT */
-client.cleverbot = false;
+client.cleverbot = true;
 client.cs = {};
 
 /* DATABASE */
