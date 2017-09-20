@@ -216,6 +216,19 @@
     "Is on the list.": "Is on the list.",
     "User": "User",
     "Status": "Status",
-    "🚔 Discord Bans list fetched!": "🚔 Discord Bans list fetched!"
+    "🚔 Discord Bans list fetched!": "🚔 Discord Bans list fetched!",
+
+    "_note27": "afk_msg",
+    "👋 Welcome back! I removed your AFK status.": "👋 Welcome back! I removed your AFK status.",
+    "💤 **{0}** is AFK!": "💤 **{0}** is AFK!",
+    
+    "_note28": "serverlog",
+    "✍ **{0}** edited their message from {1} :": "✍ **{0}** edited their message from {1} :",
+    "Old content": "Old content",
+    "New content": "New content",
+    "🔥 **{0}**'s message has been deleted from {1} :": "🔥 **{0}**'s message has been deleted from {1} :",
+    "Content": "Content",
+    "📤 **{0}** (ID:{1}) left the server.\n__Account creation :__ {2}\n__Roles :__ {3}.": "📤 **{0}** (ID:{1}) left the server.\n__Account creation :__ {2}\n__Roles :__ {3}.",
+    "📥 **{0}** (ID:{1}) joined the server.\n__Account creation :__ {3}": "📥 **{0}** (ID:{1}) joined the server.\n__Account creation :__ {3}"
   }
 }
