@@ -201,6 +201,7 @@
     "✍ Tag `{0}` removed from imported tags!": "✍ Le tag `{0}` a été supprimé de la liste des tags importés !",
     "✍ **{0}** does not have created any tag!": "✍ **{0}** n'a pas créé de tag !",
     "❌ You must put a tag name!": "❌ Vous devez indiquer un nom de tag !",
+    "✍ Tags made by **{0}** :\n{1}.": "✍ Tags réalisés par **{0}** :\n{1}.",
     
     "_note25": "misc",
     "❌ An unhandled error has occured! I told my dad about it, don't worry and... it'll be fixed soon!": "❌ An unhandled error has occured! I told my dad about it, don't worry and... it'll be fixed soon!",
