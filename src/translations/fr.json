@@ -225,6 +225,7 @@
     "✍ **{0}** edited their message from {1} :": "✍ **{0}** a edité son message dans {1} :",
     "Old content": "Ancien contenu",
     "New content": "Nouveau contenu",
+    "✏ **{0}**'s nickname changed from [{1}] to [{2}].": "✏ Le pseudonyme de **{0}**a été changé de [{1}] à [{2}].",
     "🔥 **{0}**'s message has been deleted from {1} :": "🔥 Le message de **{0}** a été supprimé de {1} :",
     "Content": "Contenu",
     "📤 **{0}** (ID:{1}) left the server.\n__Account creation :__ {2}\n__Roles :__ {3}.": "📤 **{0}** (ID:{1}) a quitté le serveur.\n__Date de création du compte :__ {2}\n__Rôles :__ {3}.",
