@@ -207,6 +207,14 @@
     "❌ An unhandled error has occured! I told my dad about it, don't worry and... it'll be fixed soon!": "❌ An unhandled error has occured! I told my dad about it, don't worry and... it'll be fixed soon!",
     "❌ You do not have the permission to execute this command!": "❌ You do not have the permission to execute this command!",
     "❌ You do not have the permission `{0}`!": "❌ You do not have the permission `{0}`!",
-    "❌ I do not have the permission `{0}`!": "❌ I do not have the permission `{0}`!"
+    "❌ I do not have the permission `{0}`!": "❌ I do not have the permission `{0}`!",
+
+    "_note26": "checkdbans",
+    "❌ An error has occured!": "❌ An error has occured!",
+    "Is not on the list.": "Is not on the list.",
+    "Is on the list.": "Is on the list.",
+    "User": "User",
+    "Status": "Status",
+    "🚔 Discord Bans list fetched!": "🚔 Discord Bans list fetched!"
   }
 }
