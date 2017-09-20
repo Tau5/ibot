@@ -1,13 +1,12 @@
 const modUtils = {
-  Serverlog(client, guild, message, attachments) {
-    if (!attachments) attachments = []; // eslint-disable-line no-param-reassign
+  Serverlog(client, guild, message) {
     const config = client.servers.get(guild.id);
     if (config.switch_serverlog === 0) return;
     const channel = guild.channels.get(config.channel_serverlog);
     if (!channel) throw new Error('NO_SERVERLOG_CHANNEL');
 
     const msg = `\`[${require('moment-timezone')().tz(config.timezone).format('HH:mm:ss')}]\` ${message}`;
-    channel.send(msg, { files: attachments.map(v => v) });
+    channel.send(msg);
   },
 
   Modlog(client, guild, message, reason, attachments = []) {
