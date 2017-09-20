@@ -2,6 +2,9 @@ module.exports = async (client) => {
   /* LOGGING */
   console.log(`[Bot] Logged in as ${client.user.username}! On ${client.guilds.size} servers and ${client.users.size} users.`);
 
+  /* GAME */
+  client.botUtil.updateGame(client);
+
   /* IF SERVERS GOT INVITED */
   client.guilds.filter(g => !client.servers.has(g.id)).forEach((g) => {
     const config = {
