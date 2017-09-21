@@ -68,6 +68,7 @@
     "_note9": "unban",
     "🔧 **{0}** unbanned **{1}** (ID:{2}).": "🔧 **{0}** unbanned **{1}** (ID:{2}).",
     "✅ Unbanned **{0}**!": "✅ Unbanned **{0}**!",
+    "❌ You must specify a user to unban!": "❌ You must specify a user to unban!",
     
     "_note10": "unwarn",
     "❌ You must mention or specify a user to unwarn!": "❌ You must mention or specify a user to unwarn!",
