@@ -9,10 +9,10 @@ exports.execute = async (client, ctx) => { // eslint-disable-line consistent-ret
     let user;
     const filtered = bans.filter(u => `${u.user.username}#${u.user.discriminator}`.toLowerCase().includes(search) || u.user.id === search);
     if (filtered.size === 0) return ctx.channel.send(client.I18n.translate`❌ Nobody found matching \`${ctx.args.join(' ').split(' for ')[0]}\`!`);
-    else if (filtered.size === 1) user = filtered.first();
+    else if (filtered.size === 1) user = filtered.first().user; // eslint-disable-line prefer-destructuring
     else return ctx.channel.send(client.findersUtil.formatUsers(client, filtered));
 
-    ctx.guild.unban(user, `[UNBAN] ${ctx.author.tag}: ${reason}`).then(() => {
+    ctx.guild.unban(user.id, `[UNBAN] ${ctx.author.tag}: ${reason}`).then(() => {
       const config = client.servers.get(ctx.guild.id);
       config.moderation.push({
         ACTION: 'UNBAN',
@@ -23,9 +23,9 @@ exports.execute = async (client, ctx) => { // eslint-disable-line consistent-ret
       });
       client.servers.set(ctx.guild.id, config);
 
-      client.modUtil.Modlog(client, ctx.guild, client.I18n.translate`⚙ **${ctx.author.tag}** unbanned **${user.tag}** (ID:${user.id}).`, reason);
+      client.modUtil.Modlog(client, ctx.guild, client.I18n.translate`⚙ **${ctx.author.tag}** unbanned **${user.username}#${user.discriminator}** (ID:${user.id}).`, reason);
 
-      return ctx.channel.send(client.I18n.translate`✅ Unbanned **${ctx.author.tag}**!`);
+      return ctx.channel.send(client.I18n.translate`✅ Unbanned **${user.username}#${user.discriminator}**!`);
     }).catch(() => ctx.channel.send(client.I18n.translate`❌ An error has occured!`));
   });
 };
