@@ -2,6 +2,9 @@
   "locale": "fr-FR",
   "currency": "EUR",
   "strings":{
+    "_note0": "the rest",
+    "no reason specified": "aucune raison spécifiée",
+
     "_note1": "cleverbot",
     "✅ Your conversation has been erased!": "✅ Votre conversation a été oubliée !",
     

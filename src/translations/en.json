@@ -2,6 +2,9 @@
   "locale": "en-GB",
   "currency": "GBP",
   "strings":{
+    "_note0": "the rest",
+    "no reason specified": "no reason specified",
+
     "_note1": "cleverbot",
     "✅ Your conversation has been erased!": "✅ Your conversation has been erased!",
     
