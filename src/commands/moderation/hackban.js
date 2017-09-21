@@ -21,7 +21,7 @@ exports.execute = async (client, ctx) => { // eslint-disable-line consistent-ret
     });
     client.servers.set(ctx.guild.id, config);
 
-    client.modUtil.Modlog(client, ctx.guild, client.I18n.translate`👢 **${ctx.author.tag}** hackbanned **${user.tag}** (ID:${id}).`, reason);
+    client.modUtil.Modlog(client, ctx.guild, client.I18n.translate`⚒ **${ctx.author.tag}** hackbanned **${user.tag}** (ID:${id}).`, reason);
 
     return ctx.channel.send(client.I18n.translate`✅ Hackbanned **${user.tag}**!`);
   }).catch((e) => {
