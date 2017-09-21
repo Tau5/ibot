@@ -56,7 +56,7 @@
     "_note7": "hackban",
     "❌ You must specify a user ID to ban!": "❌ Vous devez inclure l'ID d'un utilisateur à bannir !",
     "❌ The user you try to hackban is on this server (**{0}**), use the ban command instead.": "❌ L'utilisateur que vous essayez d'hackbannir est sur ce serveur (**{0}**), utilisez la commande pour bannir à la place.",
-    "👢 **{0}** hackbanned **{1}** (ID:{2}).": "👢 **{0}** a hackbanni **{1}** (ID:{2}).",
+    "⚒ **{0}** hackbanned **{1}** (ID:{2}).": "⚒ **{0}** a hackbanni **{1}** (ID:{2}).",
     "✅ Hackbanned **{0}**!": "✅ **{0}** hackbanni !",
     "❌ An error has occured! You might have put a wrong user ID.": "❌ Une erreur est survenue ! Vous avez sûrement spécifié un mauvais ID.",
 
