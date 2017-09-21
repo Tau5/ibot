@@ -33,7 +33,7 @@ const findersUtil = {
   },
 
   formatUsers(client, list) {
-    let message = client.I18n.translate`⚠ Found **${list.size}** users :\n${list.first(5).map(u => `- **${u.tag}** (ID:${u.id})`).join(' ')}\n`;
+    let message = client.I18n.translate`⚠ Found **${list.size}** users :\n${list.first(5).map(u => `- **${u.user.tag}** (ID:${u.user.id})`).join('\n')}\n`;
     if (list.size > 5) message += client.I18n.translate`And ${(list.size - 5)} more...`;
     return message;
   },
