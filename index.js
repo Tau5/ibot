@@ -58,10 +58,10 @@ readdir('./src/translations/', (err, files) => {
 
 // Commands
 const categories = ['owner', 'moderation', 'utility', 'fun'];
-categories.forEach((c) => {
+categories.forEach((c, i) => {
   readdir(`./src/commands/${c}/`, (err, files) => {
     if (err) throw err;
-    console.log(`[Commands] Loading ${files.length} commands...`);
+    console.log(`[Commands] Loading ${files.length} commands... (category: ${i})`);
 
     files.forEach((f) => {
       const command = require(`./src/commands/${c}/${f}`);
