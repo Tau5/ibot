@@ -7,7 +7,7 @@ exports.execute = async (client, ctx) => { // eslint-disable-line consistent-ret
 
   ctx.guild.fetchBans().then((bans) => { // eslint-disable-line consistent-return
     let user;
-    const filtered = bans.filter(u => `${u.username}#${u.discriminator}`.toLowerCase().includes(search) || u.id === search);
+    const filtered = bans.filter(u => `${u.user.username}#${u.user.discriminator}`.toLowerCase().includes(search) || u.user.id === search);
     if (filtered.size === 0) return ctx.channel.send(client.I18n.translate`❌ Nobody found matching \`${ctx.args.join(' ').split(' for ')[0]}\`!`);
     else if (filtered.size === 1) user = filtered.first();
     else return ctx.channel.send(client.findersUtil.formatUsers(client, filtered));
