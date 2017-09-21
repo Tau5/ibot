@@ -66,7 +66,7 @@ module.exports = async (client, ctx) => { // eslint-disable-line consistent-retu
       ctx.channel.send(client.I18n.translate`❌ An unhandled error has occured! I told my dad about it, don't worry and... it'll be fixed soon!`);
       require('fs').appendFile('./logs/errors.txt', `----------\r\n${require('moment-timezone')().tz('UTC').format('DD/MM/YYYY HH:mm:ss')}] Author: ${ctx.author.tag} (ID:${ctx.author.id}) - Guild: ${ctx.guild.name} (ID:${ctx.guild.id}) - Channel: ${ctx.channel.name} (ID:${ctx.channel.id}) - Command: ${command}\r\n${ctx.cleanContent}\r\n===RETURNED ERROR===\n${e}\r\n`, err => console.error(err));
     }
-  } else if (config.imported_tags.keyArray().indexOf(command) !== -1) {
+  } else if (config.imported_tags.indexOf(command) !== -1) {
     const args = ctx.args.join(' ');
     const tag = client.tags.get(command);
 
