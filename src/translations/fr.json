@@ -69,8 +69,8 @@
     "✅ Kicked **{0}**!": "✅ **{0}** expulsé !",
     
     "_note9": "unban",
-    "🔧 **{0}** unbanned **{1}** (ID:{2}).": "🔧 **{0}** a débanni **{1}#{2}** (ID:{3}).",
-    "✅ Unbanned **{0}**!": "✅ **{0}#{1}** débanni !",
+    "⚙ **{0}** unbanned **{1}#{2}** (ID:{3}).": "⚙ **{0}** a débanni **{1}#{2}** (ID:{3}).",
+    "✅ Unbanned **{0}#{1}**!": "✅ **{0}#{1}** débanni !",
     "❌ You must specify a user to unban!": "❌ You must specify a user to unban!",
     
     "_note10": "unwarn",
