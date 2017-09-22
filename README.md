@@ -20,4 +20,5 @@ Translation
 ### Thanks
 
 Me: for the whole code and the French translation.
+TimNook: German translation.
 You: for using the bot.
