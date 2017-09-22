@@ -1,10 +1,10 @@
-exports.execute = async (client, ctx) => {
+exports.execute = async (client, ctx) => { // eslint-disable-line consistent-return
   const lookup = ctx.args.join(' ');
   const { MessageEmbed } = require('discord.js');
   const embed = new MessageEmbed().setColor(ctx.guild.me.displayHexColor);
 
   if (isNaN(lookup)) { // eslint-disable-line no-restricted-globals
-    const invite = client.fetchInvite(lookup).catch(() => {});
+    const invite = await client.fetchInvite(lookup).catch(() => {});
     if (!invite) return ctx.channel.send(client.I18n.translate`❌ No invite found matching \`${lookup}\`!`);
     let inviter = client.I18n.translate`Unknown inviter`;
     if (invite.inviter) inviter = `**${invite.inviter.tag}** (ID:${invite.inviter.id})`;
