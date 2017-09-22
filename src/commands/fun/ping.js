@@ -5,4 +5,5 @@ exports.execute = async (client, ctx) => {
 exports.conf = {
   name: 'ping',
   aliases: [],
+  public: true,
 };
