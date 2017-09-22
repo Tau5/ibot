@@ -237,6 +237,17 @@
     "📥 **{0}** (ID:{1}) joined the server.\n__Account creation :__ {3}": "📥 **{0}** (ID:{1}) joined the server.\n__Account creation :__ {3}",
   
     "_note29": "help",
-    "📚 Commands list :\n```{0}.```": "📚 Commands list :\n```{0}.```"
+    "📚 Commands list :\n```{0}.```": "📚 Commands list :\n```{0}.```",
+
+    "_note30": "moderation",
+    "❌ You must include a moderation case ID!": "❌ You must include a moderation case ID!",
+    "❌ The moderation case ID must be a number!": "❌ The moderation case ID must be a number!",
+    "Type": "Type",
+    "Author": "Author",
+    "Channe": "Channel",
+    "Reason": "Reason",
+    "Time": "Time",
+    "🖊 Moderation case **n°{0}** :": "🖊 Moderation case **n°{0}** :",
+    "❌ No record found matching ID `{0}`!": "❌ No record found matching ID `{0}`!"
   }
 }

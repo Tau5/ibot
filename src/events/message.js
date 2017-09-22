@@ -42,11 +42,20 @@ module.exports = async (client, ctx) => { // eslint-disable-line consistent-retu
     });
   }
 
+  /* PREFIX CHECKING */
+  const prefixes = [client.config.prefix, client.config.prefix.toUpperCase()];
+  config.custom_prefixes.forEach(prefix => prefixes.push(prefix));
+  let prefix;
+  prefixes.forEach((prefix2) => {
+    if (ctx.content.indexOf(prefix) === 0) {
+      prefix = prefix2;
+    }
+  });
+  if (!prefix) return 1;
+
   /* HANDLING */
-  if (ctx.content.indexOf(client.config.prefix) !== 0
-    && ctx.content.indexOf(client.config.prefix.toUpperCase()) !== 0) return 1;
   ctx.args = ctx.content.split(/ /g);
-  const command = ctx.args.shift().slice(client.config.prefix.length).toLowerCase();
+  const command = ctx.args.shift().slice(prefix.length).toLowerCase();
 
   const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
   if (cmd) {
