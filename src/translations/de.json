@@ -49,6 +49,11 @@
     "❌ `{0}` is not a valid language or it has not been translated yet, be the first!": "❌ `{0}` ist keine gültige Sprache oder iBot wurde noch nicht in sie übersetzt, sei der erste!",
     "✅ Locale set to `{0}`!": "✅ Sprache geändert zu `{0}`!",
     "❌ Before switching it you must define its channel!": "❌ Bevor du wechseln kannst musst du den Kanal definieren!",
+    "❌ You must put a prefix and a sub type! (example: `i:config prefix add/remove //`)": "❌ You must put a prefix and a sub type! (example: `i:config prefix add/remove //`)",
+    "❌ The prefix `{0}` is already in the custom prefixes list!": "❌ The prefix `{0}` is already in the custom prefixes list!",
+    "❌ The prefix `{0}` is not in the custom prefixes list!": "❌ The prefix `{0}` is not in the custom prefixes list!",
+    "✅ Custom prefix `{0}` added!": "✅ Custom prefix `{0}` added!",
+    "✅ Custom prefix `{0}` removed!": "✅ Custom prefix `{0}` removed!",
 
     "_note7": "hackban",
     "❌ You must specify a user ID to ban!": "❌ Du musst eine User-ID angeben damit sie gebannt werden kann!",

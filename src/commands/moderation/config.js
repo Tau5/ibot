@@ -46,6 +46,20 @@ exports.execute = async (client, ctx) => { // eslint-disable-line consistent-ret
       ctx.channel.send(client.I18n.translate`✅ Switch \`${subType}\` disabled!`);
     }
     client.servers.set(ctx.guild.id, config);
+  } else if (type === 'prefix') {
+    const prefix = ctx.args[2];
+    if (!subType || !prefix) return ctx.channel.send(client.I18n.translate`❌ You must put a prefix and a sub type! (example: \`i:config prefix add/remove //\`)`);
+    if (subType === 'add') {
+      if (config.custom_prefixes.includes(prefix)) return ctx.channel.send(client.I18n.translate`❌ The prefix \`${prefix}\` is already in the custom prefixes list!`);
+      config.custom_prefixes.push(prefix);
+      client.servers.set(ctx.guild.id, config);
+      ctx.channel.send(client.I18n.translate`✅ Custom prefix \`${prefix}\` added!`);
+    } else if (subType === 'remove') {
+      if (!config.custom_prefixes.includes(prefix)) return ctx.channel.send(client.I18n.translate`❌ The prefix \`${prefix}\` is not in the custom prefixes list!`);
+      config.custom_prefixes.splice(config.custom_prefixes.indexOf(prefix), 1);
+      client.servers.set(ctx.guild.id, config);
+      ctx.channel.send(client.I18n.translate`✅ Custom prefix \`${prefix}\` removed!`);
+    }
   } else if (type === 'timezone') {
     config.timezone = subType;
     client.servers.set(ctx.guild.id, config);

@@ -52,6 +52,11 @@
     "❌ `{0}` is not a valid language or it has not been translated yet, be the first!": "❌ `{0}` is not a valid language or it has not been translated yet, be the first!",
     "✅ Locale set to `{0}`!": "✅ Locale set to `{0}`!",
     "❌ Before switching it you must define its channel!": "❌ Before switching it you must define its channel!",
+    "❌ You must put a prefix and a sub type! (example: `i:config prefix add/remove //`)": "❌ You must put a prefix and a sub type! (example: `i:config prefix add/remove //`)",
+    "❌ The prefix `{0}` is already in the custom prefixes list!": "❌ The prefix `{0}` is already in the custom prefixes list!",
+    "❌ The prefix `{0}` is not in the custom prefixes list!": "❌ The prefix `{0}` is not in the custom prefixes list!",
+    "✅ Custom prefix `{0}` added!": "✅ Custom prefix `{0}` added!",
+    "✅ Custom prefix `{0}` removed!": "✅ Custom prefix `{0}` removed!",
 
     "_note7": "hackban",
     "❌ You must specify a user ID to ban!": "❌ You must specify a user ID to ban!",
