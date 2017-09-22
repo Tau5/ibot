@@ -1,6 +1,9 @@
 exports.execute = async (client, ctx) => {
-  let explicit = client.I18n.translate`None`;
+  let explicit;
   switch (ctx.guild.explicitContentFilter) {
+    case 0:
+      explicit = client.I18n.translate`None`;
+      break;
     case 1:
       explicit = client.I18n.translate`Members without role`;
       break;
@@ -12,8 +15,11 @@ exports.execute = async (client, ctx) => {
       break;
   }
 
-  let verificationLevel = client.I18n.translate`None`;
+  let verificationLevel;
   switch (ctx.guild.verificationLevel) {
+    case 0:
+      verificationLevel = client.I18n.translate`None`;
+      break;
     case 1:
       verificationLevel = client.I18n.translate`Low`;
       break;
