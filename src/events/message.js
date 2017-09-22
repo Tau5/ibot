@@ -47,7 +47,7 @@ module.exports = async (client, ctx) => { // eslint-disable-line consistent-retu
   config.custom_prefixes.forEach(prefix => prefixes.push(prefix));
   let prefix;
   prefixes.forEach((prefix2) => {
-    if (ctx.content.indexOf(prefix) === 0) {
+    if (ctx.content.indexOf(prefix2) === 0) {
       prefix = prefix2;
     }
   });
