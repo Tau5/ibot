@@ -36,7 +36,7 @@ exports.execute = async (client, ctx) => { // eslint-disable-line consistent-ret
       .setColor(color)
       .setThumbnail(member.displayAvatarURL());
 
-    ctx.channel.send(client.I18n.translate`🚔 Discord Bans list fetched!`, { embed });
+    return ctx.channel.send(client.I18n.translate`🚔 Discord Bans list fetched!`, { embed });
   });
 };
 
