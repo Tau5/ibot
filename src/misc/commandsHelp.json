@@ -15,6 +15,10 @@
     "description": "See if someone is or not on the Discord Bans list!",
     "usage": "checkdbans [@mention - User#1234 - ID]"
   },
+  "help":{
+    "description": "It's a joke, right ?",
+    "usage": "No seriously xD"
+  },
   "google":{
     "description": "Search stuff on Google!",
     "usage": "google <query>"
