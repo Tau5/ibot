@@ -11,5 +11,5 @@ module.exports = async (client, oldMessage, newMessage) => {
     .addField(client.I18n.translate`New content`, newMessage.content)
     .setColor('RED');
 
-  client.modUtil.Serverlog(client, oldMessage.guild, client.I18n.translate`✍ **${oldMessage.author.tag}** edited their message from ${oldMessage.channel.toString()} :`, embed);
+  client.modUtil.Serverlog(client, oldMessage.guild, client.I18n.translate`✍ **${oldMessage.author.tag}** edited their message from ${oldMessage.channel.toString()} :`, { embed });
 };
