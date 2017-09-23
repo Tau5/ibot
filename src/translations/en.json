@@ -254,6 +254,9 @@
     "Reason": "Reason",
     "Time": "Time",
     "🖊 Moderation case **n°{0}** :": "🖊 Moderation case **n°{0}** :",
-    "❌ No record found matching ID `{0}`!": "❌ No record found matching ID `{0}`!"
+    "❌ No record found matching ID `{0}`!": "❌ No record found matching ID `{0}`!",
+
+    "_note31": "giphy",
+    "❌ No GIF found matching `{0}`!": "❌ No GIF found matching `{0}`!"
   }
 }

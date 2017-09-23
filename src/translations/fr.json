@@ -241,18 +241,21 @@
     "📤 **{0}** (ID:{1}) left the server.\n__Account creation :__ {2}\n__Roles :__ {3}.": "📤 **{0}** (ID:{1}) a quitté le serveur.\n__Date de création du compte :__ {2}\n__Rôles :__ {3}.",
     "📥 **{0}** (ID:{1}) joined the server.\n__Account creation :__ {3}": "📥 **{0}** (ID:{1}) a rejoint le serveur.\n__Date de création du compte :__ {3}",
     
-      "_note29": "help",
-      "📚 Commands list :\n```{0}.```": "📚 Liste des commandes :\n```{0}.```",
+    "_note29": "help",
+    "📚 Commands list :\n```{0}.```": "📚 Liste des commandes :\n```{0}.```",
 
-      "_note30": "moderation",
-      "❌ You must include a moderation case ID!": "❌ Vous devez inclure un ID de modération !",
-      "❌ The moderation case ID must be a number!": "❌ L'ID de modération doit être un nombre non-nul !",
-      "Type": "Type",
-      "Author": "Auteur",
-      "Channe": "Salon",
-      "Reason": "Raison",
-      "Time": "Date",
-      "🖊 Moderation case **n°{0}** :": "🖊 Acte de modération **n°{0}** :",
-      "❌ No record found matching ID `{0}`!": "❌ Aucun acte de modération trouvé correspondant à l'ID `{0}`!"
+    "_note30": "moderation",
+    "❌ You must include a moderation case ID!": "❌ Vous devez inclure un ID de modération !",
+    "❌ The moderation case ID must be a number!": "❌ L'ID de modération doit être un nombre non-nul !",
+    "Type": "Type",
+    "Author": "Auteur",
+    "Channe": "Salon",
+    "Reason": "Raison",
+    "Time": "Date",
+    "🖊 Moderation case **n°{0}** :": "🖊 Acte de modération **n°{0}** :",
+    "❌ No record found matching ID `{0}`!": "❌ Aucun acte de modération trouvé correspondant à l'ID `{0}`!",
+    
+    "_note31": "giphy",
+    "❌ No GIF found matching `{0}`!": "❌ Aucun GIF trouvé correspondant à `{0}`!"
   }
 }
