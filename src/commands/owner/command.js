@@ -8,7 +8,7 @@ exports.execute = async (client, ctx) => {
 
   if (action === 'load') {
     if (client.commands.has(command)) return ctx.channel.send(`❌ The command \`${command}\` is already loaded!`);
-    if (!fs.existsSync(`./${command}.js`)) return ctx.channel.send('❌ The file was not found!');
+    if (!fs.existsSync(`../${category}/${command}.js`)) return ctx.channel.send('❌ The file was not found!');
 
     try {
       const cmd = require(`../${category}/${command}.js`);
@@ -23,7 +23,7 @@ exports.execute = async (client, ctx) => {
 
     client.commands.delete(command);
     client.aliases.filter(a => command === a).forEach((a, index) => client.aliases.delete(index));
-    delete require.cache[require.resolve(`./${command}.js`)];
+    delete require.cache[require.resolve(`../${category}/${command}.js`)];
 
     try {
       const cmd = require(`../${category}/${command}.js`);
@@ -47,5 +47,5 @@ exports.execute = async (client, ctx) => {
 exports.conf = {
   name: 'command',
   aliases: [],
-  public: true,
+  public: false,
 };

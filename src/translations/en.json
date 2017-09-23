@@ -177,7 +177,7 @@
     "Daytime (UTC)": "Daytime (UTC)",
     "**Clouds:** {0}%": "**Clouds:** {0}%",
     "**Current:** {0}°C\n**Min:** {1}°C - **Max:** {2}°C": "**Current:** {0}°C\n**Min:** {1}°C - **Max:** {2}°C",
-    "**Sunset:** {0}:{1} - **Sunrise:** {2}:{3}": "**Sunset:** {0}:{1} - **Sunrise:** {2}:{3}",
+    "**Sunrise:** {0}:{1} - **Sunset:** {2}:{3}": "**Sunrise:** {0}:{1} - **Sunset:** {2}:{3}",
     "All information provided by Open Weather Map": "All information provided by Open Weather Map",
     "☀ Weather for **{0}** ({1}) :": "☀ Weather for **{0}** ({1}) :",
     

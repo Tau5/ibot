@@ -173,7 +173,7 @@
     "Daytime (UTC)": "Tageszeit (UTC)",
     "**Clouds:** {0}%": "**Wolken:** {0}%",
     "**Current:** {0}°C\n**Min:** {1}°C - **Max:** {2}°C": "**Jetzt gerade:** {0}°C\n**Min:** {1}°C - **Max:** {2}°C",
-    "**Sunset:** {0}:{1} - **Sunrise:** {2}:{3}": "**Sonnenuntergang:** {0}:{1} - **Sonnenaufgang:** {2}:{3}",
+    "**Sunrise:** {0}:{1} - **Sunset:** {2}:{3}": "**Sonnenaufgang:** {0}:{1} - **Sonnenuntergang:** {2}:{3}",
     "All information provided by Open Weather Map": "Alle Informationen kommen von der Open Weather Map",
     "☀ Weather for **{0}** ({1}) :": "☀ Wetter für **{0}** ({1}) :",
     
