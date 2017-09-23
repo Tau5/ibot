@@ -4,7 +4,7 @@ module.exports = async (client, message) => { // eslint-disable-line consistent-
   const config = client.servers.get(message.guild.id);
   client.I18n.use(config.locale);
 
-  if (!message.content) return 1;
+  if (!message.content || message.content.length >= 1024) return 1;
   const { MessageEmbed } = require('discord.js');
   const embed = new MessageEmbed()
     .addField(client.I18n.translate`Content`, message.content)

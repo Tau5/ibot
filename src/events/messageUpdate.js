@@ -4,7 +4,7 @@ module.exports = async (client, oldMessage, newMessage) => { // eslint-disable-l
   const config = client.servers.get(oldMessage.guild.id);
   client.I18n.use(config.locale);
 
-  if (!oldMessage.content || !newMessage.content) return 1;
+  if (!oldMessage.content || !newMessage.content || oldMessage.content.length >= 1024 || newMessage.content.length >= 1024) return 1;
   const { MessageEmbed } = require('discord.js');
   const embed = new MessageEmbed()
     .addField(client.I18n.translate`Old content`, oldMessage.content)
