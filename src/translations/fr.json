@@ -243,6 +243,8 @@
     
     "_note29": "help",
     "📚 Commands list :\n```{0}.```": "📚 Liste des commandes :\n```{0}.```",
+    "❌ Em wait a minute! You're not supposed to see that.": "❌ Attends une minute... Tu n'es pas censé voir ça.",
+    "✅ Sent in DM": "✅ Envoyé en DM !",
 
     "_note30": "moderation",
     "❌ You must include a moderation case ID!": "❌ Vous devez inclure un ID de modération !",
