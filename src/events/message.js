@@ -31,7 +31,7 @@ module.exports = async (client, ctx) => {
     client.I18n.use(config.locale);
     const question = ctx.content.split(/ /g).slice(1).join(' ');
     if (!question) return 1;
-    if (question === 'reset') {
+    if (question === 'reset' && client.cs[ctx.author.id] !== undefined) {
       delete client.cs[ctx.author.id];
       ctx.channel.send(client.I18n.translate`✅ Your conversation has been erased!`);
     } else {
