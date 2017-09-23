@@ -1,15 +1,15 @@
-exports.execute = async (client, ctx) => { // eslint-disable-line consistent-return
+exports.execute = async (client, ctx) => {
   const search = ctx.args.join(' ').split(' for ')[0].toLowerCase();
   if (!search) return ctx.channel.send(client.I18n.translate`❌ You must specify a user to unban!`);
 
   let reason = ctx.args.join(' ').split(' for ').slice(1).join(' for ');
   if (!reason) reason = client.I18n.translate`no reason specified`;
 
-  ctx.guild.fetchBans().then((bans) => { // eslint-disable-line consistent-return
+  ctx.guild.fetchBans().then((bans) => {
     let user;
     const filtered = bans.filter(u => `${u.user.username}#${u.user.discriminator}`.toLowerCase().includes(search) || u.user.id === search);
     if (filtered.size === 0) return ctx.channel.send(client.I18n.translate`❌ Nobody found matching \`${ctx.args.join(' ').split(' for ')[0]}\`!`);
-    else if (filtered.size === 1) user = filtered.first().user; // eslint-disable-line prefer-destructuring
+    else if (filtered.size === 1) user = filtered.first().user;
     else return ctx.channel.send(client.findersUtil.formatUsers(client, filtered));
 
     ctx.guild.unban(user.id, `[UNBAN] ${ctx.author.tag}: ${reason}`).then(() => {

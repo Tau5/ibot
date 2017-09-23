@@ -1,4 +1,4 @@
-exports.execute = async (client, ctx) => { // eslint-disable-line consistent-return
+exports.execute = async (client, ctx) => {
   const target = ctx.args[0];
   const text = ctx.args.slice(1).join(' ');
   if (!target || !text) return ctx.channel.send(client.I18n.translate`❌ You must specify a **target language** (ISO 639-1 format) and a **text to translate**.`);

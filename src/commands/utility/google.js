@@ -1,4 +1,4 @@
-exports.execute = async (client, ctx) => { // eslint-disable-line consistent-return
+exports.execute = async (client, ctx) => {
   const search = ctx.args.join(' ');
   const query = encodeURIComponent(search);
   if (!search) return ctx.channel.send(client.I18n.translate`❌ You must include something to search!`);

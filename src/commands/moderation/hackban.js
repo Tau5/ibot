@@ -1,4 +1,4 @@
-exports.execute = async (client, ctx) => { // eslint-disable-line consistent-return
+exports.execute = async (client, ctx) => {
   const id = ctx.args.join(' ').split(' for ')[0];
   if (!id) return ctx.channel.send(client.I18n.translate`❌ You must specify a user ID to ban!`);
 

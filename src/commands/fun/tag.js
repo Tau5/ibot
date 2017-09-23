@@ -1,4 +1,4 @@
-exports.execute = async (client, ctx) => { // eslint-disable-line consistent-return
+exports.execute = async (client, ctx) => {
   const first = ctx.args[0];
 
   if (first === 'create') {

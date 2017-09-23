@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return max-len */
 module.exports = async (client, oldMessage, newMessage) => {
   if (oldMessage.author.id === client.user.id) return 1;
   if (!oldMessage.guild) return 1;

@@ -1,4 +1,4 @@
-exports.execute = async (client, ctx) => { // eslint-disable-line consistent-return
+exports.execute = async (client, ctx) => {
   /* MEMBERS FINDER */
   let member;
   const search = ctx.args.join(' ').split(' for ')[0];

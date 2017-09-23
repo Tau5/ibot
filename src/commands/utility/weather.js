@@ -1,4 +1,4 @@
-exports.execute = async (client, ctx) => { // eslint-disable-line consistent-return
+exports.execute = async (client, ctx) => {
   const location = encodeURIComponent(ctx.args.join(' '));
   if (!location) return ctx.channel.send(client.I18n.translate`❌ You must specify a city to look for!`);
   if (location.length > 1024) return ctx.channel.send(client.I18n.translate`❌ The city length may not exceed 1024 caracters.`);

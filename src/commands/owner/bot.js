@@ -1,4 +1,4 @@
-exports.execute = async (client, ctx) => { // eslint-disable-line consistent-return
+exports.execute = async (client, ctx) => {
   const action = ctx.args[0];
   const value = ctx.args.slice(1).join(' ');
   if (!action || !value) return ctx.channel.send('❌ You must put an action (game, status, etc) and a value to set!');

@@ -1,4 +1,4 @@
-exports.execute = async (client, ctx) => { // eslint-disable-line consistent-return
+exports.execute = async (client, ctx) => {
   const thing = ctx.args.join(' ').split(' for ')[0];
   if (!thing) return ctx.channel.send(client.I18n.translate`❌ You must include something to delete! (can be: a user, an amount or bots)`);
 
@@ -7,7 +7,7 @@ exports.execute = async (client, ctx) => { // eslint-disable-line consistent-ret
 
   const config = client.servers.get(ctx.guild.id);
 
-  if (isNaN(thing)) { // eslint-disable-line no-restricted-globals
+  if (isNaN(thing)) {
     let messages = await ctx.channel.messages.fetch({ limit: 50 });
     if (thing === 'bots') {
       messages = messages.filter(m => m.author.bot);

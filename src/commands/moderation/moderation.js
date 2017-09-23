@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return radix no-restricted-globals */
 exports.execute = async (client, ctx) => {
   const config = client.servers.get(ctx.guild.id);
   if (ctx.args.length === 0) return ctx.channel.send(client.I18n.translate`❌ You must include a moderation case ID!`);

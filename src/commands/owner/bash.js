@@ -1,4 +1,4 @@
-exports.execute = async (client, ctx) => { // eslint-disable-line consistent-return
+exports.execute = async (client, ctx) => {
   const code = ctx.args.join(' ');
   if (!code) return ctx.channel.send('❌ You must include a code!');
 

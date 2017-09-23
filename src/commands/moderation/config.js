@@ -1,4 +1,4 @@
-exports.execute = async (client, ctx) => { // eslint-disable-line consistent-return
+exports.execute = async (client, ctx) => {
   const config = client.servers.get(ctx.guild.id);
   const type = ctx.args[0];
   const subType = ctx.args[1];

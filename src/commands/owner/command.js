@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 exports.execute = async (client, ctx) => {
   const fs = require('fs');
   const action = ctx.args[0];

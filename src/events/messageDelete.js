@@ -1,4 +1,4 @@
-module.exports = async (client, message) => { // eslint-disable-line consistent-return
+module.exports = async (client, message) => {
   if (message.author.id === client.user.id) return 1;
   if (!message.guild) return 1;
   const config = client.servers.get(message.guild.id);

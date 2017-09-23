@@ -1,4 +1,4 @@
-module.exports = async (client, member) => { // eslint-disable-line consistent-return
+module.exports = async (client, member) => {
   const config = client.servers.get(member.guild.id);
   client.I18n.use(config.locale);
 

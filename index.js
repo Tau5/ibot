@@ -13,6 +13,7 @@ const client = new Discord.Client({
   fetchAllMembers: true,
 });
 client.config = require('./src/config.json');
+client.help = require('./src/misc/commandsHelp.json');
 client.I18n = require('node-i18n');
 
 client.languages = {};

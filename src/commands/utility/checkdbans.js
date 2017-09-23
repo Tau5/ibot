@@ -1,8 +1,8 @@
-exports.execute = async (client, ctx) => { // eslint-disable-line consistent-return
+exports.execute = async (client, ctx) => {
   /* MEMBERS FINDER */
   const search = ctx.args.join(' ');
   let { member } = ctx;
-  if (search.length === 18 && !isNaN(search)) { // eslint-disable-line no-restricted-globals
+  if (search.length === 18 && !isNaN(search)) {
     client.users.fetch(search).then((u) => {
       member = u;
     }).catch(() => {
