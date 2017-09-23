@@ -1,8 +1,9 @@
-module.exports = async (client, ctx) => { // eslint-disable-line consistent-return
+/* eslint-disable consistent-return no-param-reassign */
+module.exports = async (client, ctx) => {
   client.lastactive.set(ctx.author.id, new Date().getTime());
 
   /* SECURITY */
-  if (ctx.author.bot) return 1; // eslint-disable-line consistent-return
+  if (ctx.author.bot) return 1;
   if (ctx.channel.type !== 'text') return ctx.channel.send(client.I18n.translate`❌ You must be in a guild channel in order to use ${client.user.username}!`);
 
   /* LOCALIZATION */
@@ -30,16 +31,21 @@ module.exports = async (client, ctx) => { // eslint-disable-line consistent-retu
     client.I18n.use(config.locale);
     const question = ctx.content.split(/ /g).slice(1).join(' ');
     if (!question) return 1;
-    ctx.channel.startTyping();
-    const cleverbot = require('cleverbot-unofficial-api');
-    cleverbot(client.config.cleverbot_api, question, client.cs[ctx.author.id]).then((res) => {
-      ctx.channel.send(res.output);
-      client.cs[ctx.author.id] = res.cs; // eslint-disable-line no-param-reassign
-      ctx.channel.stopTyping();
-    }).catch(() => {
-      ctx.channel.stopTyping(true);
-      delete client.cs[ctx.author.id]; // eslint-disable-line no-param-reassign
-    });
+    if (question === 'reset') {
+      delete client.cs[ctx.author.id];
+      ctx.channel.send(client.I18n.translate`✅ Your conversation has been erased!`);
+    } else {
+      ctx.channel.startTyping();
+      const cleverbot = require('cleverbot-unofficial-api');
+      cleverbot(client.config.cleverbot_api, question, client.cs[ctx.author.id]).then((res) => {
+        ctx.channel.send(res.output);
+        client.cs[ctx.author.id] = res.cs;
+        ctx.channel.stopTyping();
+      }).catch(() => {
+        ctx.channel.stopTyping(true);
+        delete client.cs[ctx.author.id];
+      });
+    }
   }
 
   /* PREFIX CHECKING */
