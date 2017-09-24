@@ -172,9 +172,9 @@
     "Temperatures": "Temperaturen",
     "Daytime (UTC)": "Tageszeit (UTC)",
     "**Clouds:** {0}%": "**Wolken:** {0}%",
-    "**Current:** {0}°C\n**Min:** {1}°C - **Max:** {2}°C": "**Jetzt gerade:** {0}°C\n**Min:** {1}°C - **Max:** {2}°C",
-    "**Sunrise:** {0}:{1} - **Sunset:** {2}:{3}": "**Sonnenaufgang:** {0}:{1} - **Sonnenuntergang:** {2}:{3}",
-    "All information provided by Open Weather Map": "Alle Informationen kommen von der Open Weather Map",
+    "**Current:** {0}°C ({1]°F)\n**Min:** {2}°C ({3}°F) - **Max:** {4}°C ({5}°F)": "**Jetzt gerade:** {0}°C ({1]°F)\n**Min:** {2}°C ({3}°F) - **Max:** {4}°C ({5}°F)",
+    "**Sunrise:** {0} - **Sunset:** {1}": "**Sonnenaufgang:** {0} - **Sonnenuntergang:** {1}",
+    "All information provided by Apixu": "Alle Informationen kommen von der Apixu",
     "☀ Weather for **{0}** ({1}) :": "☀ Wetter für **{0}** ({1}) :",
     
     "_note21": "youtube",
