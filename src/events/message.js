@@ -6,7 +6,8 @@ module.exports = async (client, ctx) => {
   if (ctx.author.bot) return 1;
 
   /* LOCALIZATION */
-  const config = client.servers.get(ctx.guild.id);
+  let config;
+  if (ctx.guild) config = client.servers.get(ctx.guild.id);
 
   /* AFK */
   if (client.afk.has(ctx.author.id)) {
@@ -31,6 +32,7 @@ module.exports = async (client, ctx) => {
     const question = ctx.content.split(/ /g).slice(1).join(' ');
     if (!question) return 1;
     if (question === 'reset' && client.cs[ctx.author.id] !== undefined) {
+      if (!ctx.guild) return 1;
       delete client.cs[ctx.author.id];
       ctx.channel.send(client.I18n.translate`✅ Your conversation has been erased!`);
     } else {
