@@ -4,7 +4,6 @@ module.exports = async (client, ctx) => {
 
   /* SECURITY */
   if (ctx.author.bot) return 1;
-  if (ctx.channel.type !== 'text') return ctx.channel.send(client.I18n.translate`❌ You must be in a guild channel in order to use ${client.user.username}!`);
 
   /* LOCALIZATION */
   const config = client.servers.get(ctx.guild.id);
@@ -65,6 +64,8 @@ module.exports = async (client, ctx) => {
 
   const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
   if (cmd) {
+    if (cmd.conf.public && ctx.channel.type !== 'text') return 1;
+
     client.I18n.use(config.locale);
 
     /* IF COMMAND IS PRIVATE */
