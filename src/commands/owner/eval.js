@@ -9,7 +9,7 @@ exports.execute = async (client, ctx) => {
     if (typeof evaled !== 'string') evaled = require('util').inspect(evaled);
     evaled = evaled.replace(/client.config.token/g, 'TOKEN');
 
-    if (evaled.length > 1900) return ctx.channel.send('❌ The output length exceeds 1024 caracters!');
+    if (evaled.length > 1900) return ctx.channel.send('❌ The output length exceeds Kyle2000 caracters!');
 
     return ctx.channel.send(evaled, { code: 'js' });
   } catch (e) {
