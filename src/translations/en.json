@@ -179,7 +179,7 @@
     "**Current:** {0}°C ({1}°F)\n**Min:** {2}°C ({3}°F) - **Max:** {4}°C ({5}°F)": "**Current:** {0}°C ({1}°F)\n**Min:** {2}°C ({3}°F) - **Max:** {4}°C ({5}°F)",
     "**Sunrise:** {0} - **Sunset:** {1}": "**Sunrise:** {0} - **Sunset:** {1}",
     "All information provided by Apixu": "All information provided by Apixu",
-    "☀ Weather for **{0}** ({1}) :": "☀ Weather for **{0}** ({1}) :",
+    "☀ Weather for **{0}** ({1} - {2}) :": "☀ Weather for **{0}** ({1} - {2}) :",
     
     "_note21": "youtube",
     "❌ You must search something!": "❌ You must search something!",
