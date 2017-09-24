@@ -45,7 +45,7 @@ exports.execute = async (client, ctx) => {
         ctx.channel.send(client.I18n.translate`❌ You must mention or specify a user to kick!`);
       }
 
-      messages = messages.filter(m => m.author.bot);
+      messages = messages.filter(m => m.author.id === member.id);
       if (messages.size < 1) return ctx.channel.send(client.I18n.translate`❌ No message to delete!`);
 
       ctx.channel.bulkDelete(messages).then((m) => {
