@@ -24,7 +24,7 @@ exports.execute = async (client, ctx) => {
         client.servers.set(ctx.guild.id, config);
 
         const path = `./tmp/${ctx.guild.id}_${new Date().getTime()}.txt`;
-        require('fs').writeFileSync(path, m.map(me => `${require('moment-timezone')().tz(config.timezone).format('DD/MM/YYYY HH:mm:ss')} ${me.author.tag} (ID:${me.author.id}) - ${me.cleanContent}`));
+        require('fs').writeFileSync(path, m.map(me => `${require('moment-timezone')().tz(config.timezone).format('DD/MM/YYYY HH:mm:ss')} ${me.author.tag} (ID:${me.author.id}) - ${me.cleanContent}\r\n`));
 
         client.modUtil.Modlog(client, ctx.guild, `🗑 **${ctx.author.tag}** deleted ${m.size} messages by bots in ${ctx.channel.toString()}.`, reason, [path]);
         ctx.channel.send(client.I18n.translate`✅ Deleted **${m.size}** messages!`);
@@ -60,7 +60,7 @@ exports.execute = async (client, ctx) => {
         client.servers.set(ctx.guild.id, config);
 
         const path = `./tmp/${ctx.guild.id}_${new Date().getTime()}.txt`;
-        require('fs').writeFileSync(path, m.map(me => `${require('moment-timezone')().tz(config.timezone).format('DD/MM/YYYY HH:mm:ss')} ${me.author.tag} (ID:${me.author.id}) - ${me.cleanContent}`));
+        require('fs').writeFileSync(path, m.map(me => `${require('moment-timezone')().tz(config.timezone).format('DD/MM/YYYY HH:mm:ss')} ${me.author.tag} (ID:${me.author.id}) - ${me.cleanContent}\r\n`));
 
         client.modUtil.Modlog(client, ctx.guild, `🗑 **${ctx.author.tag}** deleted ${m.size} messages by **${member.user.tag}** in ${ctx.channel.toString()}.`, reason, [path]);
         ctx.channel.send(client.I18n.translate`✅ Deleted **${m.size}** messages!`);
@@ -81,7 +81,7 @@ exports.execute = async (client, ctx) => {
       client.servers.set(ctx.guild.id, config);
 
       const path = `./tmp/${ctx.guild.id}_${new Date().getTime()}.txt`;
-      require('fs').writeFileSync(path, m.map(me => `${require('moment-timezone')().tz(config.timezone).format('DD/MM/YYYY HH:mm:ss')} ${me.author.tag} (ID:${me.author.id}) - ${me.cleanContent}`));
+      require('fs').writeFileSync(path, m.map(me => `${require('moment-timezone')().tz(config.timezone).format('DD/MM/YYYY HH:mm:ss')} ${me.author.tag} (ID:${me.author.id}) - ${me.cleanContent}\r\n`));
 
       client.modUtil.Modlog(client, ctx.guild, `🗑 **${ctx.author.tag}** deleted ${m.size} messages in ${ctx.channel.toString()}.`, reason, [path]);
       ctx.channel.send(client.I18n.translate`✅ Deleted **${m.size}** messages!`);
