@@ -28,11 +28,11 @@ module.exports = async (client, ctx) => {
 
   /* CLEVERBOT */
   if (client.cleverbot && (ctx.content.indexOf(`<@${client.user.id}>`) === 0 || ctx.content.indexOf(`<@!${client.user.id}>`) === 0)) {
-    client.I18n.use(config.locale);
     const question = ctx.content.split(/ /g).slice(1).join(' ');
     if (!question) return 1;
     if (question === 'reset' && client.cs[ctx.author.id] !== undefined) {
       if (!ctx.guild) return 1;
+      client.I18n.use(config.locale);
       delete client.cs[ctx.author.id];
       ctx.channel.send(client.I18n.translate`✅ Your conversation has been erased!`);
     } else {
