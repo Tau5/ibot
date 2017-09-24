@@ -50,15 +50,17 @@ module.exports = async (client, ctx) => {
   }
 
   /* PREFIX CHECKING */
-  const prefixes = [client.config.prefix, client.config.prefix.toUpperCase()];
-  config.custom_prefixes.forEach(prefix => prefixes.push(prefix));
   let prefix;
-  prefixes.forEach((prefix2) => {
-    if (ctx.content.indexOf(prefix2) === 0) {
-      prefix = prefix2;
-    }
-  });
-  if (!prefix) return 1;
+  if (ctx.guild) {
+    const prefixes = [client.config.prefix, client.config.prefix.toUpperCase()];
+    config.custom_prefixes.forEach(prefi => prefixes.push(prefi));
+    prefixes.forEach((prefix2) => {
+      if (ctx.content.indexOf(prefix2) === 0) {
+        prefix = prefix2;
+      }
+    });
+    if (!prefix) return 1;
+  }
 
   /* HANDLING */
   ctx.args = ctx.content.split(/ /g);
