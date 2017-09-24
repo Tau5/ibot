@@ -1,10 +1,11 @@
 exports.execute = async (client, ctx) => {
+  const { locale, timezone } = client.servers.get(ctx.guild.id);
   const location = encodeURIComponent(ctx.args.join(' '));
   if (!location) return ctx.channel.send(client.I18n.translate`❌ You must specify a city to look for!`);
   if (location.length > 1024) return ctx.channel.send(client.I18n.translate`❌ The city length may not exceed 1024 caracters.`);
 
   const request = require('request');
-  request(`https://api.apixu.com/v1/forecast.json?key=${client.config.weather_api}&q=${location}`, (err, http, body) => {
+  request(`https://api.apixu.com/v1/forecast.json?key=${client.config.weather_api}&q=${location}&lang=${locale}&hour=${require('moment-timezone')().tz(timezone).format('HH')}`, (err, http, body) => {
     if (err && http.statusCode !== 200) throw err;
 
     const content = JSON.parse(body);
