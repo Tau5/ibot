@@ -49,18 +49,18 @@ module.exports = async (client, ctx) => {
     }
   }
 
+  if (!ctx.guild) return 1;
+
   /* PREFIX CHECKING */
+  const prefixes = [client.config.prefix, client.config.prefix.toUpperCase()];
+  config.custom_prefixes.forEach(prefix => prefixes.push(prefix));
   let prefix;
-  if (ctx.guild) {
-    const prefixes = [client.config.prefix, client.config.prefix.toUpperCase()];
-    config.custom_prefixes.forEach(prefi => prefixes.push(prefi));
-    prefixes.forEach((prefix2) => {
-      if (ctx.content.indexOf(prefix2) === 0) {
-        prefix = prefix2;
-      }
-    });
-    if (!prefix) return 1;
-  }
+  prefixes.forEach((prefix2) => {
+    if (ctx.content.indexOf(prefix2) === 0) {
+      prefix = prefix2;
+    }
+  });
+  if (!prefix) return 1;
 
   /* HANDLING */
   ctx.args = ctx.content.split(/ /g);
@@ -68,8 +68,6 @@ module.exports = async (client, ctx) => {
 
   const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
   if (cmd) {
-    if (cmd.conf.public && ctx.channel.type !== 'text') return 1;
-
     client.I18n.use(config.locale);
 
     /* IF COMMAND IS PRIVATE */
