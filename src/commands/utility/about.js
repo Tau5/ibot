@@ -4,7 +4,7 @@ exports.execute = async (client, ctx) => {
     .addField(client.I18n.translate`Owner`, 'iDroid#4441', true)
     .addField(client.I18n.translate`Servers`, ctx.client.guilds.size, true)
     .addField(client.I18n.translate`RAM Usage`, `${Math.round(process.memoryUsage().heapUsed / 1000000)}MB`, true)
-    .addField(client.I18n.translate`Support server`, 'https://discord.gg/invite', true)
+    .addField(client.I18n.translate`Support server`, 'https://discord.gg/UAmGEmS', true)
     .addField(client.I18n.translate`Translators`, '🇫🇷 iDroid#4441 - 🇩🇪 TimNook#0323')
     .setColor(ctx.guild.me.displayHexColor)
     .setThumbnail(client.user.displayAvatarURL({ format: 'png', size: 1024 }));
