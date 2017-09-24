@@ -237,7 +237,7 @@
     "🔥 **{0}**'s message has been deleted from {1} :": "🔥 **{0}**'s message has been deleted from {1} :",
     "Content": "Content",
     "📤 **{0}** (ID:{1}) left the server.\n__Account creation :__ {2}\n__Roles :__ {3}.": "📤 **{0}** (ID:{1}) left the server.\n__Account creation :__ {2}\n__Roles :__ {3}.",
-    "📥 **{0}** (ID:{1}) joined the server.\n__Account creation :__ {3}": "📥 **{0}** (ID:{1}) joined the server.\n__Account creation :__ {3}",
+    "📥 **{0}** (ID:{1}) joined the server.\n__Account creation :__ {2}": "📥 **{0}** (ID:{1}) joined the server.\n__Account creation :__ {2}",
   
     "_note29": "help",
     "📚 Commands list :\n```{0}.```": "📚 Commands list :\n```{0}.```",
