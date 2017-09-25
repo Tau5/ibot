@@ -31,6 +31,10 @@
     "description": "Informations about the server",
     "usage": "server"
   },
+  "invite":{
+    "description": "Get iBot on your server!",
+    "usage": "invite"
+  },
   "translate":{
     "description": "Translate a text into a lot of different languages!",
     "usage": "translate <target language (fr, de, en, etc)> <text>"
