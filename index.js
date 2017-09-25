@@ -93,7 +93,7 @@ client.login(client.config.token)
 /* WEB SERVER */
 const app = require('express')();
 
-const templates = './web';
+const templates = '../web';
 
 app.get('/servers', (request, response) => {
   response.render(`${templates}/servers.ejs`, { servers: client.guilds });
