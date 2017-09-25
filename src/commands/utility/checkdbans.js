@@ -26,6 +26,7 @@ exports.execute = async (client, ctx) => {
     let status = client.I18n.translate`Is not on the list.`;
     let color = 'GREEN';
 
+    if (body !== 'True' && body !== 'False') body = JSON.parse(body);
     if (typeof body === 'object') {
       status = client.I18n.translate`Is on the list.`;
       color = 'RED';
