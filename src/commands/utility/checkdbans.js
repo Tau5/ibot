@@ -20,7 +20,7 @@ exports.execute = async (client, ctx) => {
   }
 
   const request = require('request');
-  request.post('https://bans.discordlist.net/api', { form: { userid: member.id, token: client.config.dbans_api } }, (err, http, body) => {
+  request.post('https://bans.discordlist.net/api', { form: { version: 3, userid: member.id, token: client.config.dbans_api } }, (err, http, body) => {
     if (err && http.statusCode !== 200) return ctx.channel.send(client.I18n.translate`❌ An error has occured!`);
     const { MessageEmbed } = require('discord.js');
     let status = client.I18n.translate`Is not on the list.`;
