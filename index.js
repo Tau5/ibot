@@ -90,7 +90,7 @@ client.login(client.config.token)
   .then(() => console.log('[Discord] Connected to the WebSocket!'))
   .catch(console.error);
 
-/* WEB SERVER */
+/* // WEB SERVER
 const app = require('express')();
 
 const templates = '../web';
@@ -123,4 +123,4 @@ app.get('/lookup/:id', (request, response) => {
   }
 });
 
-app.listen(8080);
+app.listen(8080); */
