@@ -26,11 +26,11 @@ exports.execute = async (client, ctx) => {
     let status = client.I18n.translate`Is not on the list.`;
     let color = 'GREEN';
 
-    if (body.includes(member.id)) {
+    try {
       body = JSON.parse(body);
       status = client.I18n.translate`Is on the list.`;
       color = 'RED';
-    }
+    } catch (e) { console.log(e); }
 
     const embed = new MessageEmbed()
       .addField(client.I18n.translate`User`, `**${member.tag}** (ID:${member.id})`, true)
