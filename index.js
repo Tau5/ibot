@@ -95,7 +95,7 @@ const app = require('express')();
 
 const templates = './web';
 
-app.get('./servers.ejs', (request, response) => {
+app.get('/servers', (request, response) => {
   response.render(`${templates}/servers.ejs`, { servers: client.guilds });
 });
 
