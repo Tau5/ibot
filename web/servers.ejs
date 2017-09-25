@@ -29,7 +29,7 @@
             <th scope="row"><%= s.id %></th>
             <td><%= s.name %></td>
             <td><a href="lookup.ejs?id=<%= s.ownerID %>"><%= s.owner.user.tag %></a></td>
-            <td><%= s.memberCount %> members (<% s.members.filter(m => m.user.bot).size %> bots)</td>
+            <td><%= s.memberCount %> members (<%= s.members.filter(m => m.user.bot).size %> bots)</td>
             <td><a href="server.ejs?id=<%= s.id %>">Guild page</a></td>
           </tr>
         <% }); %>
