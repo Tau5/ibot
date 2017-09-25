@@ -99,4 +99,16 @@ app.get('/servers', (request, response) => {
   response.render(`${templates}/servers.ejs`, { servers: client.guilds });
 });
 
+app.get('/lookup/:id', (request, response) => {
+  if (!request.params.id) response.render(`${templates}/404.ejs`);
+  else {
+    client.users.fetch(request.params.id).then((user) => {
+      response.render(`${templates}/lookup.ejs`, { user });
+    }).catch((e) => {
+      response.write(e);
+      response.end();
+    });
+  }
+});
+
 app.listen(8080);

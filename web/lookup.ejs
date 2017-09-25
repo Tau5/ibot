@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="style/index.css">
+    <title>iBot - Servers</title>
+  </head>
+
+  <body class="centered text-center">
+    <!-- Head page -->
+    <img src="web/images/ibot.png" alt="iBot avatar" class="avatar" />
+    <h1>iBot - Servers</h1>
+    <hr class="divider" />
+
+    <!-- User page -->
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h1><%= user.tag %></h1>
+        <img src="<%= user.displayAvatarURL() %>" alt="User avatar" class="rounded float-right" />
+        <p><strong>ID:</strong> <%= user.id %><br />
+        <strong>Account creation:</strong> <%= user.createdAt.toUTCString() %></p>
+      </div>
+    </div>
+  </body>
+</html>
