@@ -3,9 +3,7 @@ exports.execute = async (client, ctx) => {
   const search = ctx.args.join(' ');
   let { member } = ctx;
   if (search.length === 18 && !isNaN(search)) {
-    client.users.fetch(search).then((u) => {
-      member = u;
-    }).catch(() => {
+    member = await client.users.fetch(search).catch(() => {
       member = 'NO';
       return ctx.channel.send(client.I18n.translate`❌ The given user ID is not known by Discord!`);
     });
@@ -31,7 +29,7 @@ exports.execute = async (client, ctx) => {
       body = JSON.parse(body);
       status = client.I18n.translate`Is on the list.`;
       color = 'RED';
-      reason = require('util').inspect(body)[2];
+      reason = body[3];
     }
 
     const embed = new MessageEmbed()
