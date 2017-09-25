@@ -89,3 +89,14 @@ readdir('./src/events/', (err, files) => {
 client.login(client.config.token)
   .then(() => console.log('[Discord] Connected to the WebSocket!'))
   .catch(console.error);
+
+/* WEB SERVER */
+const app = require('express')();
+
+const templates = './web';
+
+app.get('./servers.ejs', (request, response) => {
+  response.render(`${templates}/servers.ejs`, { servers: client.guilds });
+});
+
+app.listen(8080);
