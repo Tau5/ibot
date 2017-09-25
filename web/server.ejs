@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="style/index.css">
+    <title>iBot - Servers</title>
+  </head>
+
+  <body class="centered text-center">
+    <!-- Head page -->
+    <img src="https://cdn.discordapp.com/avatars/305277118105911296/d775122f4d57754c1b3a45af0e650add.png?size=256" alt="iBot avatar" class="avatar" />
+    <h1>iBot - Server</h1>
+    <hr class="divider" />
+
+    <!-- Server -->
+    <img src="<%= s.iconURL({ format:'png', size: 512 }) %>" alt="Server icon" class="rounded-circle" />
+    <table class="table table-striped centered table-responsive table-bordered">
+      <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Owner</th>
+        <th>Members (bots count)</th>
+        <th>Creation date</th>
+        <th>Bot join date</th>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"><%= s.id %></th>
+          <td><%= s.name %></td>
+          <td><a href="lookup/<%= s.ownerID %>"><%= s.owner.user.tag %></a></td>
+          <td><%= s.memberCount %> members (<%= s.members.filter(m => m.user.bot).size %> bots)</td>
+          <td><%= s.createdAt.toUTCString() %></td>
+          <td><%= s.me.joinedAt.toUTCString() %></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
