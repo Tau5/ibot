@@ -25,16 +25,23 @@ exports.execute = async (client, ctx) => {
     const { MessageEmbed } = require('discord.js');
     let status = client.I18n.translate`Is not on the list.`;
     let color = 'GREEN';
-    if (body === 'True') {
+    try {
+      body = JSON.parse(body);
+
       status = client.I18n.translate`Is on the list.`;
       color = 'RED';
-    }
+    } catch (e) { /* shrug */ }
 
     const embed = new MessageEmbed()
-      .addField(client.I18n.translate`User`, `**${member.tag}** (ID:${member.id})`)
-      .addField(client.I18n.translate`Status`, status)
+      .addField(client.I18n.translate`User`, `**${member.tag}** (ID:${member.id})`, true)
+      .addField(client.I18n.translate`Status`, status, true)
       .setColor(color)
       .setThumbnail(member.displayAvatarURL());
+
+    if (color === 'RED') {
+      embed.addField(client.I18n.translate`Reason`, body[3], true);
+      embed.addField('🖼', body[4], true);
+    }
 
     return ctx.channel.send(client.I18n.translate`🚔 Discord Bans list fetched!`, { embed });
   });
