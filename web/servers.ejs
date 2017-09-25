@@ -15,7 +15,7 @@
     <hr class="divider" />
 
     <!-- Servers mapping in a table -->
-    <table class="table table-striped centered table-responsive">
+    <table class="table table-striped centered table-responsive table-bordered">
       <thead>
         <th>ID</th>
         <th>Name</th>
@@ -32,7 +32,7 @@
             <td><%= s.memberCount %> members (<% s.members.filter(m => m.user.bot).size %> bots)</td>
             <td><a href="server.ejs?id=<%= s.id %>">Guild page</a></td>
           </tr>
-          <% }); %>
+        <% }); %>
       </tbody>
     </table>
   </body>
