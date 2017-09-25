@@ -17,10 +17,12 @@
     <!-- User page -->
     <div class="panel panel-default border">
       <div class="panel-body">
-        <img src="<%= user.displayAvatarURL() %>" alt="User avatar" class="float-right rounded-circle" />
+        <img src="<%= user.displayAvatarURL() %>" alt="User avatar" class="rounded-circle" style="height: 70%;" />
         <h1><%= user.tag %></h1>
-        <p><strong>ID:</strong> <%= user.id %><br />
-        <strong>Account creation:</strong> <%= user.createdAt.toUTCString() %></p>
+        <p>
+          <strong>ID:</strong> <%= user.id %><br />
+          <strong>Account creation:</strong> <%= user.createdAt.toUTCString() %>
+        </p>
       </div>
     </div>
   </body>
