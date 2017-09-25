@@ -15,10 +15,10 @@
     <hr class="divider" />
 
     <!-- User page -->
-    <div class="panel panel-default">
+    <div class="panel panel-default border">
       <div class="panel-body">
         <h1><%= user.tag %></h1>
-        <img src="<%= user.displayAvatarURL() %>" alt="User avatar" class="rounded float-right" />
+        <img src="<%= user.displayAvatarURL() %>" alt="User avatar" class="float-right rounded-circle" />
         <p><strong>ID:</strong> <%= user.id %><br />
         <strong>Account creation:</strong> <%= user.createdAt.toUTCString() %></p>
       </div>
