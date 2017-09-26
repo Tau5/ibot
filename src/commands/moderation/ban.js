@@ -32,7 +32,7 @@ exports.execute = async (client, ctx) => {
     });
     client.servers.set(ctx.guild.id, config);
 
-    client.modUtils.Modlog(client, ctx.guild, client.I18n.translate`🔨 **${ctx.author.tag}** banned **${member.user.tag}** (ID:${member.id}).`, reason);
+    client.modUtil.Modlog(client, ctx.guild, client.I18n.translate`🔨 **${ctx.author.tag}** banned **${member.user.tag}** (ID:${member.id}).`, reason);
 
     return ctx.channel.send(client.I18n.translate`✅ Banned **${member.user.tag}**!`);
   }).catch(() => ctx.channel.send(client.I18n.translate`❌ An error has occured! Please retry.`));
