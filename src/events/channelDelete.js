@@ -16,5 +16,5 @@ module.exports = async (client, channel) => {
     config.switch_modlog = 0;
   }
 
-  client.servers.set(channel.guild.id);
+  client.servers.set(channel.guild.id, config);
 };
