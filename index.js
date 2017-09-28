@@ -26,7 +26,7 @@ client.cs = {};
 client.servers = new Enmap({ name: 'servers', persistent: true });
 client.tags = new Enmap({ name: 'tags', persistent: true });
 client.lastactive = new Enmap({ name: 'lastactive', persistent: true });
-client.afk = new Enmap();
+client.afk = new Enmap({ name: 'afk', persistent: true });
 
 /* COMMANDS */
 client.commands = new Enmap();
