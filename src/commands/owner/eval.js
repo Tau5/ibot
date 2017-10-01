@@ -13,7 +13,7 @@ exports.execute = async (client, ctx) => {
 
     return ctx.channel.send(evaled, { code: 'js' });
   } catch (e) {
-    return ctx.channel.send(e, { code: 'js' });
+    return ctx.channel.send(e.stack, { code: 'js' });
   }
 };
 
