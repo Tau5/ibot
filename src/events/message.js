@@ -79,6 +79,7 @@ module.exports = async (client, ctx) => {
 
     /* EXECUTE */
     try {
+      client.commands.ran += 1;
       cmd.execute(client, ctx);
     } catch (e) {
       ctx.channel.send(client.I18n.translate`❌ An unhandled error has occured! I told my dad about it, don't worry and... it'll be fixed soon!`);

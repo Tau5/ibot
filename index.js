@@ -31,6 +31,7 @@ client.afk = new Enmap({ name: 'afk', persistent: true });
 /* COMMANDS */
 client.commands = new Enmap();
 client.aliases = new Enmap();
+client.commands.ran = 0;
 
 /* HANDLER */
 // Helpers
