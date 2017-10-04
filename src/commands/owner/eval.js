@@ -7,7 +7,7 @@ exports.execute = async (client, ctx) => {
     let evaled = await eval(code);
 
     if (typeof evaled !== 'string') evaled = require('util').inspect(evaled);
-    evaled = evaled.replace(/client.config.token/g, 'TOKEN');
+    evaled = evaled.replace(client.config.token, 'mfa.VkO_2G4Qv3T--NO--lWetW_tjND--TOKEN--QFTm6YGtzq9PH--4U--tG0');
 
     if (evaled.length > 1900) return ctx.channel.send('❌ The output length exceeds Kyle2000 caracters!');
 
