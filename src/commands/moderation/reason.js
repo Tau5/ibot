@@ -26,8 +26,8 @@ exports.execute = async (client, ctx) => {
 };
 
 exports.conf = {
-  name: 'moderation',
-  aliases: ['mod', 'modcase'],
+  name: 'reason',
+  aliases: [],
   public: true,
   user_permission: 'KICK_MEMBERS',
 };
