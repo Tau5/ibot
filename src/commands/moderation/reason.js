@@ -13,9 +13,9 @@ exports.execute = async (client, ctx) => {
     config.moderation[ctx.args[0] - 1] = mod;
     client.servers.set(ctx.guild.id, config);
     ctx.guild.channels.get(config.channel_modlog).messages.fetch({ limit: 30 }).then((messages) => {
-      const modMessage = messages.find(m => m.content.startsWith(`\`[${require('moment-timezone')(mod.TIME).tz(config.timezone).format('HH:mm:ss')}]\` \`[${ctx.args[0] - 1}]\``));
+      const modMessage = messages.find(m => m.content.includes(`\`[${require('moment-timezone')(mod.TIME).tz(config.timezone).format('HH:mm:ss')}]\` \`[${ctx.args[0] - 1}]\``));
       if (!modMessage) return ctx.channel.send(client.I18n.translate`❌ The reason has been changed in the moderation part but the message has not been found!`);
-      modMessage.content = modMessage.content.replace(mod.REASON, reason);
+      modMessage.content = modMessage.content.replace(oldReason, reason);
       modMessage.edit(modMessage.content).then(() => {
         ctx.channel.send(client.I18n.translate`✅ Reason changed for case ${ctx.args[0] - 1}!`);
       }).catch(e => console.log(e.stack));
