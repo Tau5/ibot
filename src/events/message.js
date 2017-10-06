@@ -63,7 +63,7 @@ module.exports = async (client, ctx) => {
   if (!prefix) return 1;
 
   /* HANDLING */
-  ctx.args = ctx.content.split(/ /g);
+  ctx.args = ctx.content.split(/ +/g);
   const command = ctx.args.shift().slice(prefix.length).toLowerCase();
 
   const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
