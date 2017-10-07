@@ -30,7 +30,8 @@
     "moment-timezone": "^0.5.13",
     "node-i18n": "github:eslachance/node-i18n",
     "request": "^2.81.0",
-    "time-ago": "^0.1.0"
+    "time-ago": "^0.1.0",
+    "uws": "^8.14.1"
   },
   "devDependencies": {
     "eslint": "^4.7.0",
