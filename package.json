@@ -28,6 +28,7 @@
     "express-session": "^1.15.6",
     "google-translate-api": "^2.3.0",
     "merge-images": "^1.0.5",
+    "moment": "^2.18.1",
     "moment-timezone": "^0.5.13",
     "node-i18n": "github:eslachance/node-i18n",
     "request": "^2.81.0",
