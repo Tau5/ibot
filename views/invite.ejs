@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>iBot - Server</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  </head>
+  <body>
+    <!-- Nav-bar -->
+    <% include parts/header.ejs %>
+
+    <!-- Server list -->
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container mx-auto">
+        <h1 class="mbr-section-title mbr-bold mbr-fonts-style text-center"><strong>Select a Discord server</strong></h1>
+        <hr>
+        <div class="row text-center mx-auto" style="vertical-align: 50%;">
+          <% if (guilds.length === 0) { %><h4>You can't invite iBot anywhere! Please check you are in a server without iBot and with the Manage Server permission.</h4><% } %>
+          <% guilds.forEach((g) => { %>
+          <div>
+            <figure>
+              <a href="/invite/<%= g.id %>"><img class="rounded-circle" height="75px" width="75px" src="<%= (g.icon) ? `https://cdn.discordapp.com/icons/${g.id}/${g.icon}.png?size=128` : 'https://www.shareicon.net/data/512x512/2017/06/21/887435_logo_512x512.png' %>" alt="<%= g.name %>'s icon'"></a>
+              <figcaption><a href="/invite/<%= g.id %>" style="color: grey;"><%= g.name %></a></figcaption>
+            </figure>
+          </div>
+          <div class="m-3"></div>
+          <% }); %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <% include parts/footer.ejs %>
+  </body>
+</html>
