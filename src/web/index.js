@@ -8,6 +8,7 @@ module.exports = (client) => {
   const bodyParser = require('body-parser');
   const cookieParser = require('cookie-parser');
   const session = require('express-session');
+  const logger = require('morgan');
   const authentication = require('../web/auth/auth');
 
   client.app = express();
@@ -36,6 +37,9 @@ module.exports = (client) => {
     .enable('trust proxy')
     .use(bodyParser.urlencoded({
       extended: false,
+    }))
+    .use(logger('common', {
+      stream: require('fs').createWriteStream('./src/web/logs.txt'),
     }))
     .use(cookieParser(client.config.secret))
     .use(session({
