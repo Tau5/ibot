@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>iBot - Server</title>
+    <style>
+    .table td {
+      border: black solid 1px !important
+    }
+    .table th {
+      border: black solid 1px !important
+    }</style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  </head>
+  <body>
+    <!-- Nav-bar -->
+    <% include parts/header.ejs %>
+
+    <!-- Guild presentation -->
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <img src="<%= (guild.icon) ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=128` : 'https://www.shareicon.net/data/512x512/2017/06/21/887435_logo_512x512.png' %>" alt="<%= guild.name %>'s icon" class="rounded-circle" height="150px;" width="150px;" style="display: block; margin-left: auto; margin-right: auto;">
+        <h1 class="mbr-section-title mbr-bold mbr-fonts-style text-center"><strong><%= guild.name %></strong></h1>
+        <hr>
+        <p>
+          <strong>ID:</strong> <%= guild.id %><br>
+          <strong>Creation date:</strong> <%= guild.createdAt.toUTCString() %><br>
+          <strong>Members:</strong> <%= guild.memberCount %> total members (<%= guild.members.filter(m => m.user.bot).size %> bots and <%= guild.members.filter(m => m.user.presence.status === 'online').size %> online)<br>
+          <strong>Channels:</strong> <%= guild.channels.filter(c => c.type === 'text').size %> text and <%= guild.channels.filter(c => c.type === 'voice').size %> voice<br>
+          <strong>Owner:</strong> <span class="nav-item"><a href="/user/<%= guild.ownerID %>" style="color: grey;"><%= guild.owner.user.tag %></a></span><br>
+        </p>  
+      </div>
+    </div>
+
+    <% if (guild.members.get(user.id).hasPermission('MANAGE_GUILD')) { %>
+    <!-- Configuration -->
+    <div class="jumbotron jumbotron-fluid text-center">
+      <div class="container">
+        <h1 class="mbr-section-title mbr-bold mbr-fonts-style"><strong>CONFIGURATION</strong></h1>
+        <hr>
+        <table class="table table-bordered">
+          <thead class="text-center">
+            <tr>
+              <th class="text-center" colspan="3">Channels</th>
+              <th class="text-center">Messages</th>
+              <th class="text-center" colspan="4">Switches</th>
+              <th class="text-center" colspan="2">Misc</th>
+            </tr>
+          </thead>
+          <tbody class="text-center">
+            <tr>
+              <th class="text-center">Welcome</th>
+              <th class="text-center">Serverlog</th>
+              <th class="text-center">Modlog</th>
+
+              <th class="text-center">Welcome</th>
+
+              <th class="text-center">Welcome</th>
+              <th class="text-center">Serverlog</th>
+              <th class="text-center">Modlog</th>
+
+              <th class="text-center">Timezone</th>
+              <th class="text-center">Locale</th>
+            </tr>
+            <tr>
+              <td><%= (config.channel_welcome !== 'NOT_SET') ? `#${guild.channels.get(config.channel_welcome).name}` : 'Not set' %></td>
+              <td><%= (config.channel_serverlog !== 'NOT_SET') ? `#${guild.channels.get(config.channel_serverlog).name}` : 'Not set' %></td>
+              <td><%= (config.channel_modlog !== 'NOT_SET') ? `#${guild.channels.get(config.channel_modlog).name}` : 'Not set' %></td>
+
+              <td><%= (config.message_welcome !== 'NOT_SET') ? `${config.message_welcome}` : 'Not set' %></td>
+
+              <td><%= config.switch_welcome %></td>
+              <td><%= config.switch_serverlog %></td>
+              <td><%= config.switch_modlog %></td>
+
+              <td><%= config.timezone %></td>
+              <td><%= config.locale %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <% } %>
+
+    <!-- Footer -->
+    <% include parts/footer.ejs %>
+  </body>
+</html>
