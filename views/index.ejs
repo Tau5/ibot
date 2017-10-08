@@ -4,38 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>iBot - Home</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   </head>
   <body>
     <!-- Nav-bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand" href="#">
-          <img src="https://cdn.discordapp.com/avatars/305277118105911296/5f03c6ca934e87dcec5eba837925b359.png?size=128" width="30" height="30" class="d-inline-block align-top rounded" alt="iBot avatar">
-          iBot
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav mr-auto">
-            <li class="navbar-item active">
-              <a class="nav-link" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="auth/login">Log-in</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="invite">Invite</a>
-            </li>
-          </ul>
-          <span class="navbar-text">
-            Connected as <strong>iDroid#4441</strong>
-          </span>
-        </div>
-      </div>
-    </nav>
+    <% include parts/header.ejs %>
 
     <!-- Presentation -->
     <div class="jumbotron jumbotron-fluid">
@@ -55,24 +29,14 @@
         <h1 class="mbr-section-title mbr-bold mbr-fonts-style display-1 text-center"><strong>STATISTICS</strong></h1>
         <hr>
         <p class="lead text-center">
-          <strong><%= servercount %> servers</strong> • <strong><%= usercount %> users</strong><br>
-          <strong><%= langcount %> languages</strong> • <strong><%= cmdrancount %> commands ran</strong>
+          <strong><%= client.guilds.size %> servers</strong> • <strong><%= client.users.size %> users</strong><br>
+          <strong><%= Object.keys(client.languages).length %> languages</strong> • <strong><%= client.commands.ran %> commands ran</strong>
         </p>
       </div>
     </div>
 
-    <section once="" class="cid-qwN2RyXMpc" id="footer6-h" data-rv-view="132">
-      <div class="container">
-          <div class="media-container-row align-center mbr-white">
-              <div class="col-12">
-                  <p class="mbr-text mb-0 mbr-fonts-style display-7 text-center">
-                      © Copyright 2017 iDroid - All Rights Reserved
-                  </p>
-              </div>
-          </div>
-      </div>
-    </section>
-
+    <!-- Footer -->
+    <% include parts/footer.ejs %>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>

@@ -19,6 +19,7 @@
     "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "cleverbot-unofficial-api": "^0.1.0",
+    "cookie-parser": "^1.4.3",
     "discord.js": "github:hydrabolt/discord.js",
     "download-file": "^0.1.5",
     "ejs": "^2.5.7",
@@ -29,6 +30,8 @@
     "merge-images": "^1.0.5",
     "moment-timezone": "^0.5.13",
     "node-i18n": "github:eslachance/node-i18n",
+    "passport": "^0.4.0",
+    "passport-discord": "^0.1.2",
     "request": "^2.81.0",
     "time-ago": "^0.1.0",
     "uws": "^8.14.1"
