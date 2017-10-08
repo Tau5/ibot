@@ -22,7 +22,7 @@
               <th>Name</th>
               <th>Members</th>
               <th>Owner</th>
-              <th>More..</th>
+              <th>More...</th>
             </tr>
           </thead>
           <tbody>
@@ -30,7 +30,7 @@
             <tr>
               <td><%= g.name %></td>
               <td><%= g.memberCount %></td>
-              <td><a href="/user/<%= g.ownerID %>"><%= g.owner.user.tag %></a></td>
+              <td><span class="nav-item"><a href="/user/<%= g.ownerID %>" class="nav-link" style="color: grey;"><%= g.owner.user.tag %></a></span></td>
               <td>Soon!</td>
             </tr>
             <% }); %>
