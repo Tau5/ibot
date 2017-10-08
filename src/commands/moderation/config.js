@@ -11,7 +11,7 @@ exports.execute = async (client, ctx) => {
 
     /* CHANNELS FINDER */
     let channel;
-    if (ctx.mentions.channels.size > 0) channel = ctx.mentions.members.first();
+    if (ctx.mentions.channels.size > 0) channel = ctx.mentions.channels.first();
     else {
       channel = client.findersUtil.findTextChannels(ctx.guild, value);
       if (channel.size === 0) ctx.channel.send(client.I18n.translate`❌ No channel found matching \`${value}\`!`);

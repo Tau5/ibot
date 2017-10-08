@@ -17,7 +17,13 @@
         <h1 class="mbr-section-title mbr-bold mbr-fonts-style display-1 text-center"><strong>Error <%= code %></strong></h1>
         <hr>
         <p class="text-center">
-          <button type="button" class="btn btn-primary btn-lg"><a href="/">Return to Home</a></button>
+          <% if (code === '404') { %>The page you requested does not exist.
+          <% } else if (code === '403') { %>You do not have the permission to access to this page.
+          <% } else if (code === '401') { %>You must be logged-in to access to this page.
+          <% } else if (code === '500') { %>An internal server error occured!
+          <% } %>
+          <br><br>
+          <a href="/" class="btn btn-secondary btn-lg" role="button">Return to home</a>
         </p>
       </div>
     </div>
