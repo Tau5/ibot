@@ -7,6 +7,7 @@ router
   .use('/login', (req, res, next) => {
     if (req.cookies.user) {
       req.user = req.cookies.user;
+      authSystem.authenticate();
       return res.redirect('/');
     }
     next();
