@@ -15,7 +15,6 @@ module.exports = (client) => {
 
   // External
   const auth = require('../web/auth');
-  const invite = require('../web/invite');
 
   /* Auth checker */
   const checkAuth = (req, res, next) => {

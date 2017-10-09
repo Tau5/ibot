@@ -13,13 +13,24 @@ module.exports = (client) => {
     }
   });
 
-  router.post('/game', async (req, res) => {
-    const game = req.body.game;
-    await client.user.setGame(game);
-    res.status(200).render('admin', { client, identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
+  router.post('/presence', async (req, res) => {
+    const presence = {
+      game: {
+        type: 0,
+        name: req.body.game,
+      },
+      status: req.body.status,
+    };
+
+    await client.user.setPresence(presence).catch(res.render(500).send('error', { identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') }));
+    res.status(200).render('admin', {
+      client, identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO'), game: client.user.presence.game.name, status: client.user.presence.status,
+    });
   });
 
-  router.use('/', (req, res) => res.status(200).render('admin', { client, identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') }));
+  router.use('/', (req, res) => res.status(200).render('admin', {
+    client, identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO'), game: client.user.presence.game.name, status: client.user.presence.status,
+  }));
 
   return router;
 };
