@@ -8,8 +8,8 @@ router
     if (req.cookies.user) {
       req.user = req.cookies.user;
       req._passport = { // eslint-disable-line no-underscore-dangle
-        instance: {
-          _userProperty: 'user',
+        session: {
+          user: req.cookies.user,
         },
       };
       return res.redirect('/');
