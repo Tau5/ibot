@@ -5,16 +5,6 @@ const router = express.Router();
 
 router
   .use('/login', (req, res, next) => {
-    if (req.cookies.user) {
-      let cookies = req.cookies.user;
-      cookies = String(cookies).replace('j%3A', '');
-      cookies = decodeURIComponent(req.cookies.user);
-      req.login('lmao', (err) => {
-        if (err) return;
-        req.user = cookies;
-        return res.redirect('/');
-      });
-    }
     next();
   }, authSystem.authenticate('discord'))
   .use('/callback', authSystem.authenticate('discord'), (req, res) => {
@@ -22,7 +12,7 @@ router
     res.redirect('/');
   })
   .use('/logout', (req, res) => {
-    res.clearCookie('user');
+    // res.clearCookie('user');
     req.logout();
     res.redirect('/');
   });
