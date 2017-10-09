@@ -9,6 +9,7 @@ router
       authSystem.authenticate('discord');
     } else {
       req.user = req.cookies.user;
+      res.redirect('/');
     }
   })
   .use('/callback', authSystem.authenticate('discord'), (req, res) => {
