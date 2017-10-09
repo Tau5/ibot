@@ -9,8 +9,7 @@ router
       let cookies = req.cookies.user;
       cookies = String(cookies).replace('j%3A', '');
       cookies = decodeURIComponent(req.cookies.user);
-      console.log(cookies);
-      req.user = JSON.parse(cookies);
+      req.user = cookies;
       req.login('user', (err) => {
         if (err) return;
         return res.redirect('/');
