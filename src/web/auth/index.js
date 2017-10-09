@@ -5,7 +5,7 @@ const router = express.Router();
 
 router
   .use('/login', (req, res) => {
-    if (!req.user) {
+    if (req.user.username === undefined) {
       authSystem.authenticate('discord');
     } else {
       req.user = req.cookies.user;
