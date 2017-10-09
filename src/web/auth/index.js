@@ -5,14 +5,11 @@ const router = express.Router();
 
 router
   .use('/login', (req, res) => {
-    if (!req.cookies.user) {
-      authSystem.authenticate('discord');
-    } else {
+    if (req.cookies.user) {
       req.user = req.cookies.user;
-      authSystem.authenticate();
       res.redirect('/');
     }
-  })
+  }, authSystem.authenticate('discord'))
   .use('/callback', authSystem.authenticate('discord'), (req, res) => {
     res.cookie('user', req.user);
     res.redirect('/');
