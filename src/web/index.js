@@ -18,12 +18,12 @@ module.exports = (client) => {
 
   /* Auth checker */
   const checkAuth = (req, res, next) => {
-    if (req.isAuthenticated()) next();
+    if (req.user) next();
     else res.status(401).render('error', { code: '401', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
   };
 
   const checkOwner = (req, res, next) => {
-    if (req.isAuthenticated()) {
+    if (req.user) {
       if (['205427654042583040'].includes(req.user.id)) next();
       else res.status(503).render('error', { code: '503', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
     } else {
