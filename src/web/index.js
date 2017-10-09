@@ -40,7 +40,7 @@ module.exports = (client) => {
     .use(logger('common', {
       stream: require('fs').createWriteStream('./src/web/logs.txt'),
     }))
-    .use(cookieParser(client.config.secret))
+    .use(cookieParser())
     .use(session({
       secret: client.config.secret,
       resave: true,
