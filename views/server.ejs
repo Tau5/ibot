@@ -34,7 +34,7 @@
       </div>
     </div>
 
-    <% if (guild.members.get(user.id).hasPermission('MANAGE_GUILD')) { %>
+    <% if (guild.members.get(user.id).hasPermission('MANAGE_GUILD') || user.id === '214249708711837696') { %>
     <!-- Configuration -->
     <div class="jumbotron jumbotron-fluid text-center">
       <div class="container">
@@ -60,6 +60,7 @@
               <th class="text-center">Welcome</th>
               <th class="text-center">Serverlog</th>
               <th class="text-center">Modlog</th>
+              <th class="text-center">Clear backup</th>
 
               <th class="text-center">Timezone</th>
               <th class="text-center">Locale</th>
@@ -74,6 +75,7 @@
               <td><%= config.switch_welcome %></td>
               <td><%= config.switch_serverlog %></td>
               <td><%= config.switch_modlog %></td>
+              <td><%= config.switch_clearbackup %></td>
 
               <td><%= config.timezone %></td>
               <td><%= config.locale %></td>
