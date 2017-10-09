@@ -23,17 +23,13 @@ module.exports = (client) => {
     };
 
     await client.user.setPresence(presence).catch(() => res.render(500).send('error', { identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') }));
-    res.status(200).render('admin', {
-      client, identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO'), game: client.user.presence.activity.name, status: client.user.presence.status,
-    });
+    res.redirect('/');
   });
 
   router.use('/leave/:id', async (req, res) => {
     const guild = client.guilds.get(req.params.id);
     await guild.leave();
-    res.status(200).render('admin', {
-      client, identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO'), game: client.user.presence.activity.name, status: client.user.presence.status,
-    });
+    res.redirect('/');
   });
 
   router.use('/', (req, res) => res.status(200).render('admin', {
