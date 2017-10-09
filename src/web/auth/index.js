@@ -4,7 +4,7 @@ const authSystem = require('./auth');
 const router = express.Router();
 
 router
-  .use('/login', authSystem.authenticate('discord'))
+  .use('/login', authSystem.authenticate('remember-me'), authSystem.authenticate('discord'))
   .use('/callback', authSystem.authenticate('discord'), (req, res) => {
     res.redirect('/');
   })
