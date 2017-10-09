@@ -10,7 +10,7 @@ router
       cookies = String(cookies).replace('j%3A', '');
       cookies = decodeURIComponent(req.cookies.user);
       req.user = cookies;
-      req.login('user', (err) => {
+      req.login('lol', (err) => {
         if (err) return;
         return res.redirect('/');
       });
