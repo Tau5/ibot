@@ -33,6 +33,7 @@
     "morgan": "^1.9.0",
     "node-i18n": "github:eslachance/node-i18n",
     "passport": "^0.4.0",
+    "passport-cookie": "^1.0.4",
     "passport-discord": "^0.1.2",
     "passport-remember-me": "0.0.1",
     "request": "^2.81.0",

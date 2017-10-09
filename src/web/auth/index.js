@@ -7,15 +7,10 @@ router
   .use('/login', (req, res, next) => {
     if (req.cookies.user) {
       req.user = req.cookies.user;
-      req._passport = { // eslint-disable-line no-underscore-dangle
-        instance: {
-          _userProperty: 'user',
-        },
-        session: {
-          user: req.cookies.user,
-        },
-      };
-      return res.redirect('/');
+      req.login('user', (err) => {
+        if (err) return;
+        return res.redirect('/');
+      });
     }
     next();
   }, authSystem.authenticate('discord'))
