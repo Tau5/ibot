@@ -9,8 +9,9 @@ router
       let cookies = req.cookies.user;
       cookies = String(cookies).replace('j%3A', '');
       cookies = decodeURIComponent(req.cookies.user);
-      req.login(cookies, (err) => {
+      req.login('lmao', (err) => {
         if (err) return;
+        req.user = cookies;
         return res.redirect('/');
       });
     }
