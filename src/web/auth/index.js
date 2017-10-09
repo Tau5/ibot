@@ -7,7 +7,11 @@ router
   .use('/login', (req, res, next) => {
     if (req.cookies.user) {
       req.user = req.cookies.user;
-      authSystem.authenticate();
+      req._passport = { // eslint-disable-line no-underscore-dangle
+        instance: {
+          _userProperty: 'user',
+        },
+      };
       return res.redirect('/');
     }
     next();
