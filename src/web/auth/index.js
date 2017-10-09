@@ -4,11 +4,12 @@ const authSystem = require('./auth');
 const router = express.Router();
 
 router
-  .use('/login', (req, res) => {
+  .use('/login', (req, res, next) => {
     if (req.cookies.user) {
       req.user = req.cookies.user;
-      res.redirect('/');
+      return res.redirect('/');
     }
+    next();
   }, authSystem.authenticate('discord'))
   .use('/callback', authSystem.authenticate('discord'), (req, res) => {
     res.cookie('user', req.user);
