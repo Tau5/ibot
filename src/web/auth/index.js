@@ -7,7 +7,7 @@ router
   .use('/login', (req, res, next) => {
     if (req.cookies.user) {
       let cookies = decodeURIComponent(req.cookies.user);
-      cookies = cookies.replace('j:', '');
+      cookies = cookies.replace('j:', '').replace(/ +/g, '');
       req.user = JSON.parse(cookies);
       req.login('user', (err) => {
         if (err) return;
