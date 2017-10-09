@@ -20,7 +20,7 @@ exports.execute = async (client, ctx) => {
   const config = client.servers.get(ctx.guild.id);
   const warns = config.moderation.filter(o => o.VICTIM !== undefined).filter(o => o.ACTION === 'WARN' && o.VICTIM === member.id);
   const unwarns = config.moderation.filter(o => o.VICTIM !== undefined).filter(o => o.ACTION === 'UNWARN' && o.VICTIM === member.id);
-  const warncount = (warns - unwarns);
+  const warncount = (warns.length - unwarns.length);
 
   config.moderation.push({
     ACTION: 'WARN',
