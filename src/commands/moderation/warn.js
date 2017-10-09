@@ -19,6 +19,8 @@ exports.execute = async (client, ctx) => {
 
   const config = client.servers.get(ctx.guild.id);
   const warns = config.moderation.filter(o => o.VICTIM !== undefined).filter(o => o.ACTION === 'WARN' && o.VICTIM === member.id);
+  const unwarns = config.moderation.filter(o => o.VICTIM !== undefined).filter(o => o.ACTION === 'UNWARN' && o.VICTIM === member.id);
+  const warncount = (warns - unwarns);
 
   config.moderation.push({
     ACTION: 'WARN',
@@ -30,7 +32,7 @@ exports.execute = async (client, ctx) => {
   client.servers.set(ctx.guild.id, config);
 
   if (!member.user.bot) member.user.send(client.I18n.translate`📝 You have been warned on __${ctx.guild.name}__ by **${ctx.author.tag}**.\n__Reason :__ ${reason}`);
-  client.modUtil.Modlog(client, ctx.guild, client.I18n.translate`📝 **${ctx.author.tag}** warned **${member.user.tag}** (ID:${member.id}). *Warns count: ${(warns.length + 1)}*`, reason);
+  client.modUtil.Modlog(client, ctx.guild, client.I18n.translate`📝 **${ctx.author.tag}** warned **${member.user.tag}** (ID:${member.id}). *Warns count: ${(warncount + 1)}*`, reason);
   ctx.channel.send(client.I18n.translate`✅ Warned **${member.user.tag}**!`);
 };
 
