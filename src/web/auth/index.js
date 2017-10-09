@@ -5,10 +5,11 @@ const router = express.Router();
 
 router
   .use('/login', (req, res) => {
-    if (req.isAuthenticated()) {
+    if (!req.cookies.user) {
       authSystem.authenticate('discord');
     } else {
       req.user = req.cookies.user;
+      authSystem.authenticate();
       res.redirect('/');
     }
   })
