@@ -6,7 +6,9 @@ const router = express.Router();
 router
   .use('/login', (req, res, next) => {
     if (req.cookies.user) {
-      req.user = JSON.parse(req.cookies.user);
+      let cookies = decodeURIComponent(req.cookies.user);
+      cookies = cookies.replace('j:', '');
+      req.user = JSON.parse(cookies);
       req.login('user', (err) => {
         if (err) return;
         return res.redirect('/');
