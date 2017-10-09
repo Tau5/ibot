@@ -17,7 +17,7 @@ exports.execute = async (client, ctx) => {
       if (!modMessage) return ctx.channel.send(client.I18n.translate`❌ The reason has been changed in the moderation part but the message has not been found!`);
       modMessage.content = modMessage.content.replace(oldReason, reason);
       modMessage.edit(modMessage.content).then(() => {
-        ctx.channel.send(client.I18n.translate`✅ Reason changed for case ${ctx.args[0] - 1}!`);
+        ctx.channel.send(client.I18n.translate`✅ Reason changed for case ${ctx.args[0]}!`);
       }).catch(e => console.log(e.stack));
     }).catch(e => console.log(e.stack));
   } else {
