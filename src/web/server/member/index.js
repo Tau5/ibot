@@ -1,8 +1,11 @@
-module.exports = (client, guild, config) => {
+module.exports = (client, guildid) => {
   const express = require('express');
   const router = express.Router();
 
   router.use('/:id', (req, res) => {
+    if (!client.guilds.has(req.params.guildidid)) return res.status(404).render('error', { code: '404', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
+    const guild = client.guilds.get(req.params.id);
+    const config = client.servers.get(req.params.id);
     const guildMember = guild.members.get(req.params.id);
     if (!guildMember) return res.status(404).render('error', { code: '404', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
     res.status(200).render('member', {
@@ -11,6 +14,9 @@ module.exports = (client, guild, config) => {
   });
 
   router.post('/', (req, res) => {
+    if (!client.guilds.has(req.params.guildidid)) return res.status(404).render('error', { code: '404', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
+    const guild = client.guilds.get(req.params.id);
+    const config = client.servers.get(req.params.id);
     /* MEMBERS FINDER */
     let member;
     const search = req.body.query;
