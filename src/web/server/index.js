@@ -7,11 +7,11 @@ module.exports = (client) => {
     const guild = client.guilds.get(req.params.id);
     const config = client.servers.get(req.params.id);
 
-    router.use('/member', require('./member/index.js')(client, guild, config));
-
     res.status(200).render('server', {
       guild, config, user: req.user, identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO'),
     });
+
+    router.use('/member', require('./member/index.js')(client, guild, config));
   });
 
   router.use('/', (req, res) => {
