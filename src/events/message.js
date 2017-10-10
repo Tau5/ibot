@@ -80,7 +80,10 @@ module.exports = async (client, ctx) => {
     /* EXECUTE */
     try {
       require('fs').appendFile('./logs/commands.txt', `[${require('moment-timezone')().tz('UTC').format('DD/MM/YYYY HH:mm:ss')}] Author: ${ctx.author.tag} (ID:${ctx.author.id}) - Guild: ${ctx.guild.name} (ID:${ctx.guild.id}) - Channel: ${ctx.channel.name} (ID:${ctx.channel.id})\r\n${ctx.cleanContent}\r\n--------------------\r\n`, (err) => {});
-      client.commands.ran += 1;
+      let commandsRan = client.stats.get('cmdsran');
+      if (!commandsRan) commandsRan = 0;
+      commandsRan += 1;
+      client.stats.set('cmdsran', commandsRan);
       cmd.execute(client, ctx);
     } catch (e) {
       ctx.channel.send(client.I18n.translate`❌ An unhandled error has occured! I told my dad about it, don't worry and... it'll be fixed soon!`);

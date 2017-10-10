@@ -27,11 +27,11 @@ client.servers = new Enmap({ name: 'servers', persistent: true });
 client.tags = new Enmap({ name: 'tags', persistent: true });
 client.lastactive = new Enmap({ name: 'lastactive', persistent: true });
 client.afk = new Enmap({ name: 'afk', persistent: true });
+client.stats = new Enmap({ name: 'stats', persistent: true });
 
 /* COMMANDS */
 client.commands = new Enmap();
 client.aliases = new Enmap();
-client.commands.ran = 0;
 
 /* HANDLER */
 // Helpers
