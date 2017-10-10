@@ -2,8 +2,6 @@ module.exports = (client) => {
   const express = require('express');
   const router = express.Router();
 
-  router.use('/:guildid/member', (req, res) => require('./member/index')(client, req.params.guildid, req, res));
-
   router.use('/:id', (req, res) => {
     if (!client.guilds.has(req.params.id)) return res.status(404).render('error', { code: '404', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
     const guild = client.guilds.get(req.params.id);

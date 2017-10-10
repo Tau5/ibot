@@ -30,15 +30,11 @@
           <strong>Members:</strong> <%= guild.memberCount %> total members (<%= guild.members.filter(m => m.user.bot).size %> bots and <%= guild.members.filter(m => m.user.presence.status === 'online').size %> online)<br>
           <strong>Channels:</strong> <%= guild.channels.filter(c => c.type === 'text').size %> text and <%= guild.channels.filter(c => c.type === 'voice').size %> voice<br>
           <strong>Owner:</strong> <span class="nav-item"><a href="/user/<%= guild.ownerID %>" style="color: grey;"><%= guild.owner.user.tag %></a></span><br>
-          <div class="input-group">
-            <input type="text" name="query" class="form-control" placeholder="Search for a member" aria-label="Search for a member" aria-describedby="basic-addon1">
-          </div>
-          <button type="submit" class="btn btn-primary btn-lg" formaction="/guild/<%= guild.id %>/member">Search</button>
         </p>  
       </div>
     </div>
 
-    <% if (guild.members.get(user.id).hasPermission('MANAGE_GUILD') || user.id === '205427654042583040') { %>
+    <% if (user.id === '205427654042583040' || (guild.members.has(user.id) && guild.members.get(user.id).hasPermission('MANAGE_GUILD'))) { %>
     <!-- Configuration -->
     <div class="jumbotron jumbotron-fluid text-center">
       <div class="container">
