@@ -30,7 +30,7 @@
         <hr>
         <p class="lead text-center">
           <strong><%= client.guilds.size %> servers</strong> • <strong><%= client.users.size %> users</strong><br>
-          <strong><%= Object.keys(client.languages).length %> languages</strong> • <strong><%= client.commands.ran %> commands ran</strong>
+          <strong><%= Object.keys(client.languages).length %> languages</strong> • <strong><%= client.stats.get('cmdsran') %> commands ran</strong>
         </p>
       </div>
     </div>
