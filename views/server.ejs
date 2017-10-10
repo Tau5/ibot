@@ -30,6 +30,11 @@
           <strong>Members:</strong> <%= guild.memberCount %> total members (<%= guild.members.filter(m => m.user.bot).size %> bots and <%= guild.members.filter(m => m.user.presence.status === 'online').size %> online)<br>
           <strong>Channels:</strong> <%= guild.channels.filter(c => c.type === 'text').size %> text and <%= guild.channels.filter(c => c.type === 'voice').size %> voice<br>
           <strong>Owner:</strong> <span class="nav-item"><a href="/user/<%= guild.ownerID %>" style="color: grey;"><%= guild.owner.user.tag %></a></span><br>
+          <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1"></span>
+            <input type="text" name="query" class="form-control" placeholder="Search for a member" aria-label="Search for a member" aria-describedby="basic-addon1">
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" formaction="/guild/<%= guild.id %>/member">Search</button>
         </p>  
       </div>
     </div>
