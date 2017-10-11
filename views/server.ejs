@@ -251,18 +251,17 @@
               <th class="text-center">Date</th>
             </thead>
             <tbody>
-              <% modstuff.forEach((m, i) => { %>
+              <% config.moderation.forEach((m, i) => { guild.client.users.fetch(m.VICTIM || m.USER).then(user => { guild.client.users.fetch(m.AUTHOR).then(author => { %>
               <tr>
                 <th class="text-center"><%= (i + 1) %></th>
-                <th class="text-center"><%= m.action %></th>
-                <th class="text-center"><%= m.author %></th>
-                <% const user = m.user || m.victim; %>
-                <th class="text-center"><%= user %></th>
-                <th class="text-center"><%= m.channel %></th>
-                <th class="text-center"><%= m.reason %></th>
-                <th class="text-center"><%= m.time %></th>
+                <th class="text-center"><%= m.ACTION %></th>
+                <th class="text-center"><span class="nav-item"><a href="/user/<%= author.id %>"><%= author.tag %></a></span></th>
+                <th class="text-center"><span class="nav-item"><a href="/user/<%= user.id %>"><%= user.tag %></a></span></th>
+                <th class="text-center"><%= (guild.channels.has(m.CHANNEL) ? `#${guild.channels.get(m.CHANNEL).name}` : 'None' %></th>
+                <th class="text-center"><%= m.REASON %></th>
+                <th class="text-center"><%= new Date(m.TIME).toISOString %></th>
               </tr>
-              <% }); %>
+              <% }); }); });%>
             </tbody>
           </table>
         </div>
