@@ -40,48 +40,50 @@
       <div class="container">
         <h1 class="mbr-section-title mbr-bold mbr-fonts-style"><strong>CONFIGURATION</strong></h1>
         <hr>
-        <table class="table table-bordered">
-          <thead class="text-center">
-            <tr>
-              <th class="text-center" colspan="3">Channels</th>
-              <th class="text-center">Messages</th>
-              <th class="text-center" colspan="4">Switches</th>
-              <th class="text-center" colspan="2">Misc</th>
-            </tr>
-          </thead>
-          <tbody class="text-center">
-            <tr>
-              <th class="text-center">Welcome</th>
-              <th class="text-center">Serverlog</th>
-              <th class="text-center">Modlog</th>
+        <div class="table-responsive">
+          <table class="table table-striped table-condensed">
+            <thead class="text-center">
+              <tr>
+                <th class="text-center" colspan="3">Channels</th>
+                <th class="text-center">Messages</th>
+                <th class="text-center" colspan="4">Switches</th>
+                <th class="text-center" colspan="2">Misc</th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              <tr>
+                <th class="text-center">Welcome</th>
+                <th class="text-center">Serverlog</th>
+                <th class="text-center">Modlog</th>
 
-              <th class="text-center">Welcome</th>
+                <th class="text-center">Welcome</th>
 
-              <th class="text-center">Welcome</th>
-              <th class="text-center">Serverlog</th>
-              <th class="text-center">Modlog</th>
-              <th class="text-center">Clear backup</th>
+                <th class="text-center">Welcome</th>
+                <th class="text-center">Serverlog</th>
+                <th class="text-center">Modlog</th>
+                <th class="text-center">Clear backup</th>
 
-              <th class="text-center">Timezone</th>
-              <th class="text-center">Locale</th>
-            </tr>
-            <tr>
-              <td><%= (config.channel_welcome !== 'NOT_SET') ? `#${guild.channels.get(config.channel_welcome).name}` : 'Not set' %></td>
-              <td><%= (config.channel_serverlog !== 'NOT_SET') ? `#${guild.channels.get(config.channel_serverlog).name}` : 'Not set' %></td>
-              <td><%= (config.channel_modlog !== 'NOT_SET') ? `#${guild.channels.get(config.channel_modlog).name}` : 'Not set' %></td>
+                <th class="text-center">Timezone</th>
+                <th class="text-center">Locale</th>
+              </tr>
+              <tr>
+                <td><%= (config.channel_welcome !== 'NOT_SET') ? `#${guild.channels.get(config.channel_welcome).name}` : 'Not set' %></td>
+                <td><%= (config.channel_serverlog !== 'NOT_SET') ? `#${guild.channels.get(config.channel_serverlog).name}` : 'Not set' %></td>
+                <td><%= (config.channel_modlog !== 'NOT_SET') ? `#${guild.channels.get(config.channel_modlog).name}` : 'Not set' %></td>
 
-              <td><%= (config.message_welcome !== 'NOT_SET') ? `${config.message_welcome}` : 'Not set' %></td>
+                <td><%= (config.message_welcome !== 'NOT_SET') ? `${config.message_welcome}` : 'Not set' %></td>
 
-              <td><%= config.switch_welcome %></td>
-              <td><%= config.switch_serverlog %></td>
-              <td><%= config.switch_modlog %></td>
-              <td><%= config.switch_clearbackup %></td>
+                <td><%= config.switch_welcome %></td>
+                <td><%= config.switch_serverlog %></td>
+                <td><%= config.switch_modlog %></td>
+                <td><%= config.switch_clearbackup %></td>
 
-              <td><%= config.timezone %></td>
-              <td><%= config.locale %></td>
-            </tr>
-          </tbody>
-        </table>
+                <td><%= config.timezone %></td>
+                <td><%= config.locale %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
     <% } %>
