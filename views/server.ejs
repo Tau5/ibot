@@ -95,10 +95,30 @@
 
                 <td><textarea rows="3" class="form-control" name="message_welcome"><%= (config.message_welcome !== 'NOT_SET' ? config.message_welcome : 'No message set') %></textarea></td>
 
-                <td><%= config.switch_welcome %></td>
-                <td><%= config.switch_serverlog %></td>
-                <td><%= config.switch_modlog %></td>
-                <td><%= config.switch_clearbackup %></td>
+                <td>
+                  <select name="switch_welcome" aria-controls="config" class="form-control form-control-sm">
+                    <option value="1" <% if (config.switch_welcome === l) { %>selected<% } %>>Enabled</option>
+                    <option value="0" <% if (config.switch_welcome === 0) { %>selected<% } %>>Disabled</option>
+                  </select>
+                </td>
+                <td>
+                  <select name="switch_serverlog" aria-controls="config" class="form-control form-control-sm">
+                    <option value="1" <% if (config.switch_serverlog === l) { %>selected<% } %>>Enabled</option>
+                    <option value="0" <% if (config.switch_serverlog === 0) { %>selected<% } %>>Disabled</option>
+                  </select>
+                </td>
+                <td>
+                  <select name="switch_modlog" aria-controls="config" class="form-control form-control-sm">
+                    <option value="1" <% if (config.switch_modlog === l) { %>selected<% } %>>Enabled</option>
+                    <option value="0" <% if (config.switch_modlog === 0) { %>selected<% } %>>Disabled</option>
+                  </select>
+                </td>
+                <td>
+                  <select name="switch_clearbackup" aria-controls="config" class="form-control form-control-sm">
+                    <option value="1" <% if (config.switch_clearbackup === l) { %>selected<% } %>>Enabled</option>
+                    <option value="0" <% if (config.switch_clearbackup === 0) { %>selected<% } %>>Disabled</option>
+                  </select>
+                </td>
 
                 <td><input type="text" name="timezone" class="form-control" placeholder="<%= config.timezone %>" aria-label="status" aria-describedby="basic-addon1"></td>
                 <td>
