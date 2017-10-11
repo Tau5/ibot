@@ -240,7 +240,7 @@
         <h1 class="mbr-section-title mbr-bold mbr-fonts-style"><strong>MOD CASES</strong></h1>
         <hr>
         <div class="table-responsive">
-          <table name="modcases" class="table table-bordered">
+          <table id="modcases" class="table table-bordered">
             <thead>
               <th class="text-center">#</th>
               <th class="text-center">Action</th>
@@ -255,9 +255,9 @@
               <tr>
                 <th class="text-center"><%= (i + 1) %></th>
                 <th class="text-center"><%= m.ACTION %></th>
-                <th class="text-center"><%= await client.users.fetch(m.AUTHOR) %></th>
+                <th class="text-center"><%= await guild.client.users.fetch(m.AUTHOR) %></th>
                 <% const user = m.USER || m.VICTIM; %>
-                <th class="text-center"><%= await client.users.fetch(user) %></th>
+                <th class="text-center"><%= await guild.client.users.fetch(user) %></th>
                 <th class="text-center"><%= m.CHANNEL ? `#${guild.channels.get(m.CHANNEL).name}` : 'None' %></th>
                 <th class="text-center"><%= m.REASON %></th>
                 <th class="text-center"><%= require('moment-timezone')(m.TIME).tz(config.timezone).format('DD/MM/YYYY HH:mm:ss') %></th>
