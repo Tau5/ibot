@@ -70,23 +70,23 @@
               <tr>
                 <td><select name="channel_welcome" aria-controls="config" class="form-control form-control-sm">
                     <option value="NOT_SET">None</option>
-                    <% guild.channels.sort((a, b) => a.position - b.position).forEach(c => {
+                    <% guild.channels.sort((a, b) => a.position - b.position).forEach(c => { %>
                       <option value="<%= c.id %>" <% if (config.channel_welcome === c.id) { %>selected<% } %>>#<%= c.name %></option>
-                    %>
+                    <% }); %>
                   </select>
                 </td>
                 <td><select name="channel_serverlog" aria-controls="config" class="form-control form-control-sm">
                     <option value="NOT_SET">None</option>
-                    <% guild.channels.sort((a, b) => a.position - b.position).forEach(c => {
+                    <% guild.channels.sort((a, b) => a.position - b.position).forEach(c => { %>
                     <option value="<%= c.id %>" <% if (config.channel_serverlog === c.id) { %>selected<% } %>>#<%= c.name %></option>
-                    %>
+                    <% }); %>
                   </select>
                 </td>
                 <td><select name="channel_modlog" aria-controls="config" class="form-control form-control-sm">
                     <option value="NOT_SET">None</option>
-                    <% guild.channels.sort((a, b) => a.position - b.position).forEach(c => {
+                    <% guild.channels.sort((a, b) => a.position - b.position).forEach(c => { %>
                     <option value="<%= c.id %>" <% if (config.channel_modlog === c.id) { %>selected<% } %>>#<%= c.name %></option>
-                    %>
+                    <% }); %>
                   </select>
                 </td>
 
