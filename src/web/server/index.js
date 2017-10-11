@@ -48,6 +48,8 @@ module.exports = (client) => {
       };
 
       thing();
+
+      console.log(modstuff.length)
     });
 
     res.status(200).render('server', {
