@@ -14,7 +14,7 @@ module.exports = (client) => {
       switch_welcome: ((req.body.channel_welcome !== 'NOT_SET' && req.body.message_welcome !== 'NOT_SET') ? parseInt(req.body.switch_welcome) : 0),
       switch_serverlog: (req.body.channel_serverlog !== 'NOT_SET' ? parseInt(req.body.switch_serverlog) : 0),
       switch_modlog: (req.body.channel_modlog !== 'NOT_SET' ? parseInt(req.body.switch_modlog) : 0),
-      switch_clearbackup: (req.body.channel_clearbackup !== 'NOT_SET' ? parseInt(req.body.switch_clearbackup) : 0),
+      switch_clearbackup: parseInt(req.body.switch_clearbackup),
       roleme: config.roleme,
       custom_prefixes: config.custom_prefixes,
       moderation: config.moderation,
