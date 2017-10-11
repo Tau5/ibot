@@ -41,29 +41,30 @@
       <div class="container">
         <h1 class="mbr-section-title mbr-bold mbr-fonts-style"><strong>CONFIGURATION</strong></h1>
         <hr>
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th class="text-center" colspan="3">Channels</th>
-              <th class="text-center">Messages</th>
-              <th class="text-center" colspan="4">Switches</th>
-              <th class="text-center" colspan="2">Misc</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th class="text-center">Welcome</th>
-              <th class="text-center">Serverlog</th>
-              <th class="text-center">Modlog</th>
-              <th class="text-center">Welcome</th>
-              <th class="text-center">Welcome</th>
-              <th class="text-center">Serverlog</th>
-              <th class="text-center">Modlog</th>
-              <th class="text-center">Clear backup</th>
-              <th class="text-center">Timezone</th>
-              <th class="text-center">Locale</th>
-            </tr>
-            <tr>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th class="text-center" colspan="3">Channels</th>
+                <th class="text-center">Messages</th>
+                <th class="text-center" colspan="4">Switches</th>
+                <th class="text-center" colspan="2">Misc</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="text-center">Welcome</th>
+                <th class="text-center">Serverlog</th>
+                <th class="text-center">Modlog</th>
+                <th class="text-center">Welcome</th>
+                <th class="text-center">Welcome</th>
+                <th class="text-center">Serverlog</th>
+                <th class="text-center">Modlog</th>
+                <th class="text-center">Clear backup</th>
+                <th class="text-center">Timezone</th>
+                <th class="text-center">Locale</th>
+              </tr>
+              <tr>
                 <td>
                   <select name="channel_welcome" aria-controls="config" class="form-control form-control-sm">
                     <option value="NOT_SET">None</option>
@@ -127,8 +128,19 @@
               </tr>
             </tbody>
           </table>
+        </div>
       </div>
     </div>
+
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
+    <script>
+    $(document).ready(() => {
+      $('#servers').DataTable();
+    });
+    </script>
+    
     <% } %>
 
     <!-- Footer -->
