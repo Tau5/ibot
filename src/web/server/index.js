@@ -27,7 +27,7 @@ module.exports = (client) => {
     res.redirect(`/server/${req.params.id}`);
   });
 
-  router.use('/:id', async (req, res) => {
+  router.use('/:id', (req, res) => {
     if (!client.guilds.has(req.params.id)) return res.status(404).render('error', { code: '404', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
     const guild = client.guilds.get(req.params.id);
     const config = client.servers.get(req.params.id);
