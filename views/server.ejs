@@ -68,9 +68,27 @@
                 <th class="text-center">Locale</th>
               </tr>
               <tr>
-                <td><%= (config.channel_welcome !== 'NOT_SET') ? `#${guild.channels.get(config.channel_welcome).name}` : 'Not set' %></td>
-                <td><%= (config.channel_serverlog !== 'NOT_SET') ? `#${guild.channels.get(config.channel_serverlog).name}` : 'Not set' %></td>
-                <td><%= (config.channel_modlog !== 'NOT_SET') ? `#${guild.channels.get(config.channel_modlog).name}` : 'Not set' %></td>
+                <td><select name="channel_welcome" aria-controls="config" class="form-control form-control-sm">
+                    <option value="NOT_SET">None</option>
+                    <% guild.channels.sort((a, b) => a.position - b.position).forEach(c => {
+                      <option value="<%= c.id %>" <% if (config.channel_welcome === c.id) { %>selected<% } %>>#<%= c.name %></option>
+                    %>
+                  </select>
+                </td>
+                <td><select name="channel_serverlog" aria-controls="config" class="form-control form-control-sm">
+                    <option value="NOT_SET">None</option>
+                    <% guild.channels.sort((a, b) => a.position - b.position).forEach(c => {
+                    <option value="<%= c.id %>" <% if (config.channel_serverlog === c.id) { %>selected<% } %>>#<%= c.name %></option>
+                    %>
+                  </select>
+                </td>
+                <td><select name="channel_modlog" aria-controls="config" class="form-control form-control-sm">
+                    <option value="NOT_SET">None</option>
+                    <% guild.channels.sort((a, b) => a.position - b.position).forEach(c => {
+                    <option value="<%= c.id %>" <% if (config.channel_modlog === c.id) { %>selected<% } %>>#<%= c.name %></option>
+                    %>
+                  </select>
+                </td>
 
                 <td><%= (config.message_welcome !== 'NOT_SET') ? `${config.message_welcome}` : 'Not set' %></td>
 
