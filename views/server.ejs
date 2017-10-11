@@ -251,16 +251,16 @@
               <th class="text-center">Date</th>
             </thead>
             <tbody>
-              <% config.moderation.forEach(async (m, i) => { %>
+              <% modstuff.forEach((m, i) => { %>
               <tr>
                 <th class="text-center"><%= (i + 1) %></th>
-                <th class="text-center"><%= m.ACTION %></th>
-                <th class="text-center"><%= await guild.client.users.fetch(m.AUTHOR) %></th>
-                <% const user = m.USER || m.VICTIM; %>
-                <th class="text-center"><%= await guild.client.users.fetch(user) %></th>
-                <th class="text-center"><%= m.CHANNEL ? `#${guild.channels.get(m.CHANNEL).name}` : 'None' %></th>
-                <th class="text-center"><%= m.REASON %></th>
-                <th class="text-center"><%= require('moment-timezone')(m.TIME).tz(config.timezone).format('DD/MM/YYYY HH:mm:ss') %></th>
+                <th class="text-center"><%= m.action %></th>
+                <th class="text-center"><%= m.author %></th>
+                <% const user = m.user || m.victim; %>
+                <th class="text-center"><%= user %></th>
+                <th class="text-center"><%= m.channel %></th>
+                <th class="text-center"><%= m.reason %></th>
+                <th class="text-center"><%= m.time %></th>
               </tr>
               <% }); %>
             </tbody>
