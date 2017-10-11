@@ -71,10 +71,10 @@
           <tbody>
             <% client.guilds.forEach(g => { %>
             <tr>
-              <td class="text-center"><span class="nav-item"><a href="/server/<%= g.id %>" class="nav-link" style="color: grey;"><%= g.name %></a></span></td>
+              <td class="text-center"><span class="nav-item"><a href="/server/<%= g.id %>" style="color: grey;"><%= g.name %></a></span></td>
               <td class="text-center"><%= g.memberCount %></td>
-              <td class="text-center"><span class="nav-item"><a href="/user/<%= g.ownerID %>" class="nav-link" style="color: grey;"><%= g.owner.user.tag %></a></span></td>
-              <td class="text-center"><span class="nav-item"><a href="/admin/leave/<%= g.id %>" class="nav-link" style="color: grey;">Leave</a></span></td>
+              <td class="text-center"><span class="nav-item"><a href="/user/<%= g.ownerID %>" style="color: grey;"><%= g.owner.user.tag %></a></span></td>
+              <td class="text-center"><span class="nav-item"><a href="/admin/leave/<%= g.id %>" style="color: grey;">Leave</a></span></td>
             </tr>
           <% }); %>
           </tbody>
