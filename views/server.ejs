@@ -103,7 +103,7 @@
                 <td><input type="text" name="timezone" class="form-control" placeholder="<%= config.timezone %>" aria-label="status" aria-describedby="basic-addon1"></td>
                 <td>
                   <select name="locale" aria-controls="config" class="form-control form-control-sm">
-                    <% languages.forEach(l => { %>
+                    <% Object.keys(guild.client.languages).forEach(l => { %>
                     <option value="<%= l %>"><%= l %></option>
                     <% }); %>
                   </select>
