@@ -68,37 +68,46 @@
                 <th class="text-center">Locale</th>
               </tr>
               <tr>
-                <td><select name="channel_welcome" aria-controls="config" class="form-control form-control-sm">
+                <td>
+                  <select name="channel_welcome" aria-controls="config" class="form-control form-control-sm">
                     <option value="NOT_SET">None</option>
-                    <% guild.channels.sort((a, b) => a.position - b.position).forEach(c => { %>
+                    <% guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
                       <option value="<%= c.id %>" <% if (config.channel_welcome === c.id) { %>selected<% } %>>#<%= c.name %></option>
                     <% }); %>
                   </select>
                 </td>
-                <td><select name="channel_serverlog" aria-controls="config" class="form-control form-control-sm">
+                <td>
+                  <select name="channel_serverlog" aria-controls="config" class="form-control form-control-sm">
                     <option value="NOT_SET">None</option>
-                    <% guild.channels.sort((a, b) => a.position - b.position).forEach(c => { %>
+                    <% guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
                     <option value="<%= c.id %>" <% if (config.channel_serverlog === c.id) { %>selected<% } %>>#<%= c.name %></option>
                     <% }); %>
                   </select>
                 </td>
-                <td><select name="channel_modlog" aria-controls="config" class="form-control form-control-sm">
+                <td>
+                  <select name="channel_modlog" aria-controls="config" class="form-control form-control-sm">
                     <option value="NOT_SET">None</option>
-                    <% guild.channels.sort((a, b) => a.position - b.position).forEach(c => { %>
+                    <% guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
                     <option value="<%= c.id %>" <% if (config.channel_modlog === c.id) { %>selected<% } %>>#<%= c.name %></option>
                     <% }); %>
                   </select>
                 </td>
 
-                <td><%= (config.message_welcome !== 'NOT_SET') ? `${config.message_welcome}` : 'Not set' %></td>
+                <td><textarea rows="3" class="form-control" name="message_welcome"><%= (config.message_welcome !== 'NOT_SET' ? config.message_welcome : 'No message set') %></textarea></td>
 
                 <td><%= config.switch_welcome %></td>
                 <td><%= config.switch_serverlog %></td>
                 <td><%= config.switch_modlog %></td>
                 <td><%= config.switch_clearbackup %></td>
 
-                <td><%= config.timezone %></td>
-                <td><%= config.locale %></td>
+                <td><input type="text" name="timezone" class="form-control" placeholder="<%= config.timezone %>" aria-label="status" aria-describedby="basic-addon1"></td>
+                <td>
+                  <select name="locale" aria-controls="config" class="form-control form-control-sm">
+                    <% languages.forEach(l => { %>
+                    <option value="<%= l %>"><%= l %></option>
+                    <% }); %>
+                  </select>
+                </td>
               </tr>
             </tbody>
           </table>
