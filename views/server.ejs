@@ -135,12 +135,146 @@
       </div>
     </div>
 
+    <!-- Configuration -->
+    <div class="jumbotron jumbotron-fluid text-center">
+      <div class="container">
+        <form action="/server/update/<%= guild.id %>" method="POST">
+          <h1 class="mbr-section-title mbr-bold mbr-fonts-style"><strong>CONFIGURATION</strong></h1>
+          <hr>
+          <div class="table-responsive">
+            <table name="config" class="table table-bordered">
+              <thead>
+                <tr>
+                  <th class="text-center" colspan="3">Channels</th>
+                  <th class="text-center">Messages</th>
+                  <th class="text-center" colspan="4">Switches</th>
+                  <th class="text-center" colspan="2">Misc</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th class="text-center">Welcome</th>
+                  <th class="text-center">Serverlog</th>
+                  <th class="text-center">Modlog</th>
+                  <th class="text-center">Welcome</th>
+                  <th class="text-center">Welcome</th>
+                  <th class="text-center">Serverlog</th>
+                  <th class="text-center">Modlog</th>
+                  <th class="text-center">Clear backup</th>
+                  <th class="text-center">Timezone</th>
+                  <th class="text-center">Locale</th>
+                </tr>
+                <tr>
+                  <td>
+                    <select name="channel_welcome" aria-controls="config" class="form-control form-control-sm">
+                      <option value="NOT_SET">None</option>
+                      <% guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
+                        <option value="<%= c.id %>" <% if (config.channel_welcome === c.id) { %>selected<% } %>>#<%= c.name %></option>
+                      <% }); %>
+                    </select>
+                  </td>
+                  <td>
+                    <select name="channel_serverlog" aria-controls="config" class="form-control form-control-sm">
+                      <option value="NOT_SET">None</option>
+                      <% guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
+                      <option value="<%= c.id %>" <% if (config.channel_serverlog === c.id) { %>selected<% } %>>#<%= c.name %></option>
+                      <% }); %>
+                    </select>
+                  </td>
+                  <td>
+                    <select name="channel_modlog" aria-controls="config" class="form-control form-control-sm">
+                      <option value="NOT_SET">None</option>
+                      <% guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
+                      <option value="<%= c.id %>" <% if (config.channel_modlog === c.id) { %>selected<% } %>>#<%= c.name %></option>
+                      <% }); %>
+                    </select>
+                  </td>
+
+                  <td><textarea rows="3" class="form-control" name="message_welcome"><%= (config.message_welcome !== 'NOT_SET' ? config.message_welcome : 'No message set') %></textarea></td>
+
+                  <td>
+                    <select name="switch_welcome" aria-controls="config" class="form-control form-control-sm">
+                      <option value="1" <% if (config.switch_welcome === 1) { %>selected<% } %>>Enabled</option>
+                      <option value="0" <% if (config.switch_welcome === 0) { %>selected<% } %>>Disabled</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select name="switch_serverlog" aria-controls="config" class="form-control form-control-sm">
+                      <option value="1" <% if (config.switch_serverlog === 1) { %>selected<% } %>>Enabled</option>
+                      <option value="0" <% if (config.switch_serverlog === 0) { %>selected<% } %>>Disabled</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select name="switch_modlog" aria-controls="config" class="form-control form-control-sm">
+                      <option value="1" <% if (config.switch_modlog === 1) { %>selected<% } %>>Enabled</option>
+                      <option value="0" <% if (config.switch_modlog === 0) { %>selected<% } %>>Disabled</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select name="switch_clearbackup" aria-controls="config" class="form-control form-control-sm">
+                      <option value="1" <% if (config.switch_clearbackup === 1) { %>selected<% } %>>Enabled</option>
+                      <option value="0" <% if (config.switch_clearbackup === 0) { %>selected<% } %>>Disabled</option>
+                    </select>
+                  </td>
+
+                  <td><input type="text" name="timezone" class="form-control" placeholder="<%= config.timezone %>" value="<%= config.timezone %>" aria-label="status" aria-describedby="basic-addon1"></td>
+                  <td>
+                    <select name="locale" aria-controls="config" class="form-control form-control-sm">
+                      <% Object.keys(guild.client.languages).forEach(l => { %>
+                      <option value="<%= l %>" <% if (config.locale === l) { %>selected<% } %>><%= l %></option>
+                      <% }); %>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" formaction="/server/update/<%= guild.id %>">Update</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Moderation cases -->
+    <div class="jumbotron jumbotron-fluid text-center">
+      <div class="container">
+        <h1 class="mbr-section-title mbr-bold mbr-fonts-style"><strong>MOD CASES</strong></h1>
+        <hr>
+        <div class="table-responsive">
+          <table name="modcases" class="table table-bordered">
+            <thead>
+              <th class="text-center">#</th>
+              <th class="text-center">Action</th>
+              <th class="text-center">Author</th>
+              <th class="text-center">User</th>
+              <th class="text-center">Channel</th>
+              <th class="text-center">Reason</th>
+              <th class="text-center">Date</th>
+            </thead>
+            <tbody>
+              <tr>
+                <% config.moderation.forEach(async (m, i) => { %>
+                <th class="text-center"><%= (i + 1) %></th>
+                <th class="text-center"><%= m.ACTION %></th>
+                <th class="text-center"><%= await client.users.fetch(m.AUTHOR) %></th>
+                <% const user = m.USER || m.VICTIM; %>
+                <th class="text-center"><%= await client.users.fetch(user) %></th>
+                <th class="text-center"><%= m.CHANNEL ? `#${guild.channels.get(m.CHANNEL).name}` : 'None' %></th>
+                <th class="text-center"><%= m.REASON %></th>
+                <th class="text-center"><%= require('moment-timezone')(m.TIME).tz(config.timezone).format('DD/MM/YYYY HH:mm:ss') %></th>
+                <% }); %>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 
     <script>
     $(document).ready(() => {
-      $('#config').DataTable();
+      $('#modcases').DataTable();
     });
     </script>
 
