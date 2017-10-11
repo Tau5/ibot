@@ -22,7 +22,7 @@ exports.execute = async (client, ctx) => {
   const unwarns = config.moderation.filter(o => o.VICTIM !== undefined).filter(o => o.ACTION === 'UNWARN' && o.VICTIM === member.id);
   const warncount = (warns.length - unwarns.length);
 
-  if (warns.length === 0) return ctx.channel.send(client.I18n.translate`❌ **${member.user.tag}** does not have any warn!`);
+  if (warncount === 0) return ctx.channel.send(client.I18n.translate`❌ **${member.user.tag}** does not have any warn!`);
 
   config.moderation.push({
     ACTION: 'UNWARN',
