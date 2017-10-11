@@ -69,7 +69,7 @@
               </tr>
               <tr>
                 <td>
-                  <select name="channel_welcome" aria-controls="config" class="form-control form-control-sm">
+                  <select name="channel_welcome" aria-controls="config" class="form-control">
                     <option value="NOT_SET">None</option>
                     <% guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
                       <option value="<%= c.id %>" <% if (config.channel_welcome === c.id) { %>selected<% } %>>#<%= c.name %></option>
@@ -104,7 +104,7 @@
                 <td>
                   <select name="locale" aria-controls="config" class="form-control form-control-sm">
                     <% Object.keys(guild.client.languages).forEach(l => { %>
-                    <option value="<%= l %>"><%= l %></option>
+                    <option value="<%= l %>" <% if (config.locale === l) { %>selected<% } %>><%= l %></option>
                     <% }); %>
                   </select>
                 </td>
