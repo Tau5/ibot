@@ -27,13 +27,27 @@ module.exports = (client) => {
     res.redirect(`/server/${req.params.id}`);
   });
 
-  router.use('/:id', (req, res) => {
+  router.use('/:id', async (req, res) => {
     if (!client.guilds.has(req.params.id)) return res.status(404).render('error', { code: '404', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
     const guild = client.guilds.get(req.params.id);
     const config = client.servers.get(req.params.id);
 
+    const modstuff = [];
+    config.moderation.forEach(async (m, i) => {
+      const mod = {
+        action: m.ACTION,
+        author: await client.users.fetch(m.AUTHOR),
+        victim: (m.VICTIM ? await client.users.fetch(m.VICTIM) : undefined),
+        user: (m.USER ? await client.users.fetch(m.USER) : undefined),
+        channel: (m.CHANNEL ? `#${guild.channels.get(m.CHANNEL).name}` : 'None'),
+        reason: m.REASON,
+        time: require('moment-timezone')(m.TIME).tz(config.timezone).format('DD/MM/YYYY HH:mm:ss'),
+      };
+      modstuff.push(mod);
+    });
+
     res.status(200).render('server', {
-      guild, config, user: req.user, identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO'),
+      guild, config, modstuff, user: req.user, identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO'),
     });
   });
 
