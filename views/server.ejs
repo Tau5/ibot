@@ -42,7 +42,7 @@
         <h1 class="mbr-section-title mbr-bold mbr-fonts-style"><strong>CONFIGURATION</strong></h1>
         <hr>
         <div class="table-responsive">
-          <table id="config" class="table table-striped table-condensed table-bordered">
+          <table id="config" class="table table-bordered">
             <thead class="text-center">
               <tr>
                 <th class="text-center" colspan="3">Channels</th>
@@ -69,7 +69,7 @@
               </tr>
               <tr>
                 <td>
-                  <select name="channel_welcome" aria-controls="config" class="form-control">
+                  <select name="channel_welcome" aria-controls="config" class="form-control form-control-sm">
                     <option value="NOT_SET">None</option>
                     <% guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
                       <option value="<%= c.id %>" <% if (config.channel_welcome === c.id) { %>selected<% } %>>#<%= c.name %></option>
@@ -95,10 +95,30 @@
 
                 <td><textarea rows="3" class="form-control" name="message_welcome"><%= (config.message_welcome !== 'NOT_SET' ? config.message_welcome : 'No message set') %></textarea></td>
 
-                <td><%= config.switch_welcome %></td>
-                <td><%= config.switch_serverlog %></td>
-                <td><%= config.switch_modlog %></td>
-                <td><%= config.switch_clearbackup %></td>
+                <td>
+                  <select name="switch_welcome" aria-controls="config" class="form-control form-control-sm">
+                    <option value="1" <% if (config.switch_welcome === l) { %>selected<% } %>>Enabled</option>
+                    <option value="0" <% if (config.switch_welcome === 0) { %>selected<% } %>>Disabled</option>
+                  </select>
+                </td>
+                <td>
+                  <select name="switch_serverlog" aria-controls="config" class="form-control form-control-sm">
+                    <option value="1" <% if (config.switch_serverlog === l) { %>selected<% } %>>Enabled</option>
+                    <option value="0" <% if (config.switch_serverlog === 0) { %>selected<% } %>>Disabled</option>
+                  </select>
+                </td>
+                <td>
+                  <select name="switch_modlog" aria-controls="config" class="form-control form-control-sm">
+                    <option value="1" <% if (config.switch_modlog === l) { %>selected<% } %>>Enabled</option>
+                    <option value="0" <% if (config.switch_modlog === 0) { %>selected<% } %>>Disabled</option>
+                  </select>
+                </td>
+                <td>
+                  <select name="switch_clearbackup" aria-controls="config" class="form-control form-control-sm">
+                    <option value="1" <% if (config.switch_clearbackup === l) { %>selected<% } %>>Enabled</option>
+                    <option value="0" <% if (config.switch_clearbackup === 0) { %>selected<% } %>>Disabled</option>
+                  </select>
+                </td>
 
                 <td><input type="text" name="timezone" class="form-control" placeholder="<%= config.timezone %>" aria-label="status" aria-describedby="basic-addon1"></td>
                 <td>
