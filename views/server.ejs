@@ -251,8 +251,8 @@
               <th class="text-center">Date</th>
             </thead>
             <tbody>
+              <% config.moderation.forEach(async (m, i) => { %>
               <tr>
-                <% config.moderation.forEach(async (m, i) => { %>
                 <th class="text-center"><%= (i + 1) %></th>
                 <th class="text-center"><%= m.ACTION %></th>
                 <th class="text-center"><%= await client.users.fetch(m.AUTHOR) %></th>
@@ -261,8 +261,8 @@
                 <th class="text-center"><%= m.CHANNEL ? `#${guild.channels.get(m.CHANNEL).name}` : 'None' %></th>
                 <th class="text-center"><%= m.REASON %></th>
                 <th class="text-center"><%= require('moment-timezone')(m.TIME).tz(config.timezone).format('DD/MM/YYYY HH:mm:ss') %></th>
-                <% }); %>
               </tr>
+              <% }); %>
             </tbody>
           </table>
         </div>
