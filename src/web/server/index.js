@@ -32,28 +32,8 @@ module.exports = (client) => {
     const guild = client.guilds.get(req.params.id);
     const config = client.servers.get(req.params.id);
 
-    const modstuff = [];
-    config.moderation.forEach((m, i) => {
-      const thing = async () => {
-        const mod = {
-          action: m.ACTION,
-          author: await client.users.fetch(m.AUTHOR),
-          victim: (m.VICTIM ? await client.users.fetch(m.VICTIM) : undefined),
-          user: (m.USER ? await client.users.fetch(m.USER) : undefined),
-          channel: (m.CHANNEL ? `#${guild.channels.get(m.CHANNEL).name}` : 'None'),
-          reason: m.REASON,
-          time: require('moment-timezone')(m.TIME).tz(config.timezone).format('DD/MM/YYYY HH:mm:ss'),
-        };
-        modstuff.push(mod);
-      };
-
-      thing();
-
-      console.log(modstuff.length)
-    });
-
     res.status(200).render('server', {
-      guild, config, modstuff, user: req.user, identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO'),
+      guild, config, user: req.user, identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO'),
     });
   });
 
