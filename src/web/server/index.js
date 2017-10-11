@@ -33,17 +33,21 @@ module.exports = (client) => {
     const config = client.servers.get(req.params.id);
 
     const modstuff = [];
-    await config.moderation.forEach(async (m, i) => {
-      const mod = {
-        action: m.ACTION,
-        author: await client.users.fetch(m.AUTHOR),
-        victim: (m.VICTIM ? await client.users.fetch(m.VICTIM) : undefined),
-        user: (m.USER ? await client.users.fetch(m.USER) : undefined),
-        channel: (m.CHANNEL ? `#${guild.channels.get(m.CHANNEL).name}` : 'None'),
-        reason: m.REASON,
-        time: require('moment-timezone')(m.TIME).tz(config.timezone).format('DD/MM/YYYY HH:mm:ss'),
+    config.moderation.forEach((m, i) => {
+      const thing = async () => {
+        const mod = {
+          action: m.ACTION,
+          author: await client.users.fetch(m.AUTHOR),
+          victim: (m.VICTIM ? await client.users.fetch(m.VICTIM) : undefined),
+          user: (m.USER ? await client.users.fetch(m.USER) : undefined),
+          channel: (m.CHANNEL ? `#${guild.channels.get(m.CHANNEL).name}` : 'None'),
+          reason: m.REASON,
+          time: require('moment-timezone')(m.TIME).tz(config.timezone).format('DD/MM/YYYY HH:mm:ss'),
+        };
+        modstuff.push(mod);
       };
-      modstuff.push(mod);
+
+      thing();
     });
 
     res.status(200).render('server', {
