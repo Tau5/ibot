@@ -33,7 +33,7 @@ module.exports = (client) => {
     const config = client.servers.get(req.params.id);
 
     const modstuff = [];
-    config.moderation.forEach(async (m, i) => {
+    await config.moderation.forEach(async (m, i) => {
       const mod = {
         action: m.ACTION,
         author: await client.users.fetch(m.AUTHOR),
