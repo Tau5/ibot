@@ -20,7 +20,7 @@
           <% if (guilds.length === 0) { %><h4>You can't invite iBot anywhere! Please check you are in a server without iBot and with the Manage Server permission.</h4><% } %>
           <% guilds.forEach((g) => { %>
           <div>
-            <img class="rounded-circle" height="75px" width="75px" src="<%= (g.icon) ? `https://cdn.discordapp.com/icons/${g.id}/${g.icon}.png?size=128` : 'https://www.shareicon.net/data/512x512/2017/06/21/887435_logo_512x512.png' %>" alt="<%= g.name %>'s icon'">
+            <a href="https://discordapp.com/oauth2/authorize?response_type=code&redirect_uri=http%3A%2F%2Fwww.ibot-discord.cf%3A9024%2Fserver&scope=bot&client_id=<%= client.user.id %>&guild_id=<%= g.id %>"><img class="rounded-circle" height="75px" width="75px" src="<%= (g.icon) ? `https://cdn.discordapp.com/icons/${g.id}/${g.icon}.png?size=128` : 'https://www.shareicon.net/data/512x512/2017/06/21/887435_logo_512x512.png' %>" alt="<%= g.name %>'s icon'">
           </div>
           <div class="m-3"></div>
           <% }); %>
