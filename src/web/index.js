@@ -34,7 +34,7 @@ module.exports = (client) => {
   // Middlewares
   client.app
     .enable('trust proxy')
-    .use(express.static('public'))
+    .use(express.static(`${__dirname}/../../public/`))
     .use(bodyParser.urlencoded({
       extended: false,
     }))
