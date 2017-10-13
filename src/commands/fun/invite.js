@@ -1,5 +1,5 @@
 exports.execute = async (client, ctx) => {
-  ctx.channel.send('👍 <https://www.ibot-discord.cf:9024> => Login => Invite');
+  ctx.channel.send('👍 <http://www.ibot-discord.cf:9024> => Login => Invite');
 };
 
 exports.conf = {
