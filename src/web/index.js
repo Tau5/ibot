@@ -27,18 +27,24 @@ module.exports = (client) => {
     }
   };
 
-  const updateSession = (req, res, next) => {
+  const updateSession = (req, res, next, isFromIndex = false) => {
     if (!req.cookies.accessToken) next();
     req.logout();
     const request = require('request');
     request('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err, http, body) => {
-      if (err) res.redirect('/auth/login');
+      if (err) {
+        if (isFromIndex) next();
+        res.redirect('/auth/login');
+      }
       const user = JSON.parse(body);
       user.provider = 'discord';
 
 
       request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err2, http2, body2) => {
-        if (err) res.redirect('/auth/login');
+        if (err) {
+          if (isFromIndex) next();
+          res.redirect('/auth/login');
+        }
         user.guilds = JSON.parse(body2);
         req.session.passport = {
           user,
@@ -80,7 +86,7 @@ module.exports = (client) => {
     .set('view engine', 'ejs');
 
   // Page handling
-  client.app.get('/', updateSession, (req, res) => {
+  client.app.get('/', (req, res, next) => updateSession(req, res, next, true), (req, res) => {
     res.status(200).render('index', { client, identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
   });
 
