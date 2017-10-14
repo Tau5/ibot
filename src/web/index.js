@@ -49,8 +49,8 @@ module.exports = (client) => {
         req.session.passport = {
           user,
         };
-        req.login(user, console.error);
-        req.session.save(console.error);
+        req.login(user, error3 => (error3 ? console.error(error3) : undefined));
+        req.session.save(error4 => (error4 ? console.error(error4) : undefined));
         return next();
       });
     });
