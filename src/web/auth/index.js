@@ -12,8 +12,8 @@ router
         user.provider = 'discord';
 
 
-        request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err, http, body) => {
-          user.guilds = body;
+        request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err2, http2, body2) => {
+          user.guilds = body2;
           req.session.passport = {
             user,
           };
