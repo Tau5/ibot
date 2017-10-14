@@ -41,7 +41,7 @@ module.exports = (client) => {
 
 
       request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err2, http2, body2) => {
-        if (err) {
+        if (err2) {
           if (isFromIndex) return next(n => (n ? console.error(n) : undefined));
           return res.redirect('/auth/login');
         }
