@@ -14,14 +14,14 @@ router
 
 
         request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err2, http2, body2) => {
-          if (err) next();
+          if (err) return next();
           user.guilds = body2;
           req.session.passport = {
             user,
           };
 
           req.login(JSON.parse(user), (error) => {
-            if (error) res.render('error', { code: '500', identity: 'NO' });
+            if (error) return res.render('error', { code: '500', identity: 'NO' });
           });
 
           req.session.save(error2 => res.render('error', { code: '500', identity: 'NO' }));
