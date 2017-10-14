@@ -5,14 +5,31 @@ const router = express.Router();
 
 router
   .use('/login', (req, res, next) => {
+    if (req.cookies.accessToken) {
+      const request = require('request');
+      request('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err, http, body) => {
+        const user = JSON.parse(body);
+        user.provider = 'discord';
+        req.session.passport = {
+          user,
+        };
+
+        request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err, http, body) => {
+          const guilds = JSON.parse();
+          req.session.passport.user.guilds = guilds;
+
+          res.redirect('/');
+        });
+      });
+    }
     next();
   }, authSystem.authenticate('discord'))
   .use('/callback', authSystem.authenticate('discord'), (req, res) => {
-    res.cookie('user', req.user);
+    res.cookie('accessToken', req.session.passport.user.accessToken);
     res.redirect('/');
   })
   .use('/logout', (req, res) => {
-    // res.clearCookie('user');
+    res.clearCookie('accessToken');
     req.logout();
     res.redirect('/');
   });
