@@ -10,13 +10,15 @@ router
       request('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err, http, body) => {
         const user = body;
         user.provider = 'discord';
-        req.session.passport = {
-          user,
-        };
+
 
         request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err, http, body) => {
-          const guilds = body;
-          req.session.passport.user.guilds = guilds;
+          user.guilds = body;
+          req.session.passport = {
+            user,
+          };
+
+          req.login(user);
 
           res.redirect('/');
         });
