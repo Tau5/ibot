@@ -35,13 +35,13 @@ module.exports = (client) => {
     const request = require('request');
     request('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err, http, body) => {
       if (err) res.redirect('/auth/login');
-      const user = body;
+      const user = JSON.parse(body);
       user.provider = 'discord';
 
 
       request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err2, http2, body2) => {
         if (err) res.redirect('/auth/login');
-        user.guilds = body2;
+        user.guilds = JSON.parse(body2);
         req.session.passport = {
           user,
         };
