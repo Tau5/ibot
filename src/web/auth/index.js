@@ -18,7 +18,9 @@ router
             user,
           };
 
-          req.login(user);
+          req.login(user, (error) => {
+            if (error) res.render('error', { code: '500', identity: 'NO' });
+          });
 
           res.redirect('/');
         });
