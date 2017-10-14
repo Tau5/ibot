@@ -8,15 +8,14 @@ router
     if (req.cookies.accessToken) {
       const request = require('request');
       request('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err, http, body) => {
-        console.log(body);  
-      const user = JSON.parse(body);
+        const user = body;
         user.provider = 'discord';
         req.session.passport = {
           user,
         };
 
         request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err, http, body) => {
-          const guilds = JSON.parse();
+          const guilds = body;
           req.session.passport.user.guilds = guilds;
 
           res.redirect('/');
