@@ -24,6 +24,9 @@ router
 
           req.session.save(error2 => res.render('error', { code: '500', identity: 'NO' }));
 
+          console.log('========REQ.SESSION==========\n' + req.session);
+          console.log('========REQ.USER==========\n' + req.user);
+
           res.redirect('/');
         });
       });
