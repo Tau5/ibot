@@ -33,7 +33,7 @@ module.exports = (client) => {
     request('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err, http, body) => {
       if (err) {
         if (isFromIndex) return next(ee => (ee ? console.error(ee) : undefined));
-        res.redirect('/auth/login');
+        return res.redirect('/auth/login');
       }
       req.logout();
       const user = JSON.parse(body);
@@ -43,7 +43,7 @@ module.exports = (client) => {
       request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err2, http2, body2) => {
         if (err) {
           if (isFromIndex) return next(n => (n ? console.error(n) : undefined));
-          res.redirect('/auth/login');
+          return res.redirect('/auth/login');
         }
         user.guilds = JSON.parse(body2);
         req.session.passport = {
