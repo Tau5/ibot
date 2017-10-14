@@ -28,7 +28,7 @@ module.exports = (client) => {
   };
 
   const updateSession = (req, res, next, isFromIndex = false) => {
-    if (!req.cookies.accessToken) next();
+    if (!req.cookies.accessToken) return next();
     const request = require('request');
     request('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err, http, body) => {
       if (err) {
