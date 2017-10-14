@@ -17,10 +17,6 @@ module.exports = (client) => {
   const auth = require('../web/auth');
 
   /* Auth checker */
-  const checkAuth = (req, res, next) => {
-    if (req.isAuthenticated()) next();
-    else res.status(401).render('error', { code: '401', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
-  };
 
   const checkOwner = (req, res, next) => {
     if (req.isAuthenticated()) {
@@ -32,6 +28,7 @@ module.exports = (client) => {
   };
 
   const updateSession = (req, res, next) => {
+    if (!req.cookies.accessToken) next();
     req.logout();
     const request = require('request');
     request('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err, http, body) => {
@@ -51,6 +48,14 @@ module.exports = (client) => {
         next();
       });
     });
+  };
+
+  const checkAuth = (req, res, next) => {
+    if (req.isAuthenticated()) next();
+    else {
+      if (req.cookies.accessToken) updateSession(req, res, next);
+      res.status(401).render('error', { code: '401', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
+    }
   };
 
   // Middlewares
@@ -75,7 +80,7 @@ module.exports = (client) => {
     .set('view engine', 'ejs');
 
   // Page handling
-  client.app.get('/', (req, res) => {
+  client.app.get('/', updateSession, (req, res) => {
     res.status(200).render('index', { client, identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
   });
 
