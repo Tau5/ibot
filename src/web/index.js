@@ -28,21 +28,21 @@ module.exports = (client) => {
   };
 
   const updateSession = (req, res, next, isFromIndex = false) => {
-    req.logout();
     if (!req.cookies.accessToken) next();
     const request = require('request');
     request('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err, http, body) => {
       if (err) {
-        if (isFromIndex) next();
+        if (isFromIndex) return next();
         res.redirect('/auth/login');
       }
+      req.logout();
       const user = JSON.parse(body);
       user.provider = 'discord';
 
 
       request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err2, http2, body2) => {
         if (err) {
-          if (isFromIndex) next();
+          if (isFromIndex) return next();
           res.redirect('/auth/login');
         }
         user.guilds = JSON.parse(body2);
@@ -51,7 +51,7 @@ module.exports = (client) => {
         };
         req.login(user, console.error);
         req.session.save(console.error);
-        next();
+        return next();
       });
     });
   };
