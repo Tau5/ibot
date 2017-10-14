@@ -41,12 +41,11 @@ module.exports = (client) => {
 
       request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err2, http2, body2) => {
         if (err) res.redirect('/auth/login');
-        user.guilds = JSON.parse(body2);
+        user.guilds = body2;
         req.session.passport = {
           user,
         };
-        console.log(user);
-        req.login(JSON.parse(user), e => res.render('error', { code: '500', identity: 'NO' }));
+        req.login(user, e => res.render('error', { code: '500', identity: 'NO' }));
         req.session.save(error => res.render('error', { code: '500', identity: 'NO' }));
         next();
       });
