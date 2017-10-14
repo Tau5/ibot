@@ -8,7 +8,8 @@ router
     if (req.cookies.accessToken) {
       const request = require('request');
       request('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err, http, body) => {
-        const user = JSON.parse(body);
+        console.log(body);  
+      const user = JSON.parse(body);
         user.provider = 'discord';
         req.session.passport = {
           user,
@@ -21,8 +22,7 @@ router
           res.redirect('/');
         });
       });
-    }
-    next();
+    } else { next(); }
   }, authSystem.authenticate('discord'))
   .use('/callback', authSystem.authenticate('discord'), (req, res) => {
     res.cookie('accessToken', req.session.passport.user.accessToken);
