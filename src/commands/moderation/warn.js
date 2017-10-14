@@ -11,7 +11,7 @@ exports.execute = async (client, ctx) => {
       else return ctx.channel.send(client.findersUtil.formatMembers(client, member));
     }
   } else {
-    ctx.channel.send(client.I18n.translate`❌ You must mention or specify a user to warn!`);
+    return ctx.channel.send(client.I18n.translate`❌ You must mention or specify a user to warn!`);
   }
 
   let reason = ctx.args.join(' ').split(' for ').slice(1).join(' for ');
