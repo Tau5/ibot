@@ -45,6 +45,7 @@ module.exports = (client) => {
         req.session.passport = {
           user,
         };
+        console.log(user);
         req.login(JSON.parse(user), e => res.render('error', { code: '500', identity: 'NO' }));
         req.session.save(error => res.render('error', { code: '500', identity: 'NO' }));
         next();
