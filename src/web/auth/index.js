@@ -22,6 +22,8 @@ router
             if (error) res.render('error', { code: '500', identity: 'NO' });
           });
 
+          req.user = req.session.passport.user;
+
           res.redirect('/');
         });
       });
