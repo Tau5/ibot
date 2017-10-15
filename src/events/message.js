@@ -82,7 +82,7 @@ module.exports = async (client, ctx) => {
       require('fs').appendFile('./logs/commands.txt', `[${require('moment-timezone')().tz('UTC').format('DD/MM/YYYY HH:mm:ss')}] Author: ${ctx.author.tag} (ID:${ctx.author.id}) - Guild: ${ctx.guild.name} (ID:${ctx.guild.id}) - Channel: ${ctx.channel.name} (ID:${ctx.channel.id})\r\n${ctx.cleanContent}\r\n--------------------\r\n`, (err) => {});
       let commandsRan = client.stats.get('cmdsran');
       if (!commandsRan) commandsRan = 0;
-      commandsRan += 1;
+      commandsRan = parseInt(commandsRan) + 1;
       client.stats.set('cmdsran', commandsRan);
       cmd.execute(client, ctx);
     } catch (e) {
