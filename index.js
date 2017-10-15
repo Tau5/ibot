@@ -5,6 +5,7 @@ process.on('unhandledRejection', err => console.error(err));
 /* MODULES */
 const Discord = require('discord.js');
 const Enmap = require('enmap');
+const Level = require('enmap-level');
 const { readdir } = require('fs');
 
 /* CLIENT INITIALIZATION */
@@ -23,11 +24,11 @@ client.cleverbot = true;
 client.cs = {};
 
 /* DATABASE */
-client.servers = new Enmap({ name: 'servers', persistent: true });
-client.tags = new Enmap({ name: 'tags', persistent: true });
-client.lastactive = new Enmap({ name: 'lastactive', persistent: true });
-client.afk = new Enmap({ name: 'afk', persistent: true });
-client.stats = new Enmap({ name: 'stats', persistent: true });
+client.servers = new Enmap({ provider: new Level({ name: 'servers' }) });
+client.tags = new Enmap({ provider: new Level({ name: 'tags' }) });
+client.lastactive = new Enmap({ provider: new Level({ name: 'lastactive' }) });
+client.afk = new Enmap({ provider: new Level({ name: 'afk' }) });
+client.stats = new Enmap({ provider: new Level({ name: 'stats' }) });
 
 /* COMMANDS */
 client.commands = new Enmap();
