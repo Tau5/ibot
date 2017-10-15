@@ -29,6 +29,27 @@ exports.execute = async (client, ctx) => {
         client.modUtil.Modlog(client, ctx.guild, `🗑 **${ctx.author.tag}** deleted ${m.size} messages by bots in ${ctx.channel.toString()}.`, reason, [path]);
         ctx.channel.send(client.I18n.translate`✅ Deleted **${m.size}** messages!`);
       }).catch(() => ctx.channel.send(client.I18n.translate`❌ An unknown error occured while deleting messages! Try later.`));
+    } else if (thing.startsWith('"') && thing.endsWith('"')) {
+      const match = thing.replace(/"/g, '');
+      const filtered = messages.filter(m => m.content.includes(match));
+      if (filtered.size === 0) return ctx.channel.send(client.I18n.translate`❌ No message to delete!`);
+
+      ctx.channel.bulkDelete(filtered).then((m) => {
+        config.moderation.push({
+          ACTION: `CLEAR_TEXT ("${match}")`,
+          AUTHOR: ctx.author.id,
+          CHANNEL: ctx.channel.id,
+          REASON: reason,
+          TIME: new Date().getTime(),
+        });
+        client.servers.set(ctx.guild.id, config);
+
+        const path = `./tmp/${ctx.guild.id}_${new Date().getTime()}.txt`;
+        require('fs').writeFileSync(path, m.map(me => `${require('moment-timezone')().tz(config.timezone).format('DD/MM/YYYY HH:mm:ss')} ${me.author.tag} (ID:${me.author.id}) - ${me.cleanContent}`).join('\r\n'));
+
+        client.modUtil.Modlog(client, ctx.guild, `🗑 **${ctx.author.tag}** deleted ${m.size} messages matching "${match}" in ${ctx.channel.toString()}.`, reason, [path]);
+        ctx.channel.send(client.I18n.translate`✅ Deleted **${m.size}** messages!`);
+      }).catch(() => ctx.channel.send(client.I18n.translate`❌ An unknown error occured while deleting messages! Try later.`));
     } else {
       /* MEMBERS FINDER */
       let member;

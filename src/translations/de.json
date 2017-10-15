@@ -33,6 +33,7 @@
     "🗑 **{0}** deleted {1} messages by **{2}** in {3}.": "🗑 **{0}** Gelöscht wurden {1} Nachrichten von **{2}** in {3}.",
     "🗑 **{0}** deleted {1} messages in {2}.": "🗑 **{0}** Gelöscht wurden {1} Nachrichten in {2}.",
     "✅ Deleted **{0}** messages!": "✅ Gelöscht wurden **{0}** Nachrichten!",
+    "🗑 **{0}** deleted {1} messages matching \"{2}\" in {3}.": "🗑 **{0}** deleted {1} messages matching \"{2}\" in {3}.",
 
     "_note6": "config",
     "❌ Syntax example: `i:config channel welcome #my_channel`.": "❌ Syntax beispiel: `i:config channel welcome #my_channel`.",
