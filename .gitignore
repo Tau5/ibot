@@ -4,3 +4,4 @@ src/config.json
 tmp/
 logs/
 src/web/logs.txt
+backup/
