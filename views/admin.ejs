@@ -74,12 +74,12 @@
                 <td class="text-center"><span class="nav-item"><a href="/server/<%= g.id %>" style="color: grey;"><%= g.name %></a></span></td>
                 <td class="text-center"><%= g.memberCount %></td>
                 <td class="text-center"><span class="nav-item"><a href="/user/<%= g.ownerID %>" style="color: grey;"><%= g.owner.user.tag %></a></span></td>
-                <td class="text-center"><span class="nav-item" data-toggle="confirmation"
+                <td class="text-center"><span class="nav-item"><a href="/admin/leave/<%= g.id %>" style="color: grey;" data-toggle="confirmation"
                   data-btn-ok-label="Continue" data-btn-ok-icon="glyphicon glyphicon-share-alt"
                   data-btn-ok-class="btn-success"
                   data-btn-cancel-label="Stop!" data-btn-cancel-icon="glyphicon glyphicon-ban-circle"
                   data-btn-cancel-class="btn-danger"
-                  data-title="Leaving" data-content="Are you sure?"><a href="/admin/leave/<%= g.id %>" style="color: grey;">Leave</a></span></td>
+                  data-title="Leaving" data-content="Are you sure?">Leave</a></span></td>
               </tr>
             <% }); %>
             </tbody>
