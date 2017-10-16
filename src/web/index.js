@@ -29,7 +29,7 @@ module.exports = (client) => {
     }
   };
 
-  const updateSession = (req, res, next) => {
+  const updateSession = async (req, res, next) => {
     if (!req.cookies.accessToken) return next();
     const profile = await request('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }).catch(() => next());
     const guilds = await request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }).catch(() => next());
@@ -74,7 +74,7 @@ module.exports = (client) => {
     .set('views', `${__dirname}/templates/`);
 
   // Page handling
-  client.app.get('/', (req, res, next) => updateSession(req, res, next), (req, res) => {
+  client.app.get('/', updateSession, (req, res) => {
     res.status(200).render('index', { client, identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
   });
 
