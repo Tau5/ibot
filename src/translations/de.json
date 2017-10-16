@@ -42,7 +42,7 @@
     "✅ Channel `{0}` set to {1}!": "✅ Der Kanal `{0}` ist nun der Kanaltyp {1}!",
     "❌ The message type you provided isn't valid! It must be welcome.": "❌ Der Nachrichtentyp den du angegeben hast ist nicht richtig! Es muss welcome sein.",
     "❌ The length of the value may not exceed 1500 caracters!": "❌ Die Länge des Wertes darf nicht 1500 Zeichen überschreiten!",
-    "✅ Message `{0}` set to ```{value}```": "✅ Die Nachricht `{0}` ist nun ```{value}```",
+    "✅ Message `{0}` set to ```{1}```": "✅ Die Nachricht `{0}` ist nun ```{1}```",
     "❌ The switch type you provided isn't valid! It must be welcome, serverlog, modlog or clearbackup.": "❌ The switch type you provided isn't valid! It must be welcome, serverlog, modlog or clearbackup.",
     "✅ Switch `{0}` enabled!": "✅ Switch `{0}` enabled!",
     "✅ Switch `{0}` disabled!": "✅ Switch `{0}` disabled!",

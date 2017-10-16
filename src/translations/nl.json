@@ -45,7 +45,7 @@
     "✅ Channel `{0}` set to {1}!": "✅ Kanaal `{0}` veranderd naar {1}!",
     "❌ The message type you provided isn't valid! It must be welcome.": "❌ Het berichttype dat je hebt aangegeven is niet geldig! Het moet welcome zijn.",
     "❌ The length of the value may not exceed 1500 caracters!": "❌ De lengte van de waarde mag niet meer dan 1500 karakters bevatten!",
-    "✅ Message `{0}` set to ```{value}```": "✅ Bericht `{0}` veranderd naar ```{value}```",
+    "✅ Message `{0}` set to ```{1}```": "✅ Bericht `{0}` veranderd naar ```{1}```",
     "❌ The switch type you provided isn't valid! It must be welcome, serverlog, modlog or clearbackup.": "❌ Het schakelaartype dat je hebt aangegeven is niet geldig! Het moet welcome, serverlog, modlog of clearbackup zijn.",
     "✅ Switch `{0}` enabled!": "✅ Schakelaar `{0}` aangezet!",
     "✅ Switch `{0}` disabled!": "✅ Schakelaar `{0}` uitgezet!",

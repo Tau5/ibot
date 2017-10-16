@@ -45,7 +45,7 @@
     "✅ Channel `{0}` set to {1}!": "✅ Salon `{0}` réglé sur {1}!",
     "❌ The message type you provided isn't valid! It must be welcome.": "❌ Le type de message fourni est invalide ! Il doit être welcome.",
     "❌ The length of the value may not exceed 1500 caracters!": "❌ La longueur de la valeur ne doit pas dépasser les 1500 caractères !",
-    "✅ Message `{0}` set to ```{value}```": "✅ Le message `{0}` est maintenant ```{value}```",
+    "✅ Message `{0}` set to ```{1}```": "✅ Le message `{0}` est maintenant ```{1}```",
     "❌ The switch type you provided isn't valid! It must be welcome, serverlog, modlog or clearbackup.": "❌ Le type de switch fourni est invliade ! Il doit être welcome, serverlog, modlog ou clearbackup.",
     "✅ Switch `{0}` enabled!": "✅ Switch `{0}` activé !",
     "✅ Switch `{0}` disabled!": "✅ Switch `{0}` désactivé !",

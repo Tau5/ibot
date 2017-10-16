@@ -45,7 +45,7 @@
     "✅ Channel `{0}` set to {1}!": "✅ Channel `{0}` set to {1}!",
     "❌ The message type you provided isn't valid! It must be welcome.": "❌ The message type you provided isn't valid! It must be welcome.",
     "❌ The length of the value may not exceed 1500 caracters!": "❌ The length of the value may not exceed 1500 caracters!",
-    "✅ Message `{0}` set to ```{value}```": "✅ Message `{0}` set to ```{value}```",
+    "✅ Message `{0}` set to ```{1}```": "✅ Message `{0}` set to ```{1}```",
     "❌ The switch type you provided isn't valid! It must be welcome, serverlog, modlog or clearbackup.": "❌ The switch type you provided isn't valid! It must be welcome, serverlog, modlog or clearbackup.",
     "✅ Switch `{0}` enabled!": "✅ Switch `{0}` enabled!",
     "✅ Switch `{0}` disabled!": "✅ Switch `{0}` disabled!",
