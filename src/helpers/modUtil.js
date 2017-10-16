@@ -6,11 +6,11 @@ const modUtils = {
     if (!channel) throw new Error('NO_SERVERLOG_CHANNEL');
 
     let time = require('moment-timezone')().tz('UTC').format('HH:mm:ss');
-    if (config.timezone.includes('UTC+') || config.timezone.includes('UTC-') || (!config.timezone.includes('Europe/')
-      && !config.timezone.includes('America/')
-      && !config.timezone.includes('Oceania/')
-      && !config.timezone.includes('Africa/')
-      && !config.timezone.includes('Asia/'))) {
+    if ((config.timezone.includes('Europe/')
+      && config.timezone.includes('America/')
+      && config.timezone.includes('Oceania/')
+      && config.timezone.includes('Africa/')
+      && config.timezone.includes('Asia/'))) {
 
       time = require('moment-timezone')().tz(config.timezone).format('HH:mm:ss');
     }
@@ -26,11 +26,11 @@ const modUtils = {
     if (!channel) throw new Error('NO_MODLOG_CHANNEL');
 
     let time = require('moment-timezone')().tz('UTC').format('HH:mm:ss');
-    if (config.timezone.includes('UTC+') || config.timezone.includes('UTC-') || (!config.timezone.includes('Europe/')
-      && !config.timezone.includes('America/')
-      && !config.timezone.includes('Oceania/')
-      && !config.timezone.includes('Africa/')
-      && !config.timezone.includes('Asia/'))) {
+    if ((config.timezone.includes('Europe/')
+      && config.timezone.includes('America/')
+      && config.timezone.includes('Oceania/')
+      && config.timezone.includes('Africa/')
+      && config.timezone.includes('Asia/'))) {
 
       time = require('moment-timezone')().tz(config.timezone).format('HH:mm:ss');
     }
