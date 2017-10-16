@@ -6,7 +6,15 @@ const modUtils = {
     if (!channel) throw new Error('NO_SERVERLOG_CHANNEL');
 
     let time = require('moment-timezone')().tz('UTC').format('HH:mm:ss');
-    try { time = require('moment-timezone')(config.timezone).tz('UTC').format('HH:mm:ss'); } catch (e) {}
+    /*if (config.timezone.includes('UTC+') 
+      || config.timezone.includes('UTC-')
+      || (!config.timezone.includes('Europe/')
+      && !config.timezone.includes('America/')
+      && !config.timezone.includes('Oceania/')
+      && !config.timezone.includes('Africa/')
+      && !config.timezone.includes('Asia/'))) {*/
+
+    try { time = require('moment-timezone')().tz(config.timezone).format('HH:mm:ss'); } catch (e) {}
 
     const msg = `\`[${time}]\` ${message}`;
     channel.send(msg, options);
@@ -19,7 +27,7 @@ const modUtils = {
     if (!channel) throw new Error('NO_MODLOG_CHANNEL');
 
     let time = require('moment-timezone')().tz('UTC').format('HH:mm:ss');
-    try { time = require('moment-timezone')(config.timezone).tz('UTC').format('HH:mm:ss'); } catch (e) {}
+    try { time = require('moment-timezone')().tz(config.timezone).format('HH:mm:ss'); } catch (e) {}
 
     const msg = client.I18n.translate`\`[${time}]\` \`[${config.moderation.length}]\` ${message}\n\`[ Reason ]\` ${reason}`;
     channel.send(msg, { files: attachments.map(v => v) });
