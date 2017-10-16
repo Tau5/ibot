@@ -10,12 +10,12 @@
     
     "_note2": "choose",
     "🤔 Let me choose... **{0}**!": "🤔 Let me choose... **{0}**!",
-    "❌ You must include two choices or more!": "❌ You must include two choices or more!",
+    "❌ You must include two choices or more!": "❌ You must include two or more choices!",
 
     "_note3": "say",
     "❌ Please do not mention @everyone or @here through the bot!": "❌ Please do not mention @everyone or @here through the bot!",
     "❌ Please do not mention anyone through the bot!": "❌ Please do not mention anyone through the bot!",
-    "❌ You have missing arguments! You must include a text to repeat.": "❌ You have missing arguments! You must include a text to repeat.",
+    "❌ You have missing arguments! You must include a text to repeat.": "❌ You have missing arguments! You must include text to repeat.",
 
     "_note4": "ban",
     "❌ Nobody found matching `{0}`!": "❌ Nobody found matching `{0}`!",
