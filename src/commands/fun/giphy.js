@@ -4,7 +4,7 @@ exports.execute = async (client, ctx) => {
   const query = encodeURIComponent(search);
   const request = require('request');
 
-  request(`http://api.giphy.com/v1/gifs/search?q=${query}&api_key=${client.config.giphy_api}&limit=1`, (err, http, body) => {
+  request(`http://api.giphy.com/v1/gifs/search?q=${query}&api_key=${client.config.api.giphy}&limit=1`, (err, http, body) => {
     if (err && http.statusCode !== 200) throw err;
 
     body = JSON.parse(body);

@@ -5,7 +5,7 @@ exports.execute = async (client, ctx) => {
   if (query.length > 1024) return ctx.channel.send(client.I18n.translate`❌ The query length may not exceed 1024 caracters.`);
 
   const request = require('request');
-  request(`https://www.googleapis.com/youtube/v3/search?part=snippet&regionCode=GB&maxResults=1&q=${query}&key=${client.config.youtube_api}`, (err, http, body) => {
+  request(`https://www.googleapis.com/youtube/v3/search?part=snippet&regionCode=GB&maxResults=1&q=${query}&key=${client.config.api.youtube}`, (err, http, body) => {
     if (err && http.statusCode !== 200) throw err;
     const content = JSON.parse(body);
 

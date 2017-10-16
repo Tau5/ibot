@@ -1,0 +1,22 @@
+{
+	"discord": {
+		"prefix": "",
+		"token": "",
+		"ownerID": ""
+	},
+	"api": {
+		"google": "",
+		"youtube": "",
+		"weather": "",
+		"cleverbot": "",
+		"discord_bans": "",
+		"giphy": ""
+	},
+	"dashboard": {
+		"clientID": "",
+		"clientSecret": "",
+		"scopes": ["", "", ""],
+		"callbackURL": "",
+		"port": 0
+	}
+}

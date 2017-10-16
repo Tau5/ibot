@@ -88,6 +88,6 @@ readdir('./src/events/', (err, files) => {
 });
 
 // Login to Discord
-client.login(client.config.token)
+client.login(client.config.discord.token)
   .then(() => console.log('[Discord] Connected to the WebSocket!'))
   .catch(console.error);

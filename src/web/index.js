@@ -76,7 +76,6 @@ module.exports = (client) => {
     }))
     .use(cookieParser())
     .use(session({
-      secret: client.config.secret,
       resave: true,
       saveUninitialized: true,
       proxy: true,
@@ -100,5 +99,5 @@ module.exports = (client) => {
     .use('/invite', checkAuth, updateSession, require('../web/invite')(client))
     .use('*', (req, res) => res.status(404).render('error', { code: '404', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') }));
 
-  client.app.listen(client.config.port, () => console.log(`[Express] Listening on port ${client.config.port}`));
+  client.app.listen(client.config.dashboard.port, () => console.log(`[Express] Listening on port ${client.config.dashboard.port}`));
 };

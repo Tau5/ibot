@@ -38,7 +38,7 @@ module.exports = async (client, ctx) => {
     } else {
       ctx.channel.startTyping();
       const cleverbot = require('cleverbot-unofficial-api');
-      cleverbot(client.config.cleverbot_api, question, client.cs[ctx.author.id]).then((res) => {
+      cleverbot(client.config.api.cleverbot, question, client.cs[ctx.author.id]).then((res) => {
         ctx.channel.send(res.output);
         client.cs[ctx.author.id] = res.cs;
         ctx.channel.stopTyping();
@@ -52,7 +52,7 @@ module.exports = async (client, ctx) => {
   if (!ctx.guild) return 1;
 
   /* PREFIX CHECKING */
-  const prefixes = [client.config.prefix, client.config.prefix.toUpperCase()];
+  const prefixes = [client.config.discord.prefix, client.config.discord.prefix.toUpperCase()];
   config.custom_prefixes.forEach(prefix => prefixes.push(prefix));
   let prefix;
   prefixes.forEach((prefix2) => {
@@ -71,7 +71,7 @@ module.exports = async (client, ctx) => {
     client.I18n.use(config.locale);
 
     /* IF COMMAND IS PRIVATE */
-    if (!cmd.conf.public && ctx.author.id !== '205427654042583040') return ctx.channel.send(client.I18n.translate`❌ You do not have the permission to execute this command!`);
+    if (!cmd.conf.public && ctx.author.id !== client.config.discord.ownerID) return ctx.channel.send(client.I18n.translate`❌ You do not have the permission to execute this command!`);
 
     /* PERMISSIONS */
     if (cmd.conf.user_permission && !ctx.member.hasPermission(cmd.conf.user_permission)) return ctx.channel.send(client.I18n.translate`❌ You do not have the permission \`${cmd.conf.user_permission}\`!`);

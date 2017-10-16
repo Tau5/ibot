@@ -1,35 +1,28 @@
 const express = require('express');
 const authSystem = require('./auth');
+const { promisify } = require('util');
+const request = promisify(require('request'));
 
 const router = express.Router();
 
 router
-  .use('/login', (req, res, next) => {
-    if (req.cookies.accessToken) {
-      const request = require('request');
-      request('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err, http, body) => {
-        if (err) next();
-        const user = body;
-        user.provider = 'discord';
+  .use('/login', async (req, res, next) => {
+    if (!req.cookies.accessToken) next();
+    const profile = await request('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }).catch(() => next());
+    const guilds = await request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }).catch(() => next());
 
+    const user = JSON.parse(profile);
+    user.guilds = JSON.parse(guilds);
 
-        request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err2, http2, body2) => {
-          if (err) return next();
-          user.guilds = body2;
-          req.session.passport = {
-            user,
-          };
+    req.login(user, () => {
+      if (error) return res.render('error', { code: '500', identity: 'NO' });
+    });
 
-          req.login(JSON.parse(user), (error) => {
-            if (error) return res.render('error', { code: '500', identity: 'NO' });
-          });
+    req.session.save(() => {
+      res.render('error', { code: '500', identity: 'NO' });
+    });
 
-          req.session.save(error2 => res.render('error', { code: '500', identity: 'NO' }));
-
-          res.redirect('/');
-        });
-      });
-    } else { next(); }
+    res.redirect('/');
   }, authSystem.authenticate('discord'))
   .use('/callback', authSystem.authenticate('discord'), (req, res) => {
     res.cookie('accessToken', req.session.passport.user.accessToken);

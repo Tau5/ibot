@@ -5,7 +5,7 @@ exports.execute = async (client, ctx) => {
   if (location.length > 1024) return ctx.channel.send(client.I18n.translate`❌ The city length may not exceed 1024 caracters.`);
 
   const request = require('request');
-  request(`https://api.apixu.com/v1/forecast.json?key=${client.config.weather_api}&q=${location}&lang=${locale}&hour=${require('moment-timezone')().tz(timezone).format('HH')}`, (err, http, body) => {
+  request(`https://api.apixu.com/v1/forecast.json?key=${client.config.api.weather}&q=${location}&lang=${locale}&hour=${require('moment-timezone')().tz(timezone).format('HH')}`, (err, http, body) => {
     if (err && http.statusCode !== 200) throw err;
 
     const content = JSON.parse(body);
