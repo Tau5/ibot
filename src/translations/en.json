@@ -63,7 +63,7 @@
     "❌ You must specify a user ID to ban!": "❌ You must specify a user ID to ban!",
     "❌ The user you try to hackban is on this server (**{0}**), use the ban command instead.": "❌ The user you try to hackban is on this server (**{0}**), use the ban command instead.",
     "⚒ **{0}** hackbanned **{1}** (ID:{2}).": "⚒ **{0}** hackbanned **{1}** (ID:{2}).",
-s    "✅ Hackbanned **{0}**!": "✅ Hackbanned **{0}**!",
+    "✅ Hackbanned **{0}**!": "✅ Hackbanned **{0}**!",
     "❌ An error has occured! You might have put a wrong user ID.": "❌ An error has occured! You might have put a wrong user ID.",
 
     "_note8": "kick",
