@@ -7,6 +7,7 @@ module.exports = async (client, member) => {
     if (!channel) return 1;
     const message = config.message_welcome
       .replace(/{usermention}/g, member.toString())
+      .replace(/{usertag}/g, member.user.tag)
       .replace(/{guildname}/g, member.guild.name)
       .replace(/{guildcount}/g, member.guild.memberCount);
     channel.send(message);
