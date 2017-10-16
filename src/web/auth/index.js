@@ -11,16 +11,11 @@ router
     const profile = await request('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }).catch(() => next());
     const guilds = await request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }).catch(() => next());
 
-    console.log(profile.body, `\n`, guilds.body);
-
-    const user = profile.body;
+    const user = JSON.parse(profile.body);
     user.guilds = JSON.parse(guilds.body);
 
-    req.login(JSON.parse(user), () => res.render('error', { code: '500', identity: 'NO' }));
-
-    req.session.save(() => {
-      res.render('error', { code: '500', identity: 'NO' });
-    });
+    req.login(user, () => res.render('error', { code: '500', identity: 'NO' }));
+    req.session.save(() => res.render('error', { code: '500', identity: 'NO' }));
 
     res.redirect('/');
   }, authSystem.authenticate('discord'))

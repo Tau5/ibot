@@ -27,33 +27,18 @@ module.exports = (client) => {
     }
   };
 
-  const updateSession = (req, res, next, isFromIndex = false) => {
+  const updateSession = (req, res, next) => {
     if (!req.cookies.accessToken) return next();
-    const request = require('request');
-    request('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err, http, body) => {
-      if (err) {
-        if (isFromIndex) return next(ee => (ee ? console.error(ee) : undefined));
-        return res.redirect('/auth/login');
-      }
-      req.logout();
-      const user = JSON.parse(body);
-      user.provider = 'discord';
+    const profile = await request('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }).catch(() => next());
+    const guilds = await request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }).catch(() => next());
 
+    const user = JSON.parse(profile.body);
+    user.guilds = JSON.parse(guilds.body);
 
-      request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }, (err2, http2, body2) => {
-        if (err2) {
-          if (isFromIndex) return next(n => (n ? console.error(n) : undefined));
-          return res.redirect('/auth/login');
-        }
-        user.guilds = JSON.parse(body2);
-        req.session.passport = {
-          user,
-        };
-        req.login(user, error3 => (error3 ? console.error(error3) : undefined));
-        req.session.save(error4 => (error4 ? console.error(error4) : undefined));
-        return next();
-      });
-    });
+    req.login(user, () => res.render('error', { code: '500', identity: 'NO' }));
+    req.session.save(() => res.render('error', { code: '500', identity: 'NO' }));
+
+    res.redirect('/');
   };
 
   const checkAuth = (req, res, next) => {
