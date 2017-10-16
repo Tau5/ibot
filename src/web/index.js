@@ -39,8 +39,6 @@ module.exports = (client) => {
 
     req.login(user, (e) => e ? res.render('error', { code: '500', identity: 'NO' }) : undefined);
     req.session.save((e) => e ? res.render('error', { code: '500', identity: 'NO' }) : undefined);
-
-    res.redirect('/');
   };
 
   const checkAuth = (req, res, next) => {
