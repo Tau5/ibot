@@ -14,9 +14,7 @@ router
     const user = profile;
     user.guilds = guilds;
 
-    req.login(JSON.parse(user), () => {
-      if (error) return res.render('error', { code: '500', identity: 'NO' });
-    });
+    req.login(JSON.parse(user), () => res.render('error', { code: '500', identity: 'NO' }));
 
     req.session.save(() => {
       res.render('error', { code: '500', identity: 'NO' });
