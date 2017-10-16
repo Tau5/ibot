@@ -8,16 +8,18 @@ const router = express.Router();
 router
   .use('/login', async (req, res, next) => {
     if (!req.cookies.accessToken) return next();
-    const profile = await request('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }).catch(() => next());
-    const guilds = await request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }).catch(() => next());
+    else {
+      const profile = await request('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } });
+      const guilds = await request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } });
 
-    const user = JSON.parse(profile.body);
-    user.guilds = JSON.parse(guilds.body);
+      const user = JSON.parse(profile.body);
+      user.guilds = JSON.parse(guilds.body);
 
-    req.login(user, () => res.render('error', { code: '500', identity: 'NO' }));
-    req.session.save(() => res.render('error', { code: '500', identity: 'NO' }));
+      req.login(user, () => res.render('error', { code: '500', identity: 'NO' }));
+      req.session.save(() => res.render('error', { code: '500', identity: 'NO' }));
 
-    res.redirect('/');
+      res.redirect('/');
+    }
   }, authSystem.authenticate('discord'))
   .use('/callback', authSystem.authenticate('discord'), (req, res) => {
     res.cookie('accessToken', req.session.passport.user.accessToken);
