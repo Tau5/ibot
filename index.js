@@ -1,5 +1,8 @@
 /* PROCESS */
-process.on('uncaughtException', err => console.error(err));
+process.on('uncaughtException', (err) => {
+  if (err.message.includes('Moment Timezone')) return; // I don't want of that shit in the console
+  console.error(err);
+});
 process.on('unhandledRejection', err => console.error(err));
 
 /* MODULES */
