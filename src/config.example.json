@@ -17,6 +17,7 @@
 		"clientSecret": "",
 		"scopes": ["", "", ""],
 		"callbackURL": "",
+		"session_secret": "",
 		"port": 0
 	}
 }
