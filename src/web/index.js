@@ -37,8 +37,8 @@ module.exports = (client) => {
     const user = JSON.parse(profile.body);
     user.guilds = JSON.parse(guilds.body);
 
-    req.login(user, () => res.render('error', { code: '500', identity: 'NO' }));
-    req.session.save(() => res.render('error', { code: '500', identity: 'NO' }));
+    req.login(user, (e) => e ? res.render('error', { code: '500', identity: 'NO' }) : undefined);
+    req.session.save((e) => e ? res.render('error', { code: '500', identity: 'NO' }) : undefined);
 
     res.redirect('/');
   };
