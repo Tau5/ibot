@@ -199,7 +199,7 @@
     "❌ The tag `{0}` already exist!": "❌ Der Tag `{0}` existiert schon!",
     "✍ Tag `{0}` created!": "✍ Tag `{0}` erstellt!",
     "✍ Tag `{0}` deleted!": "✍ Tag `{0}` gelöscht!",
-    "❌ To delete a tag you must put its name!": "❌ Um einen Tag zu löschen musst du seinen Namen angeben!",
+    "❌ To delete a tag, you need to specify it's name!": "❌ Um einen Tag zu löschen musst du seinen Namen angeben!",
     "❌ You cannot delete a tag you don't own!": "❌ Du kannst keinen Tag löschen der dir nicht gehört!",
     "❌ To know who made a tag you must put its name!": "❌ Wenn du wissen möchtest wem der Tag gehört musst du den Namen von dem Tag angeben!",
     "✍ **{0}** made the tag `{1}`.": "✍ **{0}** machte den tag `{1}`.",

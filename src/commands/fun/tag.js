@@ -17,7 +17,7 @@ exports.execute = async (client, ctx) => {
     ctx.channel.send(client.I18n.translate`✍ Tag \`${tagName}\` created!`);
   } else if (first === 'delete') {
     const tagName = ctx.args[1];
-    if (!tagName) return ctx.channel.send(client.I18n.translate`❌ To delete a tag you must put its name!`);
+    if (!tagName) return ctx.channel.send(client.I18n.translate`❌ To delete a tag, you need to specify it's name!`);
     const tag = client.tags.get(tagName);
     if (!tag) return ctx.channel.send(client.I18n.translate`❌ The tag \`${tagName}\` does not exist!`);
     if (tag.author !== ctx.author.id && ctx.author.id !== client.config.ownerId) return ctx.channel.send(client.I18n.translate`❌ You cannot delete a tag you don't own!`);
@@ -26,7 +26,7 @@ exports.execute = async (client, ctx) => {
     ctx.channel.send(client.I18n.translate`✍ Tag \`${tagName}\` deleted!`);
   } else if (first === 'owner') {
     const tagName = ctx.args[1];
-    if (!tagName) return ctx.channel.send(client.I18n.translate`❌ To know who made a tag you must put its name!`);
+    if (!tagName) return ctx.channel.send(client.I18n.translate`❌ To know who made a tag, you must specify it's name!`);
     const tag = client.tags.get(tagName);
     const author = await client.users.fetch(tag.author);
     ctx.channel.send(client.I18n.translate`✍ **${author.tag}** made the tag \`${tagName}\`.`);
@@ -61,7 +61,7 @@ exports.execute = async (client, ctx) => {
   } else {
     const tagName = ctx.args[0];
     const args = ctx.args.slice(1).join(' ');
-    if (!tagName) return ctx.channel.send(client.I18n.translate`❌ You must put a tag name!`);
+    if (!tagName) return ctx.channel.send(client.I18n.translate`❌ You must specify a tag name!`);
     const tag = client.tags.get(tagName);
     if (!tag) return ctx.channel.send(client.I18n.translate`❌ The tag \`${tagName}\` does not exist!`);
 

@@ -7,7 +7,7 @@ exports.execute = async (client, ctx) => {
     if (ctx.mentions.users.size > 0) return ctx.channel.send(client.I18n.translate`❌ Please do not mention anyone through the bot!`);
     messageToSend = text;
   } else {
-    messageToSend = client.I18n.translate`❌ You have missing arguments! You must include a text to repeat.`;
+    messageToSend = client.I18n.translate`❌ You have missing arguments! You must include text to repeat.`;
   }
 
   return ctx.channel.send(messageToSend);

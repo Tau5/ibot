@@ -202,7 +202,7 @@
     "❌ The tag `{0}` already exist!": "❌ De tag `{0}` bestaat al!",
     "✍ Tag `{0}` created!": "✍ Tag `{0}` gemaakt!",
     "✍ Tag `{0}` deleted!": "✍ Tag `{0}` verwijderd!",
-    "❌ To delete a tag you must put its name!": "❌ Om eem tag te verwijderen moet je zijn naam opgeven!",
+    "❌ To delete a tag, you need to specify it's name!": "❌ Om eem tag te verwijderen moet je zijn naam opgeven!",
     "❌ The tag `{0}` does not exist!": "❌ De tag `{0}` bestaat niet!",
     "❌ You cannot delete a tag you don't own!": "❌ Je kunt een tag niet verwijderen die niet van jezelf is!",
     "❌ To know who made a tag you must put its name!": "❌ Om te weten wie de tag heeft gemaakt moet je zijn naam aangeven!",
