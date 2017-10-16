@@ -67,7 +67,7 @@ module.exports = (client) => {
   // Middlewares
   client.app
     .enable('trust proxy')
-    .use(express.static(`${__dirname}/../../public/`))
+    .use(express.static(`${__dirname}/public/`))
     .use(bodyParser.urlencoded({
       extended: false,
     }))
@@ -83,7 +83,8 @@ module.exports = (client) => {
     }))
     .use(authentication.initialize())
     .use(authentication.session())
-    .set('view engine', 'ejs');
+    .set('view engine', 'ejs')
+    .set('views', `${__dirname}/templates/`);
 
   // Page handling
   client.app.get('/', (req, res, next) => updateSession(req, res, next, true), (req, res) => {
