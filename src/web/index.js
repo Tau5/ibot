@@ -76,6 +76,7 @@ module.exports = (client) => {
     }))
     .use(cookieParser())
     .use(session({
+      secret: client.config.dashboard.session_secret,
       resave: true,
       saveUninitialized: true,
       proxy: true,
