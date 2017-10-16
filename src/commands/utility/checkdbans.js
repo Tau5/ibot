@@ -23,7 +23,7 @@ exports.execute = async (client, ctx) => {
     const { MessageEmbed } = require('discord.js');
     let status = client.I18n.translate`Is not on the list.`;
     let color = 'GREEN';
-    let reason;
+    let reason = 'nothing';
 
     if (body !== 'True' && body !== 'False') {
       body = JSON.parse(body);
@@ -38,7 +38,7 @@ exports.execute = async (client, ctx) => {
       .setColor(color)
       .setThumbnail(member.displayAvatarURL());
 
-    if (!reason) embed.addField(client.I18n.translate`Reason`, reason)
+    if (reason !== 'nothing') embed.addField(client.I18n.translate`Reason`, reason)
 
     return ctx.channel.send(client.I18n.translate`🚔 Discord Bans list fetched!`, { embed });
   });
