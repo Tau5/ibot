@@ -10,6 +10,8 @@ module.exports = (client) => {
   const session = require('express-session');
   const logger = require('morgan');
   const authentication = require('../web/auth/auth');
+  const { promisify } = require('util');
+  const request = promisify(require('request'));
 
   client.app = express();
 
@@ -72,7 +74,7 @@ module.exports = (client) => {
     .set('views', `${__dirname}/templates/`);
 
   // Page handling
-  client.app.get('/', (req, res, next) => updateSession(req, res, next, true), (req, res) => {
+  client.app.get('/', (req, res, next) => updateSession(req, res, next), (req, res) => {
     res.status(200).render('index', { client, identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
   });
 
