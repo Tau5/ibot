@@ -7,7 +7,7 @@ const router = express.Router();
 
 router
   .use('/login', async (req, res, next) => {
-    if (!req.cookies.accessToken) next();
+    if (!req.cookies.accessToken) return next();
     const profile = await request('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }).catch(() => next());
     const guilds = await request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }).catch(() => next());
 
