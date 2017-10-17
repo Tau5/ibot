@@ -85,7 +85,7 @@ exports.execute = async (client, ctx) => {
     .setColor(ctx.guild.me.displayHexColor)
     .setThumbnail(member.user.displayAvatarURL());
 
-  return ctx.channel.send(client.I18n.translate`${emote} Informations about **${member.user.tag}** :`, { embed });
+  return ctx.channel.send(client.I18n.translate`${emote} Information about **${member.user.tag}** :`, { embed });
 };
 
 exports.conf = {

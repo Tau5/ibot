@@ -13,7 +13,7 @@ exports.execute = async (client, ctx) => {
       .addField(client.I18n.translate`Channel`, `**#${invite.channel.name}** (ID:${invite.channel.id})`)
       .setThumbnail(invite.guild.iconURL({ format: 'png', size: 1024 }));
 
-    ctx.channel.send(client.I18n.translate`📧 Informations about **${invite.guild.name}** :`, { embed });
+    ctx.channel.send(client.I18n.translate`📧 Information about **${invite.guild.name}** :`, { embed });
   } else {
     client.users.fetch(lookup).then((user) => {
       let emote = '👤';
@@ -27,7 +27,7 @@ exports.execute = async (client, ctx) => {
         .addField(client.I18n.translate`📆 Account creation date`, user.createdAt.toUTCString())
         .setThumbnail(user.displayAvatarURL());
 
-      return ctx.channel.send(client.I18n.translate`${emote} Informations about **${user.tag}** :`, { embed });
+      return ctx.channel.send(client.I18n.translate`${emote} Information about **${user.tag}** :`, { embed });
     }).catch(() => {
       const guild = client.guilds.get(lookup);
       if (!guild) return ctx.channel.send(client.I18n.translate`❌ No user or guild found matching \`${lookup}\`!`);
