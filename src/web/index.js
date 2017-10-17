@@ -45,6 +45,15 @@ module.exports = (client) => {
     }
   };
 
+  const returnNoWWW = (req, res, next) => {
+    const host = req.get('host');
+    if (host.startsWith('www.')) {
+      res.redirect(`http://ibot-discord.cf:9024/${req.originalUrl}`);
+    } else {
+      next();
+    }
+  }
+
   const checkAuth = (req, res, next) => {
     if (req.isAuthenticated()) next();
     else {
@@ -76,17 +85,17 @@ module.exports = (client) => {
     .set('views', `${__dirname}/templates/`);
 
   // Page handling
-  client.app.get('/', updateSession, (req, res) => {
+  client.app.get('/', returnNoWWW, updateSession, (req, res) => {
     res.status(200).render('index', { client, identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
   });
 
   client.app
-    .use('/auth', auth)
-    .use('/admin', checkOwner, updateSession, require('../web/admin')(client))
-    .use('/servers', checkAuth, updateSession, require('../web/servers')(client))
-    .use('/user', checkAuth, updateSession, require('../web/user')(client))
-    .use('/server', checkAuth, updateSession, require('../web/server')(client))
-    .use('/invite', checkAuth, updateSession, require('../web/invite')(client))
+    .use('/auth', returnNoWWW, auth)
+    .use('/admin', returnNoWWW, checkOwner, updateSession, require('../web/admin')(client))
+    .use('/servers', returnNoWWW, checkAuth, updateSession, require('../web/servers')(client))
+    .use('/user', returnNoWWW, checkAuth, updateSession, require('../web/user')(client))
+    .use('/server', returnNoWWW, checkAuth, updateSession, require('../web/server')(client))
+    .use('/invite', returnNoWWW, checkAuth, updateSession, require('../web/invite')(client))
     .use('*', (req, res) => res.status(404).render('error', { code: '404', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') }));
 
   client.app.listen(client.config.dashboard.port, () => console.log(`[Express] Listening on port ${client.config.dashboard.port}`));
