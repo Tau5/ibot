@@ -15,7 +15,7 @@
 	"dashboard": {
 		"clientID": "",
 		"clientSecret": "",
-		"scopes": ["", "", ""],
+		"scopes": [],
 		"callbackURL": "",
 		"session_secret": "",
 		"port": 0

@@ -22,7 +22,7 @@ module.exports = (client) => {
 
   const checkOwner = (req, res, next) => {
     if (req.isAuthenticated()) {
-      if (['205427654042583040'].includes(req.user.id)) next();
+      if (client.config.discord.ownerID === req.user.id) next();
       else res.status(503).render('error', { code: '403', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
     } else {
       res.status(501).render('error', { code: '401', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
