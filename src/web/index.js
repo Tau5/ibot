@@ -48,7 +48,7 @@ module.exports = (client) => {
   const returnNoWWW = (req, res, next) => {
     const host = req.get('host');
     if (host.startsWith('www.')) {
-      res.redirect(`http://ibot-discord.cf:9024/${req.originalUrl}`);
+      res.redirect(`http://ibot-discord.cf:9024${req.originalUrl}`);
     } else {
       next();
     }
