@@ -39,7 +39,12 @@ module.exports = (client) => {
       user.guilds = JSON.parse(guilds.body);
 
       req.login(user, (e) => e ? res.render('error', { code: '500', identity: 'NO' }) : undefined);
+
+      req.session.cookie.expires = false;
+      req.session.cookie.maxAge = 2678400000;
       req.session.save((e) => e ? res.render('error', { code: '500', identity: 'NO' }) : undefined);
+
+      
 
       return next();
     }
@@ -74,6 +79,9 @@ module.exports = (client) => {
     .use(authentication.session())
     .set('view engine', 'ejs')
     .set('views', `${__dirname}/templates/`);
+
+    const express = require('express')
+    express().use('/', (req, res) => req.session.cookie.expires)
 
   // Page handling
   client.app.get('/', updateSession, (req, res) => {
