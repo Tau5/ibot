@@ -30,18 +30,15 @@ module.exports = (client) => {
   };
 
   const updateSession = async (req, res, next) => {
-    if (!req.cookies.accessToken) return next();
+    if (!req.signedCookies.accessToken) return next();
     else {
-      const profile = await request('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }).catch(() => next());
-      const guilds = await request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.cookies.accessToken}` } }).catch(() => next());
+      const profile = await request('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${req.signedCookies.accessToken}` } }).catch(() => next());
+      const guilds = await request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.signedCookies.accessToken}` } }).catch(() => next());
 
       const user = JSON.parse(profile.body);
       user.guilds = JSON.parse(guilds.body);
 
       req.login(user, (e) => e ? res.render('error', { code: '500', identity: 'NO' }) : undefined);
-
-      req.session.cookie.expires = false;
-      req.session.cookie.maxAge = 2678400000;
       req.session.save((e) => e ? res.render('error', { code: '500', identity: 'NO' }) : undefined);
 
       return next();
@@ -51,7 +48,7 @@ module.exports = (client) => {
   const checkAuth = (req, res, next) => {
     if (req.isAuthenticated()) next();
     else {
-      if (req.cookies.accessToken) updateSession(req, res, next);
+      if (req.signedCookies.accessToken) updateSession(req, res, next);
       res.status(401).render('error', { code: '401', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
     }
   };
