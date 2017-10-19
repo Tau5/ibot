@@ -17,7 +17,7 @@ exports.execute = async (client, ctx) => {
     const fs = require('fs');
     if (subAction === 'guild') {
       if (!id) return ctx.channel.send('❌ Please specify a guild ID!');
-      if (Object.keys(client.config.blacklist.guilds).has(id)) {
+      if (Object.keys(client.config.blacklist.guilds).includes(id)) {
         delete client.config.blacklist.guilds[id];
         ctx.channel.send(`✅ Successfully un-blacklisted guild ID \`${id}\`!`);
       } else {
@@ -30,7 +30,7 @@ exports.execute = async (client, ctx) => {
       fs.writeFile(`${__dirname}/src/config.json`, JSON.stringify(client.config), (err) => {});
     } else if (subAction === 'user') {
       if (!id) return ctx.channel.send('❌ Please specify a user ID!');
-      if (Object.keys(client.config.blacklist.users).has(id)) {
+      if (Object.keys(client.config.blacklist.users).includes(id)) {
         delete client.config.blacklist.users[id];
         ctx.channel.send(`✅ Successfully un-blacklisted user ID \`${id}\`!`);
       } else {
