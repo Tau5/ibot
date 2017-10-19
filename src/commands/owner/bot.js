@@ -14,23 +14,33 @@ exports.execute = async (client, ctx) => {
     const subAction = ctx.args[1];
     const id = ctx.args[2];
     const reason = ctx.args.slice(3).join(' ');
+    const fs = require('fs');
     if (subAction === 'guild') {
       if (!id) return ctx.channel.send('❌ Please specify a guild ID!');
-      client.config.blacklist.guilds[id] = {
-        reason,
-        time: new Date().toUTCString(),
-      };
-      ctx.channel.send(`✅ Successfully blacklisted guild ID \`${id}\`!`);
+      if (Object.keys(client.config.blacklist.guilds).has(id)) {
+        delete client.config.blacklist.guilds[id];
+        ctx.channel.send(`✅ Successfully un-blacklisted guild ID \`${id}\`!`);
+      } else {
+        client.config.blacklist.guilds[id] = {
+          reason,
+          time: new Date().toUTCString(),
+        };
+        ctx.channel.send(`✅ Successfully blacklisted guild ID \`${id}\`!`);
+      }
+      fs.writeFile(`${__dirname}/src/config.json`, JSON.stringify(client.config), (err) => {});
     } else if (subAction === 'user') {
       if (!id) return ctx.channel.send('❌ Please specify a user ID!');
-      client.config.blacklist.users[id] = {
-        reason,
-        time: new Date().toUTCString(),
-      };
-      ctx.channel.send(`✅ Successfully blacklisted user ID \`${id}\`!`);
-    } else {
-      ctx.channel.send('❌ Ur not iBot owner...');
-    }
+      if (Object.keys(client.config.blacklist.users).has(id)) {
+        delete client.config.blacklist.users[id];
+        ctx.channel.send(`✅ Successfully un-blacklisted user ID \`${id}\`!`);
+      } else {
+        client.config.blacklist.users[id] = {
+          reason,
+          time: new Date().toUTCString(),
+        };
+        ctx.channel.send(`✅ Successfully blacklisted user ID \`${id}\`!`);
+      }
+      fs.writeFile(`${__dirname}/src/config.json`, JSON.stringify(client.config), (err) => {});
   } else if (action === 'shutdown') {
     await ctx.channel.send('💤 Goodbye!');
     client.destroy().then(() => process.exit());
