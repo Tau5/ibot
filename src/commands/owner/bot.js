@@ -41,6 +41,7 @@ exports.execute = async (client, ctx) => {
         ctx.channel.send(`✅ Successfully blacklisted user ID \`${id}\`!`);
       }
       fs.writeFile(`${__dirname}/src/config.json`, JSON.stringify(client.config), (err) => {});
+    }
   } else if (action === 'shutdown') {
     await ctx.channel.send('💤 Goodbye!');
     client.destroy().then(() => process.exit());
