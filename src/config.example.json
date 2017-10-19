@@ -19,5 +19,9 @@
 		"callbackURL": "",
 		"session_secret": "",
 		"port": 0
+	},
+	"blacklist":{
+		"guilds":{},
+		"users":{}
 	}
 }

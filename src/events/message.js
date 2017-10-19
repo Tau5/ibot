@@ -3,11 +3,10 @@ module.exports = async (client, ctx) => {
   client.lastactive.set(ctx.author.id, new Date().getTime());
 
   /* SECURITY */
-  if (ctx.author.bot) return 1;
+  if (ctx.author.bot || !ctx.guild) return 1;
 
   /* LOCALIZATION */
-  let config;
-  if (ctx.guild) config = client.servers.get(ctx.guild.id);
+  const config = client.servers.get(ctx.guild.id);
 
   /* AFK */
   if (client.afk.has(ctx.author.id)) {
@@ -28,6 +27,15 @@ module.exports = async (client, ctx) => {
 
   /* CLEVERBOT */
   if (client.cleverbot && (ctx.content.indexOf(`<@${client.user.id}>`) === 0 || ctx.content.indexOf(`<@!${client.user.id}>`) === 0)) {
+    client.I18n.use(config.locale);
+
+    /* BLACKLIST */
+    const blacklist = client.config.blacklist.users[ctx.author.id];
+    if (blacklist) {
+      await ctx.channel.send(`⚠ You have been blacklisted - You cannot use iBot commands anymore.\n__Given reason :__ ${blacklist.reason} - __Time :__ ${blacklist.time}`);
+      return;
+    }
+
     const question = ctx.content.split(/ /g).slice(1).join(' ');
     if (!question) return 1;
     if (question === 'reset' && client.cs[ctx.author.id] !== undefined) {
@@ -70,6 +78,13 @@ module.exports = async (client, ctx) => {
   if (cmd) {
     client.I18n.use(config.locale);
 
+    /* BLACKLIST */
+    const blacklist = client.config.blacklist.users[ctx.author.id];
+    if (blacklist) {
+      await ctx.channel.send(client.I18n.translate`⚠ You have been blacklisted - You cannot use iBot commands anymore.\n__Given reason :__ ${blacklist.reason} - __Time :__ ${blacklist.time}`);
+      return;
+    }
+    
     /* IF COMMAND IS PRIVATE */
     if (!cmd.conf.public && ctx.author.id !== client.config.discord.ownerID) return ctx.channel.send(client.I18n.translate`❌ You do not have the permission to execute this command!`);
 

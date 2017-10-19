@@ -4,6 +4,7 @@
   "strings":{
     "_note1": "cleverbot",
     "✅ Your conversation has been erased!": "✅ Dein Gespräch wurde gelöscht!",
+    "⚠ You have been blacklisted - You cannot use iBot commands anymore.\n__Given reason :__ {0} - __Time :__ {1}": "⚠ You have been blacklisted - You cannot use iBot commands anymore.\n__Given reason :__ {0} - __Time :__ {1}",
     
     "_note2": "choose",
     "🤔 Let me choose... **{0}**!": "🤔 Lass mich Wählen... **{0}**!",

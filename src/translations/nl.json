@@ -4,6 +4,7 @@
   "strings": {
     "_note0": "the rest",
     "no reason specified": "Geen reden opgegeven",
+    "⚠ You have been blacklisted - You cannot use iBot commands anymore.\n__Given reason :__ {0} - __Time :__ {1}": "⚠ You have been blacklisted - You cannot use iBot commands anymore.\n__Given reason :__ {0} - __Time :__ {1}",
 
     "_note1": "cleverbot",
     "✅ Your conversation has been erased!": "✅ Je conversatie is verwijderd!",

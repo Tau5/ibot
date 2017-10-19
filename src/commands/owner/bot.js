@@ -10,6 +10,27 @@ exports.execute = async (client, ctx) => {
   } else if (action === 'status') {
     client.user.setStatus(value).then(() => ctx.channel.send('✅ Status changed successfully!'))
       .catch(e => ctx.channel.send(e, { code: 'js' }));
+  } else if (action === 'blacklist') {
+    const subAction = ctx.args[1];
+    const id = ctx.args[2];
+    const reason = ctx.args.slice(3).join(' ');
+    if (subAction === 'guild') {
+      if (!id) return ctx.channel.send('❌ Please specify a guild ID!');
+      client.config.blacklist.guilds[id] = {
+        reason,
+        time: new Date().toUTCString(),
+      };
+      ctx.channel.send(`✅ Successfully blacklisted guild ID \`${id}\`!`);
+    } else if (subAction === 'user') {
+      if (!id) return ctx.channel.send('❌ Please specify a user ID!');
+      client.config.blacklist.users[id] = {
+        reason,
+        time: new Date().toUTCString(),
+      };
+      ctx.channel.send(`✅ Successfully blacklisted user ID \`${id}\`!`);
+    } else {
+      ctx.channel.send('❌ Ur not iBot owner...');
+    }
   } else if (action === 'shutdown') {
     await ctx.channel.send('💤 Goodbye!');
     client.destroy().then(() => process.exit());

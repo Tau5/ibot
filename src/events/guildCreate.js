@@ -1,4 +1,16 @@
 module.exports = async (client, guild) => {
+  /* BLACKLIST */
+  const blacklist = client.config.blacklist.guilds[guild.id];
+  if (blacklist) {
+    /* LOGGING */
+    console.log(`[Alert] Blacklisted guild ${guild.name} (ID:${guild.id}) got invited!`);
+    
+    /* WE INFORM THE OWNER AND LEAVE */
+    guild.owner.user.send(`⚠ The guild you are owner of (**${guild.name}**) is blacklisted and iBot is not allowed to come in.\n__Given reason :__ ${blacklist.reason} - __Time :__ ${blacklist.time}`);
+    await guild.leave();
+    return;
+  }
+
   /* LOGGING */
   console.log(`[Servers] Join - ${guild.name} (ID:${guild.id}) - Check the guilds log for more informations.`);
   require('fs').appendFile('./logs/guilds.txt', `[${require('moment-timezone')().tz('UTC').format('DD/MM/YYYY HH:mm:ss')}] JOIN - ${guild.name} (ID:${guild.id}) - Owner: ${guild.owner.user.tag} (ID:${guild.ownerID}) - Members: ${guild.memberCount} (${guild.members.filter(m => m.user.bot).size} bots) - Creation: ${guild.createdAt.toUTCString()}\r\n`, console.error);
