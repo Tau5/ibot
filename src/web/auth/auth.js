@@ -12,8 +12,10 @@ passport.use(new DiscordStrategy({
   scope: config.dashboard.scopes,
   callbackURL: config.dashboard.callbackURL,
 }, (accessToken, refreshToken, profile, done) => {
-  profile.accessToken = accessToken;
-  done(null, profile);
+  process.nextTick(() => {
+    profile.accessToken = accessToken;
+    done(null, profile);
+  });
 }));
 
 module.exports = passport;

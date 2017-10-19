@@ -1,0 +1,24 @@
+{
+  "name": "ibot",
+  "version": "1.0.0",
+  "description": "iBot ===================",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iDroid27210/ibot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iDroid27210/ibot/issues"
+  },
+  "homepage": "https://github.com/iDroid27210/ibot#readme",
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
+  }
+}
