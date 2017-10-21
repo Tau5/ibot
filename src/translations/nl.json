@@ -128,7 +128,7 @@
     "None": "Geen",
     "🏅 Special ranks": "🏅 Speciale rangen",
     "📆 Account creation date": "📆 Account creatie datum",
-    "{0} Informations about **{1}** :": "{0} Info over **{1}** :",
+    "{0} Information about **{1}** :": "{0} Info over **{1}** :",
     "❌ No user or guild found matching `{0}`!": "❌ Geen gebruiker of server gevonden met `{0}`!",
     "👤 Owner": "Eigenaar",
     "👥 Members": "👥 Leden",

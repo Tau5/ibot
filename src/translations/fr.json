@@ -128,7 +128,7 @@
     "None": "Aucun(e)",
     "🏅 Special ranks": "🏅 Rangs spéciaux",
     "📆 Account creation date": "📆 Date de création du compte",
-    "{0} Informations about **{1}** :": "{0} Informations à propos de **{1}** :",
+    "{0} Information about **{1}** :": "{0} Informations à propos de **{1}** :",
     "❌ No user or guild found matching `{0}`!": "❌ Aucun utilisateur ou serveur trouvé ayant l'ID `{0}`!",
     "👤 Owner": "👤 Propriétaire",
     "👥 Members": "👥 Membres",
