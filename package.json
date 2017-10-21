@@ -30,6 +30,8 @@
     "moment-timezone": "^0.5.13",
     "morgan": "^1.9.0",
     "node-i18n": "github:eslachance/node-i18n",
+    "passport": "^0.4.0",
+    "passport-discord": "^0.1.2",
     "request": "^2.83.0",
     "time-ago": "^0.1.0",
     "uws": "^8.14.1"
