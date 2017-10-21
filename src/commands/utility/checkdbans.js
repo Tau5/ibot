@@ -7,7 +7,7 @@ exports.execute = async (client, ctx) => {
       member = 'NO';
       return ctx.channel.send(client.I18n.translate`❌ The given user ID is not known by Discord!`);
     });
-    if (member === 'NO') return 1;
+    if (member === 'NO') return;
   } else if (ctx.mentions.users.size > 0) member = ctx.mentions.users.first();
 
   else if (search) {

@@ -1,10 +1,10 @@
 module.exports = async (client, oldMessage, newMessage) => {
-  if (oldMessage.author.id === client.user.id) return 1;
-  if (!oldMessage.guild) return 1;
+  if (oldMessage.author.id === client.user.id) return;
+  if (!oldMessage.guild) return;
   const config = client.servers.get(oldMessage.guild.id);
   client.I18n.use(config.locale);
 
-  if (!oldMessage.content || !newMessage.content || oldMessage.content.length >= 1024 || newMessage.content.length >= 1024) return 1;
+  if (!oldMessage.content || !newMessage.content || oldMessage.content.length >= 1024 || newMessage.content.length >= 1024) return;
   const { MessageEmbed } = require('discord.js');
   const embed = new MessageEmbed()
     .addField(client.I18n.translate`Old content`, oldMessage.content)

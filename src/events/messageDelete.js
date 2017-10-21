@@ -1,10 +1,10 @@
 module.exports = async (client, message) => {
-  if (message.author.id === client.user.id) return 1;
-  if (!message.guild) return 1;
+  if (message.author.id === client.user.id) return;
+  if (!message.guild) return;
   const config = client.servers.get(message.guild.id);
   client.I18n.use(config.locale);
 
-  if (!message.content || message.content.length >= 1024) return 1;
+  if (!message.content || message.content.length >= 1024) return;
   const { MessageEmbed } = require('discord.js');
   const embed = new MessageEmbed()
     .addField(client.I18n.translate`Content`, message.content)

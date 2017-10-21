@@ -4,7 +4,7 @@ module.exports = async (client, member) => {
 
   if (config.switch_welcome === 1) {
     const channel = member.guild.channels.get(config.channel_welcome);
-    if (!channel) return 1;
+    if (!channel) return;
     const message = config.message_welcome
       .replace(/{usermention}/g, member.toString())
       .replace(/{usertag}/g, member.user.tag)

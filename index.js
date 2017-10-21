@@ -1,6 +1,8 @@
-/* PROCESS */
-process.on('uncaughtException', (err) => console.error(err));
-process.on('unhandledRejection', (err) => console.error(err));
+/* ****************** */
+/* iBot - Source code */
+/*   2017 -- October  */
+/* GNU AGPLv3 LICENSE */
+/* ****************** */
 
 /* MODULES */
 const Discord = require('discord.js');

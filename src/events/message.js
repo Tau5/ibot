@@ -3,7 +3,7 @@ module.exports = async (client, ctx) => {
   client.lastactive.set(ctx.author.id, new Date().getTime());
 
   /* SECURITY */
-  if (ctx.author.bot || !ctx.guild) return 1;
+  if (ctx.author.bot || !ctx.guild) return;
 
   /* LOCALIZATION */
   const config = client.servers.get(ctx.guild.id);
@@ -16,7 +16,7 @@ module.exports = async (client, ctx) => {
 
   if (ctx.mentions.users.size > 0) {
     ctx.mentions.users.forEach((u) => {
-      if (!client.afk.has(u.id)) return 1;
+      if (!client.afk.has(u.id)) return;
       const { MessageEmbed } = require('discord.js');
       const embed = new MessageEmbed()
         .addField(client.I18n.translate`💤 **${u.username}** is AFK!`, client.afk.get(u.id))
@@ -37,9 +37,9 @@ module.exports = async (client, ctx) => {
     }
 
     const question = ctx.content.split(/ /g).slice(1).join(' ');
-    if (!question) return 1;
+    if (!question) return;
     if (question === 'reset' && client.cs[ctx.author.id] !== undefined) {
-      if (!ctx.guild) return 1;
+      if (!ctx.guild) return;
       client.I18n.use(config.locale);
       delete client.cs[ctx.author.id];
       ctx.channel.send(client.I18n.translate`✅ Your conversation has been erased!`);
@@ -57,7 +57,7 @@ module.exports = async (client, ctx) => {
     }
   }
 
-  if (!ctx.guild) return 1;
+  if (!ctx.guild) return;
 
   /* PREFIX CHECKING */
   const prefixes = [client.config.discord.prefix, client.config.discord.prefix.toUpperCase()];
@@ -68,7 +68,7 @@ module.exports = async (client, ctx) => {
       prefix = prefix2;
     }
   });
-  if (!prefix) return 1;
+  if (!prefix) return;
 
   /* HANDLING */
   ctx.args = ctx.content.split(/ +/g);
