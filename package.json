@@ -17,7 +17,24 @@
     "url": "https://github.com/iDroid27210/ibot/issues"
   },
   "homepage": "https://github.com/iDroid27210/ibot#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cleverbot-unofficial-api": "^0.1.0",
+    "cookie-parser": "^1.4.3",
+    "discord.js": "github:hydrabolt/discord.js",
+    "enmap": "^0.4.2",
+    "enmap-level": "^1.0.0",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "google-translate-api": "^2.3.0",
+    "moment-timezone": "^0.5.13",
+    "morgan": "^1.9.0",
+    "node-i18n": "github:eslachance/node-i18n",
+    "request": "^2.83.0",
+    "uws": "^8.14.1"
+  },
   "devDependencies": {
+    "eslint": "^4.9.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0"
   }
