@@ -72,8 +72,6 @@ module.exports = async (client, ctx) => {
     }
   }
 
-  if (!ctx.guild) return;
-
   /* PREFIX CHECKING */
   const prefixes = [client.config.discord.prefix, client.config.discord.prefix.toUpperCase()];
   config.custom_prefixes.forEach(prefix => prefixes.push(prefix));
