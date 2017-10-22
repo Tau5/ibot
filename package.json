@@ -19,7 +19,6 @@
   "homepage": "https://github.com/iDroid27210/ibot#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "cleverbot-unofficial-api": "^0.1.0",
     "cookie-parser": "^1.4.3",
     "discord.js": "github:hydrabolt/discord.js",
     "ejs": "^2.5.7",

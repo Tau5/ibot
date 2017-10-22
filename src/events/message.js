@@ -45,14 +45,26 @@ module.exports = async (client, ctx) => {
       ctx.channel.send(client.I18n.translate`✅ Your conversation has been erased!`);
     } else {
       ctx.channel.startTyping();
-      const cleverbot = require('cleverbot-unofficial-api');
-      cleverbot(client.config.api.cleverbot, question, client.cs[ctx.author.id]).then((res) => {
-        ctx.channel.send(res.output);
-        client.cs[ctx.author.id] = res.cs;
-        ctx.channel.stopTyping();
-      }).catch(() => {
-        ctx.channel.stopTyping(true);
-        delete client.cs[ctx.author.id];
+      const request = require('request');
+      request(`https://www.cleverbot.com/getreply?key=${client.config.api.cleverbot}&input=${question}&cs=${client.cs[ctx.author.id] ? client.cs[ctx.author.id] : '0'}`, (err, http, body) => {
+        if (err) throw err;
+
+        try {
+          const response = JSON.parse(body);
+
+          if (body.status) {
+            ctx.channel.send(`❌ \`\`\`${body.status}\`\`\``);
+            ctx.channel.stopTyping(true);
+          } else {
+            ctx.channel.send(response.output);
+            client.cs[ctx.author.id] = response.cs;
+            ctx.channel.stopTyping();
+          }
+        } catch (e) {
+          ctx.channel.send('❌ An unknown error has occured!');
+          delete client.cs[ctx.author.id];
+          ctx.channel.stopTyping(true);
+        }
       });
     }
   }
@@ -84,7 +96,7 @@ module.exports = async (client, ctx) => {
       await ctx.channel.send(client.I18n.translate`⚠ You have been blacklisted - You cannot use iBot commands anymore.\n__Given reason :__ ${blacklist.reason} - __Time :__ ${blacklist.time}`);
       return;
     }
-    
+
     /* IF COMMAND IS PRIVATE */
     if (!cmd.conf.public && ctx.author.id !== client.config.discord.ownerID) return ctx.channel.send(client.I18n.translate`❌ You do not have the permission to execute this command!`);
 
@@ -94,7 +106,7 @@ module.exports = async (client, ctx) => {
 
     /* EXECUTE */
     try {
-      require('fs').appendFile('./logs/commands.txt', `[${require('moment-timezone')().tz('UTC').format('DD/MM/YYYY HH:mm:ss')}] Author: ${ctx.author.tag} (ID:${ctx.author.id}) - Guild: ${ctx.guild.name} (ID:${ctx.guild.id}) - Channel: ${ctx.channel.name} (ID:${ctx.channel.id})\r\n${ctx.cleanContent}\r\n--------------------\r\n`, (err) => {});
+      require('fs').appendFile('./logs/commands.txt', `[${require('moment-timezone')().tz('UTC').format('DD/MM/YYYY HH:mm:ss')}] Author: ${ctx.author.tag} (ID:${ctx.author.id}) - Guild: ${ctx.guild.name} (ID:${ctx.guild.id}) - Channel: ${ctx.channel.name} (ID:${ctx.channel.id})\r\n${ctx.cleanContent}\r\n--------------------\r\n`, () => {});
       let commandsRan = client.stats.get('cmdsran');
       if (!commandsRan) commandsRan = 0;
       commandsRan = parseInt(commandsRan) + 1;
