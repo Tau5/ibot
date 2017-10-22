@@ -45,20 +45,23 @@ module.exports = async (client, ctx) => {
       ctx.channel.send(client.I18n.translate`✅ Your conversation has been erased!`);
     } else {
       ctx.channel.startTyping();
+      const fs = require('fs');
       const request = require('request');
-      request(`https://www.cleverbot.com/getreply?key=${client.config.api.cleverbot}&input=${question}&cs=${client.cs[ctx.author.id] ? client.cs[ctx.author.id] : '0'}`, (err, http, body) => {
+      request(`https://www.cleverbot.com/getreply?key=${client.config.api.cleverbot}&input=${encodeURIComponent(question)}&cs=${client.cs[ctx.author.id] ? client.cs[ctx.author.id] : '0'}`, (err, http, body) => {
         if (err) throw err;
 
         try {
           const response = JSON.parse(body);
 
-          if (body.status) {
-            ctx.channel.send(`❌ \`\`\`${body.status}\`\`\``);
+          if (response.status) {
+            ctx.channel.send(`❌ \`\`\`${response.status}\`\`\``);
             ctx.channel.stopTyping(true);
+            fs.appendFile('./logs/cleverbot.txt', `======ERROR======\n[${require('moment-timezone')().tz('UTC').format('DD MM YYYY HH:mm:ss')}] ${ctx.author.tag} (ID:${ctx.author.id}) - Guild: ${ctx.guild.name} (ID:${ctx.guild.id}) - Channel: ${ctx.channel.name} (ID:${ctx.channel.id}) - Question: ${question}\n=> ERROR: ${response.status}\n=================`, () => {});
           } else {
             ctx.channel.send(response.output);
             client.cs[ctx.author.id] = response.cs;
             ctx.channel.stopTyping();
+            fs.appendFile('./logs/cleverbot.txt', `======DONE!======\n[${require('moment-timezone')().tz('UTC').format('DD MM YYYY HH:mm:ss')}] ${ctx.author.tag} (ID:${ctx.author.id}) - Guild: ${ctx.guild.name} (ID:${ctx.guild.id}) - Channel: ${ctx.channel.name} (ID:${ctx.channel.id}) - Question: ${question}\n=> CS: ${response.cs}\n=> Response: ${response.output}\n=================`, () => {});
           }
         } catch (e) {
           ctx.channel.send('❌ An unknown error has occured!');
