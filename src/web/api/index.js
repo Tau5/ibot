@@ -1,6 +1,6 @@
 module.exports = (client) => {
   const express = require('express');
-  const router = express.Router;
+  const router = express.Router();
 
   router.use('/stats', (req, res) => {
     res.json(200, {
