@@ -3,7 +3,7 @@ module.exports = (client) => {
   const router = express.Router();
 
   router.post('/eval', async (req, res) => {
-    const code = req.body.code;
+    const { code } = req.body;
     try {
       let evaled = await eval(code);
       if (typeof evaled !== 'string') evaled = require('util').inspect(evaled);

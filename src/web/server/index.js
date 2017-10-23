@@ -4,7 +4,6 @@ module.exports = (client) => {
 
   router.post('/update/:id', (req, res) => {
     if (!client.guilds.has(req.params.id)) return res.status(404).render('error', { code: '404', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
-    const guild = client.guilds.get(req.params.id);
     const config = client.servers.get(req.params.id);
     const newConfig = {
       channel_welcome: req.body.channel_welcome,
