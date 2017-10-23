@@ -3,7 +3,7 @@ module.exports = (client) => {
   const router = express.Router();
 
   router.use('/stats', (req, res) => {
-    res.json(200, {
+    res.status(200).json({
       uptime: new Date().getTime() - client.readyAt.getTime(),
       guilds: client.guilds.size,
       users: client.users.size,
