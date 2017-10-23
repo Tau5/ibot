@@ -18,7 +18,7 @@ exports.execute = async (client, ctx) => {
   if (!reason) reason = client.I18n.translate`no reason specified`;
 
   if (ctx.member.id === member.id) return ctx.channel.send(client.I18n.translate`❌ You cannot ban yourself!`);
-  if (!member.bannable || ctx.member.highestRole.comparePositionTo(ctx.guild.me.highestRole) <= 0) return ctx.channel.send(client.I18n.translate`❌ The specified member (**${member.user.tag}**) cannot be banned!`);
+  if (!member.bannable || member.highestRole.comparePositionTo(ctx.guild.me.highestRole) <= 0) return ctx.channel.send(client.I18n.translate`❌ The specified member (**${member.user.tag}**) cannot be banned!`);
   if (ctx.member.highestRole.comparePositionTo(member.highestRole) <= 0) return ctx.channel.send(client.I18n.translate`❌ You cannot ban someone who has a higher role than you!`);
 
   member.ban(`[BAN] ${ctx.author.tag}: ${reason}`, 7).then(() => {
