@@ -4,6 +4,10 @@
 /* GNU AGPLv3 LICENSE */
 /* ****************** */
 
+/* ERRORS HANDLING */
+process.on('unhandledRejection', console.error);
+process.on('uncaughtException', console.error);
+
 /* MODULES */
 const Discord = require('discord.js');
 const Enmap = require('enmap');
