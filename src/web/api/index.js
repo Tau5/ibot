@@ -4,12 +4,12 @@ module.exports = (client) => {
 
   router.use('/stats', (req, res) => {
     res.json(200, {
-      uptime: client.readyAt.getTime(),
+      uptime: new Date().getTime() - client.readyAt.getTime(),
       guilds: client.guilds.size,
       users: client.users.size,
       channels: client.channels.size,
       languages: Object.keys(client.languages).length,
-      cmdsran: client.stats.get('cmdsran'),
+      cmdsran: parseInt(client.stats.get('cmdsran')),
       ram: Math.round(process.memoryUsage().heapUsed / 1000000),
     });
   });
