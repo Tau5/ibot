@@ -18,8 +18,8 @@ exports.execute = async (client, ctx) => {
   if (!reason) reason = client.I18n.translate`no reason specified`;
 
   if (ctx.member.id === member.id) return ctx.channel.send(client.I18n.translate`❌ You cannot kick yourself!`);
-  if (!member.kickable || member.highestRole.comparePositionTo(ctx.guild.me.highestRole) <= 0) return ctx.channel.send(client.I18n.translate`❌ The specified member (**${member.user.tag}**) cannot be kicked!`);
-  if (ctx.member.highestRole.comparePositionTo(member.highestRole) <= 0) return ctx.channel.send(client.I18n.translate`❌ You cannot kick someone who has a higher role than you!`);
+  if (!member.kickable || member.highestRole.comparePositionTo(ctx.guild.me.highestRole) >= 0) return ctx.channel.send(client.I18n.translate`❌ The specified member (**${member.user.tag}**) cannot be kicked!`);
+  if (ctx.member.highestRole.comparePositionTo(member.highestRole) >= 0) return ctx.channel.send(client.I18n.translate`❌ You cannot kick someone who has a higher role than you!`);
 
   member.kick(`[KICK] ${ctx.author.tag}: ${reason}`).then(() => {
     const config = client.servers.get(ctx.guild.id);
