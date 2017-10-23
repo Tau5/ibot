@@ -1,7 +1,6 @@
 const config = require('../../config.json');
 const passport = require('passport');
 const DiscordStrategy = require('passport-discord').Strategy;
-const utils = require('util');
 
 passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((id, done) => done(null, id));
@@ -12,10 +11,7 @@ passport.use(new DiscordStrategy({
   scope: config.dashboard.scopes,
   callbackURL: config.dashboard.callbackURL,
 }, (accessToken, refreshToken, profile, done) => {
-  process.nextTick(() => {
-    profile.accessToken = accessToken;
-    done(null, profile);
-  });
+  process.nextTick(() => done(null, profile));
 }));
 
 module.exports = passport;
