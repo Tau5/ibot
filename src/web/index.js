@@ -89,6 +89,7 @@ module.exports = (client) => {
 
   client.app
     .use('/auth', returnNoWWW, auth)
+    .use('/api', returnNoWWW, require('../web/api')(client))
     .use('/admin', returnNoWWW, checkOwner, updateSession, require('../web/admin')(client))
     .use('/servers', returnNoWWW, checkAuth, updateSession, require('../web/servers')(client))
     .use('/user', returnNoWWW, checkAuth, updateSession, require('../web/user')(client))
