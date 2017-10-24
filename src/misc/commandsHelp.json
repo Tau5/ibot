@@ -72,7 +72,6 @@
     "description": "The famous tag system!",
     "usage": "tag create <tag name> <content>\ni:tag owner <tag name>\ni:tag delete <tag name>\ni:t <tag name>"
   },
-
   "ban":{
     "description": "Ban someone on the server...",
     "usage": "ban [@mention - User#1234 - ID] for [reason]"

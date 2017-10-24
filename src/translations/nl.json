@@ -241,6 +241,8 @@
     "✏ **{0}**'s nickname changed from [{1}] to [{2}].": "✏ **{0}**'s bijnaam is veranderd van [{1}] naar [{2}].",
     "🔥 **{0}**'s message has been deleted from {1} :": "🔥 **{0}**'s bericht is verwijderd van {1} :",
     "Content": "Content",
+    "🔨 **{0}** (ID:{1}) was banned from the server.": "🔨 **{0}** (ID:{1}) was banned from the server.",
+    "⚙ **{0}** (ID:{1}) was unbanned from the server.": "⚙ **{0}** (ID:{1}) was unbanned from the server.",
     "📤 **{0}** (ID:{1}) left the server.\n__Account creation :__ {2}\n__Roles :__ {3}.": "📤 **{0}** (ID:{1}) heeft de server verlaten.\n__Account creatie :__ {2}\n__Rollen :__ {3}.",
     "📥 **{0}** (ID:{1}) joined the server.\n__Account creation :__ {2}": "📥 **{0}** (ID:{1}) heeft de server gejoind.\n__Account creatie :__ {2}",
 
