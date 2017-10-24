@@ -4,15 +4,18 @@
 /* GNU AGPLv3 LICENSE */
 /* ****************** */
 
-/* ERRORS HANDLING */
-process.on('unhandledRejection', console.error);
-process.on('uncaughtException', console.error);
-
 /* MODULES */
 const Discord = require('discord.js');
 const Enmap = require('enmap');
 const Level = require('enmap-level');
 const { readdir } = require('fs');
+
+/* ERRORS HANDLING */
+process.on('unhandledRejection', (reason) => {
+  if (reason.name === 'DiscordAPIError') return;
+  else console.error(reason);
+});
+process.on('uncaughtException', console.error);
 
 /* CLIENT INITIALIZATION */
 const client = new Discord.Client({
