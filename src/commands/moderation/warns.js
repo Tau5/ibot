@@ -22,7 +22,7 @@ exports.execute = async (client, ctx) => {
 
   if (warncount <= 1) return ctx.channel.send(client.I18n.translate`❌ **${member.user.tag}** does not have any warn!`);
 
-  ctx.channel.send(client.I18n.translate`ℹ **${member.user.tag}** has ${warncount} warns.\n**Warn cases (newest to oldest):** ${warns.sort((a, b) => a.TIME - b.TIME).map(v => `\`${config.moderation.indexOf(v) + 1}\``).join(', ')}.\n**Unwarn cases (newest to oldest):** ${unwarns.sort((a, b) => a.TIME - b.TIME).map(v => `\`${config.moderation.indexOf(v) + 1}\``)}.`);
+  ctx.channel.send(client.I18n.translate`ℹ **${member.user.tag}** has ${warncount} warns.\n**Warn cases (oldest to newest):** ${warns.sort((a, b) => a.TIME - b.TIME).map(v => `\`${config.moderation.indexOf(v) + 1}\``).join(', ')}.\n**Unwarn cases (oldest to newest):** ${unwarns.sort((a, b) => a.TIME - b.TIME).map(v => `\`${config.moderation.indexOf(v) + 1}\``)}.`);
 };
 
 exports.conf = {

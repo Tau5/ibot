@@ -268,6 +268,6 @@
     "❌ You must include a reason!": "❌ Vous devez inclure une raison !",
     
     "_note33": "warns",
-    "`ℹ **{0}** has {1} warns.\n**Warn cases (newest to oldest):** {2}.\n**Unwarn cases (newest to oldest):** {3}.": "`ℹ **{0}** a {1} avertissements.\n**Avertissements (plus récent au plus ancien):** {2}.\n**Retraits d'avertissements (plus récent au plus ancien):** {3}."
+    "ℹ **{0}** has {1} warns.\n**Warn cases (oldest to newest):** {2}.\n**Unwarn cases (oldest to newest):** {3}.": "`ℹ **{0}** a {1} avertissements.\n**Avertissements (plus récent au plus ancien):** {2}.\n**Retraits d'avertissements (plus récent au plus ancien):** {3}."
   }
 }

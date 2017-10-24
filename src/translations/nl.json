@@ -268,6 +268,6 @@
     "❌ You must include a reason!": "❌ You must include a reason!",
     
     "_note33": "warns",
-    "`ℹ **{0}** has {1} warns.\n**Warn cases (newest to oldest):** {2}.\n**Unwarn cases (newest to oldest):** {3}.": "`ℹ **{0}** has {1} warns.\n**Warn cases (newest to oldest):** {2}.\n**Unwarn cases (newest to oldest):** {3}."
+    "ℹ **{0}** has {1} warns.\n**Warn cases (oldest to newest):** {2}.\n**Unwarn cases (oldest to newest):** {3}.": "`ℹ **{0}** has {1} warns.\n**Warn cases (oldest to newest):** {2}.\n**Unwarn cases (oldest to newest):** {3}."
   }
 }
