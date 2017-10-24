@@ -20,6 +20,8 @@ exports.execute = async (client, ctx) => {
   const unwarns = config.moderation.filter(o => o.VICTIM !== undefined).filter(o => o.ACTION === 'UNWARN' && o.VICTIM === member.id);
   const warncount = (warns.length - unwarns.length);
 
+  if (warncount <= 1) return ctx.channel.send(client.I18n.translate`❌ **${member.user.tag}** does not have any warn!`);
+
   ctx.channel.send(client.I18n.translate`ℹ **${member.user.tag}** has ${warncount} warns.\n**Warn cases (newest to oldest):** ${warns.sort((a, b) => a.TIME - b.TIME).map((v, i) => `\`${i + 1}\``).join(', ')}.\n**Unwarn cases (newest to oldest):** ${unwarns.sort((a, b) => a.TIME - b.TIME).map((v, i) => `\`${i + 1}\``).join(', ')}.`);
 };
 
