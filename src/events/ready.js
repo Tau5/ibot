@@ -6,7 +6,7 @@ module.exports = async (client) => {
   client.botUtil.updateGame(client);
 
   /* WE LOAD THE DASHBOARD */
-  require('../web/index')(client);
+  if (!client.app) require('../web/index')(client);
 
   /* IF SERVERS GOT INVITED */
   client.guilds.filter(g => !client.servers.has(g.id)).forEach((g) => {
