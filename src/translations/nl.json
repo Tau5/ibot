@@ -246,11 +246,6 @@
     "📤 **{0}** (ID:{1}) left the server.\n__Account creation :__ {2}\n__Roles :__ {3}.": "📤 **{0}** (ID:{1}) heeft de server verlaten.\n__Account creatie :__ {2}\n__Rollen :__ {3}.",
     "📥 **{0}** (ID:{1}) joined the server.\n__Account creation :__ {2}": "📥 **{0}** (ID:{1}) heeft de server gejoind.\n__Account creatie :__ {2}",
 
-    "_note29": "help",
-    "📚 Commands list :\n```{0}.```": "📚 Commando lijst :\n```{0}.```",
-    "❌ Em wait a minute! You're not supposed to see that.": "❌ Em wait a minute! You're not supposed to see that.",
-    "✅ Sent in DM": "✅ Sent in DM",
-
     "_note30": "moderation",
     "❌ You must include a moderation case ID!": "❌ Je moet een moderatiegeval ID aangeven!",
     "❌ The moderation case ID must be a number!": "❌ Het moderatiegeval ID moet een nummer zijn!",

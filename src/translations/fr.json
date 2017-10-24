@@ -245,11 +245,6 @@
     "⚙ **{0}** (ID:{1}) was unbanned from the server.": "⚙ **{0}** (ID:{1}) a été débanni du serveur.",
     "📤 **{0}** (ID:{1}) left the server.\n__Account creation :__ {2}\n__Roles :__ {3}.": "📤 **{0}** (ID:{1}) a quitté le serveur.\n__Date de création du compte :__ {2}\n__Rôles :__ {3}.",
     "📥 **{0}** (ID:{1}) joined the server.\n__Account creation :__ {2}": "📥 **{0}** (ID:{1}) a rejoint le serveur.\n__Date de création du compte :__ {2}",
-    
-    "_note29": "help",
-    "📚 Commands list :\n```{0}.```": "📚 Liste des commandes :\n```{0}.```",
-    "❌ Em wait a minute! You're not supposed to see that.": "❌ Attends une minute... Tu n'es pas censé voir ça.",
-    "✅ Sent in DM": "✅ Envoyé en DM !",
 
     "_note30": "moderation",
     "❌ You must include a moderation case ID!": "❌ Vous devez inclure un ID de modération !",
