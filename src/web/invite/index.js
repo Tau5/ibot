@@ -15,4 +15,3 @@ module.exports = (client) => {
 
   return router;
 };
-
