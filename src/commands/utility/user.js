@@ -37,7 +37,7 @@ exports.execute = async (client, ctx) => {
 
   let lastactive = client.I18n.translate`No information`;
   if (client.lastactive.has(member.id)) {
-    lastactive = require('time-ago')().ago(new Date(client.lastactive.get(member.id)));
+    lastactive = require('time-ago')().ago(client.lastactive.get(member.id));
     if (lastactive.includes('ms')) lastactive = client.I18n.translate`Less than a second ago.`;
   }
 

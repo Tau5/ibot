@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return no-param-reassign */
 module.exports = async (client, ctx) => {
-  client.lastactive.set(ctx.author.id, new Date().getTime());
+  client.lastactive.set(ctx.author.id, Date.now());
 
   /* SECURITY */
   if (ctx.author.bot || !ctx.guild) return;
