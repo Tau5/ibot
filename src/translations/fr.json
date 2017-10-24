@@ -265,6 +265,9 @@
     "_note32": "reason",
     "❌ The reason has been changed in the moderation part but the message has not been found!": "❌ La raison a été changée dans le fichier de modération mais le message n'a pas été trouvé !",
     "✅ Reason changed for case {0}!": "✅ Raison modifiée pour le cas n°{0}!",
-    "❌ You must include a reason!": "❌ Vous devez inclure une raison !"
+    "❌ You must include a reason!": "❌ Vous devez inclure une raison !",
+    
+    "_note33": "warns",
+    "`ℹ **{0}** has {1} warns.\n**Warn cases (newest to oldest):** {2}.\n**Unwarn cases (newest to oldest):** {3}.": "`ℹ **{0}** a {1} avertissements.\n**Avertissements (plus récent au plus ancien):** {2}.\n**Retraits d'avertissements (plus récent au plus ancien):** {3}."
   }
 }
