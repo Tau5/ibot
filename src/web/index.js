@@ -95,6 +95,7 @@ module.exports = (client) => {
     .use('/user', returnNoWWW, checkAuth, updateSession, require('../web/user')(client))
     .use('/server', returnNoWWW, checkAuth, updateSession, require('../web/server')(client))
     .use('/invite', returnNoWWW, checkAuth, updateSession, require('../web/invite')(client))
+    .use('/commands', returnNoWWW, checkAuth, updateSession, require('../web/commands')(client))
     .use('*', (req, res) => res.status(404).render('error', { code: '404', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') }));
 
   client.app.listen(client.config.dashboard.port, () => console.log(`[Express] Listening on port ${client.config.dashboard.port}`));
