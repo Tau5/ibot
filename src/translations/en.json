@@ -84,7 +84,7 @@
     
     "_note10": "unwarn",
     "❌ You must mention or specify a user to unwarn!": "❌ You must mention or specify a user to unwarn!",
-    "❌ **{0}** does not have any warns!": "❌ **{0}** does not have any warns!",
+    "❌ **{0}** does not have any warn!": "❌ **{0}** does not have any warn!",
     "📝 **{0}** unwarned **{1}** (ID:{2}). *Warns count: {3}*": "📝 **{0}** unwarned **{1}** (ID:{2}). *Warns count: {3}*",
     "✅ Unwarned **{0}**!": "✅ Unwarned **{0}**!",
 
