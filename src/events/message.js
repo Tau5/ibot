@@ -25,6 +25,9 @@ module.exports = async (client, ctx) => {
     });
   }
 
+  /* PREVENT IGNORED CHANNELS */
+  if (config.ignored_channels.indexOf(ctx.channel.id) !== -1) return;
+
   /* CLEVERBOT */
   if (client.cleverbot && (ctx.content.indexOf(`<@${client.user.id}>`) === 0 || ctx.content.indexOf(`<@!${client.user.id}>`) === 0)) {
     client.I18n.use(config.locale);

@@ -71,6 +71,26 @@ exports.execute = async (client, ctx) => {
     client.servers.set(ctx.guild.id, config);
     client.I18n.use(config.locale);
     ctx.channel.send(client.I18n.translate`✅ Locale set to \`${config.locale}\`!`);
+  } else if (type === 'ignore') {
+    /* CHANNELS FINDER */
+    let channel;
+    if (ctx.mentions.channels.size > 0) channel = ctx.mentions.channels.first();
+    else if (!subType) channel = ctx.channel;
+    else {
+      channel = client.findersUtil.findTextChannels(ctx.guild, subType);
+      if (channel.size === 0) ctx.channel.send(client.I18n.translate`❌ No channel found matching \`${subType}\`!`);
+      else channel = channel.first();
+    }
+
+    if (config.ignored_channels.indexOf(channel.id) === -1) {
+      config.ignored_channels.push(channel.id);
+      client.servers.set(ctx.guild.id, config);
+      ctx.channel.send(client.I18n.translate`✅ ${channel.toString()} will now be ignored!`);
+    } else {
+      config.ignored_channels.splice(config.ignored_channels.indexOf(channel.id), 1);
+      client.servers.set(ctx.guild.id, config);
+      ctx.channel.send(client.I18n.translate`✅ ${channel.toString()} will now be listened!`);
+    }
   }
 };
 

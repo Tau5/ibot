@@ -59,6 +59,8 @@
     "❌ The prefix `{0}` is not in the custom prefixes list!": "❌ De prefix `{0}` is niet in de lijst met zelfgemaakte prefixes!",
     "✅ Custom prefix `{0}` added!": "✅ Zelfgemaakte prefix `{0}` toegevoegd!",
     "✅ Custom prefix `{0}` removed!": "✅ Zelfgemaakte prefix `{0}` verwijderd!",
+    "✅ {0} will now be ignored!": "✅ {0} will now be ignored!",
+    "✅ {0} will now be listened!": "✅ {0} will now be listened!",
 
     "_note7": "hackban",
     "❌ You must specify a user ID to ban!": "❌ Je moet een gebruikersid aangeven om te bannen!",
