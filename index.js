@@ -13,7 +13,7 @@ const { readdir } = require('fs');
 /* ERRORS HANDLING */
 process.on('unhandledRejection', (reason) => {
   if (reason.name === 'DiscordAPIError') return;
-  else console.error(reason);
+  console.error(reason);
 });
 process.on('uncaughtException', console.error);
 
