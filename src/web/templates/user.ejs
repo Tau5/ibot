@@ -15,10 +15,11 @@
         <h1 class="mbr-section-title mbr-bold mbr-fonts-style text-center"><strong><%= user.tag %></strong></h1>
         <hr>
         <p class="text-center">
-          <img src="https://canary.discordapp.com/assets/c64559ce7db12f6dea3404fc44e42b96.svg" height="20px" width="20px"><strong>ID:</strong> <%= user.id %> <img src="<%= user.bot ? 'https://cdn.discordapp.com/emojis/334859813915983872.png' : 'https://canary.discordapp.com/assets/1223c2e358973af4766acf976e941520.svg' %>" width="20px" height="20px" alt="<%= user.bot ? '[Bot]' : '[Human]' %>"> <br>
-          <img src="https://canary.discordapp.com/assets/3511cfe60e427f37d59c07548c8a3c8e.svg" height="20px" width="20px"><strong>Creation date:</strong> <%= user.createdAt.toUTCString() %><br>
-          <img src="https://canary.discordapp.com/assets/e0bbe23c466e33530baf918b9634c4d3.svg" height="20px" width="20px"><strong>Last active:</strong> <%= lastactive %><br>
-          <img src="https://canary.discordapp.com/assets/520ae4acfffdaebc3b15af5dabd5173c.svg" height="20px" width="20px"><strong>Special ranks:</strong> <% if (user.avatar.startsWith('a_')) { %><img src="https://cdn.discordapp.com/emojis/334859814566101004.png" height="20px"> Discord Nitro<% } else { %>None<% } %>
+          <img src="https://canary.discordapp.com/assets/c64559ce7db12f6dea3404fc44e42b96.svg" height="20px" width="20px"> <strong>ID:</strong> <%= user.id %> <img src="<%= user.bot ? 'https://cdn.discordapp.com/emojis/334859813915983872.png' : 'https://canary.discordapp.com/assets/1223c2e358973af4766acf976e941520.svg' %>" width="20px" height="20px" alt="<%= user.bot ? '[Bot]' : '[Human]' %>"><br><br>
+          <img src="https://canary.discordapp.com/assets/3511cfe60e427f37d59c07548c8a3c8e.svg" height="20px" width="20px"> <strong>Creation date:</strong> <%= user.createdAt.toUTCString() %><br><br>
+          <img src="https://canary.discordapp.com/assets/e0bbe23c466e33530baf918b9634c4d3.svg" height="20px" width="20px"> <strong>Last active:</strong> <%= lastactive %><br><br>
+          <img src="https://canary.discordapp.com/assets/520ae4acfffdaebc3b15af5dabd5173c.svg" height="20px" width="20px"> <strong>Special ranks:</strong> <% if (user.avatar.startsWith('a_')) { %><img src="https://cdn.discordapp.com/emojis/334859814566101004.png" height="20px"> Discord Nitro<% } else { %>None<% } %><br><br>
+          <img src="https://canary.discordapp.com/assets/14a28558668a65318bd7812da7d443bf.svg" height="20px" width="20px"> <strong>Presence:</strong> <% user.presence.status === undefined ? `Unknown` : user.presence.status %> <% user.presence.activity ? `(${user.presence.activity.name})` : undefined %>
         </p>
       </div>
     </div>
