@@ -223,6 +223,7 @@
     "❌ You do not have the permission to execute this command!": "❌ Vous n'avez pas l'autorisation d'exécuter cette commande !",
     "❌ You do not have the permission `{0}`!": "❌ Vous n'avez pas la permission `{0}`!",
     "❌ I do not have the permission `{0}`!": "❌ Il me manque la permission `{0}`!",
+    "⚠ Calm down!": "⚠ Calme-toi !",
 
     "_note26": "checkdbans",
     "❌ An error has occured!": "❌ Une erreur est survenue !",
