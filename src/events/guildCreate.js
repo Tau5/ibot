@@ -33,6 +33,7 @@ module.exports = async (client, guild) => {
     custom_prefixes: [],
     moderation: [],
     imported_tags: [],
+    ignored_channels: [],
     timezone: 'UTC',
     locale: 'en',
   };

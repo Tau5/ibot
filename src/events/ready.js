@@ -23,6 +23,7 @@ module.exports = async (client) => {
       custom_prefixes: [],
       moderation: [],
       imported_tags: [],
+      ignored_channels: [],
       timezone: 'UTC',
       locale: 'en',
     };
