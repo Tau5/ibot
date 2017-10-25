@@ -42,6 +42,7 @@ client.stats = new Enmap({ provider: new Level({ name: 'stats' }) });
 /* COMMANDS */
 client.commands = new Enmap();
 client.aliases = new Enmap();
+client.cooldown = new Set();
 
 /* HANDLER */
 // Helpers

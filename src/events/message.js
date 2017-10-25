@@ -32,6 +32,9 @@ module.exports = async (client, ctx) => {
   if (client.cleverbot && (ctx.content.indexOf(`<@${client.user.id}>`) === 0 || ctx.content.indexOf(`<@!${client.user.id}>`) === 0)) {
     client.I18n.use(config.locale);
 
+    /* COOLDOWN */
+    if (client.cooldown.has(ctx.author.id)) return ctx.channel.send(client.I18n.translate`⚠ Calm down!`);
+
     /* BLACKLIST */
     const blacklist = client.config.blacklist.users[ctx.author.id];
     if (blacklist) {
@@ -55,6 +58,9 @@ module.exports = async (client, ctx) => {
 
         try {
           const response = JSON.parse(body);
+
+          client.cooldown.add(ctx.author.id);
+          setTimeout(() => client.cooldown.delete(ctx.author.id), 2000);
 
           if (response.status) {
             ctx.channel.send(`❌ \`\`\`${response.status}\`\`\``);
@@ -94,6 +100,9 @@ module.exports = async (client, ctx) => {
   if (cmd) {
     client.I18n.use(config.locale);
 
+    /* COOLDOWN */
+    if (client.cooldown.has(ctx.author.id)) return ctx.channel.send(client.I18n.translate`⚠ Calm down!`);
+
     /* BLACKLIST */
     const blacklist = client.config.blacklist.users[ctx.author.id];
     if (blacklist) {
@@ -115,7 +124,10 @@ module.exports = async (client, ctx) => {
       if (!commandsRan) commandsRan = 0;
       commandsRan = parseInt(commandsRan) + 1;
       client.stats.set('cmdsran', commandsRan);
+      client.cooldown.add(ctx.author.id);
       cmd.execute(client, ctx);
+
+      setTimeout(() => client.cooldown.delete(ctx.author.id), 2000);
     } catch (e) {
       ctx.channel.send(client.I18n.translate`❌ An unhandled error has occured! I told my dad about it, don't worry and... it'll be fixed soon!`);
       require('fs').appendFile('./logs/errors.txt', `----------\r\n${require('moment-timezone')().tz('UTC').format('DD/MM/YYYY HH:mm:ss')}] Author: ${ctx.author.tag} (ID:${ctx.author.id}) - Guild: ${ctx.guild.name} (ID:${ctx.guild.id}) - Channel: ${ctx.channel.name} (ID:${ctx.channel.id}) - Command: ${command}\r\n${ctx.cleanContent}\r\n===RETURNED ERROR===\n${e}\r\n`, err => console.error(err));
