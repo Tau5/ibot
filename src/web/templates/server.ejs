@@ -44,8 +44,8 @@
               <thead>
                 <tr>
                   <th class="text-center" colspan="3">Channels</th>
-                  <th class="text-center">Messages</th>
-                  <th class="text-center" colspan="4">Switches</th>
+                  <th class="text-center" colspan="2">Messages</th>
+                  <th class="text-center" colspan="5">Switches</th>
                   <th class="text-center" colspan="2">Misc</th>
                 </tr>
               </thead>
@@ -55,7 +55,9 @@
                   <th class="text-center">Serverlog</th>
                   <th class="text-center">Modlog</th>
                   <th class="text-center">Welcome</th>
+                  <th class="text-center">Leaving</th>
                   <th class="text-center">Welcome</th>
+                  <th class="text-center">Leaving</th>
                   <th class="text-center">Serverlog</th>
                   <th class="text-center">Modlog</th>
                   <th class="text-center">Clear backup</th>
@@ -89,11 +91,18 @@
                   </td>
 
                   <td><textarea rows="3" class="form-control" name="message_welcome"><%= (config.message_welcome !== 'NOT_SET' ? config.message_welcome : 'No message set') %></textarea></td>
+                  <td><textarea rows="3" class="form-control" name="message_leaving"><%= (config.message_leaving !== 'NOT_SET' ? config.message_leaving : 'No message set') %></textarea></td>
 
                   <td>
                     <select name="switch_welcome" aria-controls="config" class="form-control form-control-sm">
                       <option value="1" <% if (config.switch_welcome === 1) { %>selected<% } %>>Enabled</option>
                       <option value="0" <% if (config.switch_welcome === 0) { %>selected<% } %>>Disabled</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select name="switch_leaving" aria-controls="config" class="form-control form-control-sm">
+                      <option value="1" <% if (config.switch_leaving === 1) { %>selected<% } %>>Enabled</option>
+                      <option value="0" <% if (config.switch_leaving === 0) { %>selected<% } %>>Disabled</option>
                     </select>
                   </td>
                   <td>

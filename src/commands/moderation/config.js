@@ -23,7 +23,7 @@ exports.execute = async (client, ctx) => {
 
     ctx.channel.send(client.I18n.translate`✅ Channel \`${subType}\` set to ${channel.toString()}!`);
   } else if (type === 'message') {
-    const validTypes = ['welcome'];
+    const validTypes = ['welcome', 'leaving'];
     if (validTypes.indexOf(subType) === -1) return ctx.channel.send(client.I18n.translate`❌ The message type you provided isn't valid! It must be welcome.`);
     if (value.length > 1500) return ctx.channel.send(client.I18n.translate`❌ The length of the value may not exceed 1500 caracters!`);
 
@@ -32,7 +32,7 @@ exports.execute = async (client, ctx) => {
 
     ctx.channel.send(client.I18n.translate`✅ Message \`${subType}\` set to \`\`\`${value}\`\`\``);
   } else if (type === 'switch') {
-    const validTypes = ['welcome', 'serverlog', 'modlog', 'clearbackup'];
+    const validTypes = ['welcome', 'leaving', 'serverlog', 'modlog', 'clearbackup'];
     if (validTypes.indexOf(subType) === -1) return ctx.channel.send(client.I18n.translate`❌ The switch type you provided isn't valid! It must be welcome, serverlog, modlog or clearbackup.`);
 
     if (subType !== 'clearbackup' && !ctx.guild.channels.has(config[`channel_${subType}`])) return ctx.channel.send(client.I18n.translate`❌ Before switching it you must define its channel!`);
