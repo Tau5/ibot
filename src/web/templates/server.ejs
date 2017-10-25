@@ -35,10 +35,10 @@
     <% if (user.id === '205427654042583040' || (guild.members.has(user.id) && guild.members.get(user.id).hasPermission('MANAGE_GUILD'))) { %>
     <!-- Configuration -->
     <div class="jumbotron jumbotron-fluid text-center">
-      <div class="container">
+      <div class="container-fluid">
         <form action="/server/update/<%= guild.id %>" method="POST">
           <h1 class="mbr-section-title mbr-bold mbr-fonts-style"><strong>CONFIGURATION</strong></h1>
-          <hr>
+          <hr class="fluid">
           <div class="table-responsive">
             <table name="config" class="table table-bordered">
               <thead>
