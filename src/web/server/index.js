@@ -20,6 +20,7 @@ module.exports = (client) => {
       custom_prefixes: config.custom_prefixes,
       moderation: config.moderation,
       imported_tags: config.imported_tags,
+      ignored_channels: config.ignored_channels,
       timezone: req.body.timezone,
       locale: req.body.locale,
     };
