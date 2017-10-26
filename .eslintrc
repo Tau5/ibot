@@ -10,6 +10,7 @@
         "no-param-reassign": 0,
         "radix": 0,
         "no-eval": 0,
-        "prefer-destructuring": 0
+        "prefer-destructuring": 0,
+        "max-len": 0
     }
 }
