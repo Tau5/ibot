@@ -4,11 +4,10 @@ module.exports = async (client, guild) => {
   if (blacklist) {
     /* LOGGING */
     console.log(`[Alert] Blacklisted guild ${guild.name} (ID:${guild.id}) got invited!`);
-    
+
     /* WE INFORM THE OWNER AND LEAVE */
-    guild.owner.user.send(`⚠ The guild you are owner of (**${guild.name}**) is blacklisted and iBot is not allowed to come in.\n__Given reason :__ ${blacklist.reason} - __Time :__ ${blacklist.time}`);
-    await guild.leave();
-    return;
+    await guild.owner.user.send(`⚠ The guild you are owner of (**${guild.name}**) is blacklisted and iBot is not allowed to come in.\n__Given reason :__ ${blacklist.reason} - __Time :__ ${blacklist.time}`);
+    return guild.leave();
   }
 
   /* LOGGING */

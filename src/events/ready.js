@@ -2,8 +2,9 @@ module.exports = async (client) => {
   /* LOGGING */
   console.log(`[Bot] Logged in as ${client.user.username}! On ${client.guilds.size} servers and ${client.users.size} users.`);
 
-  /* GAME */
+  /* GAME & STATS */
   client.botUtil.updateGame(client);
+  client.botUtil.updateStatsDiscordBotsOrg(client);
 
   /* WE LOAD THE DASHBOARD */
   if (!client.app) require('../web/index')(client);
