@@ -17,9 +17,9 @@ exports.execute = async (client, ctx) => {
 
     const { MessageEmbed } = require('discord.js');
     const embed = new MessageEmbed()
-      .addField(client.I18n.translate`Title`, (!content.items[0].title || content.items[0].title >= 1024) ? content.items[0].title : 'None')
-      .addField(client.I18n.translate`Description`, (!content.items[0].snippet || content.items[0].snippet >= 1024) ? content.items[0].snippet : 'None')
-      .addField(client.I18n.translate`Link`, (!content.items[0].link || content.items[0].link >= 1024) ? content.items[0].link : 'None')
+      .addField(client.I18n.translate`Title`, (!content.items[0].title || content.items[0].title >= 1024) ? 'None' : content.items[0].title)
+      .addField(client.I18n.translate`Description`, (!content.items[0].snippet || content.items[0].snippet >= 1024) ? 'None' : content.items[0].snippet)
+      .addField(client.I18n.translate`Link`, (!content.items[0].link || content.items[0].link >= 1024) ? 'None' : content.items[0].link)
       .setColor(ctx.guild.me.displayHexColor)
       .setThumbnail(image)
       .setFooter(client.I18n.translate`All information provided by Google Search API.`, 'https://cdn.pixabay.com/photo/2015/12/11/11/43/google-1088004_960_720.png');
