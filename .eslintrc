@@ -11,6 +11,9 @@
         "radix": 0,
         "no-eval": 0,
         "prefer-destructuring": 0,
-        "max-len": 0
+        "max-len": 0,
+        "no-plusplus": 0,
+        "no-restricted-syntax": 0,
+        "no-loop-func": 0
     }
 }
