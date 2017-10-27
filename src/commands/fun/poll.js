@@ -59,10 +59,12 @@ exports.execute = async (client, ctx) => {
   } */
 
   const options = [];
+  let finishedTitle = false;
   let title = '';
   for (const entry of args) {
     console.log('Processing... ' + entry);
     if (entry.startsWith('-')) {
+      finishedTitle = true;
       const filter = flags.filter(f => f.flag === entry.substring(1).toLowerCase());
       if (filter.length > 0) {
         const current = filter[0].flag;
@@ -71,7 +73,7 @@ exports.execute = async (client, ctx) => {
         });
       }
     } else {
-      if (options.length === 0) { // eslint-disable-line no-lonely-if
+      if (options.length === 0 && finishedTitle === false) { // eslint-disable-line no-lonely-if
         if (title.length === 0) title = entry;
         else title += ` ${entry}`;
       } else {
