@@ -159,59 +159,70 @@
       </div>
     </div>
 
-    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Channels</a>
-      <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Messages</a>
-      <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Switches</a>
-      <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Misc</a>
-    </div>
-    <div class="tab-content" id="v-pills-tabContent">
-      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-        <p>
-          <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> Welcome channel:
-          <select name="channel_welcome" aria-controls="config" class="form-control form-control-sm">
-            <option value="NOT_SET">None</option>
-            <% guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
-            <option value="<%= c.id %>" <% if (config.channel_welcome === c.id) { %>selected<% } %>>#<%= c.name %></option>
-            <% }); %>
-          </select>
-        </p>
-
-        <p>
-          <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> Serverlog channel:
-          <select name="channel_serverlog" aria-controls="config" class="form-control form-control-sm">
-            <option value="NOT_SET">None</option>
-            <% guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
-            <option value="<%= c.id %>" <% if (config.channel_serverlog === c.id) { %>selected<% } %>>#<%= c.name %></option>
-            <% }); %>
-          </select>
-        </p>
-
-        <p>
-          <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> Modlog channel:
-          <select name="channel_modlog" aria-controls="config" class="form-control form-control-sm">
-            <option value="NOT_SET">None</option>
-            <% guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
-            <option value="<%= c.id %>" <% if (config.channel_modlog === c.id) { %>selected<% } %>>#<%= c.name %></option>
-            <% }); %>
-          </select>
-        </p>
-      </div>
-      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-        <div class="row">
-          <div class="text-center">
-            <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> **Welcome message:**
-            <textarea rows="3" class="form-control" name="message_welcome"><%= (config.message_welcome !== 'NOT_SET' ? config.message_welcome : 'No message set') %></textarea>
-          </div>
-          <div class="text-center">
-            <img src="https://discordapp.com/assets/4c231cb7c6f5bb352261a2e0bfa63fb1.svg" height="20px" width="20px">
-            <textarea rows="3" class="form-control" name="message_leaving"><%= (config.message_leaving !== 'NOT_SET' ? config.message_leaving : 'No message set') %></textarea>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Channels</a>
+          <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Messages</a>
+          <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Switches</a>
+          <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Misc</a>
+        </div>
+        <div class="tab-content" id="v-pills-tabContent">
+          <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+          <p>
+            <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> Welcome channel:
+            <select name="channel_welcome" aria-controls="config" class="form-control form-control-sm">
+              <option value="NOT_SET">None</option>
+              <% guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
+              <option value="<%= c.id %>" <% if (config.channel_welcome === c.id) { %>selected<% } %>>#<%= c.name %></option>
+              <% }); %>
+            </select>
+          </p>
+        
+          <p>
+            <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> Serverlog channel:
+            <select name="channel_serverlog" aria-controls="config" class="form-control form-control-sm">
+              <option value="NOT_SET">None</option>
+              <% guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
+              <option value="<%= c.id %>" <% if (config.channel_serverlog === c.id) { %>selected<% } %>>#<%= c.name %></option>
+              <% }); %>
+            </select>
+          </p>
+        
+          <p>
+            <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> Modlog channel:
+            <select name="channel_modlog" aria-controls="config" class="form-control form-control-sm">
+              <option value="NOT_SET">None</option>
+              <% guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
+              <option value="<%= c.id %>" <% if (config.channel_modlog === c.id) { %>selected<% } %>>#<%= c.name %></option>
+              <% }); %>
+            </select>
+          </p>
+        </div>
+        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+          <div class="row">
+            <div class="text-center">
+              <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> **Welcome message:**
+              <textarea rows="3" class="form-control" name="message_welcome"><%= (config.message_welcome !== 'NOT_SET' ? config.message_welcome : 'No message set') %></textarea>
+            </div>
+            <div class="text-center">
+              <img src="https://discordapp.com/assets/4c231cb7c6f5bb352261a2e0bfa63fb1.svg" height="20px" width="20px">
+              <textarea rows="3" class="form-control" name="message_leaving"><%= (config.message_leaving !== 'NOT_SET' ? config.message_leaving : 'No message set') %></textarea>
+            </div>
           </div>
         </div>
+        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+          <div class="text-center">
+            <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> <b>Welcome switch:</b> <select name="switch_welcome" aria-controls="config" class="form-control form-control-sm"><option value="1" <% if (config.switch_welcome === 1) { %>selected<% } %>>Enabled</option><option value="0" <% if (config.switch_welcome === 0) { %>selected<% } %>>Disabled</option></select><br>
+            <img src="https://discordapp.com/assets/8367785ae4d4334f1f3371e239059ca1.svg" height="20px" width="20px"> <b>Serverlog switch:</b> <select name="switch_serverlog" aria-controls="config" class="form-control form-control-sm"><option value="1" <% if (config.switch_serverlog === 1) { %>selected<% } %>>Enabled</option><option value="0" <% if (config.switch_serverlog === 0) { %>selected<% } %>>Disabled</option></select><br>
+            <img src="https://cdn.discordapp.com/emojis/317093864487780352.png" height="20px" width="20px"> <b>Modlog switch:</b> <select name="switch_modlog" aria-controls="config" class="form-control form-control-sm"><option value="1" <% if (config.switch_modlog === 1) { %>selected<% } %>>Enabled</option><option value="0" <% if (config.switch_modlog === 0) { %>selected<% } %>>Disabled</option></select><br>
+            <img src="https://discordapp.com/assets/ba21bae0723b6477627f456c587de6c4.svg" height="20px" width="20px"> <b>Clear-backup switch:</b> <select name="switch_clearbackup" aria-controls="config" class="form-control form-control-sm"><option value="1" <% if (config.switch_clearbackup === 1) { %>selected<% } %>>Enabled</option><option value="0" <% if (config.switch_clearbackup === 0) { %>selected<% } %>>Disabled</option></select>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
       </div>
-      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
-      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
     </div>
+    
 
     <!-- Moderation cases -->
     <div class="jumbotron jumbotron-fluid text-center">
