@@ -61,15 +61,16 @@ exports.execute = async (client, ctx) => {
   const options = [];
   let finishedTitle = false;
   let title = '';
-  for (const entry of args) {
+  for (let i = 0; i < args.length; i++) {
     console.log('Processing... ' + entry);
-    if (entry.startsWith('-')) {
-      finishedTitle = true;
-      const filter = flags.filter(f => f.flag === entry.substring(1).toLowerCase());
+    if (args[i].startsWith('-')) {
+      const filter = flags.filter(f => f.flag === args[i].substring(1).toLowerCase());
       if (filter.length > 0) {
+        finishedTitle = true;
         const current = filter[0].flag;
         options.push({
           flag: current,
+          value: '',
         });
       } else {
         ctx.channel.send('Error!');
@@ -77,14 +78,14 @@ exports.execute = async (client, ctx) => {
       }
     } else {
       if (options.length === 0 && finishedTitle === false) { // eslint-disable-line no-lonely-if
-        if (title.length === 0) title = entry;
-        else title += ` ${entry}`;
+        if (title.length === 0) title += args[i];
+        else title += ` ${args[i]}`;
       } else {
         const index = options.length - 1;
-        if (!options[index].value) {
-          options[index].value = entry;
+        if (options[index].value.length === 0) {
+          options[index].value = args[i];
         } else {
-          options[index].value += ` ${entry}`;
+          options[index].value += ` ${args[i]}`;
         }
       }
     }
