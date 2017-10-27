@@ -87,8 +87,9 @@ exports.execute = async (client, ctx) => {
         for (let i = 0; i < customEmotes.length; i++) {
           if (customEmotes[i].length > 6) {
             const e = customEmotes[i].split(':');
-            if (e.length !== 2) return;
-            customEmotes[i] = ctx.guild.emojis.get(e.replace('>', ''));
+            if (e.length === 2) {
+              customEmotes[i] = ctx.guild.emojis.get(e.replace('>', ''));
+            }
           }
         }
         emojis = customEmotes;
