@@ -53,6 +53,7 @@ exports.execute = async (client, ctx) => {
           out[currentFlag].raw.push(args.rawArgs[i]);
         } else {
           if (args[i] === '') return;
+          if (!out._.raw) out._.raw = [];
           out._.push(args[i]);
           out._.raw.push(args.rawArgs[i]);
         }
