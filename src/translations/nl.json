@@ -61,6 +61,7 @@
     "✅ Custom prefix `{0}` removed!": "✅ Zelfgemaakte prefix `{0}` verwijderd!",
     "✅ {0} will now be ignored!": "✅ {0} will now be ignored!",
     "✅ {0} will now be listened!": "✅ {0} will now be listened!",
+    "❌ Wrong timezone! See the dashboard for a full list of valid timezones.": "❌ Wrong timezone! See the dashboard for a full list of valid timezones.",
 
     "_note7": "hackban",
     "❌ You must specify a user ID to ban!": "❌ Je moet een gebruikersid aangeven om te bannen!",

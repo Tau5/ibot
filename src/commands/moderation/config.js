@@ -61,6 +61,7 @@ exports.execute = async (client, ctx) => {
       ctx.channel.send(client.I18n.translate`✅ Custom prefix \`${prefix}\` removed!`);
     }
   } else if (type === 'timezone') {
+    if (require('moment-timezone').tz.names().indexOf(subType) === -1) return ctx.channel.send(client.I18n.translate`❌ Wrong timezone! See the dashboard for a full list of valid timezones.`);
     config.timezone = subType;
     client.servers.set(ctx.guild.id, config);
     ctx.channel.send(client.I18n.translate`✅ Timezone set to **${subType}**!\n*Note: if you have set a wrong timezone, the UTC time will be shown instead*`);
