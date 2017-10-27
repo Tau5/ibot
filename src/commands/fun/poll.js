@@ -61,7 +61,7 @@ exports.execute = async (client, ctx) => {
   const newPollEmbed = new MessageEmbed()
     .setTitle(title)
     .setAuthor(ctx.author.username, ctx.author.displayAvatarURL())
-    .setTimestamp(Date.now());
+    .setTimestamp(new Date());
 
   for (const option of options) {
     if (option.flag === 't') {
@@ -90,6 +90,7 @@ exports.execute = async (client, ctx) => {
         .setTitle(title)
         .setColor(newMsg.embeds[0].hexColor)
         .setDescription(client.I18n.translate`${bestVote.first().emoji.toString()} won with ${bestVote.first().users.size - 1} votes!`)
+        .setTimestamp(new Date())
         .setAuthor(ctx.author.username, ctx.author.displayAvatarURL());
       ctx.channel.send({ embed: finishedPollEmbed });
     }).catch(() => ctx.channel.send(client.I18n.translate`❌ Unable to display poll results! Poll message got deleted (ID:${msg.id})`));
