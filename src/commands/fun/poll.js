@@ -1,15 +1,15 @@
 exports.execute = async (client, ctx) => {
   const flags = [
     {
-      flag: '-t',
+      flag: 't',
       name: 'time',
     },
     {
-      flag: '-e',
+      flag: 'e',
       name: 'emotes',
     },
     {
-      flag: '-c',
+      flag: 'c',
       name: 'color',
     },
   ];
