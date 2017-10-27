@@ -77,14 +77,14 @@ exports.execute = async (client, ctx) => {
     }
   }
 
-  newPollEmbed.setFooter(`${pollWillExpire} ${new Date(Date.now() + timeout).toISOString()}`);
+  newPollEmbed.setFooter(`${pollWillExpire}${new Date(Date.now() + timeout).toISOString()}`);
 
   const msg = await ctx.channel.send({ embed: newPollEmbed });
   for (const emoji of emojis) { await msg.react(emoji); } // eslint-disable-line no-await-in-loop
 
   setTimeout(async () => {
     ctx.channel.messages.fetch(msg.id).then((newMsg) => {
-      const bestVote = newMsg.reactions.sort((a, b) => a.users.size - b.users.size);
+      const bestVote = newMsg.reactions.sort((a, b) => b.users.size - a.users.size);
       if (bestVote.size === 0) return;
       const finishedPollEmbed = new MessageEmbed()
         .setTitle(title)
