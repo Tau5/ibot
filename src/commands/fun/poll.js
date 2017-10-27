@@ -96,7 +96,7 @@ exports.execute = async (client, ctx) => {
     }
   }
 
-  newPollEmbed.setFooter(`${pollWillExpire}${new Date(Date.now() + timeout).toISOString()}`);
+  newPollEmbed.setFooter(`${pollWillExpire}${require('moment-timezone')(Date.now() + timeout).tz('UTC').format('DD/MM/YYYY HH:mm:ss (UTC)')}`);
 
   const msg = await ctx.channel.send({ embed: newPollEmbed });
   for (const emoji of emojis) {
