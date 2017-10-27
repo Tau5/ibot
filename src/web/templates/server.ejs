@@ -162,13 +162,13 @@
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
         <nav class="nav nav-tabs" id="myTab" role="tablist">
-          <a class="nav-link active" id="channels-tab" data-toggle="tab" href="#channels" role="tab" aria-controls="channels" aria-selected="true">Channels</a>
-          <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Messages</a>
-          <a class="nav-link" id="switches-tab" data-toggle="tab" href="#switches" role="tab" aria-controls="switches" aria-selected="false">Switches</a>
-          <a class="nav-link" id="misc-tab" data-toggle="tab" href="#misc" role="tab" aria-controls="misc" aria-selected="false">Misc</a>
+          <a class="nav-item nav-link active" id="channels-tab" data-toggle="tab" href="#channels" role="tab" aria-controls="channels" aria-selected="true">Channels</a>
+          <a class="nav-item nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Messages</a>
+          <a class="nav-item nav-link" id="switches-tab" data-toggle="tab" href="#switches" role="tab" aria-controls="switches" aria-selected="false">Switches</a>
+          <a class="nav-item nav-link" id="misc-tab" data-toggle="tab" href="#misc" role="tab" aria-controls="misc" aria-selected="false">Misc</a>
         </nav>
         <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="channels-tab" role="tabpanel" aria-labelledby="v-pills-home-tab">
+          <div class="tab-pane fade show active" id="channels-tab" role="tabpanel" aria-labelledby="channels-tab">
             <p>
               <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> <b>Welcome channel:</b>
               <select name="channel_welcome" aria-controls="config" class="form-control form-control-sm">
@@ -200,7 +200,7 @@
             </p>
           </div>
         </div>
-        <div class="tab-pane fade" id="messages-tab" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+        <div class="tab-pane fade" id="messages-tab" role="tabpanel" aria-labelledby="messages-tab">
           <div class="row">
             <div class="text-center">
               <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> **Welcome message:**
@@ -212,7 +212,7 @@
             </div>
           </div>
         </div>
-        <div class="tab-pane fade" id="switches-tab" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+        <div class="tab-pane fade" id="switches-tab" role="tabpanel" aria-labelledby="switches-tab">
           <div class="text-center">
             <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> <b>Welcome switch:</b> <select name="switch_welcome" aria-controls="config" class="form-control form-control-sm"><option value="1" <% if (config.switch_welcome === 1) { %>selected<% } %>>Enabled</option><option value="0" <% if (config.switch_welcome === 0) { %>selected<% } %>>Disabled</option></select><br>
             <img src="https://discordapp.com/assets/8367785ae4d4334f1f3371e239059ca1.svg" height="20px" width="20px"> <b>Serverlog switch:</b> <select name="switch_serverlog" aria-controls="config" class="form-control form-control-sm"><option value="1" <% if (config.switch_serverlog === 1) { %>selected<% } %>>Enabled</option><option value="0" <% if (config.switch_serverlog === 0) { %>selected<% } %>>Disabled</option></select><br>
@@ -220,7 +220,7 @@
             <img src="https://discordapp.com/assets/ba21bae0723b6477627f456c587de6c4.svg" height="20px" width="20px"> <b>Clear-backup switch:</b> <select name="switch_clearbackup" aria-controls="config" class="form-control form-control-sm"><option value="1" <% if (config.switch_clearbackup === 1) { %>selected<% } %>>Enabled</option><option value="0" <% if (config.switch_clearbackup === 0) { %>selected<% } %>>Disabled</option></select>
           </div>
         </div>
-        <div class="tab-pane fade" id="misc-tab" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+        <div class="tab-pane fade" id="misc-tab" role="tabpanel" aria-labelledby="misc-tab">...</div>
       </div>
     </div>
     
