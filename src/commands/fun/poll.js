@@ -99,7 +99,11 @@ exports.execute = async (client, ctx) => {
   newPollEmbed.setFooter(`${pollWillExpire}${new Date(Date.now() + timeout).toISOString()}`);
 
   const msg = await ctx.channel.send({ embed: newPollEmbed });
-  for (const emoji of emojis) { await msg.react(emoji.id); } // eslint-disable-line no-await-in-loop
+  for (const emoji of emojis) { // eslint-disable-line no-await-in-loop
+    console.log(emoji);
+    if (typeof emoji === 'object') await react(emoji.id);
+    else await react(emoji);
+  }
 
   setTimeout(async () => {
     ctx.channel.messages.fetch(msg.id).then((newMsg) => {
