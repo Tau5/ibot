@@ -90,8 +90,8 @@ exports.execute = async (client, ctx) => {
       let description = client.I18n.translate`${bestVote.first().emoji.toString()} won with ${bestVote.first().users.size - 1} votes!`;
 
       const ties = bestVote.filter(reaction => reaction.users.size === bestVote.first().users.size);
-      if (ties) {
-        description = client.I18n.translate`It was a tie between ${ties.map(r => r.emoji.toString()).join(' - ')}! Each got ${bestVote.first().users.size -1} votes.`;
+      if (ties.size > 1) {
+        description = client.I18n.translate`It was a tie between ${ties.map(r => r.emoji.toString()).join(' - ')}! Each got ${bestVote.first().users.size - 1} votes.`;
       }
 
       const finishedPollEmbed = new MessageEmbed()
