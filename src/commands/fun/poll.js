@@ -79,6 +79,7 @@ exports.execute = async (client, ctx) => {
     }
   }
 
+  console.log(options);
   const inspected = require('util').inspect(options);
   ctx.channel.send(inspected, { code: 'js' });
 };
