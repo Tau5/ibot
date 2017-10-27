@@ -15,7 +15,8 @@ exports.execute = async (client, ctx) => {
   ];
 
   const args = ctx.args;
-  let out = {
+
+  /* let out = {
     _: [],
   };
   let currentFlag = '';
@@ -55,9 +56,29 @@ exports.execute = async (client, ctx) => {
         }
       }
     }
+  } */
+
+  const options = [];
+  for (const entry of args) {
+    if (entry.startsWith('-')) {
+      const filter = flags.filter(f => f.flag === entry.substring(1).toLowerCase());
+      if (filter.length > 0) {
+        const current = filter[0].flag;
+        options.push({
+          flag: current,
+        });
+      }
+    } else {
+      const index = options.length - 1;
+      if (!options[index].value) {
+        options[index].value = entry;
+      } else {
+        options[index].value += ` ${entry}`;
+      }
+    }
   }
 
-  const inspected = require('util').inspect(out);
+  const inspected = require('util').inspect(options);
   ctx.channel.send(inspected, { code: 'js' });
 };
 
