@@ -59,6 +59,7 @@ exports.execute = async (client, ctx) => {
   } */
 
   const options = [];
+  let title = '';
   for (const entry of args) {
     if (entry.startsWith('-')) {
       const filter = flags.filter(f => f.flag === entry.substring(1).toLowerCase());
@@ -69,12 +70,16 @@ exports.execute = async (client, ctx) => {
         });
       }
     } else {
-      if (options.length === 0) return;
-      const index = options.length - 1;
-      if (!options[index].value) {
-        options[index].value = entry;
+      if (options.length === 0) { // eslint-disable-line no-lonely-if
+        if (title.length === 0) title = entry;
+        else title += ` ${entry}`;
       } else {
-        options[index].value += ` ${entry}`;
+        const index = options.length - 1;
+        if (!options[index].value) {
+          options[index].value = entry;
+        } else {
+          options[index].value += ` ${entry}`;
+        }
       }
     }
   }
