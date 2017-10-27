@@ -101,8 +101,8 @@ exports.execute = async (client, ctx) => {
   const msg = await ctx.channel.send({ embed: newPollEmbed });
   for (const emoji of emojis) { // eslint-disable-line no-await-in-loop
     console.log(emoji);
-    if (typeof emoji === 'object') await react(emoji.id);
-    else await react(emoji);
+    if (typeof emoji === 'object') await ctx.react(emoji.id);
+    else await ctx.react(emoji);
   }
 
   setTimeout(async () => {
