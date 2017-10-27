@@ -199,27 +199,25 @@
               </select>
             </p>
           </div>
-        <div class="tab-pane fade" id="messages" role="tabpanel" aria-labelledby="messages-tab">
-          <div class="row">
-            <div class="text-center">
-              <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> **Welcome message:**
-              <textarea rows="3" class="form-control" name="message_welcome"><%= (config.message_welcome !== 'NOT_SET' ? config.message_welcome : 'No message set') %></textarea>
-            </div>
-            <div class="text-center">
-              <img src="https://discordapp.com/assets/4c231cb7c6f5bb352261a2e0bfa63fb1.svg" height="20px" width="20px">
-              <textarea rows="3" class="form-control" name="message_leaving"><%= (config.message_leaving !== 'NOT_SET' ? config.message_leaving : 'No message set') %></textarea>
+          <div class="tab-pane fade" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+            <div class="row">
+              <div class="text-center">
+                <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> <b>Welcome message:</b>
+                <textarea rows="3" class="form-control" name="message_welcome"><%= (config.message_welcome !== 'NOT_SET' ? config.message_welcome : 'No message set') %></textarea>
+                <img src="https://discordapp.com/assets/4c231cb7c6f5bb352261a2e0bfa63fb1.svg" height="20px" width="20px"> <b>Leave message:</b>
+                <textarea rows="3" class="form-control" name="message_leaving"><%= (config.message_leaving !== 'NOT_SET' ? config.message_leaving : 'No message set') %></textarea>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="tab-pane fade" id="switches" role="tabpanel" aria-labelledby="switches-tab">
-          <div class="text-center">
-            <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> <b>Welcome switch:</b> <select name="switch_welcome" aria-controls="config" class="form-control form-control-sm"><option value="1" <% if (config.switch_welcome === 1) { %>selected<% } %>>Enabled</option><option value="0" <% if (config.switch_welcome === 0) { %>selected<% } %>>Disabled</option></select><br>
-            <img src="https://discordapp.com/assets/8367785ae4d4334f1f3371e239059ca1.svg" height="20px" width="20px"> <b>Serverlog switch:</b> <select name="switch_serverlog" aria-controls="config" class="form-control form-control-sm"><option value="1" <% if (config.switch_serverlog === 1) { %>selected<% } %>>Enabled</option><option value="0" <% if (config.switch_serverlog === 0) { %>selected<% } %>>Disabled</option></select><br>
-            <img src="https://cdn.discordapp.com/emojis/317093864487780352.png" height="20px" width="20px"> <b>Modlog switch:</b> <select name="switch_modlog" aria-controls="config" class="form-control form-control-sm"><option value="1" <% if (config.switch_modlog === 1) { %>selected<% } %>>Enabled</option><option value="0" <% if (config.switch_modlog === 0) { %>selected<% } %>>Disabled</option></select><br>
-            <img src="https://discordapp.com/assets/ba21bae0723b6477627f456c587de6c4.svg" height="20px" width="20px"> <b>Clear-backup switch:</b> <select name="switch_clearbackup" aria-controls="config" class="form-control form-control-sm"><option value="1" <% if (config.switch_clearbackup === 1) { %>selected<% } %>>Enabled</option><option value="0" <% if (config.switch_clearbackup === 0) { %>selected<% } %>>Disabled</option></select>
+          <div class="tab-pane fade" id="switches" role="tabpanel" aria-labelledby="switches-tab">
+            <div class="text-center">
+              <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> <b>Welcome switch:</b> <select name="switch_welcome" aria-controls="config" class="form-control form-control-sm"><option value="1" <% if (config.switch_welcome === 1) { %>selected<% } %>>Enabled</option><option value="0" <% if (config.switch_welcome === 0) { %>selected<% } %>>Disabled</option></select><br>
+              <img src="https://discordapp.com/assets/8367785ae4d4334f1f3371e239059ca1.svg" height="20px" width="20px"> <b>Serverlog switch:</b> <select name="switch_serverlog" aria-controls="config" class="form-control form-control-sm"><option value="1" <% if (config.switch_serverlog === 1) { %>selected<% } %>>Enabled</option><option value="0" <% if (config.switch_serverlog === 0) { %>selected<% } %>>Disabled</option></select><br>
+              <img src="https://cdn.discordapp.com/emojis/317093864487780352.png" height="20px" width="20px"> <b>Modlog switch:</b> <select name="switch_modlog" aria-controls="config" class="form-control form-control-sm"><option value="1" <% if (config.switch_modlog === 1) { %>selected<% } %>>Enabled</option><option value="0" <% if (config.switch_modlog === 0) { %>selected<% } %>>Disabled</option></select><br>
+              <img src="https://discordapp.com/assets/ba21bae0723b6477627f456c587de6c4.svg" height="20px" width="20px"> <b>Clear-backup switch:</b> <select name="switch_clearbackup" aria-controls="config" class="form-control form-control-sm"><option value="1" <% if (config.switch_clearbackup === 1) { %>selected<% } %>>Enabled</option><option value="0" <% if (config.switch_clearbackup === 0) { %>selected<% } %>>Disabled</option></select>
+            </div>
           </div>
-        </div>
-        <div class="tab-pane fade" id="misc" role="tabpanel" aria-labelledby="misc-tab">...</div>
+          <div class="tab-pane fade" id="misc" role="tabpanel" aria-labelledby="misc-tab">...</div>
       </div>
     </div>
     
