@@ -34,8 +34,26 @@
 
     <% if (user.id === '205427654042583040' || (guild.members.has(user.id) && guild.members.get(user.id).hasPermission('MANAGE_GUILD'))) { %>
     <!-- Configuration -->
+    <style>
+    table caption {
+      padding: .5em 0;
+    }
+
+    @media screen and (max-width: 767px) {
+      table caption {
+        border-bottom: 1px solid #ddd;
+      }
+    }
+
+    .p {
+      text-align: center;
+      padding-top: 140px;
+      font-size: 14px;
+    }
+    </style>
+
     <div class="jumbotron jumbotron-fluid text-center">
-      <div class="container-fluid">
+      <div class="container">
         <form action="/server/update/<%= guild.id %>" method="POST">
           <h1 class="mbr-section-title mbr-bold mbr-fonts-style"><strong>CONFIGURATION</strong></h1>
           <hr class="fluid">
@@ -141,6 +159,49 @@
       </div>
     </div>
 
+    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Channels</a>
+      <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Messages</a>
+      <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Switches</a>
+      <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Misc</a>
+    </div>
+    <div class="tab-content" id="v-pills-tabContent">
+      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+        <p>
+          <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> Welcome channel:
+          <select name="channel_welcome" aria-controls="config" class="form-control form-control-sm">
+            <option value="NOT_SET">None</option>
+            <% guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
+            <option value="<%= c.id %>" <% if (config.channel_welcome === c.id) { %>selected<% } %>>#<%= c.name %></option>
+            <% }); %>
+          </select>
+        </p>
+
+        <p>
+          <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> Serverlog channel:
+          <select name="channel_serverlog" aria-controls="config" class="form-control form-control-sm">
+            <option value="NOT_SET">None</option>
+            <% guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
+            <option value="<%= c.id %>" <% if (config.channel_serverlog === c.id) { %>selected<% } %>>#<%= c.name %></option>
+            <% }); %>
+          </select>
+        </p>
+
+        <p>
+          <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> Modlog channel:
+          <select name="channel_modlog" aria-controls="config" class="form-control form-control-sm">
+            <option value="NOT_SET">None</option>
+            % guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
+            <option value="<%= c.id %>" <% if (config.channel_modlog === c.id) { %>selected<% } %>>#<%= c.name %></option>
+            <% }); %>
+          </select>
+        </p>
+      </div>
+      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
+      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+    </div>
+
     <!-- Moderation cases -->
     <div class="jumbotron jumbotron-fluid text-center">
       <div class="container">
@@ -181,6 +242,13 @@
     <script>
     $(document).ready(() => {
       $('#modcases').DataTable();
+    });
+    </script>
+
+    <script>
+    $('#myTab a').on('click', e => {
+      e.preventDefault();
+      $(this).tab('show');
     });
     </script>
 
