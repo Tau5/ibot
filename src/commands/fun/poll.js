@@ -61,7 +61,7 @@ exports.execute = async (client, ctx) => {
   let timeout = durationParser('60s');
   let emojis = ['👍', '👎'];
 
-  const { MessageEmbed } = require('discord.js');
+  const { MessageEmbed, parseEmoji } = require('discord.js');
   const newPollEmbed = new MessageEmbed()
     .setTitle(title)
     .setAuthor(ctx.author.username, ctx.author.displayAvatarURL())
@@ -82,20 +82,18 @@ exports.execute = async (client, ctx) => {
     }
 
     if (option.flag === 'e') {
-      const e = option.value.split(' ');
-      try {
-        for (let i = 0; i < e.length; i++) {
-          if (e[i].length >= 2) e[i] = e[i].split(':')[2].replace('>', '');
-        }
-      } catch (er) { return undefined; }
-      if (e.length > 0) emojis = e;
+      const array = option.value.split(' ');
+      if (array.length >= 2) {
+        for (let i = 0; i < array.length; i++) array[i] = parseEmoji(array[i]);
+        emojis = array;
+      }
     }
   }
 
   newPollEmbed.setFooter(`${pollWillExpire}${new Date(Date.now() + timeout).toISOString()}`);
 
   const msg = await ctx.channel.send({ embed: newPollEmbed });
-  for (const emoji of emojis) { await msg.react(emoji); } // eslint-disable-line no-await-in-loop
+  for (const emoji of emojis) { await msg.react(emoji.id); } // eslint-disable-line no-await-in-loop
 
   setTimeout(async () => {
     ctx.channel.messages.fetch(msg.id).then((newMsg) => {
