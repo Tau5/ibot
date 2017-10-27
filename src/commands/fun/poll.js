@@ -92,6 +92,7 @@ exports.execute = async (client, ctx) => {
             }
           }
         }
+        emojis = customEmotes;
       }
     }
   }
