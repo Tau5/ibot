@@ -5,8 +5,8 @@ exports.execute = async (client, ctx) => {
       name: 'time',
     },
     {
-      flag: 'e',
-      name: 'emotes',
+      flag: 'd',
+      name: 'description',
     },
     {
       flag: 'c',
@@ -16,53 +16,10 @@ exports.execute = async (client, ctx) => {
 
   const args = ctx.args;
 
-  /* let out = {
-    _: [],
-  };
-  let currentFlag = '';
-  for (let i = 0; i < args.length; i++) {
-    let pFlag = true;
-    if (args[i].startsWith('--')) {
-      const parser = flags.filter(f => f.name === args[i].substring(2).toLowerCase());
-      if (parser.length > 0) {
-        currentFlag = parser[0].flag;
-        out[currentFlag] = [];
-        pFlag = false;
-      }
-    } else if (args[i].startsWith('-')) {
-      const temp = args[i].substring(1);
-      const parser = flags.map(f => f.flag);
-      const oldFlag = currentFlag;
-      const oldOutput = out;
-      pFlag = false;
-
-      for (const character of temp) {
-        if (parser.indexOf(character) !== -1) {
-          currentFlag = character;
-          out[currentFlag] = [];
-        } else {
-          out = oldOutput;
-          currentFlag = oldFlag;
-          pFlag = true;
-          break;
-        }
-      }
-      if (pFlag) {
-        if (currentFlag !== '') {
-          out[currentFlag].push(args[i]);
-        } else {
-          if (args[i] === '') return;
-          out._.push(args[i]);
-        }
-      }
-    }
-  } */
-
   const options = [];
   let finishedTitle = false;
   let title = '';
   for (let i = 0; i < args.length; i++) {
-    console.log(`Processing ${args[i]}...`);
     if (args[i].startsWith('-')) {
       const filter = flags.filter(f => f.flag === args[i].substring(1).toLowerCase());
       if (filter.length > 0) {
@@ -73,8 +30,10 @@ exports.execute = async (client, ctx) => {
           value: '',
         });
       } else {
-        ctx.channel.send('Error!');
-        break;
+        if (finishedTitle === true) { // eslint-disable-line no-lonely-if
+          ctx.channel.send(`❌ Unknown argument detected: ${args[i]}.`);
+          break;
+        }
       }
     } else {
       if (options.length === 0 && finishedTitle === false) { // eslint-disable-line no-lonely-if
@@ -91,10 +50,50 @@ exports.execute = async (client, ctx) => {
     }
   }
 
-  console.log(title);
-  console.log(options);
-  const inspected = require('util').inspect(options);
-  ctx.channel.send(inspected, { code: 'js' });
+  if (!title) return ctx.channel.send(client.I18n.translate`❌ You must put a title for your poll!`);
+
+  const durationParser = require('parse-duration');
+  const pollWillExpire = client.I18n.translate`The poll expires on `;
+  let timeout = durationParser('60s');
+  let emojis = ['👍', '👎'];
+
+  const { MessageEmbed } = require('discord.js');
+  const newPollEmbed = new MessageEmbed()
+    .setTitle(title)
+    .setAuthor(ctx.author.username, ctx.author.displayAvatarURL())
+    .setTimestamp(Date.now());
+
+  for (const option of options) {
+    if (option.flag === 't') {
+      timeout = durationParser(option.value);
+    }
+
+    if (option.flag === 'd') {
+      newPollEmbed.setDescription(option.value);
+    }
+
+    if (option.flag === 'c') {
+      newPollEmbed.setColor(option.value);
+    }
+  }
+
+  newPollEmbed.setFooter(`${pollWillExpire} ${new Date(Date.now() + timeout).toISOString()}`);
+
+  const msg = await ctx.channel.send({ embed: newPollEmbed });
+  for (const emoji of emojis) { await msg.react(emoji); } // eslint-disable-line no-await-in-loop
+
+  setTimeout(async () => {
+    ctx.channel.messages.fetch(msg.id).then((newMsg) => {
+      const bestVote = newMsg.reactions.sort((a, b) => a.users.size - b.users.size);
+      if (bestVote.size === 0) return;
+      const finishedPollEmbed = new MessageEmbed()
+        .setTitle(title)
+        .setColor(newMsg.embeds[0].hexColor)
+        .setDescription(client.I18n.translate`${bestVote.first().emoji.toString()} won with ${bestVote.first().users.size - 1} votes!`)
+        .setAuthor(ctx.author.username, ctx.author.displayAvatarURL());
+      ctx.channel.send({ embed: finishedPollEmbed });
+    }).catch(() => ctx.channel.send(client.I18n.translate`❌ Unable to display poll results! Poll message got deleted (ID:${msg.id})`));
+  }, timeout);
 };
 
 exports.conf = {

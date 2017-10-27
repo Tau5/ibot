@@ -270,6 +270,13 @@
     "❌ You must include a reason!": "❌ You must include a reason!",
     
     "_note33": "warns",
-    "ℹ **{0}** has {1} warns.\nWarn cases (oldest to newest): {2}.\nUnwarn cases (oldest to newest): {3}.": "ℹ **{0}** has {1} warns.\nWarn cases (oldest to newest): {2}.\nUnwarn cases (oldest to newest): {3}."
+    "ℹ **{0}** has {1} warns.\nWarn cases (oldest to newest): {2}.\nUnwarn cases (oldest to newest): {3}.": "ℹ **{0}** has {1} warns.\nWarn cases (oldest to newest): {2}.\nUnwarn cases (oldest to newest): {3}.",
+
+    "_note34": "poll",
+    "❌ Unable to display poll results! Poll message got deleted (ID:{0})": "❌ Unable to display poll results! Poll message got deleted (ID:{0})",
+    "{0} won with {1} votes!": "{0} won with {1} votes!",
+    "The poll expires on ": "The poll expires on ",
+    "❌ You must put a title for your poll!": "❌ You must put a title for your poll!",
+    "❌ Unknown argument detected: {0}.": "❌ Unknown argument detected: {0}."
   }
 }

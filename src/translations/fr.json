@@ -270,6 +270,13 @@
     "❌ You must include a reason!": "❌ Vous devez inclure une raison !",
     
     "_note33": "warns",
-    "ℹ **{0}** has {1} warns.\nWarn cases (oldest to newest): {2}.\nUnwarn cases (oldest to newest): {3}.": "ℹ **{0}** a {1} avertissements.\nAvertissements (plus récent au plus ancien): {2}.\nRetraits d'avertissements (plus récent au plus ancien): {3}."
+    "ℹ **{0}** has {1} warns.\nWarn cases (oldest to newest): {2}.\nUnwarn cases (oldest to newest): {3}.": "ℹ **{0}** a {1} avertissements.\nAvertissements (plus récent au plus ancien): {2}.\nRetraits d'avertissements (plus récent au plus ancien): {3}.",
+
+    "_note34": "poll",
+    "❌ Unable to display poll results! Poll message got deleted (ID:{0})": "❌ Impossible d'afficher les résultats du sondage. Le message a été supprimé ! (ID:{0})",
+    "{0} won with {1} votes!": "{0} a gagné avec {1} votes !",
+    "The poll expires on ": "Le sondage expire le ",
+    "❌ You must put a title for your poll!": "❌ Vous devez définir un titre pour votre sondage !",
+    "❌ Unknown argument detected: {0}.": "❌ Argument inconnu détecté : {0}."
   }
 }
