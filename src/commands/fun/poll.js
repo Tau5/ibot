@@ -85,9 +85,11 @@ exports.execute = async (client, ctx) => {
       const customEmotes = option.value.split(' ');
       if (customEmotes.length >= 2) {
         for (let i = 0; i < customEmotes.length; i++) {
-          const e = customEmotes[i].split(':');
-          if (e.length !== 2) return;
-          customEmotes[i] = e.replace('>', '');
+          if (customEmotes[i].length > 6) {
+            const e = customEmotes[i].split(':');
+            if (e.length !== 2) return;
+            customEmotes[i] = e.replace('>', '');
+          }
         }
         emojis = customEmotes;
       }
