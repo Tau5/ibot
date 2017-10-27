@@ -175,37 +175,38 @@
             <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Misc</a>
           </li>
         </ul>
-        <div class="tab-content" id="v-pills-tabContent">
+        <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-          <p>
-            <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> Welcome channel:
-            <select name="channel_welcome" aria-controls="config" class="form-control form-control-sm">
-              <option value="NOT_SET">None</option>
-              <% guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
-              <option value="<%= c.id %>" <% if (config.channel_welcome === c.id) { %>selected<% } %>>#<%= c.name %></option>
-              <% }); %>
-            </select>
-          </p>
-        
-          <p>
-            <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> Serverlog channel:
-            <select name="channel_serverlog" aria-controls="config" class="form-control form-control-sm">
-              <option value="NOT_SET">None</option>
-              <% guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
-              <option value="<%= c.id %>" <% if (config.channel_serverlog === c.id) { %>selected<% } %>>#<%= c.name %></option>
-              <% }); %>
-            </select>
-          </p>
-        
-          <p>
-            <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> Modlog channel:
-            <select name="channel_modlog" aria-controls="config" class="form-control form-control-sm">
-              <option value="NOT_SET">None</option>
-              <% guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
-              <option value="<%= c.id %>" <% if (config.channel_modlog === c.id) { %>selected<% } %>>#<%= c.name %></option>
-              <% }); %>
-            </select>
-          </p>
+            <p>
+              <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> Welcome channel:
+              <select name="channel_welcome" aria-controls="config" class="form-control form-control-sm">
+                <option value="NOT_SET">None</option>
+                <% guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
+                <option value="<%= c.id %>" <% if (config.channel_welcome === c.id) { %>selected<% } %>>#<%= c.name %></option>
+                <% }); %>
+              </select>
+            </p>
+          
+            <p>
+              <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> Serverlog channel:
+              <select name="channel_serverlog" aria-controls="config" class="form-control form-control-sm">
+                <option value="NOT_SET">None</option>
+                <% guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
+                <option value="<%= c.id %>" <% if (config.channel_serverlog === c.id) { %>selected<% } %>>#<%= c.name %></option>
+                <% }); %>
+              </select>
+            </p>
+          
+            <p>
+              <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> Modlog channel:
+              <select name="channel_modlog" aria-controls="config" class="form-control form-control-sm">
+                <option value="NOT_SET">None</option>
+                <% guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
+                <option value="<%= c.id %>" <% if (config.channel_modlog === c.id) { %>selected<% } %>>#<%= c.name %></option>
+                <% }); %>
+              </select>
+            </p>
+          </div>
         </div>
         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
           <div class="row">
