@@ -49,13 +49,9 @@ exports.execute = async (client, ctx) => {
       if (pFlag) {
         if (currentFlag !== '') {
           out[currentFlag].push(args[i]);
-          if (!out[currentFlag].raw) out[currentFlag].raw = [];
-          out[currentFlag].raw.push(args.rawArgs[i]);
         } else {
           if (args[i] === '') return;
-          if (!out._.raw) out._.raw = [];
           out._.push(args[i]);
-          out._.raw.push(args.rawArgs[i]);
         }
       }
     }
