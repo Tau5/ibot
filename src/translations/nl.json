@@ -277,6 +277,7 @@
     "{0} won with {1} votes!": "{0} won with {1} votes!",
     "The poll expires on ": "The poll expires on ",
     "❌ You must put a title for your poll!": "❌ You must put a title for your poll!",
-    "❌ Unknown argument detected: {0}.": "❌ Unknown argument detected: {0}."
+    "❌ Unknown argument detected: {0}.": "❌ Unknown argument detected: {0}.",
+    "It was a tie between {0}! Each got {1} votes.": "It was a tie between {0}! Each got {1} votes."
   }
 }

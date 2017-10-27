@@ -277,6 +277,7 @@
     "{0} won with {1} votes!": "{0} a gagné avec {1} votes !",
     "The poll expires on ": "Le sondage expire le ",
     "❌ You must put a title for your poll!": "❌ Vous devez définir un titre pour votre sondage !",
-    "❌ Unknown argument detected: {0}.": "❌ Argument inconnu détecté : {0}."
+    "❌ Unknown argument detected: {0}.": "❌ Argument inconnu détecté : {0}.",
+    "It was a tie between {0}! Each got {1} votes.": "C'est une égalité entre {0} ! Chacun ont reçu {1} votes."
   }
 }

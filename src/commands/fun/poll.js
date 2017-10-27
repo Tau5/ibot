@@ -55,7 +55,7 @@ exports.execute = async (client, ctx) => {
   const durationParser = require('parse-duration');
   const pollWillExpire = client.I18n.translate`The poll expires on `;
   let timeout = durationParser('60s');
-  let emojis = ['👍', '👎'];
+  const emojis = ['👍', '👎'];
 
   const { MessageEmbed } = require('discord.js');
   const newPollEmbed = new MessageEmbed()
@@ -73,7 +73,8 @@ exports.execute = async (client, ctx) => {
     }
 
     if (option.flag === 'c') {
-      newPollEmbed.setColor(option.value);
+      const color = option.value.toUpperCase();
+      newPollEmbed.setColor(color);
     }
   }
 
