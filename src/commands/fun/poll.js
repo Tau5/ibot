@@ -82,10 +82,13 @@ exports.execute = async (client, ctx) => {
     }
 
     if (option.flag === 'e') {
-      const array = option.value.split(' ');
-      if (array.length >= 2) {
-        for (let i = 0; i < array.length; i++) array[i] = parseEmoji(array[i]);
-        emojis = array;
+      const customEmotes = option.value.split(' ');
+      if (customEmotes.length >= 2) {
+        for (let i = 0; i < customEmotes.length; i++) {
+          const e = customEmotes[i].split(':');
+          if (e.length !== 2) return;
+          customEmotes[i] = e.replace('>', '');
+        }
       }
     }
   }
