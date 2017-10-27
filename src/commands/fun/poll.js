@@ -62,7 +62,7 @@ exports.execute = async (client, ctx) => {
   let finishedTitle = false;
   let title = '';
   for (let i = 0; i < args.length; i++) {
-    console.log('Processing... ' + entry);
+    console.log(`Processing ${args[i]}...`);
     if (args[i].startsWith('-')) {
       const filter = flags.filter(f => f.flag === args[i].substring(1).toLowerCase());
       if (filter.length > 0) {
