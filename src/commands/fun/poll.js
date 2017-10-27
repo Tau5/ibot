@@ -61,7 +61,7 @@ exports.execute = async (client, ctx) => {
   let timeout = durationParser('60s');
   let emojis = ['👍', '👎'];
 
-  const { MessageEmbed, parseEmoji } = require('discord.js');
+  const { MessageEmbed } = require('discord.js');
   const newPollEmbed = new MessageEmbed()
     .setTitle(title)
     .setAuthor(ctx.author.username, ctx.author.displayAvatarURL())
@@ -89,6 +89,7 @@ exports.execute = async (client, ctx) => {
           if (e.length !== 2) return;
           customEmotes[i] = e.replace('>', '');
         }
+        emojis = customEmotes;
       }
     }
   }
