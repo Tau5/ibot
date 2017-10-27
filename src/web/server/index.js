@@ -1,6 +1,7 @@
 module.exports = (client) => {
   const express = require('express');
   const router = express.Router();
+  const timezones = require('moment-timezone').tz.names();
 
   router.post('/update/:id', (req, res) => {
     if (!client.guilds.has(req.params.id)) return res.status(404).render('error', { code: '404', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
@@ -35,7 +36,7 @@ module.exports = (client) => {
     const config = client.servers.get(req.params.id);
 
     res.status(200).render('server', {
-      guild, config, user: req.user, identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO'),
+      timezones, guild, config, user: req.user, identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO'),
     });
   });
 
