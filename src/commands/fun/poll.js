@@ -86,10 +86,18 @@ exports.execute = async (client, ctx) => {
     ctx.channel.messages.fetch(msg.id).then((newMsg) => {
       const bestVote = newMsg.reactions.sort((a, b) => b.users.size - a.users.size);
       if (bestVote.size === 0) return;
+
+      let description = client.I18n.translate`${bestVote.first().emoji.toString()} won with ${bestVote.first().users.size - 1} votes!`;
+
+      const ties = bestVote.filter(reaction => reaction.users.size === bestVote.first().users.size);
+      if (ties) {
+        description = client.I18n.translate`It was a tie between ${ties.map(r => r.emoji.toString()).join(' - ')}! Each got ${bestVote.first().users.size -1} votes.`;
+      }
+
       const finishedPollEmbed = new MessageEmbed()
         .setTitle(title)
         .setColor(newMsg.embeds[0].hexColor)
-        .setDescription(client.I18n.translate`${bestVote.first().emoji.toString()} won with ${bestVote.first().users.size - 1} votes!`)
+        .setDescription(description)
         .setTimestamp(new Date())
         .setAuthor(ctx.author.username, ctx.author.displayAvatarURL());
       ctx.channel.send({ embed: finishedPollEmbed });
