@@ -71,6 +71,9 @@ exports.execute = async (client, ctx) => {
         options.push({
           flag: current,
         });
+      } else {
+        ctx.channel.send('Error!');
+        break;
       }
     } else {
       if (options.length === 0 && finishedTitle === false) { // eslint-disable-line no-lonely-if
