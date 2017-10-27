@@ -69,6 +69,7 @@ exports.execute = async (client, ctx) => {
         });
       }
     } else {
+      if (options.length === 0) return;
       const index = options.length - 1;
       if (!options[index].value) {
         options[index].value = entry;
