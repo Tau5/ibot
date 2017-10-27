@@ -12,6 +12,10 @@ exports.execute = async (client, ctx) => {
       flag: 'c',
       name: 'color',
     },
+    {
+      flag: 'e',
+      name: 'emojis',
+    },
   ];
 
   const args = ctx.args;
@@ -55,7 +59,7 @@ exports.execute = async (client, ctx) => {
   const durationParser = require('parse-duration');
   const pollWillExpire = client.I18n.translate`The poll expires on `;
   let timeout = durationParser('60s');
-  const emojis = ['👍', '👎'];
+  let emojis = ['👍', '👎'];
 
   const { MessageEmbed } = require('discord.js');
   const newPollEmbed = new MessageEmbed()
@@ -75,6 +79,16 @@ exports.execute = async (client, ctx) => {
     if (option.flag === 'c') {
       const color = option.value.toUpperCase();
       newPollEmbed.setColor(color);
+    }
+
+    if (option.flag === 'e') {
+      const e = option.value.split(' ');
+      try {
+        for (let i = 0; i < e.length; i++) {
+          if (e[i].length >= 2) e[i] = e[i].split(':')[2].replace('>', '');
+        }
+      } catch (er) { return undefined; }
+      if (e.length > 0) emojis = e;
     }
   }
 
