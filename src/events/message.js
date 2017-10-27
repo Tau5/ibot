@@ -59,6 +59,11 @@ module.exports = async (client, ctx) => {
         try {
           const response = JSON.parse(body);
 
+          let commandCount = client.stats.get('cleverbot');
+          if (!commandCount) commandCount = 0;
+          commandCount = parseInt(commandCount) + 1;
+          client.stats.set('cleverbot', commandCount);
+
           client.cooldown.add(ctx.author.id);
           setTimeout(() => client.cooldown.delete(ctx.author.id), 2000);
 
@@ -124,6 +129,12 @@ module.exports = async (client, ctx) => {
       if (!commandsRan) commandsRan = 0;
       commandsRan = parseInt(commandsRan) + 1;
       client.stats.set('cmdsran', commandsRan);
+
+      let commandCount = client.stats.get(command);
+      if (!commandCount) commandCount = 0;
+      commandCount = parseInt(commandCount) + 1;
+      client.stats.set(command, commandCount);
+
       client.cooldown.add(ctx.author.id);
       cmd.execute(client, ctx);
 
