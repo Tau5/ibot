@@ -65,5 +65,7 @@ exports.execute = async (client, ctx) => {
 };
 
 exports.conf = {
-
+  name: 'poll',
+  aliases: [],
+  public: false,
 };
