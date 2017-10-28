@@ -98,5 +98,9 @@ module.exports = (client) => {
     .use('/invite', returnNoWWW, checkAuth, updateSession, require('../web/invite')(client))
     .use('*', (req, res) => res.status(404).render('error', { code: '404', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') }));
 
-  https.createServer({}, client.app).listen(client.config.dashboard.port);
+  client.app.listen(client.config.dashboard.port, (err) => {
+    if (err) throw err;
+    console.log(`[Express] Listening on ${client.config.dashboard.port}`);
+  });
+    //https.createServer({}, client.app).listen(client.config.dashboard.port);
 };
