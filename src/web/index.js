@@ -101,7 +101,8 @@ module.exports = (client) => {
 
   https.createServer({
     ca: readFileSync(`${__dirname}/public/certs/ibot_idroid_me.ca-bundle`),
-    key: readFileSync(`${__dirname}/public/certs/ibot_idroid_me.p7b`),
-    cert: readFileSync(`${__dirname}/public/certs/ibot_idroid_me.crt`),
+    key: readFileSync(`${__dirname}/public/certs/ibot_idroid_me.`),
+    cert: readFileSync(`${__dirname}/public/certs/ibot_idroid_me.crt`).toString().split(/-----END CERTIFICATE-----\n?/).filter(cert => cert !== '')
+      .map(cert => `${cert} -----END CERTIFICATE-----\n`),
   }, client.app).listen(client.config.dashboard.port);
 };
