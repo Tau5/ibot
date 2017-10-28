@@ -91,7 +91,7 @@ module.exports = (client) => {
     .use('*', (req, res) => res.status(404).render('error', { code: '404', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') }));
 
   https.createServer({
-    key: readFileSync(`${__dirname}/certs/ibot_idroid_me.p7b`),
-    cert: readFileSync(`${__dirname}/server.crt`),
+    key: readFileSync(`${__dirname}/public/certs/ibot_idroid_me.p7b`),
+    cert: readFileSync(`${__dirname}/public/certs/server.crt`),
   }, client.app).listen(client.config.dashboard.port);
 };
