@@ -13,6 +13,7 @@ module.exports = (client) => {
   const { promisify } = require('util');
   const request = promisify(require('request'));
   const https = require('https');
+  const { readFileSync } = require('fs');
 
   client.app = express();
 
@@ -98,9 +99,9 @@ module.exports = (client) => {
     .use('/invite', returnNoWWW, checkAuth, updateSession, require('../web/invite')(client))
     .use('*', (req, res) => res.status(404).render('error', { code: '404', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') }));
 
-  client.app.listen(client.config.dashboard.port, (err) => {
-    if (err) throw err;
-    console.log(`[Express] Listening on ${client.config.dashboard.port}`);
-  });
-    //https.createServer({}, client.app).listen(client.config.dashboard.port);
+  https.createServer({
+    ca: readFileSync(`${__dirname}/public/certs/ibot_idroid_me.ca-bundle`),
+    key: readFileSync(`${__dirname}/public/certs/ibot_idroid_me.p7b`),
+    cert: readFileSync(`${__dirname}/public/certs/ibot_idroid_me.crt`),
+  }, client.app).listen(client.config.dashboard.port);
 };
