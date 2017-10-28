@@ -90,5 +90,8 @@ module.exports = (client) => {
     .use('/invite', checkAuth, updateSession, require('../web/invite')(client))
     .use('*', (req, res) => res.status(404).render('error', { code: '404', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') }));
 
-  client.app.listen(client.config.dashboard.port);
+  https.createServer({
+    key: readFileSync(`${__dirname}/certs/ibot_idroid_me.p7b`),
+    cert: readFileSync(`${__dirname}/server.crt`),
+  }, client.app).listen(client.config.dashboard.port);
 };
