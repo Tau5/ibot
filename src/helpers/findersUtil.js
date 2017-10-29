@@ -14,17 +14,17 @@ const findersUtil = {
 
   findTextChannels(guild, query) {
     const search = query.toLowerCase();
-    return guild.channels.filter(c => c.type === 'text').filter(c => c.name.includes(search) || c.id === search);
+    return guild.channels.filter(c => c.type === 'text').filter(c => c.name.toLowerCase().includes(search) || c.id === search);
   },
 
   findVoiceChannels(guild, query) {
     const search = query.toLowerCase();
-    return guild.channels.filter(c => c.type === 'voice').filter(c => c.name.includes(search) || c.id === search);
+    return guild.channels.filter(c => c.type === 'voice').filter(c => c.name.toLowerCase().includes(search) || c.id === search);
   },
 
   findRoles(guild, query) {
     const search = query.toLowerCase();
-    return guild.roles.filter(r => r.name.includes(search) || r.id === search);
+    return guild.roles.filter(r => r.name.toLowerCase().includes(search) || r.id === search);
   },
 
   findUsers(client, guild, query) {

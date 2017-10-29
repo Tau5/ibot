@@ -11,7 +11,7 @@ exports.execute = async (client, ctx) => {
   }
 
   const config = client.servers.get(ctx.guild.id);
-  if (config.roleme.indexOf(role.id) === -1) return ctx.channel.send(client.I18n.translate`❌ This role is now available for roleme!`);
+  if (config.roleme.indexOf(role.id) === -1) return ctx.channel.send(client.I18n.translate`❌ This role is not available for roleme!`);
 
   if (ctx.member.roles.has(role.id)) {
     await ctx.member.removeRole(role.id, `ROLEME: ${ctx.author.tag}`);
