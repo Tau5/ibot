@@ -19,7 +19,7 @@ Translation
 
 ### Thanks
 
-Me: for the whole code and the French translation.
-TimNook: German translation.
-DismissedGuy: Dutch translation.
-You: for using the bot.
+Me: for the whole code and the French translation.  
+TimNook: German translation.  
+DismissedGuy: Dutch translation.  
+You: for using the bot.  
