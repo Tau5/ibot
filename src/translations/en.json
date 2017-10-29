@@ -278,6 +278,13 @@
     "The poll expires on ": "The poll expires on ",
     "❌ You must put a title for your poll!": "❌ You must put a title for your poll!",
     "❌ Unknown argument detected: {0}.": "❌ Unknown argument detected: {0}.",
-    "It was a tie between {0}! Each got {1} votes.": "It was a tie between {0}! Each got {1} votes."
+    "It was a tie between {0}! Each got {1} votes.": "It was a tie between {0}! Each got {1} votes.",
+
+    "_note35": "roleme",
+    "❌ You must specify a role to search!": "❌ You must specify a role to search!",
+    "❌ No role found matching `{0}`!": "❌ No role found matching `{0}`!",
+    "✅ Role **{0}** added!": "✅ Role **{0}** added!",
+    "✅ Role **{0}** removed!": "✅ Role **{0}** removed!",
+    "❌ This role is not available for roleme!": "❌ This role is not available for roleme!"
   }
 }

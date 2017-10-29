@@ -6,7 +6,7 @@ exports.execute = async (client, ctx) => {
   if (ctx.mentions.roles.size > 0) role = ctx.roles.channels.first();
   else {
     role = client.findersUtil.findRoles(ctx.guild, search);
-    if (role.size === 0) return ctx.channel.send(client.I18n.translate`❌ No role found matching \`${value}\`!`);
+    if (role.size === 0) return ctx.channel.send(client.I18n.translate`❌ No role found matching \`${search}\`!`);
     else role = role.first();
   }
 

@@ -94,6 +94,8 @@ exports.execute = async (client, ctx) => {
     }
   } else if (type === 'roleme') {
     const search = ctx.args.slice(1).join(' ');
+    if (!search) return ctx.channel.send(client.I18n.translate`❌ You must specify a role to search!`);
+
     let role;
     if (ctx.mentions.roles.size > 0) role = ctx.mentions.roles.first();
     else {
