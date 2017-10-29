@@ -133,7 +133,7 @@ module.exports = async (client, ctx) => {
       let commandCount = client.stats.get(command);
       if (!commandCount) commandCount = 0;
       commandCount = parseInt(commandCount) + 1;
-      client.stats.set(command, commandCount);
+      client.stats.set(cmd.conf.name, commandCount);
 
       client.cooldown.add(ctx.author.id);
       cmd.execute(client, ctx);
