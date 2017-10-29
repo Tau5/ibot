@@ -122,24 +122,24 @@ module.exports = async (client, ctx) => {
     if (cmd.conf.user_permission && !ctx.member.hasPermission(cmd.conf.user_permission)) return ctx.channel.send(client.I18n.translate`❌ You do not have the permission \`${cmd.conf.user_permission}\`!`);
     if (cmd.conf.bot_permission && !ctx.guild.me.hasPermission(cmd.conf.bot_permission)) return ctx.channel.send(client.I18n.translate`❌ I do not have the permission \`${cmd.conf.bot_permission}\`!`);
 
-    /* EXECUTE */
+    /* HANDLING */
     try {
+      /* LOGGING */
       require('fs').appendFile('./logs/commands.txt', `[${require('moment-timezone')().tz('UTC').format('DD/MM/YYYY HH:mm:ss')}] Author: ${ctx.author.tag} (ID:${ctx.author.id}) - Guild: ${ctx.guild.name} (ID:${ctx.guild.id}) - Channel: ${ctx.channel.name} (ID:${ctx.channel.id})\r\n${ctx.cleanContent}\r\n--------------------\r\n`, () => {});
-      let commandsRan = client.stats.get('cmdsran');
-      if (!commandsRan) commandsRan = 0;
-      commandsRan = parseInt(commandsRan) + 1;
-      client.stats.set('cmdsran', commandsRan);
 
-      let commandCount = client.stats.get(command);
-      if (!commandCount) commandCount = 0;
-      commandCount = parseInt(commandCount) + 1;
-      client.stats.set(cmd.conf.name, commandCount);
+      /* STATS */
+      client.stats.set('cmdsran', parseInt(client.stats.get('cmdsran')) + 1);
+      client.stats.set(cmd.conf.name, parseInt(client.stats.get(cmd.conf.name)) + 1 || 1);
+      client.stats.set(ctx.author.id, parseInt(client.stats.get(ctx.author.id)) + 1 || 1);
 
+      /* COOLDOWN */
       client.cooldown.add(ctx.author.id);
-      cmd.execute(client, ctx);
-
       setTimeout(() => client.cooldown.delete(ctx.author.id), 2000);
+
+      /* EXECUTE */
+      cmd.execute(client, ctx);
     } catch (e) {
+      /* LOGGING */
       ctx.channel.send(client.I18n.translate`❌ An unhandled error has occured! I told my dad about it, don't worry and... it'll be fixed soon!`);
       require('fs').appendFile('./logs/errors.txt', `----------\r\n${require('moment-timezone')().tz('UTC').format('DD/MM/YYYY HH:mm:ss')}] Author: ${ctx.author.tag} (ID:${ctx.author.id}) - Guild: ${ctx.guild.name} (ID:${ctx.guild.id}) - Channel: ${ctx.channel.name} (ID:${ctx.channel.id}) - Command: ${command}\r\n${ctx.cleanContent}\r\n===RETURNED ERROR===\n${e}\r\n`, err => console.error(err));
     }
