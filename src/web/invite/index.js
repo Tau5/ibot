@@ -4,7 +4,7 @@ module.exports = (client) => {
   const router = express.Router();
 
   router.use('/:id', (req, res) => {
-    res.redirect(`https://discordapp.com/oauth2/authorize?&client_id=305277118105911296&scope=bot&guild_id=${req.params.id}&response_type=code&redirect_uri=http%3A%2F%2Fibot.idroid.me%3A9024%2Fserver`);
+    res.redirect(`https://discordapp.com/oauth2/authorize?&client_id=305277118105911296&scope=bot&guild_id=${req.params.id}&response_type=code&redirect_uri=https%3A%2F%2Fibot.idroid.me%2Fserver`);
   });
 
   router.use('/', (req, res) => {

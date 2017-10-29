@@ -1,5 +1,5 @@
 exports.execute = async (client, ctx) => {
-  ctx.channel.send('👍 <http://ibot.idroid.me> => Login => Invite');
+  ctx.channel.send('👍 <https://ibot.idroid.me> => Login => Invite');
 };
 
 exports.conf = {

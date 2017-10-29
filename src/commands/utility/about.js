@@ -6,7 +6,7 @@ exports.execute = async (client, ctx) => {
     .addField(client.I18n.translate`RAM Usage`, `${Math.round(process.memoryUsage().heapUsed / 1000000)}MB`, true)
     .addField(client.I18n.translate`Support server`, 'https://discord.gg/UAmGEmS', true)
     .addField(client.I18n.translate`Commands ran`, client.stats.get('cmdsran'), true)
-    .addField('Dashboard', 'http://ibot.idroid.me', true)
+    .addField('Dashboard', 'https://ibot.idroid.me', true)
     .addField('node.js', `v${process.versions.node}`, true)
     .addField('discord.js', `v${Discord.version}`, true)
     .addField(client.I18n.translate`Translators`, '🇫🇷 iDroid#4441 - 🇩🇪 TimNook#0323 - 🇳🇱 DismissedGuy#2118')
