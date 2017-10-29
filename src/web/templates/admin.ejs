@@ -59,7 +59,7 @@
         <h4>Servers</h4>
         <hr>
         <div class="table-responsive">
-          <table id="servers" class="table table-striped table-condensed table-bordered">
+          <table id="table" class="table table-striped table-condensed table-bordered">
             <thead>
               <tr>
                 <th class="text-center">Name</th>
@@ -88,20 +88,10 @@
       </div>
     </div>
 
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
-    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-
-    <script>
-    $(document).ready(() => {
-      $('#servers').DataTable();
-    });
-
-    $('[data-toggle=confirmation]').confirmation({
-      rootSelector: '[data-toggle=confirmation]',
-    });
-    </script>
-
     <!-- Footer -->
     <% include parts/footer.ejs %>
+
+    <!-- Table design -->
+    <% include parts/datatabble.ejs %>
   </body>
 </html>
