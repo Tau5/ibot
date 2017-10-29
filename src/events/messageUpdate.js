@@ -4,6 +4,8 @@ module.exports = async (client, oldMessage, newMessage) => {
   const config = client.servers.get(oldMessage.guild.id);
   client.I18n.use(config.locale);
 
+  if ((oldMessage.content === newMessage.content) || (oldMessage.embeds.size !== newMessage.embeds.size)) return;
+
   if (!oldMessage.content || !newMessage.content || oldMessage.content.length >= 1024 || newMessage.content.length >= 1024) return;
   const { MessageEmbed } = require('discord.js');
   const embed = new MessageEmbed()
