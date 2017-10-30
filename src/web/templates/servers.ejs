@@ -16,7 +16,7 @@
         <div class="row text-center mx-auto" style="vertical-align: 50%;">
           <% mutualGuilds.forEach((guild) => { %>
           <div class="card" style="width: 20rem;">
-            <img src="card-img-top" height="75" width="75" src="<%= guild.icon ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=128` : '/images/discord_server.png' %>" alt="">
+            <img class="card-img-top" height="75" width="75" src="<%= guild.icon ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=128` : '/images/discord_server.png' %>" alt="">
             <div class="card-block">
               <h4 class="card-title"><%= guild.name %></h4>
               <p class="card-text">
