@@ -15,19 +15,13 @@
         <hr>
         <div class="row text-center mx-auto" style="vertical-align: 50%;">
           <% mutualGuilds.forEach((guild) => { %>
-          <div class="card" style="width: 20rem;">
-            <img class="card-img-top" height="75" width="75" src="<%= guild.icon ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=128` : '/images/discord_server.png' %>" alt="">
-            <div class="card-block">
-              <h4 class="card-title"><%= guild.name %></h4>
-              <p class="card-text">
-                <strong>Owner:</strong> <span class="nav-item"><a href="/user/<%= guild.ownerID %>"><%= guild.owner.user.tag %></a></span><br>
-                <strong>Members:</strong> <%= guild.memberCount %> members (<%= guild.members.filter(m => m.user.bot).size %> bots and <%= guild.members.filter(m => m.user.presence.status === 'online').size %> online)<br>
-              </p>
-              <a href="/server/<%= guild.id %>" class="btn btn-primary">Access</a>
-            </div>
-            </img>
+          <div title="<%= guild.name %>" data-toggle="svr" data-placement="bottom">
+            <a href="/server/<%= guild.id %>">
+              <img class="rounded-circle" height="75" width="75" src="<%= guild.icon ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=128` : '/images/discord_server.png' %>" alt="">
+            </a>
           </div>
           <% }); %>
+          
         </div>
       </div>
     </div>
