@@ -15,7 +15,7 @@
         <hr>
         <div class="row text-center mx-auto" style="vertical-align: 50%;">
           <% mutualGuilds.forEach((guild) => { %>
-          <div title="<%= guild.name %>">
+          <div title="<%= guild.name %>" data-toggle="svr" data-placement="bottom">
             <a href="/server/<%= guild.id %>">
               <img src="rounded-circle" height="75" width="75" src="<%= guild.icon ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=128` : '/images/discord_server.png' %>" alt="">
             </a>
