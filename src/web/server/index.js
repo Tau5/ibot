@@ -34,9 +34,21 @@ module.exports = (client) => {
     if (!client.guilds.has(req.params.id)) return res.status(404).render('error', { code: '404', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
     const guild = client.guilds.get(req.params.id);
     const config = client.servers.get(req.params.id);
+    const modCases = config.moderation.map(async (m) => {
+      const mod = {
+        ACTION: m.ACTION,
+        AUTHOR: await client.users.fetch(m.AUTHOR),
+        VICTIM: m.VICTIM ? await client.users.fetch(m.VICTIM) : undefined,
+        USER: m.USER ? await client.users.fetch(m.USER) : undefined,
+        CHANNEL: m.CHANNEL ? m.CHANNEL : null,
+        REASON: m.REASON,
+        TIME: m.TIME,
+      };
+      return mod;
+    });
 
     res.status(200).render('server', {
-      timezones, guild, config, user: req.user, identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO'),
+      timezones, modCases, guild, config, user: req.user, identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO'),
     });
   });
 
