@@ -14,6 +14,6 @@ module.exports = async (client, member) => {
   }
 
   if (config.switch_serverlog === 1) {
-    client.modUtil.Serverlog(client, member.guild, client.I18n.translate`📤 **${member.user.tag}** (ID:${member.id}) left the server.\n__Account creation :__ ${member.user.createdAt.toUTCString()}\n__Roles :__ ${member.roles.sort((a, b) => b.position - a.position).map(r => `\`${r.name}\``).join(', ')}.`);
+    client.modUtil.Serverlog(client, member.guild, client.I18n.translate`📤 **${member.user.tag}** (ID:${member.id}) left the server.\n__Account creation :__ ${member.user.createdAt.toUTCString()}\n__Roles :__ ${member.roles.filter(r => r.id !== member.guild.id).sort((a, b) => b.position - a.position).map(r => `\`${r.name}\``).join(', ')}.`);
   }
 };
