@@ -293,6 +293,7 @@
     "🕐 Time for **{0}**: {1}": "🕐 Heure pour **{0}**: {1}",
     "❌ You must put a value for filling a field!": "❌ Vous devez mettre quelque chose pour ce champ !",
     "✅ Field `{0}` created!": "✅ Champ `{0}` créé !",
+    "✅ Field `{0}` deleted!": "✅ Champ `{0}` supprimé !",
     "❌ You must put a field name!": "❌ Vous devez mettre un champ !",
     "❌ You do not have a profile!": "❌ Vous n'avez pas de profile !",
     "❌ Your profile does not have the field `{0}`!": "❌ Votre profile n'a pas le champ `{0}` !",
