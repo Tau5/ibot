@@ -38,6 +38,7 @@ client.tags = new Enmap({ provider: new Level({ name: 'tags' }) });
 client.lastactive = new Enmap({ provider: new Level({ name: 'lastactive' }) });
 client.afk = new Enmap({ provider: new Level({ name: 'afk' }) });
 client.stats = new Enmap({ provider: new Level({ name: 'stats' }) });
+client.profiles = new Enmap({ provider: new Level({ name: 'profiles' }) });
 
 /* COMMANDS */
 client.commands = new Enmap();
