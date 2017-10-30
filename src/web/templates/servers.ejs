@@ -17,7 +17,7 @@
           <% mutualGuilds.forEach((guild) => { %>
           <div title="<%= guild.name %>">
             <a href="/server/<%= guild.id %>">
-              <img src="rounded-circle" height="75" width="75" src="<%= guild.icon ? `https://cdn.discordapp.com/icons/${g.id}/${g.icon}.png?size=128` : '/images/discord_server.png' %>" alt="">
+              <img src="rounded-circle" height="75" width="75" src="<%= guild.icon ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=128` : '/images/discord_server.png' %>" alt="">
             </a>
           </div>
           <% }); %>
