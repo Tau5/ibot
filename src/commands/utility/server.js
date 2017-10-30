@@ -47,7 +47,7 @@ exports.execute = async (client, ctx) => {
     .addField(client.I18n.translate`🚔 Explicit content filter`, explicit, true)
     .addField(client.I18n.translate`📆 Guild creation date`, ctx.guild.createdAt.toUTCString(), true)
     .setColor(ctx.guild.me.displayHexColor)
-    .setThumbnail(ctx.guild.iconURL({ format: 'png', size: 1024 }));
+    .setThumbnail(ctx.guild.iconURL({ format: 'png', size: 1024 }) || 'https://ibot.idroid.me/images/discord_server.png');
 
   ctx.channel.send(client.I18n.translate`🗺 Informations about **${ctx.guild.name}** :`, { embed });
 };

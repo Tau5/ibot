@@ -21,11 +21,8 @@ exports.execute = async (client, ctx) => {
     case 'dnd':
       status = client.I18n.translate`<:dnd:334859814029099008> Do not disturb`;
       break;
-    case 'offline':
-      status = client.I18n.translate`<:offline:334859814423232514> Offline`;
-      break;
     default:
-      status = client.I18n.translate`Unknown`;
+      status = client.I18n.translate`<:offline:334859814423232514> Offline`;
       break;
   }
 
@@ -37,7 +34,8 @@ exports.execute = async (client, ctx) => {
 
   let lastactive = client.I18n.translate`No information`;
   if (client.lastactive.has(member.id)) {
-    lastactive = require('time-ago')().ago(client.lastactive.get(member.id));
+    const time = client.lastactive.get(member.id);
+    lastactive = require('time-ago')().ago(typeof time === 'string' ? parseInt(time) : time);
     if (lastactive.includes('ms')) lastactive = client.I18n.translate`Less than a second ago.`;
   }
 
