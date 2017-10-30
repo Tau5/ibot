@@ -1,4 +1,6 @@
 exports.execute = async (client, ctx) => {
+  if (!ctx.channel.permissionsFor(ctx.member).has('MANAGE_MESSAGES')) return ctx.channel.send(client.I18n.translate`❌ I do not have the permission \`${'MANAGE_MESSAGES'}\`!`);
+
   const thing = ctx.args.join(' ').split(' for ')[0];
   if (!thing) return ctx.channel.send(client.I18n.translate`❌ You must include something to delete! (can be: a user, an amount or bots)`);
 
