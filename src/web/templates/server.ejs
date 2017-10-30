@@ -136,7 +136,7 @@
                 <td class="text-center"><%= (index + 1) %></td>
                 <td class="text-center"><%= m.ACTION %></td>
                 <td class="text-center"><span class="nav-item"><a href="/user/<%= m.AUTHOR.id %>" style="color: grey;"><%= m.AUTHOR.tag %></a></span></td>
-                <td class="text-center"><span class="nav-item"><a href="/user/<%= m.USER.id || m.VICTIM.id %>" style="color: grey;"><%= m.USER.tag || m.VICTIM.tag %></a></span></td>
+                <td class="text-center"><span class="nav-item"><a href="/user/<%= m.USER.id %>" style="color: grey;"><%= m.USER.tag %></a></span></td>
                 <td class="text-center"><%= guild.channels.has(m.CHANNEL) ? `#${guild.channels.get(m.CHANNEL).name}` : 'None' %></td>
                 <td class="text-center"><%= m.REASON %></td>
                 <td class="text-center"><%= new Date(m.TIME).toISOString() %></td>

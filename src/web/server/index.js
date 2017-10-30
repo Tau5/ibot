@@ -35,12 +35,11 @@ module.exports = (client) => {
     const guild = client.guilds.get(req.params.id);
     const config = client.servers.get(req.params.id);
     const modCases = config.moderation.map(async (m) => {
+      m.USER = m.USER || m.VICTIM || undefined;
       const mod = {
         ACTION: m.ACTION,
         AUTHOR: await client.users.fetch(m.AUTHOR),
-        VICTIM: m.VICTIM ? await client.users.fetch(m.VICTIM) : undefined,
-        USER: m.USER ? await client.users.fetch(m.USER) : undefined,
-        CHANNEL: m.CHANNEL ? m.CHANNEL : null,
+        USER: await client.users.fetch(m.USER),
         REASON: m.REASON,
         TIME: m.TIME,
       };
