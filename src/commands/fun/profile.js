@@ -30,7 +30,7 @@ exports.execute = async (client, ctx) => {
     if (search) {
       if (ctx.mentions.members.size > 0) member = ctx.mentions.members.first();
       else {
-        member = client.findersUtil.findMembers(ctx.guild, search);
+        member = client.findersUtil.findMember(ctx.guild, search);
         if (member.size === 0) return ctx.channel.send(client.I18n.translate`❌ Nobody found matching \`${search}\`!`);
         else if (member.size === 1) member = member.first();
         else return ctx.channel.send(client.findersUtil.formatMembers(client, member));
@@ -40,7 +40,7 @@ exports.execute = async (client, ctx) => {
     const distProfile = client.profiles.get(member.id);
     if (!distProfile || Object.keys(distProfile).length === 0) return ctx.channel.send(client.I18n.translate`❌ **${member.user.tag}** does not have a profile!`);
 
-    const mapped = Object.keys(distProfile).map(e => `**${e.charAt(0).toUpperCase() + e.substring(1)}** : ${distProfile[e]}`).join('\n');
+    const mapped = Object.keys(distProfile).sort((a, b) a - b).map(e => `**${e.charAt(0).toUpperCase() + e.substring(1)}** : ${distProfile[e]}`).join('\n');
     ctx.channel.send(client.I18n.translate`👤 Profile for **${member.user.tag}** :\n${mapped}`);
   }
 };

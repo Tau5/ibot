@@ -5,7 +5,7 @@ exports.execute = async (client, ctx) => {
   if (search) {
     if (ctx.mentions.members.size > 0) member = ctx.mentions.members.first();
     else {
-      member = client.findersUtil.findMembers(ctx.guild, search);
+      member = client.findersUtil.findMember(ctx.guild, search);
       if (member.size === 0) return ctx.channel.send(client.I18n.translate`❌ Nobody found matching \`${search}\`!`);
       else if (member.size === 1) member = member.first();
       else return ctx.channel.send(client.findersUtil.formatMembers(client, member));
@@ -18,8 +18,8 @@ exports.execute = async (client, ctx) => {
   const mtz = require('moment-timezone');
   if (mtz.tz.names().indexOf(profile.timezone) === -1) return ctx.channel.send(client.I18n.translate`❌ \`${profile.timezone}\` is not a valid timezone!`);
 
-  const time = `${mtz().tz(profile.timezone).format('HH:mm')} (${mtz().tz(profile.timezone).format('hh:mm aa')}`;
-  ctx.channel.send(client.I18n.translate`Time for **${member.user.tag}** : ${time}`);
+  const time = `${mtz().tz(profile.timezone).format('`HH:mm`')} (${mtz().tz(profile.timezone).format('`hh:mm A`')})`;
+  ctx.channel.send(client.I18n.translate`🕐 Time for **${member.user.tag}**: ${time}`);
 };
 
 exports.conf = {

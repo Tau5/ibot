@@ -282,6 +282,17 @@
     "❌ No role found matching `{0}`!": "❌ No role found matching `{0}`!",
     "✅ Role **{0}** added!": "✅ Role **{0}** added!",
     "✅ Role **{0}** removed!": "✅ Role **{0}** removed!",
-    "❌ This role is not available for roleme!": "❌ This role is not available for roleme!"
+    "❌ This role is not available for roleme!": "❌ This role is not available for roleme!",
+
+    "_note36": "profile_and_timezone",
+    "❌ **{0}** does not have a profile!": "❌ **{0}** does not have a profile!",
+    "❌ `{0}` is not a valid timezone!": "❌ `{0}` is not a valid timezone!",
+    "🕐 Time for **{0}**: {1}": "🕐 Time for **{0}**: {1}",
+    "❌ You must put a value for filling a field!": "❌ You must put a value for filling a field!",
+    "✅ Field `{0}` created!": "✅ Field `{0}` deleted!",
+    "❌ You must put a field name!": "❌ You must put a field name!",
+    "❌ You do not have a profile!": "❌ You do not have a profile!",
+    "❌ Your profile does not have the field `{0}`!": "❌ Your profile does not have the field `{0}`!",
+    "👤 Profile for **{0}** :\n{1}": "👤 Profile for **{0}** :\n{1}"
   }
 }
