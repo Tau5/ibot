@@ -175,24 +175,19 @@
             Enter the username or the ID of the member, choose the action to perform and put the reason... and <b>Do it!</b>
           </div>
           <div class="form-row">
-              <div class="col">
-                <div class="form-group">
-                  <label for="user">User:</label>
-                  <input id="user" name="user" type="text" class="form-control mx-sm-3" placeholder="User#1234 or ID">
-                </div>
+            <div class="col">
+              <input id="user" name="user" type="text" class="form-control mx-sm-3" placeholder="User#1234 or ID">
+            </div>
+            <div class="col">
+              <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="actionToDo" name="actionToDo">
+                <% if (guild.members.has(user.id) && guild.members.get(user.id).hasPermission('BAN_MEMBERS')) { %><option value="ban">Ban member</option><% } %>
+                <option value="kick">Kick member</option>
+              </select>
+            </div>
+            <div class="col-7">
+                <input id="reason" name="reason" type="text" class="form-control mx-sm-3" placeholder="Reason">
               </div>
-              <div class="col">
-                <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="actionToDo" name="actionToDo">
-                  <% if (guild.members.has(user.id) && guild.members.get(user.id).hasPermission('BAN_MEMBERS')) { %><option value="ban">Ban member</option><% } %>
-                  <option value="kick">Kick member</option>
-                </select>
-              </div>
-              <div class="col-7">
-                <div class="form-group">
-                  <label for="reason">Reason:</label>
-                  <input id="reason" name="reason" type="text" class="form-control mx-sm-3" placeholder="Reason">
-                </div>
-              </div>
+            </div>
           </div>
           <div class="h-25 d-inline-block" style="width: 120px"></div>
           <div class="col-auto">
