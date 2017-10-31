@@ -32,7 +32,7 @@ module.exports = (client) => {
         locale: req.body.locale,
       };
 
-      client.servers.set(req.params.id, newConfig);
+      client.servers.set(req.body.guildID, newConfig);
       return res.header('Access-Control-Allow-Origin', '*').status(200).json({
         message: 'SUCCESS',
         config: newConfig,
