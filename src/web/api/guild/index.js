@@ -4,7 +4,7 @@ module.exports = (client) => {
 
   router.post('/updateConfig', (req, res) => {
     if (req.isAuthenticated()) {
-      console.log(req.body);
+      req.body = decodeURIComponent(JSON.parse(Object.keys(req.body)[0]));
       const guild = client.guilds.get(req.body.guildID);
       if (!guild) return res.header('Access-Control-Allow-Origin', '*').status(404).json({ message: 'UNKNOWN_GUILD_ID' });
 
