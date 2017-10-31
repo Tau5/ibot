@@ -82,12 +82,12 @@ module.exports = (client) => {
 
   client.app
     .use('/auth', auth)
-    .use('/api', require('../web/api')(client))
-    .use('/admin', checkOwner, updateSession, require('../web/admin')(client))
-    .use('/servers', checkAuth, updateSession, require('../web/servers')(client))
-    .use('/user', checkAuth, updateSession, require('../web/user')(client))
-    .use('/server', checkAuth, updateSession, require('../web/server')(client))
-    .use('/invite', checkAuth, updateSession, require('../web/invite')(client))
+    .use('/api', require('./api')(client))
+    .use('/admin', checkOwner, updateSession, require('./admin')(client))
+    .use('/servers', checkAuth, updateSession, require('./servers')(client))
+    .use('/user', checkAuth, updateSession, require('./user')(client))
+    .use('/server', checkAuth, updateSession, require('./server')(client))
+    .use('/invite', checkAuth, updateSession, require('./invite')(client))
     .use('*', (req, res) => res.status(404).render('error', { code: '404', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') }));
 
   https.createServer({

@@ -37,7 +37,10 @@
   
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
-        <form action="/server/update/<%= guild.id %>" method="POST">
+        <div id="confStatus" class="alert alert-success" role="alert">
+
+        </div>
+        <form action="/server/update/<%= guild.id %>" method="POST" id="configUpdate">
           <h1 class="mbr-section-title mbr-bold mbr-fonts-style text-center"><strong>CONFIGURATION</strong></h1>
           <hr>
           <nav class="nav nav-tabs" id="myTab" role="tablist">
@@ -107,7 +110,8 @@
                 </div>
               </div>
           </div>
-          <div class="text-center"><button type="submit" class="btn btn-primary btn-lg" formaction="/server/update/<%= guild.id %>">Update</button></div>
+          <div class="text-center"><button type="submit" class="btn btn-primary btn-lg" onclick="updateConfig()">Update</button></div>
+          <div class="text-center"><button type="submit" class="btn btn-primary btn-lg" formaction="/server/update/<%= guild.id %>">Update (if the first one is broken)</button></div>
         </form>
       </div>
 
@@ -153,6 +157,29 @@
       e.preventDefault()
       $(this).tab('show')
     })
+
+    const updateConfig = () => {
+      const updateRequest = new XMLHttpRequest();
+      const form = document.getElementById('updateConfig');
+      const formObject = new FormData(form);
+      formObject.append('guildID', '<%= guild.id %>');
+
+      updateRequest.withCredentials = true;
+      updateRequest.open('POST', '/api/guild/updateConfig', true);
+
+      updateRequest.onload = (e) => {
+        if (updateRequest.readyState === 4) {
+          if (updateRequest.status === 200) {
+            const alert = document.getElementById('confStatus');
+            alert.innerHTML = '**Success** - Configuration updated';
+          } else {
+            alert('An error occured!');
+          }
+        }
+      }
+
+      updateRequest.send(formObject);
+    };
     </script>
 
     <% } %>
