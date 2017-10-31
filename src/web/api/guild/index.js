@@ -9,7 +9,7 @@ module.exports = (client) => {
       const guild = client.guilds.get(req.body.guildID);
       if (!guild) return res.header('Access-Control-Allow-Origin', '*').status(404).json({ message: 'UNKNOWN_GUILD_ID' });
 
-      if (!guild.members.get(req.user.id).hasPermission('MANAGE_GUILD') && req.session.user.id !== '305277118105911296') return res.header('Access-Control-Allow-Origin', '*').status(403).json({ message: 'UNAUTHORIZED' });
+      if (!guild.members.get(req.user.id).hasPermission('MANAGE_GUILD') && req.user.id !== '305277118105911296') return res.header('Access-Control-Allow-Origin', '*').status(403).json({ message: 'UNAUTHORIZED' });
 
       const config = client.servers.get(req.body.guildID);
       const newConfig = {
