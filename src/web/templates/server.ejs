@@ -167,8 +167,8 @@
       updateRequest.withCredentials = true;
       updateRequest.open('POST', '/api/guild/updateConfig', true);
 
-      console.log('=====FORMOBJECT======\n' + formObject);
-      console.log('========UPDATEREQUEST=========\n' + updateRequest);
+      console.log('=====FORMOBJECT======\n' + JSON.stringify(formObject));
+      console.log('====UPDATEREQUEST====\n' + JSON.stringify(updateRequest));
 
       updateRequest.onload = (e) => {
         if (updateRequest.readyState === 4) {
