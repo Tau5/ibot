@@ -162,9 +162,6 @@
       const form = document.getElementById('configUpdate');
       const formObject = new FormData(form);
 
-      updateRequest.withCredentials = true;
-      updateRequest.open('POST', '/api/guild/updateConfig', true);
-
       const sentForm = {
         guildID: '<%= guild.id %>',
       };
@@ -173,6 +170,11 @@
       for (let i = 0; i > array.length; i++) {
         sentForm[array[i]] = formObject.get(array[i]);
       }
+
+      updateRequest.withCredentials = true;
+      updateRequest.open('POST', '/api/guild/updateConfig', true);
+
+      console.log(sentForm);
 
       updateRequest.onload = (e) => {
         if (updateRequest.readyState === 4) {
