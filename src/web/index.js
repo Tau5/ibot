@@ -32,23 +32,26 @@ module.exports = (client) => {
   };
 
   const updateSession = async (req, res, next) => {
-    if (!req.signedCookies.accessToken) return next();
-    const profile = await request('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${req.signedCookies.accessToken}` } }).catch(() => next());
-    const guilds = await request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.signedCookies.accessToken}` } }).catch(() => next());
+    if (!req.signedCookies.accessToken) next();
+    else {
+      const profile = await request('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${req.signedCookies.accessToken}` } }).catch(() => next());
+      const guilds = await request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.signedCookies.accessToken}` } }).catch(() => next());
 
-    const user = JSON.parse(profile.body);
-    user.guilds = JSON.parse(guilds.body);
+      const user = JSON.parse(profile.body);
+      user.guilds = JSON.parse(guilds.body);
 
-    req.login(user, e => (e ? res.render('error', { code: '500', identity: 'NO' }) : undefined));
-    req.session.save(e => (e ? res.render('error', { code: '500', identity: 'NO' }) : undefined));
+      req.login(user, e => (e ? res.render('error', { code: '500', identity: 'NO' }) : undefined));
+      req.session.save(e => (e ? res.render('error', { code: '500', identity: 'NO' }) : undefined));
 
-    return next();
+      next();
+    }
   };
 
   const checkAuth = (req, res, next) => {
     if (req.isAuthenticated()) next();
-    else {
-      if (req.signedCookies.accessToken) updateSession(req, res, next);
+    else if (req.signedCookies.accessToken) {
+      updateSession(req, res, next);
+    } else {
       res.status(401).render('error', { code: '401', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
     }
   };
