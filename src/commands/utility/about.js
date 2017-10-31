@@ -7,7 +7,7 @@ exports.execute = async (client, ctx) => {
     .addField(client.I18n.translate`Commands ran`, client.stats.get('cmdsran'), true)
     .addField('node.js', `v${process.versions.node}`, true)
     .addField('discord.js', `v${Discord.version}`, true)
-    .addField(client.I18n.translate`Translators`, '🇫🇷 iDroid#4441 - 🇩🇪 TimNook#0323 - 🇳🇱 DismissedGuy#2118')
+    .addField(client.I18n.translate`Translators`, ':flag_fr: iDroid#4441 - :flag_de: TimNook#0323 - :flag_nl: DismissedGuy#2118 - :flag_pl: KcrPL#4625')
     .setColor(ctx.guild.me.displayHexColor)
     .setThumbnail(client.user.displayAvatarURL({ format: 'png', size: 1024 }));
 
