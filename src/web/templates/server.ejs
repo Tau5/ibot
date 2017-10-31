@@ -40,7 +40,7 @@
         <div id="confStatus" class="alert alert-success" role="alert">
 
         </div>
-        <form method="POST" id="configUpdate" name="configUpdate">
+        <form id="configUpdate" name="configUpdate">
           <h1 class="mbr-section-title mbr-bold mbr-fonts-style text-center"><strong>CONFIGURATION</strong></h1>
           <hr>
           <nav class="nav nav-tabs" id="myTab" role="tablist">
@@ -110,9 +110,8 @@
                 </div>
               </div>
           </div>
-          <div class="text-center"><button class="btn btn-primary btn-lg" onclick="updateConfig()">Update</button></div>
-          <div class="text-center"><button type="submit" class="btn btn-primary btn-lg" formaction="/server/update/<%= guild.id %>">Update (if the first one is broken)</button></div>
-        </form>
+          <div class="text-center"><button class="btn btn-primary btn-lg" type="submit">Update</button></div>
+      </form>
       </div>
 
     </div>
@@ -158,7 +157,8 @@
       $(this).tab('show')
     })
 
-    function updateConfig() {
+    var form = document.forms.namedItem('configUpdate');
+    form.addEventListener('submit', () => {
       const updateRequest = new XMLHttpRequest();
       const form = document.getElementById('configUpdate');
       const formObject = new FormData(form);
@@ -187,7 +187,7 @@
       }
 
       updateRequest.send(formObject);
-    };
+    }, false);
     </script>
 
     <% } %>
