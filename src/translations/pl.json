@@ -86,14 +86,14 @@
     "_note10": "unwarn",
     "❌ You must mention or specify a user to unwarn!": "❌ Musisz oznaczyć jakiemu użytkownikowi chcesz usunąć ostrzeżenie!",
     "❌ **{0}** does not have any warn!": "❌ **{0}** nie ma żadnych ostrzeżeń!",
-    "📝 **{0}** unwarned **{1}** (ID:{2}). *Warns count: {3}*": "📝 **{0}** odbanował **{1}** (ID:{2}). *Ilość ostrzeżeń: {3}*",
-    "✅ Unwarned **{0}**!": "✅ Usunął ostrzeżenie **{0}**!",
+    "📝 **{0}** unwarned **{1}** (ID:{2}). *Warns count: {3}*": "📝 **{0}** usunął ostrzeżenie użytkownika **{1}** (ID:{2}). *Ilość ostrzeżeń: {3}*",
+    "✅ Unwarned **{0}**!": "✅ Usunięto ostrzeżenie użytkownika **{0}**!",
 
     "_note11": "warn",
     "❌ You must mention or specify a user to warn!": "❌ Musisz oznaczyć albo sprecyzować jakiego użytkownika chcesz ostrzeżyć!",
     "📝 You have been warned on __{0}__ by **{1}**.\n__Reason :__ {2}": "📝 Zostało Ci nadane ostrzeżenie w __{0}__ od **{1}**.\n__Powód :__ {2}",
     "📝 **{0}** warned **{1}** (ID:{2}). *Warns count: {3}*": "📝 **{0}** nadał ostrzeżenie użytkownikowi **{1}** (ID:{2}). *Ilość ostrzeżeń: {3}*",
-    "✅ Warned **{0}**!": "✅ Nadano ostrzżenie **{0}**!",
+    "✅ Warned **{0}**!": "✅ Nadano ostrzżenie użytkownikowi **{0}**!",
 
     "_note12": "about",
     "Owner": "Właściciel",
