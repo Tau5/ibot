@@ -160,7 +160,7 @@
 
     function updateConfig() {
       const updateRequest = new XMLHttpRequest();
-      const form = document.getElementById('updateConfig');
+      const form = document.getElementById('configUpdate');
       const formObject = new FormData(form);
       formObject.append('guildID', '<%= guild.id %>');
 
