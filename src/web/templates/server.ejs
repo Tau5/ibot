@@ -143,6 +143,11 @@
             alert.innerHTML = '<b>Success</b> - The configuration has been updated successfully!';
             alert.setAttribute('class', 'alert alert-success text-center');
             setTimeout(confStatusNormal, 5000);
+
+            const welcome = document.getElementById('message_welcome');
+            const leaving = document.getElementById('message_leaving');
+            if (welcome.innerHTML === '') welcome.innerHTML = 'No message set';
+            if (leaving.innerHTML === '') leaving.innerHTML = 'No message set';
           } else {
             alert.innerHTML = `<b>Error</b> - Code: ${updateRequest.status} - Message: ${JSON.parse(updateRequest.responseText).message}`;
             alert.setAttribute('class', 'alert alert-danger text-center');
