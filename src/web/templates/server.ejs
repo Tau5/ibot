@@ -218,7 +218,7 @@
               <tr>
                 <td class="text-center"><%= (index + 1) %></td>
                 <td class="text-center"><%= m.ACTION %></td>
-                <td class="text-center"><span class="nav-item"><a href="/user/<%= m.AUTHOR %>" style="color: grey;">Author</a></span></td>
+                <td class="text-center"><span class="nav-item"><a href="/user/<%= m.AUTHOR %>" style="color: grey;"><%= guild.client.users.has(m.AUTHOR) ? guild.client.users.get(m.AUTHOR).tag : 'User' %></a></span></td>
                 <td class="text-center"><% if (m.USER || m.VICTIM) { %><span class="nav-item"><a href="/user/<%= m.USER || m.VICTIM %>" style="color: grey;"><%= guild.client.users.has(m.USER || m.VICTIM) ? guild.client.users.get(m.USER || m.VICTIM).tag : 'User' %></a></span><% } else { %>None<% } %></td>
                 <td class="text-center"><%= guild.channels.has(m.CHANNEL) ? `#${guild.channels.get(m.CHANNEL).name}` : 'None' %></td>
                 <td class="text-center"><%= m.REASON %></td>
