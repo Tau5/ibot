@@ -113,9 +113,57 @@
           <div class="text-center"><button class="btn btn-primary btn-lg" type="submit">Update</button></div>
       </form>
       </div>
-
     </div>
 
+    <script>
+    $('#myTab a').on('click', function(e) {
+      e.preventDefault()
+      $(this).tab('show')
+    })
+        
+    function updateConfig() {
+      const updateRequest = new XMLHttpRequest();
+    
+      const sentForm = {
+        guildID: '<%= guild.id %>',
+      };
+    
+      ['channel_welcome', 'channel_serverlog', 'channel_modlog', 'switch_welcome', 'switch_serverlog', 'switch_modlog', 'switch_clearbackup', 'message_welcome', 'message_leaving', 'timezone', 'locale'].forEach(key => {
+        sentForm[key] = document.getElementById(key).value;
+      });
+    
+      updateRequest.withCredentials = true;
+      updateRequest.open('POST', 'https://ibot.idroid.me/api/guild/updateConfig', true);
+    
+      updateRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+      updateRequest.onload = (e) => {
+        if (updateRequest.readyState === 4) {
+          const alert = document.getElementById('confStatus');
+          if (updateRequest.status === 200) {
+            alert.innerHTML = '<b>Success</b> - The configuration has been updated successfully!';
+            alert.setAttribute('class', 'alert alert-success');
+            setTimeout(confStatusNormal, 5000);
+          } else {
+            alert.innerHTML = `<b>Error</b> - Code: ${updateRequest.status} - Message: ${JSON.parse(updateRequest.responseText).message}`;
+            alert.setAttribute('class', 'alert alert-danger');
+            setTimeout(confStatusNormal, 5000);
+          }
+        }
+      }
+    
+      updateRequest.send(encodeURIComponent(JSON.stringify(sentForm)));
+    }
+    
+    function confStatusNormal() {
+      const element = document.getElementById('confStatus');
+      element.innerHTML = 'Click on the <b>Update</b> button to submit your new configuration.';
+      element.setAttribute('class', 'alert alert-info');
+    }
+    </script>
+    <% } %>
+
+    <% if (user.id === '205427654042583040' || (guild.members.has(user.id) && guild.members.get(user.id).hasPermission('KICK_MEMBERS'))) { %>
     <!-- Moderate -->
     <div class="jumbotron jumbotron-fluid text-center">
       <div class="container">
@@ -131,7 +179,7 @@
             </div>
             <div class="col">
               <select id="actionToDo" name="actionToDo">
-                <option value="ban">Ban member</option>
+                <% if (guild.members.get(user.id).hasPermission('BAN_MEMBERS') { %><option value="ban">Ban member</option><% } %>
                 <option value="kick">Kick member</option>
               </select>
             </div>
@@ -146,7 +194,6 @@
       </div>
     </div>
     
-
     <!-- Moderation cases -->
     <div class="jumbotron jumbotron-fluid text-center">
       <div class="container">
@@ -182,45 +229,6 @@
     </div>
 
     <script>
-    $('#myTab a').on('click', function(e) {
-      e.preventDefault()
-      $(this).tab('show')
-    })
-
-    function updateConfig() {
-      const updateRequest = new XMLHttpRequest();
-
-      const sentForm = {
-        guildID: '<%= guild.id %>',
-      };
-
-      ['channel_welcome', 'channel_serverlog', 'channel_modlog', 'switch_welcome', 'switch_serverlog', 'switch_modlog', 'switch_clearbackup', 'message_welcome', 'message_leaving', 'timezone', 'locale'].forEach(key => {
-        sentForm[key] = document.getElementById(key).value;
-      });
-
-      updateRequest.withCredentials = true;
-      updateRequest.open('POST', 'https://ibot.idroid.me/api/guild/updateConfig', true);
-
-      updateRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-      updateRequest.onload = (e) => {
-        if (updateRequest.readyState === 4) {
-          const alert = document.getElementById('confStatus');
-          if (updateRequest.status === 200) {
-            alert.innerHTML = '<b>Success</b> - The configuration has been updated successfully!';
-            alert.setAttribute('class', 'alert alert-success');
-            setTimeout(confStatusNormal, 5000);
-          } else {
-            alert.innerHTML = `<b>Error</b> - Code: ${updateRequest.status} - Message: ${JSON.parse(updateRequest.responseText).message}`;
-            alert.setAttribute('class', 'alert alert-danger');
-            setTimeout(confStatusNormal, 5000);
-          }
-        }
-      }
-
-      updateRequest.send(encodeURIComponent(JSON.stringify(sentForm)));
-    }
-
     function modAction() {
       const updateRequest = new XMLHttpRequest();
 
@@ -262,12 +270,6 @@
     function modActionStatusNormal() {
       const element = document.getElementById('modActionStatus');
       element.innerHTML = 'Enter the username or the ID of the member, choose the action to perform and put the reason... and <b>Do it!</b>';
-      element.setAttribute('class', 'alert alert-info');
-    }
-
-    function confStatusNormal() {
-      const element = document.getElementById('confStatus');
-      element.innerHTML = 'Click on the <b>Update</b> button to submit your new configuration.';
       element.setAttribute('class', 'alert alert-info');
     }
     </script>
