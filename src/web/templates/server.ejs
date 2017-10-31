@@ -179,7 +179,7 @@
             </div>
             <div class="col">
               <select id="actionToDo" name="actionToDo">
-                <% if (guild.members.get(user.id).hasPermission('BAN_MEMBERS') { %><option value="ban">Ban member</option><% } %>
+                <% if (guild.members.get(user.id).hasPermission('BAN_MEMBERS')) { %><option value="ban">Ban member</option><% } %>
                 <option value="kick">Kick member</option>
               </select>
             </div>
