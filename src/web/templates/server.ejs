@@ -111,7 +111,7 @@
               </div>
           </div>
           <div class="text-center"><button class="btn btn-primary btn-lg" type="submit">Update</button></div>
-      </form>
+        </form>
       </div>
     </div>
 
@@ -178,7 +178,7 @@
             <input id="user" name="user" type="text" class="form-control" placeholder="User#1234 or ID">
           </div>
           <div class="col">
-            <label for="actionToDo">Action:</label>
+            <label for="actionToDo">Action:<br></label>
             <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="actionToDo" name="actionToDo">
               <% if (guild.members.get(user.id).hasPermission('BAN_MEMBERS')) { %><option value="ban">Ban member</option><% } %>
               <option value="kick">Kick member</option>
