@@ -164,10 +164,10 @@
         guildID: '<%= guild.id %>',
       };
 
-      const array = ['channel_welcome', 'channel_serverlog', 'channel_modlog', 'switch_welcome', 'switch_serverlog', 'switch_modlog', 'switch_clearbackup', 'message_welcome', 'message_leaving', 'timezone', 'locale'];
-      for (let i = 0; i > array.length; i++) {
-        sentForm[array[i]] = document.getElementById(array[i]).value;
-      }
+      ['channel_welcome', 'channel_serverlog', 'channel_modlog', 'switch_welcome', 'switch_serverlog', 'switch_modlog', 'switch_clearbackup', 'message_welcome', 'message_leaving', 'timezone', 'locale'].forEach(key => {
+        sentForm[key] = document.getElementById(key).value;
+      });
+
 
       updateRequest.withCredentials = true;
       updateRequest.open('POST', 'https://ibot.idroid.me/api/guild/updateConfig', true);
