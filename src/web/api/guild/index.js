@@ -52,16 +52,16 @@ module.exports = (client) => {
 
       switch (req.body.actionToDo) {
         case 'ban':
-          if (!author.hasPermission('BAN_MEMBERS')) return res.header('Access-Control-Allow-Origin', '*').status(404).json({ message: 'You do not have the permission to ban a member!' });
+          if (!author.hasPermission('BAN_MEMBERS')) return res.header('Access-Control-Allow-Origin', '*').status(403).json({ message: 'You do not have the permission to ban a member!' });
           break;
         case 'kick':
-          if (!author.hasPermission('KICK_MEMBERS')) return res.header('Access-Control-Allow-Origin', '*').status(404).json({ message: 'You do not have the permission to kick a member!' });
+          if (!author.hasPermission('KICK_MEMBERS')) return res.header('Access-Control-Allow-Origin', '*').status(403).json({ message: 'You do not have the permission to kick a member!' });
           break;
         case 'warn':
-          if (!author.hasPermission('KICK_MEMBERS')) return res.header('Access-Control-Allow-Origin', '*').status(404).json({ message: 'You do not have the permission to warn a member!' });
+          if (!author.hasPermission('KICK_MEMBERS')) return res.header('Access-Control-Allow-Origin', '*').status(403).json({ message: 'You do not have the permission to warn a member!' });
           break;
         case 'unwarn':
-          if (!author.hasPermission('KICK_MEMBERS')) return res.header('Access-Control-Allow-Origin', '*').status(404).json({ message: 'You do not have the permission to unwarn a member!' });
+          if (!author.hasPermission('KICK_MEMBERS')) return res.header('Access-Control-Allow-Origin', '*').status(403).json({ message: 'You do not have the permission to unwarn a member!' });
           break;
         default:
           break;
