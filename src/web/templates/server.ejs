@@ -37,12 +37,12 @@
   
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
-        <div id="confStatus" class="alert alert-info" role="alert">
-          Click on the <b>Update</b> button to submit your new configuration.
-        </div>
         <form id="configUpdate" name="configUpdate" method="post" action="javascript:void(0);" onsubmit="updateConfig()">
           <h1 class="mbr-section-title mbr-bold mbr-fonts-style text-center"><strong>CONFIGURATION</strong></h1>
           <hr>
+          <div id="confStatus" class="alert alert-info" role="alert">
+            Click on the <b>Update</b> button to submit your new configuration.
+          </div>
           <nav class="nav nav-tabs" id="myTab" role="tablist">
             <a class="nav-item nav-link active" id="channels-tab" data-toggle="tab" href="#channels" role="tab" aria-controls="channels" aria-selected="true">Channels</a>
             <a class="nav-item nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Messages</a>
