@@ -40,7 +40,7 @@
         <div id="confStatus" class="alert alert-success" role="alert">
 
         </div>
-        <form method="POST" id="configUpdate">
+        <form method="POST" id="configUpdate" name="configUpdate">
           <h1 class="mbr-section-title mbr-bold mbr-fonts-style text-center"><strong>CONFIGURATION</strong></h1>
           <hr>
           <nav class="nav nav-tabs" id="myTab" role="tablist">
@@ -54,7 +54,7 @@
                 <div class="text-center">
                   <p>
                     <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> <b>Welcome channel:</b>
-                    <select name="channel_welcome" aria-controls="config" class="form-control form-control-sm">
+                    <select id="channel_welcome" name="channel_welcome" aria-controls="config" class="form-control form-control-sm">
                       <option value="NOT_SET">None</option>
                       <% guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
                       <option value="<%= c.id %>" <% if (config.channel_welcome === c.id) { %>selected<% } %>>#<%= c.name %></option>
@@ -64,7 +64,7 @@
                 
                   <p>
                     <img src="https://discordapp.com/assets/8367785ae4d4334f1f3371e239059ca1.svg" height="20px" width="20px"> <b>Serverlog channel:</b>
-                    <select name="channel_serverlog" aria-controls="config" class="form-control form-control-sm">
+                    <select id="channel_serverlog" name="channel_serverlog" aria-controls="config" class="form-control form-control-sm">
                       <option value="NOT_SET">None</option>
                       <% guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
                       <option value="<%= c.id %>" <% if (config.channel_serverlog === c.id) { %>selected<% } %>>#<%= c.name %></option>
@@ -74,7 +74,7 @@
                 
                   <p>
                     <img src="https://cdn.discordapp.com/emojis/317093864487780352.png" height="20px" width="20px"> <b>Modlog channel:</b>
-                    <select name="channel_modlog" aria-controls="config" class="form-control form-control-sm">
+                    <select id="channel_modlog" name="channel_modlog" aria-controls="config" class="form-control form-control-sm">
                       <option value="NOT_SET">None</option>
                       <% guild.channels.filter(c => c.type === 'text').sort((a, b) => a.position - b.position).forEach(c => { %>
                       <option value="<%= c.id %>" <% if (config.channel_modlog === c.id) { %>selected<% } %>>#<%= c.name %></option>
@@ -87,26 +87,26 @@
                 <div class="text-center">
                   <p>
                     <img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> <b>Welcome message:</b>
-                    <textarea rows="3" class="form-control" name="message_welcome"><%= (config.message_welcome !== 'NOT_SET' ? config.message_welcome : 'No message set') %></textarea>
+                    <textarea rows="3" class="form-control" id="message_welcome" name="message_welcome"><%= (config.message_welcome !== 'NOT_SET' ? config.message_welcome : 'No message set') %></textarea>
                   </p>
                   <p>
                     <img src="https://discordapp.com/assets/4c231cb7c6f5bb352261a2e0bfa63fb1.svg" height="20px" width="20px"> <b>Leave message:</b>
-                    <textarea rows="3" class="form-control" name="message_leaving"><%= (config.message_leaving !== 'NOT_SET' ? config.message_leaving : 'No message set') %></textarea>
+                    <textarea rows="3" class="form-control" id="message_leaving" name="message_leaving"><%= (config.message_leaving !== 'NOT_SET' ? config.message_leaving : 'No message set') %></textarea>
                   </p>
                 </div>
               </div>
               <div class="tab-pane fade" id="switches" role="tabpanel" aria-labelledby="switches-tab">
                 <div class="text-center">
-                  <p><img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> <b>Welcome switch:</b> <select name="switch_welcome" aria-controls="config" class="form-control form-control-sm"><option value="1" <% if (config.switch_welcome === 1) { %>selected<% } %>>Enabled</option><option value="0" <% if (config.switch_welcome === 0) { %>selected<% } %>>Disabled</option></select></p>
-                  <p><img src="https://discordapp.com/assets/8367785ae4d4334f1f3371e239059ca1.svg" height="20px" width="20px"> <b>Serverlog switch:</b> <select name="switch_serverlog" aria-controls="config" class="form-control form-control-sm"><option value="1" <% if (config.switch_serverlog === 1) { %>selected<% } %>>Enabled</option><option value="0" <% if (config.switch_serverlog === 0) { %>selected<% } %>>Disabled</option></select></p>
-                  <p><img src="https://cdn.discordapp.com/emojis/317093864487780352.png" height="20px" width="20px"> <b>Modlog switch:</b> <select name="switch_modlog" aria-controls="config" class="form-control form-control-sm"><option value="1" <% if (config.switch_modlog === 1) { %>selected<% } %>>Enabled</option><option value="0" <% if (config.switch_modlog === 0) { %>selected<% } %>>Disabled</option></select></p>
-                  <p><img src="https://discordapp.com/assets/ba21bae0723b6477627f456c587de6c4.svg" height="20px" width="20px"> <b>Clear-backup switch:</b> <select name="switch_clearbackup" aria-controls="config" class="form-control form-control-sm"><option value="1" <% if (config.switch_clearbackup === 1) { %>selected<% } %>>Enabled</option><option value="0" <% if (config.switch_clearbackup === 0) { %>selected<% } %>>Disabled</option></select></p>
+                  <p><img src="https://discordapp.com/assets/593c4a3437fbb5b89fbb148f7b96424d.svg" height="20px" width="20px"> <b>Welcome switch:</b> <select id="switch_welcome" name="switch_welcome" aria-controls="config" class="form-control form-control-sm"><option value="1" <% if (config.switch_welcome === 1) { %>selected<% } %>>Enabled</option><option value="0" <% if (config.switch_welcome === 0) { %>selected<% } %>>Disabled</option></select></p>
+                  <p><img src="https://discordapp.com/assets/8367785ae4d4334f1f3371e239059ca1.svg" height="20px" width="20px"> <b>Serverlog switch:</b> <select id="switch_serverlog" name="switch_serverlog" aria-controls="config" class="form-control form-control-sm"><option value="1" <% if (config.switch_serverlog === 1) { %>selected<% } %>>Enabled</option><option value="0" <% if (config.switch_serverlog === 0) { %>selected<% } %>>Disabled</option></select></p>
+                  <p><img src="https://cdn.discordapp.com/emojis/317093864487780352.png" height="20px" width="20px"> <b>Modlog switch:</b> <select id="switch_modlog" name="switch_modlog" aria-controls="config" class="form-control form-control-sm"><option value="1" <% if (config.switch_modlog === 1) { %>selected<% } %>>Enabled</option><option value="0" <% if (config.switch_modlog === 0) { %>selected<% } %>>Disabled</option></select></p>
+                  <p><img src="https://discordapp.com/assets/ba21bae0723b6477627f456c587de6c4.svg" height="20px" width="20px"> <b>Clear-backup switch:</b> <select id="switch_clearbackup" name="switch_clearbackup" aria-controls="config" class="form-control form-control-sm"><option value="1" <% if (config.switch_clearbackup === 1) { %>selected<% } %>>Enabled</option><option value="0" <% if (config.switch_clearbackup === 0) { %>selected<% } %>>Disabled</option></select></p>
                 </div>
               </div>
               <div class="tab-pane fade" id="misc" role="tabpanel" aria-labelledby="misc-tab">
                 <div class="text-center">
-                  <p><img src="https://discordapp.com/assets/be21e06571be73619ebba2e9731abb11.svg" height="20px" width="20px"> <b>Timezone:</b> <select name="timezone" aria-controls="config" class="form-control form-control-sm"><% timezones.forEach(tz => { %><option value="<%= tz %>" <% if (config.timezone === tz) { %>selected<% } %>><%= tz %></option><% }) %></select></p>
-                  <p><img src="https://discordapp.com/assets/cf7f3e86b93c14f8e53feac55a1b637f.svg" height="20px" width="20px"> <b>Locale:</b> <select name="locale" aria-controls="config" class="form-control form-control-sm"><% Object.keys(guild.client.languages).forEach(l => { %><option value="<%= l %>" <% if (config.locale === l) { %>selected<% } %>><%= l %></option><% }); %></select></p>
+                  <p><img src="https://discordapp.com/assets/be21e06571be73619ebba2e9731abb11.svg" height="20px" width="20px"> <b>Timezone:</b> <select id="timezone" name="timezone" aria-controls="config" class="form-control form-control-sm"><% timezones.forEach(tz => { %><option value="<%= tz %>" <% if (config.timezone === tz) { %>selected<% } %>><%= tz %></option><% }) %></select></p>
+                  <p><img src="https://discordapp.com/assets/cf7f3e86b93c14f8e53feac55a1b637f.svg" height="20px" width="20px"> <b>Locale:</b> <select id="locale" name="locale" aria-controls="config" class="form-control form-control-sm"><% Object.keys(guild.client.languages).forEach(l => { %><option value="<%= l %>" <% if (config.locale === l) { %>selected<% } %>><%= l %></option><% }); %></select></p>
                 </div>
               </div>
           </div>
