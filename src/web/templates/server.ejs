@@ -123,7 +123,7 @@
         
     function updateConfig() {
       const updateRequest = new XMLHttpRequest();
-    
+      const alert = document.getElementById('confStatus');
       const sentForm = {
         guildID: '<%= guild.id %>',
       };
@@ -139,7 +139,6 @@
     
       updateRequest.onload = (e) => {
         if (updateRequest.readyState === 4) {
-          const alert = document.getElementById('confStatus');
           if (updateRequest.status === 200) {
             alert.innerHTML = '<b>Success</b> - The configuration has been updated successfully!';
             alert.setAttribute('class', 'alert alert-success text-center');
@@ -152,6 +151,8 @@
         }
       }
     
+      alert.innerHTML = 'Updating...';
+      alert.setAttribute('class', 'alert alert-dark text-center');
       updateRequest.send(encodeURIComponent(JSON.stringify(sentForm)));
     }
     
@@ -235,7 +236,7 @@
     <script>
     function modAction() {
       const updateRequest = new XMLHttpRequest();
-
+      const alert = document.getElementById('modActionStatus');
       const sentForm = {
         guildID: '<%= guild.id %>',
       };
@@ -251,7 +252,6 @@
 
       updateRequest.onload = (e) => {
         if (updateRequest.readyState === 4) {
-          const alert = document.getElementById('modActionStatus');
           if (updateRequest.status === 200) {
             alert.innerHTML = `<b>Success</b> - ${JSON.parse(updateRequest.responseText).message}`;
             alert.setAttribute('class', 'alert alert-success');
@@ -269,6 +269,8 @@
         }
       }
 
+      alert.innerHTML = 'Updating...';
+      alert.setAttribute('class', 'alert alert-dark text-center');
       updateRequest.send(encodeURIComponent(JSON.stringify(sentForm)));
     }
 
