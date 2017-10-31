@@ -168,6 +168,8 @@
         sentForm[key] = document.getElementById(key).value;
       });
 
+      updateRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
 
       updateRequest.withCredentials = true;
       updateRequest.open('POST', 'https://ibot.idroid.me/api/guild/updateConfig', true);
