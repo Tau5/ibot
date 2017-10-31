@@ -74,13 +74,13 @@ module.exports = (client) => {
 
       if (req.body.actionToDo === 'ban') {
         member.ban(req.body.reason).then(() => {
-          client.modUtil.Modlog(client, guild, client.I18n.translate`🔨 **${author.tag}** banned **${member.user.tag}** (ID:${member.id}).`, req.body.reason);
-          return res.header('Access-Control-Allow-Origin', '*').status(500).json({ message: `🔨 **${author.user.tag}** has been banned for ${req.body.reason} successfully!` });
+          client.modUtil.Modlog(client, guild, `🔨 **${author.tag}** banned **${member.user.tag}** (ID:${member.id}).`, req.body.reason);
+          return res.header('Access-Control-Allow-Origin', '*').status(200).json({ message: `🔨 **${author.user.tag}** has been banned for ${req.body.reason} successfully!` });
         }).catch(e => res.header('Access-Control-Allow-Origin', '*').status(500).json({ message: e }));
       } else if (req.body.actionToDo === 'kick') {
         member.kick(req.body.reason).then(() => {
-          client.modUtil.Modlog(client, guild, client.I18n.translate`👢 **${author.tag}** kicked **${member.user.tag}** (ID:${member.id}).`, req.body.reason);
-          return res.header('Access-Control-Allow-Origin', '*').status(500).json({ message: `👢 **${member.user.tag}** has been kicked for ${req.body.reason} successfully!` });
+          client.modUtil.Modlog(client, guild, `👢 **${author.tag}** kicked **${member.user.tag}** (ID:${member.id}).`, req.body.reason);
+          return res.header('Access-Control-Allow-Origin', '*').status(200).json({ message: `👢 **${member.user.tag}** has been kicked for ${req.body.reason} successfully!` });
         }).catch(e => res.header('Access-Control-Allow-Origin', '*').status(500).json({ message: e }));
       }
     } else {
