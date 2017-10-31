@@ -186,7 +186,7 @@
         }
       }
 
-      updateRequest.send(sentForm);
+      updateRequest.send(encodeURIComponent(JSON.stringify(sentForm)));
     }
     </script>
 
