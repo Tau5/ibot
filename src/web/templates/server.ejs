@@ -115,6 +115,33 @@
       </div>
 
     </div>
+
+    <!-- Moderate -->
+    <div class="jumbotron jumbotron-fluid text-center">
+      <div class="container">
+        <form id="configUpdate" name="configUpdate" method="post" action="javascript:void(0);" onsubmit="modAction()">
+          <h1 class="mbr-section-title mbr-bold mbr-fonts-style"><strong>MODERATE</strong></h1>
+          <hr>
+          <div id="confStatus" class="alert alert-info" role="alert">
+            Enter the username or the ID of the member, choose the action to perform and put the reason... and <b>Do it!</b>
+          </div>
+          <div class="row align-center text-center">
+            <strong>User:</strong>
+            <input id="user" name="user" placeholder="User#1234 or UserID">
+            <strong>Action to perform:</strong>
+            <select id="actionToDo" name="actionToDo">
+              <option value="ban">Ban member</option>
+              <option value="kick">Kick member</option>
+              <option value="warn">Warn member</option>
+              <option value="unwarn">Unwarn member</option>
+            </select>
+            <strong>Reason:</strong>
+            <input id="reason" name="reason" placeholder="Annoying guy">
+            <button class="btn btn-primary btn-lg" type="submit">Do it!</button>
+          </div>
+        </form>
+      </div>
+    </div>
     
 
     <!-- Moderation cases -->
@@ -189,6 +216,50 @@
       }
 
       updateRequest.send(encodeURIComponent(JSON.stringify(sentForm)));
+    }
+
+    function updateConfig() {
+      const updateRequest = new XMLHttpRequest();
+
+      const sentForm = {
+        guildID: '<%= guild.id %>',
+      };
+
+      ['user', 'actionToDo', 'reason'].forEach(key => {
+        sentForm[key] = document.getElementById(key).value;
+      });
+
+      updateRequest.withCredentials = true;
+      updateRequest.open('POST', 'https://ibot.idroid.me/api/guild/modAction', true);
+
+      updateRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+      updateRequest.onload = (e) => {
+        if (updateRequest.readyState === 4) {
+          const alert = document.getElementById('modActionStatus');
+          if (updateRequest.status === 200) {
+            alert.innerHTML = `<b>Success</b> - ${JSON.parse(updateRequest.responseText).message}`;
+            alert.setAttribute('class', 'alert alert-success');
+            setTimeout(modActionStatusNormal, 5000);
+          } else if (updateRequest.status === 696) {
+            alert.innerHTML = JSON.parse(updateRequest.responseText).message.replace(/\n/g, '<br>');
+            alert.setAttribute('class', 'alert alert-warning');
+            setTimeout(modActionStatusNormal, 15000);
+          } else {
+            alert.innerHTML = `<b>Error</b> - Code: ${updateRequest.status} - Message: ${JSON.parse(updateRequest.responseText).message}`;
+            alert.setAttribute('class', 'alert alert-danger');
+            setTimeout(modActionStatusNormal, 5000);
+          }
+        }
+      }
+
+      updateRequest.send(encodeURIComponent(JSON.stringify(sentForm)));
+    }
+
+    function modActionStatusNormal() {
+      const element = document.getElementById('modActionStatus');
+      element.innerHTML = 'Enter the username or the ID of the member, choose the action to perform and put the reason... and <b>Do it!</b>';
+      element.setAttribute('class', 'alert alert-info');
     }
 
     function confStatusNormal() {
