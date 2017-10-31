@@ -158,7 +158,7 @@
       $(this).tab('show')
     })
 
-    const updateConfig = () => {
+    function updateConfig() {
       const updateRequest = new XMLHttpRequest();
       const form = document.getElementById('updateConfig');
       const formObject = new FormData(form);
