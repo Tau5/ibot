@@ -142,11 +142,11 @@
           const alert = document.getElementById('confStatus');
           if (updateRequest.status === 200) {
             alert.innerHTML = '<b>Success</b> - The configuration has been updated successfully!';
-            alert.setAttribute('class', 'alert alert-success');
+            alert.setAttribute('class', 'alert alert-success text-center');
             setTimeout(confStatusNormal, 5000);
           } else {
             alert.innerHTML = `<b>Error</b> - Code: ${updateRequest.status} - Message: ${JSON.parse(updateRequest.responseText).message}`;
-            alert.setAttribute('class', 'alert alert-danger');
+            alert.setAttribute('class', 'alert alert-danger text-center');
             setTimeout(confStatusNormal, 5000);
           }
         }
@@ -158,7 +158,7 @@
     function confStatusNormal() {
       const element = document.getElementById('confStatus');
       element.innerHTML = 'Click on the <b>Update</b> button to submit your new configuration.';
-      element.setAttribute('class', 'alert alert-info');
+      element.setAttribute('class', 'alert alert-info text-center');
     }
     </script>
     <% } %>
@@ -259,11 +259,11 @@
           } else if (updateRequest.status === 696) {
             const converter = new showdown.Converter();
             alert.innerHTML = converter.makeHtml(JSON.parse(updateRequest.responseText).message.replace(/\n/g, '<br>'));
-            alert.setAttribute('class', 'alert alert-warning');
+            alert.setAttribute('class', 'alert alert-warning text-center');
             setTimeout(modActionStatusNormal, 15000);
           } else {
             alert.innerHTML = `<b>Error</b> - Code: ${updateRequest.status} - Message: ${JSON.parse(updateRequest.responseText).message}`;
-            alert.setAttribute('class', 'alert alert-danger');
+            alert.setAttribute('class', 'alert alert-danger text-center');
             setTimeout(modActionStatusNormal, 5000);
           }
         }
@@ -275,7 +275,7 @@
     function modActionStatusNormal() {
       const element = document.getElementById('modActionStatus');
       element.innerHTML = 'Enter the username or the ID of the member, choose the action to perform and put the reason... and <b>Do it!</b>';
-      element.setAttribute('class', 'alert alert-info');
+      element.setAttribute('class', 'alert alert-info text-center');
     }
     </script>
 
