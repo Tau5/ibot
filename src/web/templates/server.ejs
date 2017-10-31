@@ -159,8 +159,6 @@
 
     function updateConfig() {
       const updateRequest = new XMLHttpRequest();
-      const form = document.getElementById('configUpdate');
-      const formObject = new FormData(form);
 
       const sentForm = {
         guildID: '<%= guild.id %>',
@@ -168,11 +166,11 @@
 
       const array = ['channel_welcome', 'channel_serverlog', 'channel_modlog', 'switch_welcome', 'switch_serverlog', 'switch_modlog', 'switch_clearbackup', 'message_welcome', 'message_leaving', 'timezone', 'locale'];
       for (let i = 0; i > array.length; i++) {
-        sentForm[array[i]] = formObject.get(array[i]);
+        sentForm[array[i]] = document.getElementById(array[i]).value;
       }
 
       updateRequest.withCredentials = true;
-      updateRequest.open('POST', '/api/guild/updateConfig', true);
+      updateRequest.open('POST', 'https://ibot.idroid.me/api/guild/updateConfig', true);
 
       console.log(sentForm);
 
