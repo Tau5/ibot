@@ -228,6 +228,7 @@
       </div>
     </div>
 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.0/showdown.min.js"></script>
     <script>
     function modAction() {
       const updateRequest = new XMLHttpRequest();
@@ -253,7 +254,8 @@
             alert.setAttribute('class', 'alert alert-success');
             setTimeout(modActionStatusNormal, 5000);
           } else if (updateRequest.status === 696) {
-            alert.innerHTML = JSON.parse(updateRequest.responseText).message.replace(/\n/g, '<br>');
+            const converter = new showdown.Converter();
+            alert.innerHTML = converter.makeHtml(JSON.parse(updateRequest.responseText).message.replace(/\n/g, '<br>'));
             alert.setAttribute('class', 'alert alert-warning');
             setTimeout(modActionStatusNormal, 15000);
           } else {
