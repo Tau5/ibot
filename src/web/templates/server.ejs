@@ -37,8 +37,8 @@
   
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
-        <div id="confStatus" class="alert alert-success" role="alert">
-
+        <div id="confStatus" class="alert alert-info" role="alert">
+          Click on the <b>Update</b> button to submit your new configuration.
         </div>
         <form id="configUpdate" name="configUpdate" method="post" action="javascript:void(0);" onsubmit="updateConfig()">
           <h1 class="mbr-section-title mbr-bold mbr-fonts-style text-center"><strong>CONFIGURATION</strong></h1>
@@ -173,20 +173,28 @@
 
       updateRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-      console.log(sentForm);
-
       updateRequest.onload = (e) => {
         if (updateRequest.readyState === 4) {
+          const alert = document.getElementById('confStatus');
           if (updateRequest.status === 200) {
-            const alert = document.getElementById('confStatus');
-            alert.innerHTML = '**Success** - Configuration updated';
+            alert.innerHTML = '<b>Success</b> - The configuration has been updated successfully!';
+            alert.setAttribute('class', 'alert alert-success');
+            setTimeout(confStatusNormal, 5000);
           } else {
-            alert('An error occured!');
+            alert.innerHTML = `<b>Error</b> - Code: ${updateRequest.status} - Message: ${JSON.parse(updateRequest.responseText).message}`;
+            alert.setAttribute('class', 'alert alert-danger');
+            setTimeout(confStatusNormal, 5000);
           }
         }
       }
 
       updateRequest.send(encodeURIComponent(JSON.stringify(sentForm)));
+    }
+
+    function confStatusNormal() {
+      const element = document.getElementById('confStatus');
+      element.innerHTML = 'Click on the <b>Update</b> button to submit your new configuration.';
+      element.setAttribute('class', 'alert alert-info');
     }
     </script>
 
