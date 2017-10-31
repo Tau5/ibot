@@ -173,22 +173,23 @@
           <div id="modActionStatus" name="modActionStatus" class="alert alert-info" role="alert">
             Enter the username or the ID of the member, choose the action to perform and put the reason... and <b>Do it!</b>
           </div>
-          <div class="form-row">
-            <div class="col">
-              <input id="user" name="user" type="text" class="form-control" placeholder="User#1234 or ID">
-            </div>
-            <div class="col">
-              <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="actionToDo" name="actionToDo">
-                <% if (guild.members.get(user.id).hasPermission('BAN_MEMBERS')) { %><option value="ban">Ban member</option><% } %>
-                <option value="kick">Kick member</option>
-              </select>
-            </div>
-            <div class="col-7">
-              <input id="reason" name="user" type="text" class="form-control" placeholder="Reason">
-            </div>
-            <div class="col-auto">
-              <button class="btn btn-primary btn-lg" type="submit">Do it!</button>
-            </div>
+          <div class="col">
+            <label for="user">User:</label>
+            <input id="user" name="user" type="text" class="form-control" placeholder="User#1234 or ID">
+          </div>
+          <div class="col">
+            <label for="actionToDo">Action:</label>
+            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="actionToDo" name="actionToDo">
+              <% if (guild.members.get(user.id).hasPermission('BAN_MEMBERS')) { %><option value="ban">Ban member</option><% } %>
+              <option value="kick">Kick member</option>
+            </select>
+          </div>
+          <div class="col-7">
+            <label for="reason">Reason:</label>
+            <input id="reason" name="reason" type="text" class="form-control" placeholder="Reason">
+          </div>
+          <div class="col-auto">
+            <button class="btn btn-primary btn-lg" type="submit">Do it!</button>
           </div>
         </form>
       </div>
