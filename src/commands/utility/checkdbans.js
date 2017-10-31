@@ -1,7 +1,7 @@
 exports.execute = async (client, ctx) => {
   /* MEMBERS FINDER */
   const search = ctx.args.join(' ');
-  let { member } = ctx;
+  let member = ctx.author;
   if (search.length === 18 && !isNaN(search)) {
     member = await client.users.fetch(search).catch(() => {
       member = 'NO';
@@ -38,7 +38,7 @@ exports.execute = async (client, ctx) => {
       .setColor(color)
       .setThumbnail(member.displayAvatarURL());
 
-    if (reason !== 'nothing') embed.addField(client.I18n.translate`Reason`, reason)
+    if (reason !== 'nothing') embed.addField(client.I18n.translate`Reason`, reason);
 
     return ctx.channel.send(client.I18n.translate`🚔 Discord Bans list fetched!`, { embed });
   });

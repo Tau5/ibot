@@ -8,9 +8,12 @@ module.exports = (client) => {
   });
 
   router.use('/', (req, res) => {
-    const Discord = require('discord.js');
-    const guilds = req.user.guilds.filter(g => !client.guilds.has(g.id) && (new Discord.Permissions(g.permissions).has('MANAGE_GUILD)')));
-    res.status(200).render('invite', { guilds, identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
+    if (!req.user.guilds) res.status(500).render('error', { code: '404', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
+    else {
+      const Discord = require('discord.js');
+      const guilds = req.user.guilds.filter(g => !client.guilds.has(g.id) && (new Discord.Permissions(g.permissions).has('MANAGE_GUILD)')));
+      res.status(200).render('invite', { guilds, identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
+    }
   });
 
   return router;
