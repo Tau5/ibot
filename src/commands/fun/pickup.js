@@ -2,7 +2,7 @@ exports.execute = async (client, ctx) => {
   const config = client.servers.get(ctx.guild.id);
 
   if (client.calls[ctx.guild.id]) return ctx.channel.send(client.I18n.translate`❌ You are already in-call with someone!`);
-  if (config.channel_phone !== ctx.channel.id) return ctx.channel.send(client.I18n.translate`❌ You are not in the phone channel!`);
+  if (config.channel_phone !== ctx.channel.id && ctx.channel.id !== '375395137741783050') return ctx.channel.send(client.I18n.translate`❌ You are not in the phone channel!`);
   const number = client.numbers.findKey(k => k === ctx.guild.id);
   let caller;
 
@@ -13,11 +13,19 @@ exports.execute = async (client, ctx) => {
   });
 
   if (!caller) return ctx.channel.send(client.I18n.translate`☎ Nobody is calling you!`);
-  client.calls[ctx.guild.id] = {
-    type: 1,
-    state: 1,
-    calling: client.numbers.findKey(k => k === caller.id),
-  };
+  if (ctx.channel.id === '375395137741783050') {
+    client.calls.support = {
+      type: 1,
+      state: 1,
+      calling: client.numbers.findKey(k => k === caller.id),
+    };
+  } else {
+    client.calls[ctx.guild.id] = {
+      type: 1,
+      state: 1,
+      calling: client.numbers.findKey(k => k === caller.id),
+    };
+  }
 
   client.calls[caller.id] = {
     type: 0,

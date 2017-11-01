@@ -22,8 +22,12 @@ exports.execute = async (client, ctx) => {
       calling: number,
     };
 
-    client.I18n.use(distConfig.locale);
-    client.channels.get(distConfig.channel_phone).send(client.I18n.translate`☎ You get a call from \`${client.numbers.findKey(k => k === ctx.guild.id)}\`! Use \`i:pickup\` to answer.`);
+    if (number === '1-000-000') {
+      client.channels.get('375395137741783050').send(`☎ Support call | \`${client.numbers.findKey(k => k === ctx.guild.id)}\` | i:pickup to answer`);
+    } else {
+      client.I18n.use(distConfig.locale);
+      client.channels.get(distConfig.channel_phone).send(client.I18n.translate`☎ You get a call from \`${client.numbers.findKey(k => k === ctx.guild.id)}\`! Use \`i:pickup\` to answer.`);
+    }
 
     setTimeout(() => {
       if (client.calls[ctx.guild.id] && client.calls[ctx.guild.id].state === 0) {

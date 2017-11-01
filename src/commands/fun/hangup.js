@@ -2,7 +2,7 @@ exports.execute = async (client, ctx) => {
   const config = client.servers.get(ctx.guild.id);
 
   if (!client.calls[ctx.guild.id]) return ctx.channel.send(client.I18n.translate`❌ You are not in-call with someone!`);
-  if (config.channel_phone !== ctx.channel.id) return ctx.channel.send(client.I18n.translate`❌ You are not in the phone channel!`);
+  if (config.channel_phone !== ctx.channel.id && ctx.channel.id !== '375395137741783050') return ctx.channel.send(client.I18n.translate`❌ You are not in the phone channel!`);
   const number = client.numbers.findKey(k => k === ctx.guild.id);
   let caller;
 
@@ -21,7 +21,8 @@ exports.execute = async (client, ctx) => {
 
   require('fs').appendFile(`./logs/calls/${nums.sender}_${nums.receiver}.txt`, `[${require('moment-timezone')().tz('UTC').format('HH:mm:ss')}] - =====CONNECTION  ENDED=====\n\n`, () => {});
 
-  delete client.calls[ctx.guild.id];
+  if (ctx.channel.id === '375395137741783050') delete client.calls.support;
+  else delete client.calls[ctx.guild.id];
   delete client.calls[caller.id];
 
   ctx.channel.send(client.I18n.translate`☎ Connection terminated!`);

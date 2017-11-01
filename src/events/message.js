@@ -108,7 +108,8 @@ module.exports = async (client, ctx) => {
           receiver: ((client.calls[ctx.guild.id].type === 1) ? client.calls[ctx.guild.id].calling : client.calls[called.id].calling),
         };
         if (!calledPhoneChannel) {
-          delete client.calls[called.id];
+          if (client.calls[ctx.guild.id].number === '1-000-000') delete client.calls.support;
+          else delete client.calls[called.id];
           delete client.calls[ctx.guild.id];
           ctx.channel.send(client.I18n.translate`☎ Lost connection with \`${call.calling}\`!`);
           const logMsg = `[${require('moment-timezone')().tz(distantConfig.timezone).format('HH:mm:ss')}] - ======LOST CONNECTION======\n\n`;
