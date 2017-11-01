@@ -1,5 +1,5 @@
-module.exports = async (client, channel, user) => {
-  Object.keys(client.calls).forEach(id => {
+module.exports = async (client) => {
+  Object.keys(client.calls).forEach((id) => {
     const callObj = client.calls[id];
     if (callObj.state === 1) {
       const callingGuild = client.guilds.get(client.numbers.get(callObj.calling));

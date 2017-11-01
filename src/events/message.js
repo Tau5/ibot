@@ -125,7 +125,7 @@ module.exports = async (client, ctx) => {
 
           require('fs').appendFile(`./logs/calls/${nums.sender}_${nums.receiver}.txt`, logMsg, () => {});
           calledPhoneChannel.send(msgToSend);
-          calledPhoneChannel.stopTyping();
+          calledPhoneChannel.stopTyping(true);
         }
       }
     }
