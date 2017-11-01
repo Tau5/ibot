@@ -149,7 +149,7 @@
             if (welcome.innerHTML === '') welcome.innerHTML = 'No message set';
             if (leaving.innerHTML === '') leaving.innerHTML = 'No message set';
           } else {
-            alert.innerHTML = `<b>Error</b> - Code: ${updateRequest.status} - Message: ${JSON.parse(updateRequest.responseText).message}`;
+            alert.innerHTML = `<b>Error</b> - Code: ${updateRequest.status} - Message: ${JSON.parse(updateRequest.responseText).message.message}`;
             alert.setAttribute('class', 'alert alert-danger text-center');
             setTimeout(confStatusNormal, 5000);
           }
@@ -266,7 +266,7 @@
             alert.setAttribute('class', 'alert alert-warning text-center');
             setTimeout(modActionStatusNormal, 15000);
           } else {
-            alert.innerHTML = `<b>Error</b> - Code: ${updateRequest.status} - Message: ${JSON.parse(updateRequest.responseText).message}`;
+            alert.innerHTML = `<b>Error</b> - Code: ${updateRequest.status} - Message: ${JSON.parse(updateRequest.responseText).message.message}`;
             alert.setAttribute('class', 'alert alert-danger text-center');
             setTimeout(modActionStatusNormal, 5000);
           }
