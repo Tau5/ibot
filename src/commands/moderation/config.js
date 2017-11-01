@@ -6,7 +6,7 @@ exports.execute = async (client, ctx) => {
   if ((!type || !subType) && type !== 'ignore') return ctx.channel.send(client.I18n.translate`❌ Syntax example: \`i:config channel welcome #my_channel\`.`);
 
   if (type === 'channel') {
-    const validTypes = ['welcome', 'serverlog', 'modlog'];
+    const validTypes = ['welcome', 'serverlog', 'modlog', 'phone'];
     if (validTypes.indexOf(subType) === -1) return ctx.channel.send(client.I18n.translate`❌ The channel type you provided isn't valid! It must be welcome, serverlog or modlog.`);
 
     /* CHANNELS FINDER */
