@@ -96,5 +96,8 @@ module.exports = (client) => {
   https.createServer({
     key: readFileSync(`${__dirname}/public/certs/ibot_idroid_me.p7b`),
     cert: readFileSync(`${__dirname}/public/certs/server.crt`),
-  }, client.app).listen(client.config.dashboard.port);
+  }, client.app).listen(client.config.dashboard.port, (err) => {
+    if (err) console.error(err);
+    else console.log(`[Express] Listening on ${client.config.dashboard.port}`);
+  });
 };
