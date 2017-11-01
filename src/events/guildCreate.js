@@ -24,7 +24,7 @@ module.exports = async (client, guild) => {
     channel_serverlog: 'NOT_SET',
     channel_modlog: 'NOT_SET',
     message_welcome: 'NOT_SET',
-    messsage_leaving: 'NOT_SET',
+    message_leaving: 'NOT_SET',
     switch_welcome: 0,
     switch_leaving: 0,
     switch_serverlog: 0,
