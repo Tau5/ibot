@@ -36,7 +36,7 @@ exports.execute = async (client, ctx) => {
 
   const distConf = client.servers.get(caller.id);
   client.I18n.use(distConf.locale);
-  ctx.channel.send(client.I18n.translate`☎ They picked-up the phone. Say hello!`);
+  client.channels.get(distConf.channel_phone).send(client.I18n.translate`☎ They picked-up the phone. Say hello!`);
 };
 
 exports.conf = {
