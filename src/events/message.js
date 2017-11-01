@@ -103,11 +103,24 @@ module.exports = async (client, ctx) => {
         const called = client.guilds.get(client.numbers.get(call.calling));
         const distantConfig = client.servers.get(called.id);
         const calledPhoneChannel = client.channels.get(distantConfig.channel_phone);
-        if (!calledPhoneChannel) return ctx.channel.send(client.I18n.translate`☎ Lost connection with \`${call.calling}\`!`);
+        const nums = {
+          sender: ((client.calls[ctx.guild.id].type === 0) ? client.calls[ctx.guild.id].calling : client.calls[called.id].calling),
+          receiver: ((client.calls[ctx.guild.id].type === 1) ? client.calls[ctx.guild.id].calling : client.calls[called.id].calling),
+        };
+        if (!calledPhoneChannel) {
+          delete client.calls[called.id];
+          delete client.calls[ctx.guild.id];
+          ctx.channel.send(client.I18n.translate`☎ Lost connection with \`${call.calling}\`!`);
+          const logMsg = `\`${require('moment-timezone')().tz(distantConfig.timezone).format('HH:mm:ss')}\` - ======LOST CONNECTION======`;
+          require('fs').appendFile(`./logs/calls/${nums.sender}_${nums.receiver}.txt`, logMsg, () => {});
+        } else {
+          const textToSend = ctx.content.split(/ +/g).join(' ');
+          const logMsg = `\`${require('moment-timezone')().tz(distantConfig.timezone).format('HH:mm:ss')}\` - [${client.numbers.get(call.calling)}] **${ctx.author.tag}** (ID:${ctx.author.id}) - ${ctx.guild.name} : ${textToSend}`;
+          const msgToSend = `☎ **${ctx.author.tag}** : ${textToSend}`;
 
-        const textToSend = ctx.content.split(/ +/g).join(' ');
-        const msgToSend = `☎ \`${require('moment-timezone')().tz(distantConfig.timezone).format('HH:mm:ss')}\` - [${client.numbers.get(call.calling)}] **${ctx.author.tag}** (ID:${ctx.author.id}) - ${ctx.guild.name} : ${textToSend}`;
-        calledPhoneChannel.send(msgToSend);
+          require('fs').appendFile(`./logs/calls/${nums.sender}_${nums.receiver}.txt`, logMsg, () => {});
+          calledPhoneChannel.send(msgToSend);
+        }
       }
     }
   } else {
