@@ -24,7 +24,7 @@ exports.execute = async (client, ctx) => {
     client.channels.get(distConfig.channel_phone).send(client.I18n.translate`☎ You get a call from \`${number}\`! Use \`i:pickup\` to answer.`);
 
     setTimeout(() => {
-      if (client.calls[ctx.guild.id].state === 0) {
+      if (client.calls[ctx.guild.id] && client.calls[ctx.guild.id].state === 0) {
         ctx.channel.send(client.I18n.translate`☎ No answer from \`${number}\`! Cancelling...`);
         delete client.calls[ctx.guild.id];
       }
