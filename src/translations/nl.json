@@ -319,6 +319,7 @@
     "☎ You get a call from `{0}`! Use `i:pickup` to answer.": "☎ Je wordt gebeld door `{0}`! Gebruik `i:pickup` om te antwoorden.",
     "☎ No answer from `{0}`! Cancelling...": "☎ Geen antwoord van `{0}`! Aan het ophangen...",
     "☎ The provided number is not assigned!": "☎ Het aangegeven nummer is niet gekoppeld!",
-    "☎ Lost connection with `{0}`!": "☎ Connectie met `{0}` verloren!"
+    "☎ Lost connection with `{0}`!": "☎ Connectie met `{0}` verloren!",
+    "❌ You cannot call your own number!": "❌ Je kunt je eigen nummer niet bellen!"
   }
 }

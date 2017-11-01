@@ -11,6 +11,7 @@ exports.execute = async (client, ctx) => {
   if (client.numbers.has(number)) {
     const guildToCall = client.guilds.get(client.numbers.get(number));
     const distConfig = client.servers.get(guildToCall.id);
+    if (ctx.guild.id === guildToCall.id) return ctx.channel.send(client.I18n.translate`❌ You cannot call your own number!`);
     if (!client.channels.has(distConfig.channel_phone)) return ctx.channel.send(client.I18n.translate`☎ Impossible to join \`${number}\` because their phone is not connected... (channel not set)`);
     if (client.calls[guildToCall.id]) return ctx.channel.send(client.I18n.translate`☎ Sounds like they're already in-call with someone!`);
 

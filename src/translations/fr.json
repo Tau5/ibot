@@ -319,6 +319,7 @@
     "☎ You get a call from `{0}`! Use `i:pickup` to answer.": "☎ Vous recevez un appel de `{0}` ! Utilisez `i:pickup` pour répondre.",
     "☎ No answer from `{0}`! Cancelling...": "☎ Aucune réponse de `{0}` ! Annulation...",
     "☎ The provided number is not assigned!": "☎ Le numéro demandé n'est pas attribué.",
-    "☎ Lost connection with `{0}`!": "☎ Connexion avec `{0}` perdue !"
+    "☎ Lost connection with `{0}`!": "☎ Connexion avec `{0}` perdue !",
+    "❌ You cannot call your own number!": "❌ Vous ne pouvez pas appeler votre propre numéro !"
   }
 }
