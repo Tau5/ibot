@@ -97,16 +97,18 @@ module.exports = async (client, ctx) => {
   });
   if (!prefix) {
     if (ctx.channel.id !== config.channel_phone) return;
-    if (client.calls[ctx.guild.id]) {
-      const call = client.calls[ctx.guild.id];
+    if (client.calls[ctx.guild.id] || client.calls.support) {
+      const call = client.calls[ctx.guild.id] || client.calls.support;
       if (call.state === 1) {
         const called = client.guilds.get(client.numbers.get(call.calling));
         const distantConfig = client.servers.get(called.id);
         const calledPhoneChannel = client.channels.get(distantConfig.channel_phone);
         const nums = {
           sender: ((client.calls[ctx.guild.id].type === 0) ? client.calls[ctx.guild.id].calling : client.calls[called.id].calling),
-          receiver: ((client.calls[ctx.guild.id].type === 1) ? client.calls[ctx.guild.id].calling : client.calls[called.id].calling),
         };
+        if (ctx.channel.id === '375395137741783050') nums.receiver = (client.calls.support.type === 1) ? client.calls.support.calling : client.calls[called.id].calling;
+        else nums.receiver = (client.calls[ctx.guild.id].type === 1) ? client.calls[ctx.guild.id].calling : client.calls[called.id].calling;
+
         if (!calledPhoneChannel) {
           if (client.calls[ctx.guild.id].number === '1-000-000') delete client.calls.support;
           else delete client.calls[called.id];

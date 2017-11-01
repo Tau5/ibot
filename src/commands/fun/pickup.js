@@ -35,8 +35,9 @@ exports.execute = async (client, ctx) => {
 
   const nums = {
     sender: ((client.calls[ctx.guild.id].type === 0) ? client.calls[ctx.guild.id].calling : client.calls[caller.id].calling),
-    receiver: ((client.calls[ctx.guild.id].type === 1) ? client.calls[ctx.guild.id].calling : client.calls[caller.id].calling),
   };
+  if (ctx.channel.id === '375395137741783050') nums.receiver = (client.calls.support.type === 1) ? client.calls.support.calling : client.calls[caller.id].calling;
+  else nums.receiver = (client.calls[ctx.guild.id].type === 1) ? client.calls[ctx.guild.id].calling : client.calls[caller.id].calling;
 
   require('fs').appendFile(`./logs/calls/${nums.sender}_${nums.receiver}.txt`, `[${require('moment-timezone')().tz('UTC').format('HH:mm:ss')}] - ======CONNECTION MADE======\n`, () => {});
 
