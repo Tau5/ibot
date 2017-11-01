@@ -4,7 +4,7 @@ exports.execute = async (client, ctx) => {
   if (client.calls[ctx.guild.id]) return ctx.channel.send(client.I18n.translate`❌ You are already in-call with someone!`);
   if (config.channel_phone !== ctx.channel.id) return ctx.channel.send(client.I18n.translate`❌ You are not in the phone channel!`);
   const number = client.numbers.get(ctx.guild.id);
-  const caller;
+  let caller;
 
   Object.keys(client.calls).forEach((id) => {
     if (client.calls[id].type === 0 && client.calls[id].state === 0 && client.calls[id].calling === ctx.guild.id) {

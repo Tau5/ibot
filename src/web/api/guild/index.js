@@ -96,7 +96,7 @@ module.exports = (client) => {
       req.body = JSON.parse(decodeURIComponent(Object.keys(req.body)[0]));
       const guild = client.guilds.get(req.body.guildID);
       if (!guild) return res.header('Access-Control-Allow-Origin', '*').status(404).json({ message: 'UNKNOWN_GUILD_ID' });
-      
+
       const number = client.numbers.find(id => id === guild.id);
       if (!number) {
         const generated = Math.random().toString().slice(2, 7);
