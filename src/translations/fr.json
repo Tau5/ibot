@@ -297,6 +297,28 @@
     "❌ You must put a field name!": "❌ Vous devez mettre un champ !",
     "❌ You do not have a profile!": "❌ Vous n'avez pas de profile !",
     "❌ Your profile does not have the field `{0}`!": "❌ Votre profile n'a pas le champ `{0}` !",
-    "👤 Profile for **{0}** :\n{1}": "👤 Profile de **{0}** :\n{1}"
+    "👤 Profile for **{0}** :\n{1}": "👤 Profile de **{0}** :\n{1}",
+
+    "_note37": "pickup",
+    "❌ You are already in-call with someone!": "❌ Vous avez un appel en cours !",
+    "❌ You are not in the phone channel!": "❌ Vous n'êtes pas dans le salon d'appels !",
+    "☎ Nobody is calling you!": "☎ Personne ne vous appelle !",
+    "☎ Connection made. Say hello!": "☎ Connexion effectuée. Dites bonjour !",
+    "☎ They picked-up the phone. Say hello!": "☎ Ils ont décroché le téléphone. Dites bonjour !",
+
+    "_note38": "hangup",
+    "❌ You are not in-call with someone!": "❌ Vous n'avez pas d'appel en cours !",
+    "☎ Connection terminated!": "☎ Connexion terminée.",
+
+    "_note39": "call",
+    "❌ This server does not have a phone number.": "❌ Ce serveur n'a pas de numéro de téléphone.",
+    "❌ You must specify a number to call!": "❌ Vous devez spécifier un numéro à appeler !",
+    "☎ Impossible to join `{0}` because their phone is not connected... (channel not set)": "☎ Impossible de joindre `{0}` parce que leur téléphone n'est pas connecté... (salon non-défini)",
+    "☎ Sounds like they're already in-call with someone!": "☎ Il semble que votre correspondant est occupé !",
+    "☎ Calling `{0}`...": "☎ Appel de `{0}` en cours...",
+    "☎ You get a call from `{0}`! Use `i:pickup` to answer.": "☎ Vous recevez un appel de `{0}` ! Utilisez `i:pickup` pour répondre.",
+    "☎ No answer from `{0}`! Cancelling...": "☎ Aucune réponse de `{0}` ! Annulation...",
+    "☎ The provided number is not assigned!": "☎ Le numéro demandé n'est pas attribué.",
+    "☎ Lost connection with `{0}`!": "☎ Connexion avec `{0}` perdue !"
   }
 }

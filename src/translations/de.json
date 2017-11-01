@@ -294,6 +294,28 @@
     "❌ You must put a field name!": "❌ You must put a field name!",
     "❌ You do not have a profile!": "❌ You do not have a profile!",
     "❌ Your profile does not have the field `{0}`!": "❌ Your profile does not have the field `{0}`!",
-    "👤 Profile for **{0}** :\n{1}": "👤 Profile for **{0}** :\n{1}"
+    "👤 Profile for **{0}** :\n{1}": "👤 Profile for **{0}** :\n{1}",
+
+    "_note37": "pickup",
+    "❌ You are already in-call with someone!": "❌ You are already in-call with someone!",
+    "❌ You are not in the phone channel!": "❌ You are not in the phone channel!",
+    "☎ Nobody is calling you!": "☎ Nobody is calling you!",
+    "☎ Connection made. Say hello!": "☎ Connection made. Say hello!",
+    "☎ They picked-up the phone. Say hello!": "☎ They picked-up the phone. Say hello!",
+
+    "_note38": "hangup",
+    "❌ You are not in-call with someone!": "❌ You are not in-call with someone!",
+    "☎ Connection terminated!": "☎ Connection terminated!",
+
+    "_note39": "call",
+    "❌ This server does not have a phone number.": "❌ This server does not have a phone number.",
+    "❌ You must specify a number to call!": "❌ You must specify a number to call!",
+    "☎ Impossible to join `{0}` because their phone is not connected... (channel not set)": "☎ Impossible to join `{0}` because their phone is not connected... (channel not set)",
+    "☎ Sounds like they're already in-call with someone!": "☎ Sounds like they're already in-call with someone!",
+    "☎ Calling `{0}`...": "☎ Calling `{0}`...",
+    "☎ You get a call from `{0}`! Use `i:pickup` to answer.": "☎ You get a call from `{0}`! Use `i:pickup` to answer.",
+    "☎ No answer from `{0}`! Cancelling...": "☎ No answer from `{0}`! Cancelling...",
+    "☎ The provided number is not assigned!": "☎ The provided number is not assigned!",
+    "☎ Lost connection with `{0}`!": "☎ Lost connection with `{0}`!"
   }
 }

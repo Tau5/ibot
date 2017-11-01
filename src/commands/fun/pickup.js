@@ -33,10 +33,14 @@ exports.execute = async (client, ctx) => {
   require('fs').appendFile(`./logs/calls/${nums.sender}_${nums.receiver}.txt`, `[${require('moment-timezone')().tz('UTC').format('HH:mm:ss')}] - ======CONNECTION MADE======\n`, () => {});
 
   ctx.channel.send(client.I18n.translate`☎ Connection made. Say hello!`);
+
+  const distConf = client.servers.get(caller.id);
+  client.I18n.use(distConf.locale);
+  ctx.channel.send(client.I18n.translate`☎ They picked-up the phone. Say hello!`);
 };
 
 exports.conf = {
   name: 'pickup',
   aliases: [],
-  public: false,
+  public: true,
 };

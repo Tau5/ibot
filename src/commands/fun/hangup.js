@@ -25,11 +25,13 @@ exports.execute = async (client, ctx) => {
   delete client.calls[caller.id];
 
   ctx.channel.send(client.I18n.translate`☎ Connection terminated!`);
+
+  client.I18n.use(client.servers.get(caller.id).locale);
   client.channels.get(client.servers.get(caller.id).channel_phone).send(client.I18n.translate`☎ Connection terminated!`);
 };
 
 exports.conf = {
   name: 'hangup',
   aliases: [],
-  public: false,
+  public: true,
 };

@@ -3,7 +3,7 @@ exports.execute = async (client, ctx) => {
 
   if (client.calls[ctx.guild.id]) return ctx.channel.send(client.I18n.translate`❌ You are already in-call with someone!`);
   if (config.channel_phone !== ctx.channel.id) return ctx.channel.send(client.I18n.translate`❌ You are not in the phone channel!`);
-  if (config.number === 'NONE') return ctx.channel.send(client.I18n.translate`❌ This server (**${ctx.guild.name}**) does not have a phone number, please go on the dashboard to get one.`);
+  if (config.number === 'NONE') return ctx.channel.send(client.I18n.translate`❌ This server does not have a phone number.`);
 
   const number = ctx.args.join(' ');
   if (!number) return ctx.channel.send(client.I18n.translate`❌ You must specify a number to call!`);
@@ -37,5 +37,5 @@ exports.execute = async (client, ctx) => {
 exports.conf = {
   name: 'call',
   aliases: [],
-  public: false,
+  public: true,
 };
