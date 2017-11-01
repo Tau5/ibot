@@ -137,6 +137,8 @@
       const requestRequest = new XMLHttpRequest();
       let numberThing = document.getElementById('number');
 
+      if (numberThing.innerHTML !== 'Request a number') return;
+
       requestRequest.withCredentials = true;
       requestRequest.open('POST', 'https://ibot.idroid.me/api/guild/requestNumber', true);
 
