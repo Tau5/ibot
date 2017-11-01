@@ -16,7 +16,7 @@ exports.execute = async (client, ctx) => {
   client.calls[ctx.guild.id] = {
     type: 1,
     state: 1,
-    calling: caller,
+    calling: client.numbers.findKey(k => k === caller.id),
   };
 
   client.calls[caller.id] = {
