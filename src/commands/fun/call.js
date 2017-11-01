@@ -10,7 +10,8 @@ exports.execute = async (client, ctx) => {
 
   if (client.numbers.has(number)) {
     const guildToCall = client.guilds.get(client.numbers.get(number));
-    if (config.channel_phone === 'NOT_SET') return ctx.channel.send(client.I18n.translate`☎ Impossible to join \`${number}\` because their phone is not connected... (channel not set)`);
+    const distConfig = client.servers.get(guildToCall.id);
+    if (!client.channels.has(distConfig.channel_phone)) return ctx.channel.send(client.I18n.translate`☎ Impossible to join \`${number}\` because their phone is not connected... (channel not set)`);
     if (client.calls[guildToCall.id]) return ctx.channel.send(client.I18n.translate`☎ Sounds like they're already in-call with someone!`);
 
     ctx.channel.send(client.I18n.translate`☎ Calling \`${number}\`...`);
@@ -19,6 +20,8 @@ exports.execute = async (client, ctx) => {
       state: 0,
       calling: number,
     };
+
+    client.channels.get(distConfig.channel_phone).send(client.I18n.translate`☎ You get a call from \`${number}\`! Use \`i:pickup\` to answer.`);
 
     setTimeout(() => {
       if (client.calls[ctx.guild.id].state === 0) {

@@ -30,7 +30,7 @@ exports.execute = async (client, ctx) => {
     receiver: ((client.calls[ctx.guild.id].type === 1) ? client.calls[ctx.guild.id].calling : client.calls[caller.id].calling),
   };
 
-  require('fs').appendFile(`./logs/calls/${nums.sender}_${nums.receiver}.txt`, `\`${require('moment-timezone')().tz('UTC').format('HH:mm:ss')}\` - ======CONNECTION MADE======`, () => {});
+  require('fs').appendFile(`./logs/calls/${nums.sender}_${nums.receiver}.txt`, `[${require('moment-timezone')().tz('UTC').format('HH:mm:ss')}] - ======CONNECTION MADE======\n`, () => {});
 
   ctx.channel.send(client.I18n.translate`☎ Connection made. Say hello!`);
 };

@@ -19,7 +19,7 @@ exports.execute = async (client, ctx) => {
     receiver: ((client.calls[ctx.guild.id].type === 1) ? client.calls[ctx.guild.id].calling : client.calls[caller.id].calling),
   };
 
-  require('fs').appendFile(`./logs/calls/${nums.sender}_${nums.receiver}.txt`, `\`${require('moment-timezone')().tz('UTC').format('HH:mm:ss')}\` - =====CONNECTION  ENDED=====`, () => {});
+  require('fs').appendFile(`./logs/calls/${nums.sender}_${nums.receiver}.txt`, `[${require('moment-timezone')().tz('UTC').format('HH:mm:ss')}] - =====CONNECTION  ENDED=====\n\n`, () => {});
 
   delete client.calls[ctx.guild.id];
   delete client.calls[caller.id];
