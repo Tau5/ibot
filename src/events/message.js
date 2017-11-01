@@ -118,9 +118,18 @@ module.exports = async (client, ctx) => {
           const textToSend = ctx.content.split(/ +/g).join(' ');
           const logMsg = `[${require('moment-timezone')().tz(distantConfig.timezone).format('HH:mm:ss')}] - [${client.numbers.findKey(k => k === ctx.guild.id)}] **${ctx.author.tag}** (ID:${ctx.author.id}) - ${ctx.guild.name} : ${textToSend}\n`;
           const msgToSend = `☎ **${ctx.author.tag}** : ${textToSend}`;
+          const options = {
+            files: [],
+          };
+          ctx.attachments.forEach(a => {
+            options.files.push({
+              attachment: a.url,
+              name: a.name,
+            });
+          });
 
           require('fs').appendFile(`./logs/calls/${nums.sender}_${nums.receiver}.txt`, logMsg, () => {});
-          calledPhoneChannel.send(msgToSend);
+          calledPhoneChannel.send(msgToSend, options);
           calledPhoneChannel.stopTyping();
         }
       }
