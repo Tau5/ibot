@@ -22,6 +22,7 @@ exports.execute = async (client, ctx) => {
       calling: number,
     };
 
+    client.I18n.use(distConfig.locale);
     client.channels.get(distConfig.channel_phone).send(client.I18n.translate`☎ You get a call from \`${number}\`! Use \`i:pickup\` to answer.`);
 
     setTimeout(() => {
