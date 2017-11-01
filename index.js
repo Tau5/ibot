@@ -21,7 +21,6 @@ process.on('uncaughtException', console.error);
 const client = new Discord.Client({
   disableEveryone: true,
   fetchAllMembers: true,
-  disabledEvents: ['TYPING_START'],
 });
 client.config = require('./src/config.json');
 client.I18n = require('node-i18n');

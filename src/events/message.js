@@ -111,6 +111,7 @@ module.exports = async (client, ctx) => {
           delete client.calls[called.id];
           delete client.calls[ctx.guild.id];
           ctx.channel.send(client.I18n.translate`☎ Lost connection with \`${call.calling}\`!`);
+          calledPhoneChannel.stopTyping(true);
           const logMsg = `[${require('moment-timezone')().tz(distantConfig.timezone).format('HH:mm:ss')}] - ======LOST CONNECTION======\n\n`;
           require('fs').appendFile(`./logs/calls/${nums.sender}_${nums.receiver}.txt`, logMsg, () => {});
         } else {
@@ -120,6 +121,7 @@ module.exports = async (client, ctx) => {
 
           require('fs').appendFile(`./logs/calls/${nums.sender}_${nums.receiver}.txt`, logMsg, () => {});
           calledPhoneChannel.send(msgToSend);
+          calledPhoneChannel.stopTyping();
         }
       }
     }
