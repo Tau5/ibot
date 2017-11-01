@@ -135,7 +135,7 @@
     function requestNumber() {
       const guildID = '<%= guild.id %>';
       const requestRequest = new XMLHttpRequest();
-      const numberThing = document.getElementById('number');
+      let numberThing = document.getElementById('number');
 
       requestRequest.withCredentials = true;
       requestRequest.open('POST', 'https://ibot.idroid.me/api/guild/requestNumber', true);
@@ -148,7 +148,7 @@
             numberThing = `\`${JSON.parse(requestRequest.responseText).number}\``;
           } else {
             numberThing.setAttribute('class', 'alert alert-danger text-center');
-            numberThing.innerHTMl = 'An error occured while requesting the number!';
+            numberThing.innerHTML = 'An error occured while requesting the number!';
           }
         }
       }

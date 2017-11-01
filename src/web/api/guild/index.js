@@ -99,7 +99,8 @@ module.exports = (client) => {
 
       const number = client.numbers.find(id => id === guild.id);
       if (!number) {
-        const generated = Math.random().toString().slice(2, 7);
+        const random = Math.random().toString();
+        const generated = `1-${random[2]}${random[4]}${random[3]}-${random[5]}${random[7]}${random[6]}`;
         if (client.numbers.has(generated)) return res.header('Access-Control-Allow-Origin', '*').status(500).json({ message: 'The generated number is already owned! Please refresh and retry requesting a number.' });
         client.numbers.set(generated, guild.id);
 
