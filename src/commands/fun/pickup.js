@@ -2,7 +2,7 @@ exports.execute = async (client, ctx) => {
   const config = client.servers.get(ctx.guild.id);
 
   if (client.calls[ctx.guild.id]) return ctx.channel.send(client.I18n.translate`❌ You are already in-call with someone!`);
-  if (config.channel_phone !== ctx.channel.id && ctx.channel.id !== '375395137741783050') return ctx.channel.send(client.I18n.translate`❌ You are not in the phone channel!`);
+  if (config.channel_phone !== ctx.channel.id) return ctx.channel.send(client.I18n.translate`❌ You are not in the phone channel!`);
   const number = client.numbers.findKey(k => k === ctx.guild.id);
   let caller;
 
@@ -13,19 +13,11 @@ exports.execute = async (client, ctx) => {
   });
 
   if (!caller) return ctx.channel.send(client.I18n.translate`☎ Nobody is calling you!`);
-  if (ctx.channel.id === '375395137741783050') {
-    client.calls.support = {
-      type: 1,
-      state: 1,
-      calling: client.numbers.findKey(k => k === caller.id),
-    };
-  } else {
-    client.calls[ctx.guild.id] = {
-      type: 1,
-      state: 1,
-      calling: client.numbers.findKey(k => k === caller.id),
-    };
-  }
+  client.calls[ctx.guild.id] = {
+    type: 1,
+    state: 1,
+    calling: client.numbers.findKey(k => k === caller.id),
+  };
 
   client.calls[caller.id] = {
     type: 0,
@@ -35,9 +27,8 @@ exports.execute = async (client, ctx) => {
 
   const nums = {
     sender: ((client.calls[ctx.guild.id].type === 0) ? client.calls[ctx.guild.id].calling : client.calls[caller.id].calling),
+    receiver = ((client.calls[ctx.guild.id].type === 1) ? client.calls[ctx.guild.id].calling : client.calls[caller.id].calling),
   };
-  if (ctx.channel.id === '375395137741783050') nums.receiver = (client.calls.support.type === 1) ? client.calls.support.calling : client.calls[caller.id].calling;
-  else nums.receiver = (client.calls[ctx.guild.id].type === 1) ? client.calls[ctx.guild.id].calling : client.calls[caller.id].calling;
 
   require('fs').appendFile(`./logs/calls/${nums.sender}_${nums.receiver}.txt`, `[${require('moment-timezone')().tz('UTC').format('HH:mm:ss')}] - ======CONNECTION MADE======\n`, () => {});
 
