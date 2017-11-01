@@ -33,7 +33,7 @@ exports.execute = async (client, ctx) => {
   });
   client.servers.set(ctx.guild.id, config);
 
-  client.modUtil.Modlog(client, ctx.guild, client.I18n.translate`📝 **${ctx.author.tag}** unwarned **${member.user.tag}** (ID:${member.id}). *Warns count: ${(warncount + 1)}*`, reason);
+  client.modUtil.Modlog(client, ctx.guild, client.I18n.translate`📝 **${ctx.author.tag}** unwarned **${member.user.tag}** (ID:${member.id}). *Warns count: ${(warncount - 1)}*`, reason);
   ctx.channel.send(client.I18n.translate`✅ Unwarned **${member.user.tag}**!`);
 };
 
