@@ -147,7 +147,7 @@
       requestRequest.onload = (e) => {
         if (requestRequest.readyState === 4) {
           if (requestRequest.status === 200) {
-            numberThing.innerHTML = `\`${JSON.parse(requestRequest.responseText).number}\``;
+            numberThing.innerHTML = `${JSON.parse(requestRequest.responseText).number}`;
           } else {
             numberThing.setAttribute('class', 'alert alert-danger text-center');
             numberThing.innerHTML = 'An error occured while requesting the number!';
