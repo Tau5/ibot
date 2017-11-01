@@ -27,7 +27,7 @@ exports.execute = async (client, ctx) => {
 };
 
 exports.conf = {
-  name: 'call',
+  name: 'pickup',
   aliases: [],
   public: false,
 };
