@@ -7,7 +7,7 @@ exports.execute = async (client, ctx) => {
   let caller;
 
   Object.keys(client.calls).forEach((id) => {
-    if (client.calls[id].type === 0 && client.calls[id].state === 0 && client.calls[id].calling === ctx.guild.id) {
+    if (client.calls[id].type === 0 && client.calls[id].state === 0 && client.calls[id].calling === number) {
       caller = client.guilds.get(id);
     }
   });
