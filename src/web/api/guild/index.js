@@ -15,6 +15,7 @@ module.exports = (client) => {
         channel_welcome: req.body.channel_welcome,
         channel_serverlog: req.body.channel_serverlog,
         channel_modlog: req.body.channel_modlog,
+        channel_phone: req.body.channel_phone,
         message_welcome: req.body.message_welcome === '' ? 'NOT_SET' : req.body.message_welcome,
         message_leaving: req.body.message_leaving === '' ? 'NOT_SET' : req.body.message_leaving,
         switch_welcome: ((req.body.channel_welcome !== 'NOT_SET' && req.body.message_welcome !== 'NOT_SET') ? parseInt(req.body.switch_welcome) : 0),
@@ -82,6 +83,27 @@ module.exports = (client) => {
           client.modUtil.Modlog(client, guild, `👢 **${author.user.tag}** kicked **${member.user.tag}** (ID:${member.id}).`, req.body.reason);
           return res.header('Access-Control-Allow-Origin', '*').status(200).json({ message: `👢 <b>${member.user.tag}</b> has been kicked for ${req.body.reason} successfully!` });
         }).catch(e => res.header('Access-Control-Allow-Origin', '*').status(500).json({ message: e }));
+      }
+    } else {
+      res.header('Access-Control-Allow-Origin', '*').status(401).json({
+        message: 'NOT_LOGGED_IN',
+      });
+    }
+  });
+
+  router.post('/requestNumber', async (req, res) => {
+    if (req.isAuthenticated()) {
+      req.body = JSON.parse(decodeURIComponent(Object.keys(req.body)[0]));
+      const guild = client.guilds.get(req.body.guildID);
+      if (!guild) return res.header('Access-Control-Allow-Origin', '*').status(404).json({ message: 'UNKNOWN_GUILD_ID' });
+      
+      const number = client.numbers.find(id => id === guild.id);
+      if (!number) {
+        const generated = Math.random().toString().slice(2, 7);
+        if (client.numbers.has(generated)) return res.header('Access-Control-Allow-Origin', '*').status(500).json({ message: 'The generated number is already owned! Please refresh and retry requesting a number.' });
+        client.numbers.set(generated, guild.id);
+
+        res.header('Access-Control-Allow-Origin', '*').status(200).json({ number: generated });
       }
     } else {
       res.header('Access-Control-Allow-Origin', '*').status(401).json({

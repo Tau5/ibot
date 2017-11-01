@@ -95,64 +95,79 @@ module.exports = async (client, ctx) => {
       prefix = prefix2;
     }
   });
-  if (!prefix) return;
+  if (!prefix) {
+    if (ctx.channel.id !== config.channel_phone) return;
+    if (client.calls[ctx.guild.id]) {
+      const call = client.calls[ctx.guild.id];
+      if (call.state === 1) {
+        const called = client.guilds.get(client.numbers.get(call.calling));
+        const distantConfig = client.servers.get(called.id);
+        const calledPhoneChannel = client.channels.get(distantConfig.channel_phone);
+        if (!calledPhoneChannel) return ctx.channel.send(client.I18n.translate`☎ Lost connection with \`${call.calling}\`!`);
 
-  /* HANDLING */
-  ctx.args = ctx.content.split(/ +/g);
-  const command = ctx.args.shift().slice(prefix.length).toLowerCase();
-
-  const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
-  if (cmd) {
-    client.I18n.use(config.locale);
-
-    /* COOLDOWN */
-    if (client.cooldown.has(ctx.author.id)) return ctx.channel.send(client.I18n.translate`⚠ Calm down!`);
-
-    /* BLACKLIST */
-    const blacklist = client.config.blacklist.users[ctx.author.id];
-    if (blacklist) {
-      await ctx.channel.send(client.I18n.translate`⚠ You have been blacklisted - You cannot use iBot commands anymore.\n__Given reason :__ ${blacklist.reason} - __Time :__ ${blacklist.time}`);
-      return;
+        const textToSend = ctx.content.split(/ +/g).join(' ');
+        const msgToSend = `☎ \`${require('moment-timezone')().tz(distantConfig.timezone).format('HH:mm:ss')}\` - [${client.numbers.get(call.calling)}] **${ctx.author.tag}** (ID:${ctx.author.id}) - ${ctx.guild.name} : ${textToSend}`;
+        calledPhoneChannel.send(msgToSend);
+      }
     }
-
-    /* IF COMMAND IS PRIVATE */
-    if (!cmd.conf.public && ctx.author.id !== client.config.discord.ownerID) return ctx.channel.send(client.I18n.translate`❌ You do not have the permission to execute this command!`);
-
-    /* PERMISSIONS */
-    if (cmd.conf.user_permission && !ctx.member.hasPermission(cmd.conf.user_permission)) return ctx.channel.send(client.I18n.translate`❌ You do not have the permission \`${cmd.conf.user_permission}\`!`);
-    if (cmd.conf.bot_permission && !ctx.guild.me.hasPermission(cmd.conf.bot_permission)) return ctx.channel.send(client.I18n.translate`❌ I do not have the permission \`${cmd.conf.bot_permission}\`!`);
-
+  } else {
     /* HANDLING */
-    try {
-      /* LOGGING */
-      require('fs').appendFile('./logs/commands.txt', `[${require('moment-timezone')().tz('UTC').format('DD/MM/YYYY HH:mm:ss')}] Author: ${ctx.author.tag} (ID:${ctx.author.id}) - Guild: ${ctx.guild.name} (ID:${ctx.guild.id}) - Channel: ${ctx.channel.name} (ID:${ctx.channel.id})\r\n${ctx.cleanContent}\r\n--------------------\r\n`, () => {});
+    ctx.args = ctx.content.split(/ +/g);
+    const command = ctx.args.shift().slice(prefix.length).toLowerCase();
 
-      /* STATS */
-      client.stats.set('cmdsran', parseInt(client.stats.get('cmdsran')) + 1);
-      client.stats.set(cmd.conf.name, parseInt(client.stats.get(cmd.conf.name)) + 1 || 1);
-      client.stats.set(ctx.author.id, parseInt(client.stats.get(ctx.author.id)) + 1 || 1);
+    const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
+    if (cmd) {
+      client.I18n.use(config.locale);
 
       /* COOLDOWN */
-      client.cooldown.add(ctx.author.id);
-      setTimeout(() => client.cooldown.delete(ctx.author.id), 2000);
+      if (client.cooldown.has(ctx.author.id)) return ctx.channel.send(client.I18n.translate`⚠ Calm down!`);
 
-      /* EXECUTE */
-      cmd.execute(client, ctx);
-    } catch (e) {
-      /* LOGGING */
-      ctx.channel.send(client.I18n.translate`❌ An unhandled error has occured! I told my dad about it, don't worry and... it'll be fixed soon!`);
-      require('fs').appendFile('./logs/errors.txt', `----------\r\n${require('moment-timezone')().tz('UTC').format('DD/MM/YYYY HH:mm:ss')}] Author: ${ctx.author.tag} (ID:${ctx.author.id}) - Guild: ${ctx.guild.name} (ID:${ctx.guild.id}) - Channel: ${ctx.channel.name} (ID:${ctx.channel.id}) - Command: ${command}\r\n${ctx.cleanContent}\r\n===RETURNED ERROR===\n${e}\r\n`, err => console.error(err));
+      /* BLACKLIST */
+      const blacklist = client.config.blacklist.users[ctx.author.id];
+      if (blacklist) {
+        await ctx.channel.send(client.I18n.translate`⚠ You have been blacklisted - You cannot use iBot commands anymore.\n__Given reason :__ ${blacklist.reason} - __Time :__ ${blacklist.time}`);
+        return;
+      }
+
+      /* IF COMMAND IS PRIVATE */
+      if (!cmd.conf.public && ctx.author.id !== client.config.discord.ownerID) return ctx.channel.send(client.I18n.translate`❌ You do not have the permission to execute this command!`);
+
+      /* PERMISSIONS */
+      if (cmd.conf.user_permission && !ctx.member.hasPermission(cmd.conf.user_permission)) return ctx.channel.send(client.I18n.translate`❌ You do not have the permission \`${cmd.conf.user_permission}\`!`);
+      if (cmd.conf.bot_permission && !ctx.guild.me.hasPermission(cmd.conf.bot_permission)) return ctx.channel.send(client.I18n.translate`❌ I do not have the permission \`${cmd.conf.bot_permission}\`!`);
+
+      /* HANDLING */
+      try {
+        /* LOGGING */
+        require('fs').appendFile('./logs/commands.txt', `[${require('moment-timezone')().tz('UTC').format('DD/MM/YYYY HH:mm:ss')}] Author: ${ctx.author.tag} (ID:${ctx.author.id}) - Guild: ${ctx.guild.name} (ID:${ctx.guild.id}) - Channel: ${ctx.channel.name} (ID:${ctx.channel.id})\r\n${ctx.cleanContent}\r\n--------------------\r\n`, () => {});
+
+        /* STATS */
+        client.stats.set('cmdsran', parseInt(client.stats.get('cmdsran')) + 1);
+        client.stats.set(cmd.conf.name, parseInt(client.stats.get(cmd.conf.name)) + 1 || 1);
+        client.stats.set(ctx.author.id, parseInt(client.stats.get(ctx.author.id)) + 1 || 1);
+
+        /* COOLDOWN */
+        client.cooldown.add(ctx.author.id);
+        setTimeout(() => client.cooldown.delete(ctx.author.id), 2000);
+
+        /* EXECUTE */
+        cmd.execute(client, ctx);
+      } catch (e) {
+        /* LOGGING */
+        ctx.channel.send(client.I18n.translate`❌ An unhandled error has occured! I told my dad about it, don't worry and... it'll be fixed soon!`);
+        require('fs').appendFile('./logs/errors.txt', `----------\r\n${require('moment-timezone')().tz('UTC').format('DD/MM/YYYY HH:mm:ss')}] Author: ${ctx.author.tag} (ID:${ctx.author.id}) - Guild: ${ctx.guild.name} (ID:${ctx.guild.id}) - Channel: ${ctx.channel.name} (ID:${ctx.channel.id}) - Command: ${command}\r\n${ctx.cleanContent}\r\n===RETURNED ERROR===\n${e}\r\n`, err => console.error(err));
+      }
+    } else if (config.imported_tags.indexOf(command) !== -1) {
+      const args = ctx.args.join(' ');
+      const tag = client.tags.get(command);
+
+      const content = tag.content
+        .replace(/{args}/g, args)
+        .replace(/{randomuser}/g, ctx.guild.members.random().user.username)
+        .replace(/{range1-100}/g, Math.floor(Math.random() * 1000))
+        .replace(/{guildname}/g, ctx.guild.name)
+        .replace(/{guildcount}/g, ctx.guild.memberCount);
+      ctx.channel.send(content);
     }
-  } else if (config.imported_tags.indexOf(command) !== -1) {
-    const args = ctx.args.join(' ');
-    const tag = client.tags.get(command);
-
-    const content = tag.content
-      .replace(/{args}/g, args)
-      .replace(/{randomuser}/g, ctx.guild.members.random().user.username)
-      .replace(/{range1-100}/g, Math.floor(Math.random() * 1000))
-      .replace(/{guildname}/g, ctx.guild.name)
-      .replace(/{guildcount}/g, ctx.guild.memberCount);
-    ctx.channel.send(content);
   }
 };

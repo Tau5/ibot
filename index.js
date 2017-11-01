@@ -32,6 +32,9 @@ client.languages = {};
 client.cleverbot = true;
 client.cs = {};
 
+/* PHONES */
+client.calls = {};
+
 /* DATABASE */
 client.servers = new Enmap({ provider: new Level({ name: 'servers' }) });
 client.tags = new Enmap({ provider: new Level({ name: 'tags' }) });
@@ -39,6 +42,7 @@ client.lastactive = new Enmap({ provider: new Level({ name: 'lastactive' }) });
 client.afk = new Enmap({ provider: new Level({ name: 'afk' }) });
 client.stats = new Enmap({ provider: new Level({ name: 'stats' }) });
 client.profiles = new Enmap({ provider: new Level({ name: 'profiles' }) });
+client.numbers = new Enmap({ provider: new Level({ name: 'numbers' }) });
 
 /* COMMANDS */
 client.commands = new Enmap();
