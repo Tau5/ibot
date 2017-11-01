@@ -115,7 +115,7 @@ module.exports = async (client, ctx) => {
           require('fs').appendFile(`./logs/calls/${nums.sender}_${nums.receiver}.txt`, logMsg, () => {});
         } else {
           const textToSend = ctx.content.split(/ +/g).join(' ');
-          const logMsg = `[${require('moment-timezone')().tz(distantConfig.timezone).format('HH:mm:ss')}] - [${client.numbers.get(call.calling)}] **${ctx.author.tag}** (ID:${ctx.author.id}) - ${ctx.guild.name} : ${textToSend}\n`;
+          const logMsg = `[${require('moment-timezone')().tz(distantConfig.timezone).format('HH:mm:ss')}] - [${client.numbers.findKey(k => k === ctx.guild.id)}] **${ctx.author.tag}** (ID:${ctx.author.id}) - ${ctx.guild.name} : ${textToSend}\n`;
           const msgToSend = `☎ **${ctx.author.tag}** : ${textToSend}`;
 
           require('fs').appendFile(`./logs/calls/${nums.sender}_${nums.receiver}.txt`, logMsg, () => {});
