@@ -37,7 +37,7 @@
   
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
-        <form id="configUpdate" name="configUpdate" method="post" action="javascript:void(0);" onsubmit="updateConfig()">
+        <form id="configUpdate" name="configUpdate" method="post" action="javascript:void(0);">
           <h1 class="mbr-section-title mbr-bold mbr-fonts-style text-center"><strong>CONFIGURATION</strong></h1>
           <hr>
           <div id="confStatus" class="alert alert-info text-center" role="alert">
@@ -117,11 +117,11 @@
                 <div class="text-center">
                   <p><img src="https://discordapp.com/assets/be21e06571be73619ebba2e9731abb11.svg" height="20px" width="20px"> <b>Timezone:</b> <select id="timezone" name="timezone" aria-controls="config" class="form-control form-control-sm"><% timezones.forEach(tz => { %><option value="<%= tz %>" <% if (config.timezone === tz) { %>selected<% } %>><%= tz %></option><% }) %></select></p>
                   <p><img src="https://discordapp.com/assets/cf7f3e86b93c14f8e53feac55a1b637f.svg" height="20px" width="20px"> <b>Locale:</b> <select id="locale" name="locale" aria-controls="config" class="form-control form-control-sm"><% Object.keys(guild.client.languages).forEach(l => { %><option value="<%= l %>" <% if (config.locale === l) { %>selected<% } %>><%= l %></option><% }); %></select></p>
-                  <p><img src="https://discordapp.com/assets/8ce180bda86f59e517eb6a1d0ed84eef.svg" height="20px" width="20px"> <b>Number:</b> <span id="number"><% if (guild.client.numbers.find(g => g === guild.id)) { %><%= guild.client.numbers.find(g => g === guild.id) %><% } else { %><button class="btn btn-secondary btn-lg" onclick="requestNumber()">Request a number</button><% } %></span></p>
+                  <p><img src="https://discordapp.com/assets/8ce180bda86f59e517eb6a1d0ed84eef.svg" height="20px" width="20px"> <b>Number:</b> <br><span id="number"><% if (guild.client.numbers.find(g => g === guild.id)) { %><%= guild.client.numbers.find(g => g === guild.id) %><% } else { %><button class="btn btn-secondary btn-lg" onclick="requestNumber()">Request a number</button><% } %></span></p>
                 </div>
               </div>
           </div>
-          <div class="text-center"><button class="btn btn-primary btn-lg" type="submit">Update</button></div>
+          <div class="text-center"><button class="btn btn-primary btn-lg" type="submit" onclick="updateConfig()">Update</button></div>
         </form>
       </div>
     </div>
