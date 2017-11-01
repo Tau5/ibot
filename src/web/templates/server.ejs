@@ -266,7 +266,7 @@
             alert.setAttribute('class', 'alert alert-warning text-center');
             setTimeout(modActionStatusNormal, 15000);
           } else {
-            alert.innerHTML = `<b>Error</b> - Code: ${updateRequest.status} - Message: ${JSON.parse(updateRequest.responseText).message.message}`;
+            alert.innerHTML = `<b>Error</b> - Code: ${updateRequest.status} - Message: ${JSON.parse(updateRequest.responseText).message}`;
             alert.setAttribute('class', 'alert alert-danger text-center');
             setTimeout(modActionStatusNormal, 5000);
           }
