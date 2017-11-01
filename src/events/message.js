@@ -105,7 +105,7 @@ module.exports = async (client, ctx) => {
         const calledPhoneChannel = client.channels.get(distantConfig.channel_phone);
         const nums = {
           sender: ((client.calls[ctx.guild.id].type === 0) ? client.calls[ctx.guild.id].calling : client.calls[called.id].calling),
-          receiver = ((client.calls[ctx.guild.id].type === 1) ? client.calls[ctx.guild.id].calling : client.calls[called.id].calling);
+          receiver: ((client.calls[ctx.guild.id].type === 1) ? client.calls[ctx.guild.id].calling : client.calls[called.id].calling),
         };
 
         if (!calledPhoneChannel) {
