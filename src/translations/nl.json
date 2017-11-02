@@ -305,6 +305,7 @@
     "☎ Nobody is calling you or the provided number is invalid!": "☎ Niemand is je aan het bellen!",
     "☎ Connection made. Say hello!": "☎ Verbinding gemaakt. Zeg hallo!",
     "☎ They picked-up the phone. Say hello!": "☎ De telefoon is opgenomen. Zeg hallo!",
+    "❌ You have {0} who are trying to call you. Please select one using `i:pickup [number]`.": "❌ You have {0} who are trying to call you. Please select one using `i:pickup [number]`.",
 
     "_note38": "hangup",
     "❌ You are not in-call with someone!": "❌ Je bent niet met iemand aan het bellen!",

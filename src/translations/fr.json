@@ -305,6 +305,7 @@
     "☎ Nobody is calling you or the provided number is invalid!": "☎ Personne ne vous appelle ou le numéro que vous avez indiqué est invalide !",
     "☎ Connection made. Say hello!": "☎ Connexion effectuée. Dites bonjour !",
     "☎ They picked-up the phone. Say hello!": "☎ Ils ont décroché le téléphone. Dites bonjour !",
+    "❌ You have {0} who are trying to call you. Please select one using `i:pickup [number]`.": "❌ Vous avez {0} personnes qui vous appelent. Sélectionnez-en un avec `i:pickup [numéro]`.",
 
     "_note38": "hangup",
     "❌ You are not in-call with someone!": "❌ Vous n'avez pas d'appel en cours !",
