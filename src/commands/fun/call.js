@@ -27,6 +27,7 @@ exports.execute = async (client, ctx) => {
 
     setTimeout(() => {
       if (client.calls[ctx.guild.id] && client.calls[ctx.guild.id].state === 0) {
+        client.I18n.use(config.locale);
         ctx.channel.send(client.I18n.translate`☎ No answer from \`${number}\`! Cancelling...`);
         delete client.calls[ctx.guild.id];
       }
