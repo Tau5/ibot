@@ -92,6 +92,27 @@ exports.execute = async (client, ctx) => {
       client.servers.set(ctx.guild.id, config);
       ctx.channel.send(client.I18n.translate`✅ ${channel.toString()} will now be listened!`);
     }
+  } else if (type === 'autorole') {
+    const search = ctx.args.slice(1).join(' ');
+    if (!search) return ctx.channel.send(client.I18n.translate`❌ You must specify a role to search!`);
+
+    let role;
+    if (ctx.mentions.roles.size > 0) role = ctx.mentions.roles.first();
+    else {
+      role = client.findersUtil.findRoles(ctx.guild, search);
+      if (role.size === 0) return ctx.channel.send(client.I18n.translate`❌ No role found matching \`${search}\`!`);
+      else role = role.first();
+    }
+
+    if (config.auto_role_join.indexOf(role.id) === -1) {
+      config.auto_role_join.push(role.id);
+      client.servers.set(ctx.guild.id, config);
+      ctx.channel.send(client.I18n.translate`✅ Role **${role.name}** added!`);
+    } else {
+      config.auto_role_join.splice(config.auto_role_join.indexOf(role.id), 1);
+      client.servers.set(ctx.guild.id, config);
+      ctx.channel.send(client.I18n.translate`✅ Role **${role.name}** removed!`);
+    }
   } else if (type === 'roleme') {
     const search = ctx.args.slice(1).join(' ');
     if (!search) return ctx.channel.send(client.I18n.translate`❌ You must specify a role to search!`);

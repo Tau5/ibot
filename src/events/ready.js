@@ -23,6 +23,7 @@ module.exports = async (client) => {
       switch_modlog: 0,
       switch_clearbackup: 0,
       roleme: [],
+      auto_role_join: [],
       custom_prefixes: [],
       moderation: [],
       imported_tags: [],

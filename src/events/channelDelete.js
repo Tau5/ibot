@@ -16,5 +16,9 @@ module.exports = async (client, channel) => {
     config.switch_modlog = 0;
   }
 
+  if (channel.id === config.channel_phone) {
+    config.channel_phone = 'NOT_SET';
+  }
+
   client.servers.set(channel.guild.id, config);
 };
