@@ -43,6 +43,6 @@ exports.execute = async (client, ctx) => {
 
 exports.conf = {
   name: 'whois',
-  aliases: ['whois', 'phonebook', 'yellowpages'],
+  aliases: ['phonebook', 'yellowpages'],
   public: true,
 };
