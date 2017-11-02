@@ -10,11 +10,11 @@ exports.execute = async (client, ctx) => {
     if (phoneChannel) {
       const message = [
         '📡 This is an automatic announcement sent from the support (`1-000-000`).',
-        `${text}`,
+        `\`\`\`${text}\`\`\``,
         'ℹ The support is available at 1-000-000. Use it only when needed (help using iBot, reporting bugs, etc).',
       ];
 
-      ctx.channel.send(message.join('\n'));
+      phoneChannel.send(message.join('\n'));
     }
   });
 
