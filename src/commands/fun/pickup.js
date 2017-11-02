@@ -7,7 +7,7 @@ exports.execute = async (client, ctx) => {
   let caller;
 
   const calls = Object.keys(client.calls);
-  if (calls.filter(c => c.calling === number).length > 1 && !ctx.args[0]) return ctx.channel.send(client.I18n.translate`❌ You have ${calls.filter(c => c.calling === number).length} who are trying to call you. Please select one using \`i:pickup [number}\`.`);
+  if (calls.filter(c => client.calls[c].calling === number).length > 1 && !ctx.args[0]) return ctx.channel.send(client.I18n.translate`❌ You have ${calls.filter(c => c.calling === number).length} who are trying to call you. Please select one using \`i:pickup [number}\`.`);
 
   calls.forEach((id) => {
     if (client.calls[id].type === 0 && client.calls[id].state === 0 && client.calls[id].calling === number) {
