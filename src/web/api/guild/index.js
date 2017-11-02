@@ -23,6 +23,7 @@ module.exports = (client) => {
         switch_serverlog: (req.body.channel_serverlog !== 'NOT_SET' ? parseInt(req.body.switch_serverlog) : 0),
         switch_modlog: (req.body.channel_modlog !== 'NOT_SET' ? parseInt(req.body.switch_modlog) : 0),
         switch_clearbackup: parseInt(req.body.switch_clearbackup),
+        switch_phonebook: parseInt(req.body.switch_phonebook),
         roleme: config.roleme,
         custom_prefixes: config.custom_prefixes,
         moderation: config.moderation,
