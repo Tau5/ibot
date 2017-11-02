@@ -22,6 +22,7 @@ module.exports = async (client) => {
       switch_serverlog: 0,
       switch_modlog: 0,
       switch_clearbackup: 0,
+      switch_phonebook: 1,
       roleme: [],
       auto_role_join: [],
       custom_prefixes: [],

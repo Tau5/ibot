@@ -321,6 +321,12 @@
     "☎ No answer from `{0}`! Cancelling...": "☎ Aucune réponse de `{0}` ! Annulation...",
     "☎ The provided number is not assigned!": "☎ Le numéro demandé n'est pas attribué.",
     "☎ Lost connection with `{0}`!": "☎ Connexion avec `{0}` perdue !",
-    "❌ You cannot call your own number!": "❌ Vous ne pouvez pas appeler votre propre numéro !"
+    "❌ You cannot call your own number!": "❌ Vous ne pouvez pas appeler votre propre numéro !",
+
+    "_note40": "whois",
+    "❌ Nothing found for `{0}`.": "❌ Aucun résultat correspondant à `{0}`.",
+    "🔖 Phonebook - Results for `{0}` :": "🔖 Annuaire - Résultats pour `{0}` :",
+    "🔖 You will now appear on the phonebook.": "🔖 Vous apparaîtrez dans l'annuaire.",
+    "🔖 You won't appear on the phonebook anymore.": "🔖 Vous n'apparaîtrez plus dans l'annuaire."
   }
 }
