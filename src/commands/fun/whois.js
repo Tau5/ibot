@@ -1,4 +1,4 @@
-exports.run = async (client, ctx) => {
+exports.execute = async (client, ctx) => {
   const numbers = client.numbers.keyArray();
   const guilds = client.numbers.array();
   const list = [];
