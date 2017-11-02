@@ -302,7 +302,7 @@
     "_note37": "pickup",
     "❌ You are already in-call with someone!": "❌ Vous avez un appel en cours !",
     "❌ You are not in the phone channel!": "❌ Vous n'êtes pas dans le salon d'appels !",
-    "☎ Nobody is calling you!": "☎ Personne ne vous appelle !",
+    "☎ Nobody is calling you or the provided number is invalid!": "☎ Personne ne vous appelle ou le numéro que vous avez indiqué est invalide !",
     "☎ Connection made. Say hello!": "☎ Connexion effectuée. Dites bonjour !",
     "☎ They picked-up the phone. Say hello!": "☎ Ils ont décroché le téléphone. Dites bonjour !",
 

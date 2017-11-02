@@ -12,7 +12,7 @@ exports.execute = async (client, ctx) => {
     }
   });
 
-  if (!caller) return ctx.channel.send(client.I18n.translate`☎ Nobody is calling you!`);
+  if (!caller) return ctx.channel.send(client.I18n.translate`☎ Nobody is calling you or the provided number is invalid!`);
 
   const nums = {
     sender: ((client.calls[ctx.guild.id].type === 0) ? client.calls[ctx.guild.id].calling : client.calls[caller.id].calling),

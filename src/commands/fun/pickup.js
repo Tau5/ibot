@@ -6,13 +6,20 @@ exports.execute = async (client, ctx) => {
   const number = client.numbers.findKey(k => k === ctx.guild.id);
   let caller;
 
-  Object.keys(client.calls).forEach((id) => {
+  const calls = Object.keys(client.calls);
+  if (calls.filter(c => c.calling === number).length > 1 && !ctx.args[0]) return ctx.channel.send(client.I18n.translate`❌ You have ${calls.filter(c => c.calling === number).length} who are trying to call you. Please select one using \`i:pickup [number}\`.`);
+
+  calls.forEach((id) => {
     if (client.calls[id].type === 0 && client.calls[id].state === 0 && client.calls[id].calling === number) {
-      caller = client.guilds.get(id);
+      if (ctx.args[0]) {
+        if (client.numbers.findKey(k => k === id) === ctx.args[0]) caller = client.guilds.get(id);
+      } else {
+        caller = client.guilds.get(id);
+      }
     }
   });
 
-  if (!caller) return ctx.channel.send(client.I18n.translate`☎ Nobody is calling you!`);
+  if (!caller) return ctx.channel.send(client.I18n.translate`☎ Nobody is calling you or the provided number is invalid!`);
   client.calls[ctx.guild.id] = {
     type: 1,
     state: 1,

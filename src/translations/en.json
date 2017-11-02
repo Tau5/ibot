@@ -302,7 +302,7 @@
     "_note37": "pickup",
     "❌ You are already in-call with someone!": "❌ You are already in-call with someone!",
     "❌ You are not in the phone channel!": "❌ You are not in the phone channel!",
-    "☎ Nobody is calling you!": "☎ Nobody is calling you!",
+    "☎ Nobody is calling you or the provided number is invalid!": "☎ Nobody is calling you or the provided number is invalid!",
     "☎ Connection made. Say hello!": "☎ Connection made. Say hello!",
     "☎ They picked-up the phone. Say hello!": "☎ They picked-up the phone. Say hello!",
 
