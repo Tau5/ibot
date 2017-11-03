@@ -62,6 +62,9 @@
     "✅ {0} will now be ignored!": "✅ {0} va maintenant être ignoré !",
     "✅ {0} will now be listened!": "✅ {0} va maintenant être écouté !",
     "❌ Wrong timezone! See the dashboard for a full list of valid timezones.": "❌ Fuseau horaire incorrect ! Allez sur le dashboard pour une liste complète des fuseaux valides.",
+    "✅ Number `{0}` added to the blacklist!": "✅ Le numéro `{0}` a été ajouté à la liste noire !",
+    "✅ Number `{0}` removed from the blacklist!": "✅ Le numéro `{0}` a été supprimé de la liste noire !",
+    "❌ The number `{0}` is not assigned!": "❌ Le numéro `{0}` n'est pas assigné !",
 
     "_note7": "hackban",
     "❌ You must specify a user ID to ban!": "❌ Vous devez inclure l'ID d'un utilisateur à bannir !",
@@ -322,6 +325,7 @@
     "☎ The provided number is not assigned!": "☎ Le numéro demandé n'est pas attribué.",
     "☎ Lost connection with `{0}`!": "☎ Connexion avec `{0}` perdue !",
     "❌ You cannot call your own number!": "❌ Vous ne pouvez pas appeler votre propre numéro !",
+    "❌ Call denied because you have been blacklisted from calling `{0}`.": "❌ Appel refusé parce que vous êtes sur la liste noire du `{0}`.",
 
     "_note40": "whois",
     "❌ Nothing found for `{0}`.": "❌ Aucun résultat correspondant à `{0}`.",

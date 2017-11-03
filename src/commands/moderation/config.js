@@ -155,6 +155,20 @@ exports.execute = async (client, ctx) => {
         ctx.channel.send(client.I18n.translate`😮 Messages containing \`${word}\` won't trigger the filter anymore.`);
       }
     }
+  } else if (type === 'phoneblacklist') {
+    if (subType) {
+      const number = subType;
+      if (!client.numbers.has(number)) return ctx.channel.send(client.I18n.translate`❌ The number \`${number}\` is not assigned!`);
+      if (config.blacklisted_numbers.indexOf(number) === -1) {
+        config.blacklisted_numbers.push(number);
+        client.servers.set(ctx.guild.id, config);
+        ctx.channel.send(client.I18n.translate`✅ Number \`${number}\` added to the blacklist!`);
+      } else {
+        config.blacklisted_numbers.splice(config.blacklisted_numbers.indexOf(number), 1);
+        client.servers.set(ctx.guild.id, config);
+        ctx.channel.send(client.I18n.translate`✅ Number \`${number}\` removed from the blacklist!`);
+      }
+    }
   }
 };
 

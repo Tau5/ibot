@@ -39,6 +39,7 @@ module.exports = async (client, guild) => {
     moderation: [],
     imported_tags: [],
     ignored_channels: [],
+    blacklisted_numbers: [],
     banned_words: [],
     timezone: 'UTC',
     locale: 'en',

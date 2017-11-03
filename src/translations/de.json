@@ -59,6 +59,9 @@
     "✅ {0} will now be ignored!": "✅ {0} will now be ignored!",
     "✅ {0} will now be listened!": "✅ {0} will now be listened!",
     "❌ Wrong timezone! See the dashboard for a full list of valid timezones.": "❌ Wrong timezone! See the dashboard for a full list of valid timezones.",
+    "✅ Number `{0}` added to the blacklist!": "✅ Number `{0}` added to the blacklist!",
+    "✅ Number `{0}` removed from the blacklist!": "✅ Number `{0}` removed from the blacklist!",
+    "❌ The number `{0}` is not assigned!": "❌ The number `{0}` is not assigned!",
 
     "_note7": "hackban",
     "❌ You must specify a user ID to ban!": "❌ Du musst eine User-ID angeben damit sie gebannt werden kann!",
@@ -319,6 +322,7 @@
     "☎ The provided number is not assigned!": "☎ Die gewählte Nummer ist nicht vergeben!",
     "☎ Lost connection with `{0}`!": "☎ Die Verbindung mit `{0}`ist verloren gegangen!",
     "❌ You cannot call your own number!": "❌ Du kannst dich nicht selber anrufen!",
+    "❌ Call denied because you have been blacklisted from calling `{0}`.": "❌ Call denied because you have been blacklisted from calling `{0}`.",
 
     "_note40": "whois",
     "❌ Nothing found for `{0}`.": "❌ Nothing found for `{0}`.",
