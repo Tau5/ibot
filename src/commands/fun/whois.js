@@ -34,8 +34,12 @@ exports.execute = async (client, ctx) => {
     const message = [];
     message.push(client.I18n.translate`🔖 Phonebook - Results for \`${search}\` :`);
     found.forEach((entry) => {
-      message.push(`- **${entry.name}** : ${entry.number} (lang: ${client.servers.get(client.guilds.find('name', entry.name).id).locale})`);
+      if (message.length < 12) {
+        message.push(`- **${entry.name}** : ${entry.number} (lang: ${client.servers.get(client.guilds.find('name', entry.name).id).locale})`);
+      }
     });
+
+    if ((message.length - 1) < found.length) message.push(`+ ${(found - 10)}...`);
 
     ctx.channel.send(message.join('\n'));
   }
