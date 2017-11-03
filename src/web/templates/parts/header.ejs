@@ -10,15 +10,6 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
-              <% if (identity === 'NO') { %>
-              <li class="nav-item">
-                <a class="nav-link" href="/auth/login"><img src="https://canary.discordapp.com/assets/2bd74ab02e74e380eeae88a077051671.svg" height="20" width="20"> Login</a>
-              </li>
-              <% } else { %>
-              <li class="nav-item">
-                <a class="nav-link" href="/auth/logout"><img src="https://canary.discordapp.com/assets/2bd74ab02e74e380eeae88a077051671.svg" height="20" width="20"> Logout</a>
-              </li>
-              <% } %>
               <li class="navbar-item">
                 <a class="nav-link" href="/"><img src="https://canary.discordapp.com/assets/904b7c9326d7282cce83957ae55fe61a.svg" height="20" width="20"> Home</a>
               </li>
@@ -43,6 +34,15 @@
                 <a class="nav-link" href="/admin"><img src="https://canary.discordapp.com/assets/1223c2e358973af4766acf976e941520.svg" height="20" width="20"> Admin</a>
               </li>
               <% } } %>
+              <% if (identity === 'NO') { %>
+              <li class="nav-item">
+                <a class="nav-link" href="/auth/login"><img src="https://canary.discordapp.com/assets/2bd74ab02e74e380eeae88a077051671.svg" height="20" width="20"> Login</a>
+              </li>
+              <% } else { %>
+              <li class="nav-item">
+                <a class="nav-link" href="/auth/logout"><img src="https://canary.discordapp.com/assets/2bd74ab02e74e380eeae88a077051671.svg" height="20" width="20"> Logout</a>
+              </li>
+              <% } %>
             </ul>
             <span class="navbar-text">
               <% if (identity !== 'NO') { %>
