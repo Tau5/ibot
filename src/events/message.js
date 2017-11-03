@@ -9,7 +9,7 @@ module.exports = async (client, ctx) => {
   const config = client.servers.get(ctx.guild.id);
 
   /* BANNED WORDS */
-  if (config.banned_words.some(word => ctx.content.toLowerCase().includes(word.toLowerCase()))) {
+  if (config.banned_words.some(word => ctx.content.toLowerCase().includes(word.toLowerCase())) && !ctx.content.startsWith(`${client.config.discord.prefix}config`)) {
     const action = config.action_bannedword;
     if (action === 'DELETE') {
       ctx.delete().then(() => {
