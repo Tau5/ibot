@@ -24,8 +24,10 @@ router
     res.redirect(req.query.redirectURI ? req.query.redirectURI : '/');
   }, authSystem.authenticate('discord'))
   .use('/callback', authSystem.authenticate('discord'), (req, res) => {
+    const redirect = req.signedCookies.redirectURI;
     res.cookie('accessToken', req.session.passport.user.accessToken, { maxAge: 2678400000, signed: true, path: '/' });
-    res.redirect(req.signedCookies.redirectURI ? req.signedCookies.redirectURI : '/');
+    res.clearCookie('redirectURI');
+    res.redirect(redirect || '/');
   })
   .use('/logout', (req, res) => {
     res.clearCookie('accessToken');

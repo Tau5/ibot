@@ -20,10 +20,10 @@ module.exports = (client) => {
       req.body = JSON.parse(decodeURIComponent(Object.keys(req.body)[0]));
 
       client.user.setPresence({
-        status: req.body.status,
+        status: req.body.status === '' ? null : req.body.status,
         activity: {
           type: 0,
-          name: req.body.game,
+          name: req.body.game === '' ? null : req.body.game,
         },
       }).then((newPresence) => {
         res.header('Access-Control-Allow-Origin', '*').status(200).json(newPresence);
