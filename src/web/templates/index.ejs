@@ -38,6 +38,7 @@
     <!-- Dynamic stats updater -->
     <script type="text/javascript">
     const stats = document.getElementById('stats');
+    const currentStats = {};
     setInterval(() => {
       const request = new XMLHttpRequest();
       request.withCredentials = true;
@@ -48,11 +49,13 @@
           if (request.status === 200) {
             const response = JSON.parse(request.responseText);
             const paragraph = stats.innerHTML
-              .replace('SVRCNT', response.guilds)
-              .replace('USRCNT', response.users)
-              .replace('LGNCNT', response.languages)
-              .replace('CMDCNT', response.cmdsran);
+              .replace(currentStats.guilds || 'SVRCNT', response.guilds)
+              .replace(currentStats.users || 'USRCNT', response.users)
+              .replace(currentStats.languages || 'LGNCNT', response.languages)
+              .replace(currentStats.cmdsran || 'CMDCNT', response.cmdsran);
             stats.innerHTML = paragraph;
+
+            Object.keys(response).forEach(k => currentStats[k] = response[k]);
           } else {
             stats.innerHTML = 'ERROR';
           }
