@@ -34,24 +34,72 @@
     <!-- Presence change -->
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
-        <form action="/admin/presence" method="POST">
+        <form id="presence" name="presence" method="POST" action="javascript:void(0);">
           <div class="form-group">
             <h4>Presence</h4>
             <hr>
+            <div id="presenceStatus" class="alert alert-info text-center" role="alert">
+              Set the new status and game then click on <b>Update</b>!
+            </div>
             <div class="input-group">
               <span class="input-group-addon" id="basic-addon1">Status</span>
-              <input type="text" name="status" class="form-control" placeholder="<%= status %>" aria-label="status" aria-describedby="basic-addon1">
+              <input type="text" id="status" name="status" class="form-control" placeholder="<%= status %>" aria-label="status" aria-describedby="basic-addon1">
             </div>
             <br>
             <div class="input-group">
               <span class="input-group-addon" id="basic-addon1">Game</span>
-              <input type="text" name="game" class="form-control" placeholder="<%= game %>" aria-label="game" aria-describedby="basic-addon2">
+              <input type="text" id="game" name="game" class="form-control" placeholder="<%= game %>" aria-label="game" aria-describedby="basic-addon2">
              </div>
           </div>
-          <button type="submit" class="btn btn-primary btn-lg" formaction="/admin/presence">Update</button>
+          <button type="submit" class="btn btn-primary btn-lg" onclick="updatePresence()">Update</button>
         </form>
       </div>
     </div>
+
+    <script>
+    function updateConfig() {
+      const updateRequest = new XMLHttpRequest();
+      const alert = document.getElementById('presenceStatus');
+      const sentForm = {};
+    
+      ['game', 'status'].forEach(key => {
+        sentForm[key] = document.getElementById(key).value;
+      });
+    
+      updateRequest.withCredentials = true;
+      updateRequest.open('POST', 'https://ibot.idroid.me/api/bot/updatePresence', true);
+    
+      updateRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+      updateRequest.onload = (e) => {
+        if (updateRequest.readyState === 4) {
+          if (updateRequest.status === 200) {
+            alert.innerHTML = '<b>Success</b> - The presence has been updated successfully!';
+            alert.setAttribute('class', 'alert alert-success text-center');
+            setTimeout(presenceStatusNormal, 5000);
+
+            const response = JSON.parse(updateRequest.responseText);
+            document.getElementById('status').setAttribute('placeholder', response.status);
+            document.getElementById('game').setAttribute('placeholder', response.activity.name);
+          } else {
+            alert.innerHTML = `<b>Error</b> - Code: ${updateRequest.status}`;
+            alert.setAttribute('class', 'alert alert-danger text-center');
+            setTimeout(presenceStatusNormal, 5000);
+          }
+        }
+      }
+    
+      alert.innerHTML = 'Updating...';
+      alert.setAttribute('class', 'alert alert-dark text-center');
+      updateRequest.send(encodeURIComponent(JSON.stringify(sentForm)));
+    }
+    
+    function presenceStatusNormal() {
+      const element = document.getElementById('presenceStatus');
+      element.innerHTML = 'Set the new status and game then click on <b>Update</b>!';
+      element.setAttribute('class', 'alert alert-info text-center');
+    }
+    </script>
 
       <!-- Mutual guilds with the user -->
     <div class="jumbotron jumbotron-fluid">
