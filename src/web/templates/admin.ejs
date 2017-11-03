@@ -84,7 +84,7 @@
           } else {
             console.log(updateRequest.responseText);
             const response = JSON.parse(updateRequest.responseText);
-            alert.innerHTML = `<b>Error</b> - Code: ${updateRequest.status} - Message: ${response.message}`;
+            alert.innerHTML = `<b>Error</b> - Code: ${updateRequest.status} - Message: ${response.error.message}`;
             alert.setAttribute('class', 'alert alert-danger text-center');
             setTimeout(presenceStatusNormal, 5000);
           }
