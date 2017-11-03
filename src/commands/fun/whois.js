@@ -39,7 +39,7 @@ exports.execute = async (client, ctx) => {
       }
     });
 
-    if ((message.length - 1) < found.length) message.push(`+ ${(found.length - 10)}...`);
+    if ((message.length - 1) < found.length) message.push(`+ ${(found.length - 11)}...`);
 
     ctx.channel.send(message.join('\n'));
   }
