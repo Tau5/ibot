@@ -95,8 +95,8 @@ module.exports = (client) => {
     .use('*', (req, res) => res.status(404).render('error', { code: '404', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') }));
 
   client.app = https.createServer({
-    key: readFileSync(`${__dirname}/public/certs/ibot_idroid_me.p7b`),
-    cert: readFileSync(`${__dirname}/public/certs/server.crt`),
+    key: readFileSync('/home/idroid/dashboard_certs/dashboard.pem'),
+    cert: readFileSync('/home/idroid/dashboard_certs/dashboard.crt'),
   }, app).listen(client.config.dashboard.port, (err) => {
     if (err) console.error(err);
     else console.log(`[Express] Listening on ${client.config.dashboard.port}`);
