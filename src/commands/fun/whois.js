@@ -34,7 +34,7 @@ exports.execute = async (client, ctx) => {
     const message = [];
     message.push(client.I18n.translate`🔖 Phonebook - Results for \`${search}\` :`);
     found.forEach((entry) => {
-      message.push(`- **${entry.name}** : ${entry.number} (lang: ${client.servers.get(client.guilds.find('name', entry.name)).locale})`);
+      message.push(`- **${entry.name}** : ${entry.number} (lang: ${client.servers.get(client.guilds.find('name', entry.name).id).locale})`);
     });
 
     ctx.channel.send(message.join('\n'));
