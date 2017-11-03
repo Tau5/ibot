@@ -11,30 +11,21 @@ module.exports = (client) => {
       if (!guild.members.get(req.user.id).hasPermission('MANAGE_GUILD') && req.user.id !== '205427654042583040') return res.header('Access-Control-Allow-Origin', '*').status(403).json({ message: 'UNAUTHORIZED' });
 
       const config = client.servers.get(req.body.guildID);
-      const newConfig = {
-        channel_welcome: req.body.channel_welcome,
-        channel_serverlog: req.body.channel_serverlog,
-        channel_modlog: req.body.channel_modlog,
-        channel_phone: req.body.channel_phone,
-        message_welcome: req.body.message_welcome === '' ? 'NOT_SET' : req.body.message_welcome,
-        message_leaving: req.body.message_leaving === '' ? 'NOT_SET' : req.body.message_leaving,
-        action_bannedword: config.action_bannedword,
-        switch_welcome: ((req.body.channel_welcome !== 'NOT_SET' && req.body.message_welcome !== 'NOT_SET') ? parseInt(req.body.switch_welcome) : 0),
-        switch_leaving: ((req.body.channel_welcome !== 'NOT_SET' && req.body.message_leaving !== 'NOT_SET') ? parseInt(req.body.switch_leaving) : 0),
-        switch_serverlog: (req.body.channel_serverlog !== 'NOT_SET' ? parseInt(req.body.switch_serverlog) : 0),
-        switch_modlog: (req.body.channel_modlog !== 'NOT_SET' ? parseInt(req.body.switch_modlog) : 0),
-        switch_clearbackup: parseInt(req.body.switch_clearbackup),
-        switch_phonebook: parseInt(req.body.switch_phonebook),
-        roleme: config.roleme,
-        custom_prefixes: config.custom_prefixes,
-        moderation: config.moderation,
-        imported_tags: config.imported_tags,
-        ignored_channels: config.ignored_channels,
-        banned_words: config.banned_words,
-        blacklisted_numbers: config.blacklisted_numbers,
-        timezone: req.body.timezone,
-        locale: req.body.locale,
-      };
+      config.channel_welcome = req.body.channel_welcome,
+      config.channel_serverlog = req.body.channel_serverlog,
+      config.channel_modlog = req.body.channel_modlog,
+      config.channel_phone = req.body.channel_phone,
+      config.message_welcome = req.body.message_welcome === '' ? 'NOT_SET' : req.body.message_welcome,
+      config.message_leaving = req.body.message_leaving === '' ? 'NOT_SET' : req.body.message_leaving,
+      config.action_bannedword = config.action_bannedword,
+      config.switch_welcome = ((req.body.channel_welcome !== 'NOT_SET' && req.body.message_welcome !== 'NOT_SET') ? parseInt(req.body.switch_welcome) : 0),
+      config.switch_leaving = ((req.body.channel_welcome !== 'NOT_SET' && req.body.message_leaving !== 'NOT_SET') ? parseInt(req.body.switch_leaving) : 0),
+      config.switch_serverlog = (req.body.channel_serverlog !== 'NOT_SET' ? parseInt(req.body.switch_serverlog) : 0),
+      config.switch_modlog = (req.body.channel_modlog !== 'NOT_SET' ? parseInt(req.body.switch_modlog) : 0),
+      config.switch_clearbackup = parseInt(req.body.switch_clearbackup),
+      config.switch_phonebook = parseInt(req.body.switch_phonebook),
+      config.timezone = req.body.timezone,
+      config.locale = req.body.locale,
 
       client.servers.set(req.body.guildID, newConfig);
       return res.header('Access-Control-Allow-Origin', '*').status(200).json({
