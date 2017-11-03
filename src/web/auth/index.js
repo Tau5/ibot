@@ -7,8 +7,8 @@ const router = express.Router();
 
 router
   .use('/login', async (req, res, next) => {
-    if (req.params.redirectURI) {
-      res.cookie('redirectURI', req.params.redirectURI, { maxAge: 2678400000, signed: true, path: '/' });
+    if (req.query.redirectURI) {
+      res.cookie('redirectURI', req.query.redirectURI, { maxAge: 2678400000, signed: true, path: '/' });
     }
 
     if (!req.signedCookies.accessToken) return next();
@@ -21,7 +21,7 @@ router
     req.login(user, e => (e ? res.render('error', { code: '500', identity: 'NO' }) : undefined));
     req.session.save(e => (e ? res.render('error', { code: '500', identity: 'NO' }) : undefined));
 
-    res.redirect(req.params.redirectURI ? req.params.redirectURI : '/');
+    res.redirect(req.query.redirectURI ? req.query.redirectURI : '/');
   }, authSystem.authenticate('discord'))
   .use('/callback', authSystem.authenticate('discord'), (req, res) => {
     res.cookie('accessToken', req.session.passport.user.accessToken, { maxAge: 2678400000, signed: true, path: '/' });
