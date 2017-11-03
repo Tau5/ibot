@@ -16,7 +16,7 @@ module.exports = (client) => {
 
   router.post('/changePresence', (req, res) => {
     if (req.isAuthenticated()) {
-      if (req.session.user.id !== '205427654042583040') return res.header('Access-Control-Allow-Origin', '*').status(403).json({ message: 'UNAUTHORIZED' });
+      if (req.user.id !== '205427654042583040') return res.header('Access-Control-Allow-Origin', '*').status(403).json({ message: 'UNAUTHORIZED' });
       req.body = JSON.parse(decodeURIComponent(Object.keys(req.body)[0]));
 
       client.user.setPresence({
@@ -28,7 +28,7 @@ module.exports = (client) => {
       }).then((newPresence) => {
         res.header('Access-Control-Allow-Origin', '*').status(200).json(newPresence);
       }).catch((e) => {
-        res.header('Access-Control-Allow-Origin', '*').status(400).json({ error: e.message });
+        res.header('Access-Control-Allow-Origin', '*').status(400).json({ message: e.message });
       });
     } else {
       res.header('Access-Control-Allow-Origin', '*').status(401).json({
