@@ -134,6 +134,26 @@ exports.execute = async (client, ctx) => {
       client.servers.set(ctx.guild.id, config);
       ctx.channel.send(client.I18n.translate`✅ Role **${role.name}** removed!`);
     }
+  } else if (type === 'filter') {
+    if (subType === 'action') {
+      const validActions = ['BAN', 'KICK', 'DELETE'];
+      const action = ctx.args[2].toUpperCase();
+      if (!action) return ctx.channel.send(client.I18n.translate`❌ You must specify an action to do!\n**Valid actions:** ${validActions.map(a => `\`${a}\``)}`);
+      config.action_bannedword = action;
+      client.servers.set(ctx.guild.id, config);
+      ctx.channel.send(client.I18n.translate`✅ Action \`${action}\` will now be executed when a banned word is detected.`);
+    } else {
+      const word = ctx.args.slice(1).join(' ');
+      if (config.banned_words.indexOf(word) === -1) {
+        config.banned_words.push(word);
+        client.servers.set(ctx.guild.id, config);
+        ctx.channel.send(client.I18n.translate`🤐 Messages containing \`${word}\` will now be \`${config.action_bannedword}\`!`);
+      } else {
+        config.banned_words.splice(config.banned_words.indexOf(word), 1);
+        client.servers.set(ctx.guild.id, config);
+        ctx.channel.send(client.I18n.translate`😮 Messages containing \`${word}\` won't trigger the filter anymore.`);
+      }
+    }
   }
 };
 

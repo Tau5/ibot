@@ -8,8 +8,30 @@ module.exports = async (client, ctx) => {
   /* LOCALIZATION */
   const config = client.servers.get(ctx.guild.id);
 
+  /* BANNED WORDS */
+  if (config.banned_words.some(word => ctx.content.toLowerCase().includes(word.toLowerCase()))) {
+    const action = config.action_bannedword;
+    if (action === 'DELETE') {
+      ctx.delete().then(() => {
+        ctx.channel.send(client.I18n.translate`⚠ This message contains some banned words that are in the banned words list! Action \`${action}\` done.`);
+      }).catch(() => {});
+      return;
+    } else if (action === 'KICK') {
+      ctx.member.kick('Banned word').then(() => {
+        ctx.channel.send(client.I18n.translate`⚠ Kicked **${ctx.author.tag}** for having said a banned word.`);
+      }).catch(() => {});
+      return;
+    } else if (action === 'BAN') {
+      ctx.member.ban('Banned word').then(() => {
+        ctx.channel.send(client.I18n.translate`⚠ Banned **${ctx.author.tag}** for having said a banner word.`);
+      }).catch(() => {});
+      return;
+    }
+  }
+
   /* AFK */
   if (client.afk.has(ctx.author.id)) {
+    client.I18n.use(config.locale);
     client.afk.delete(ctx.author.id);
     ctx.author.send(client.I18n.translate`👋 Welcome back! I removed your AFK status.`);
   }
@@ -17,6 +39,7 @@ module.exports = async (client, ctx) => {
   if (ctx.mentions.users.size > 0) {
     ctx.mentions.users.forEach((u) => {
       if (!client.afk.has(u.id)) return;
+      client.I18n.use(config.locale);
       const { MessageEmbed } = require('discord.js');
       const embed = new MessageEmbed()
         .addField(client.I18n.translate`💤 **${u.username}** is AFK!`, client.afk.get(u.id))

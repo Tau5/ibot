@@ -18,6 +18,7 @@ module.exports = async (client) => {
       channel_phone: 'NOT_SET',
       message_welcome: 'NOT_SET',
       message_leaving: 'NOT_SET',
+      action_bannedword: 'NOT_SET',
       switch_welcome: 0,
       switch_serverlog: 0,
       switch_modlog: 0,
@@ -29,6 +30,7 @@ module.exports = async (client) => {
       moderation: [],
       imported_tags: [],
       ignored_channels: [],
+      banned_words: [],
       timezone: 'UTC',
       locale: 'en',
     };

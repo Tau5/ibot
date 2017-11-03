@@ -324,6 +324,15 @@
     "❌ Nothing found for `{0}`.": "❌ Nothing found for `{0}`.",
     "🔖 Phonebook - Results for `{0}` :": "🔖 Phonebook - Results for `{0}` :",
     "🔖 You will now appear on the phonebook.": "🔖 You will now appear on the phonebook.",
-    "🔖 You won't appear on the phonebook anymore.": "🔖 You won't appear on the phonebook anymore."
+    "🔖 You won't appear on the phonebook anymore.": "🔖 You won't appear on the phonebook anymore.",
+
+    "_note41": "banned_words",
+    "❌ You must specify an action to do!\n**Valid actions:** {0}": "❌ You must specify an action to do!\n**Valid actions:** {0}",
+    "✅ Action `{0}` will now be executed when a banned word is detected.": "✅ Action `{0}` will now be executed when a banned word is detected.",
+    "🤐 Messages containing `{0}` will now be `{1}`!": "🤐 Messages containing `{0}` will now be `{1}`!",
+    "😮 Messages containing `{0}` won't trigger the filter anymore.": "😮 Messages containing `{0}` won't trigger the filter anymore.",
+    "⚠ This message contains some banned words that are in the banned words list! Action `{0}` done.": "⚠ This message contains some banned words that are in the banned words list! Action `{0}` done.",
+    "⚠ Kicked **{0}** for having said a banned word.": "⚠ Kicked **{0}** for having said a banned word.",
+    "⚠ Banned **{0}** for having said a banned word.": "⚠ Banned **{0}** for having said a banned word."
   }
 }

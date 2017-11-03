@@ -18,6 +18,7 @@ module.exports = (client) => {
         channel_phone: req.body.channel_phone,
         message_welcome: req.body.message_welcome === '' ? 'NOT_SET' : req.body.message_welcome,
         message_leaving: req.body.message_leaving === '' ? 'NOT_SET' : req.body.message_leaving,
+        action_bannedword: config.action_bannedword,
         switch_welcome: ((req.body.channel_welcome !== 'NOT_SET' && req.body.message_welcome !== 'NOT_SET') ? parseInt(req.body.switch_welcome) : 0),
         switch_leaving: ((req.body.channel_welcome !== 'NOT_SET' && req.body.message_leaving !== 'NOT_SET') ? parseInt(req.body.switch_leaving) : 0),
         switch_serverlog: (req.body.channel_serverlog !== 'NOT_SET' ? parseInt(req.body.switch_serverlog) : 0),
@@ -29,6 +30,7 @@ module.exports = (client) => {
         moderation: config.moderation,
         imported_tags: config.imported_tags,
         ignored_channels: config.ignored_channels,
+        banned_words: config.banned_words,
         timezone: req.body.timezone,
         locale: req.body.locale,
       };

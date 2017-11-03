@@ -327,6 +327,15 @@
     "❌ Nothing found for `{0}`.": "❌ Aucun résultat correspondant à `{0}`.",
     "🔖 Phonebook - Results for `{0}` :": "🔖 Annuaire - Résultats pour `{0}` :",
     "🔖 You will now appear on the phonebook.": "🔖 Vous apparaîtrez dans l'annuaire.",
-    "🔖 You won't appear on the phonebook anymore.": "🔖 Vous n'apparaîtrez plus dans l'annuaire."
+    "🔖 You won't appear on the phonebook anymore.": "🔖 Vous n'apparaîtrez plus dans l'annuaire.",
+
+    "_note41": "banned_words",
+    "❌ You must specify an action to do!\n**Valid actions:** {0}": "❌ Vous devez spécifier une action à exécuter !\n**Actions valides :** {0}",
+    "✅ Action `{0}` will now be executed when a banned word is detected.": "✅ L'action `{0}` sera exécutée lorsqu'un mot banni sera détecté.",
+    "🤐 Messages containing `{0}` will now be `{1}`!": "🤐 Les messages contenant `{0}` seront maintenant `{1}` !",
+    "😮 Messages containing `{0}` won't trigger the filter anymore.": "😮 Les messages contenant `{0}` ne seront plus filtrés.",
+    "⚠ This message contains some banned words that are in the banned words list! Action `{0}` done.": "⚠ Ce message contient un ou plusieurs mots bannis ! Action `{0}` exécutée.",
+    "⚠ Kicked **{0}** for having said a banned word.": "⚠ **{0}** expulsé pour avoir dit un mot banni.",
+    "⚠ Banned **{0}** for having said a banned word.": "⚠ **{0}** banni pour avoir dit un mot banni."
   }
 }
