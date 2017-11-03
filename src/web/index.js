@@ -91,6 +91,7 @@ module.exports = (client) => {
     .use('/user', checkAuth, updateSession, require('./user')(client))
     .use('/server', checkAuth, updateSession, require('./server')(client))
     .use('/invite', checkAuth, updateSession, require('./invite')(client))
+    .use('/tos', updateSession, require('./tos'))
     .use('*', (req, res) => res.status(404).render('error', { code: '404', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') }));
 
   https.createServer({
