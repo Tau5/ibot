@@ -15,8 +15,8 @@ module.exports = (client) => {
       config.channel_serverlog = req.body.channel_serverlog;
       config.channel_modlog = req.body.channel_modlog;
       config.channel_phone = req.body.channel_phone;
-      config.message_welcome = req.body.message_welcome === '' ? 'NOT_SET' : req.body.message_welcome;
-      config.message_leaving = req.body.message_leaving === '' ? 'NOT_SET' : req.body.message_leaving;
+      config.message_welcome = (req.body.message_welcome === '' || req.body.message_welcome === 'No message set') ? 'NOT_SET' : req.body.message_welcome;
+      config.message_leaving = (req.body.message_leaving === '' || req.body.message_leaving === 'No message set') ? 'NOT_SET' : req.body.message_leaving;
       config.action_bannedword = config.action_bannedword;
       config.switch_welcome = ((req.body.channel_welcome !== 'NOT_SET' && req.body.message_welcome !== 'NOT_SET') ? parseInt(req.body.switch_welcome) : 0);
       config.switch_leaving = ((req.body.channel_welcome !== 'NOT_SET' && req.body.message_leaving !== 'NOT_SET') ? parseInt(req.body.switch_leaving) : 0);
