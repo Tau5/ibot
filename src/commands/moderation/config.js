@@ -137,8 +137,9 @@ exports.execute = async (client, ctx) => {
   } else if (type === 'filter') {
     if (subType === 'action') {
       const validActions = ['BAN', 'KICK', 'DELETE'];
-      const action = ctx.args[2].toUpperCase();
+      let action = ctx.args[2];
       if (!action) return ctx.channel.send(client.I18n.translate`❌ You must specify an action to do!\n**Valid actions:** ${validActions.map(a => `\`${a}\``)}`);
+      action = action.toUpperCase();
       config.action_bannedword = action;
       client.servers.set(ctx.guild.id, config);
       ctx.channel.send(client.I18n.translate`✅ Action \`${action}\` will now be executed when a banned word is detected.`);
