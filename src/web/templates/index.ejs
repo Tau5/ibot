@@ -39,7 +39,8 @@
     <script type="text/javascript">
     const stats = document.getElementById('stats');
     const currentStats = {};
-    setInterval(() => {
+
+    function updateStats() {
       const request = new XMLHttpRequest();
       request.withCredentials = true;
       request.open('GET', 'https://ibot.idroid.me/api/bot/stats', true);
@@ -63,7 +64,10 @@
       };
 
       request.send(null);
-    }, 5000);
+    }
+
+    updateStats();
+    setInterval(updateStats, 5000);
     </script>
   </body>
 </html>
