@@ -118,7 +118,40 @@
                 <div class="text-center">
                   <p><img src="https://discordapp.com/assets/be21e06571be73619ebba2e9731abb11.svg" height="20px" width="20px"> <b>Timezone:</b> <select id="timezone" name="timezone" aria-controls="config" class="form-control form-control-sm"><% timezones.forEach(tz => { %><option value="<%= tz %>" <% if (config.timezone === tz) { %>selected<% } %>><%= tz %></option><% }) %></select></p>
                   <p><img src="https://discordapp.com/assets/cf7f3e86b93c14f8e53feac55a1b637f.svg" height="20px" width="20px"> <b>Locale:</b> <select id="locale" name="locale" aria-controls="config" class="form-control form-control-sm"><% Object.keys(guild.client.languages).forEach(l => { %><option value="<%= l %>" <% if (config.locale === l) { %>selected<% } %>><%= l %></option><% }); %></select></p>
-                  <p><img src="https://discordapp.com/assets/8ce180bda86f59e517eb6a1d0ed84eef.svg" height="20px" width="20px"> <b>Number:</b> <br><button id="number" class="btn btn-secondary btn-lg" onclick="requestNumber()"><%= guild.client.numbers.findKey(id => id === guild.id) || 'Request a number' %></button></p>
+                  <p><img src="https://discordapp.com/assets/8ce180bda86f59e517eb6a1d0ed84eef.svg" height="20px" width="20px"> <b>Number:</b> <br><button id="number" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#requestNumberModal"><%= guild.client.numbers.findKey(id => id === guild.id) || 'Request a number' %></button></p>
+                </div>
+
+                <div class="modal fade" id="requestNumberModal" tabindex="-1" role="dialog" aria-labelledby="requestNumberModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="requestNumberModalLabel">Rules of iBot telephone</h5>
+                      </div>
+                      <div class="modal-body">
+                        Hello,<br>
+                        Thank you for requesting a iBot telephone number. Please read the rules just below :<br>
+                        <ul class="list-group">
+                          <li class="list-group-item">1) You must not insult, impersonate, discriminate anyone through the phone.</li>
+                          <li class="list-group-item">2) You must not raid through the phone, if you do, logs will be used for a report to abuse@discordapp.com.</li>
+                          <li class="list-group-item">3) Please do not spam-call someone if they do not want to answer. You could get blacklisted of using iBot commands.</li>
+                          <li class="list-group-item">4) If you wish to do not appear on the public phonebook, please ask a server administrator (with `MANAGE_GUILD` permission) to run `i:phonebook switch`.</li>
+                          <li class="list-group-item">5) Do not share pornographic, offensive or discriminating content.</li>
+                          <li class="list-group-item">6) Any abuse of the system can result of a blacklist of the user.</li>
+                          <li class="list-group-item">7) If you wish to blacklist a number of your telephone, you ask a server administrator to run `i:config phoneblacklist [number]`, they won't be able to call you anymore.</li>
+                        </ul>
+
+                        If you do agree with these rules, please share them publically on your server and click on the <em>I do accept</em> button.<br>
+                        Otherwise click on <em>I do not accept</em> button.<br><br>
+
+                        Thank you for using iBot services!<br>
+                        <strong>iDroid#4441, owner.</strong>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">I do not accept</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal" onclick="requestNumber()">I do accept</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
           </div>
