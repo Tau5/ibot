@@ -28,7 +28,7 @@ exports.execute = async (client, ctx) => {
       ctx.channel.send(client.I18n.translate`🔖 You won\'t appear on the phonebook anymore.`);
     }
   } else {
-    const found = list.filter(entry => entry.name.toLowerCase().includes(search.toLowerCase()) || entry.number.includes(search));
+    const found = list.filter(entry => entry.name.toLowerCase().includes(search.toLowerCase()) || entry.number.includes(search) || client.servers.get(client.guilds.find('name', entry.name).id).locale.includes(search));
     if (found.length === 0) return ctx.channel.send(client.I18n.translate`❌ Nothing found for \`${search}\`.`);
 
     const message = [];
