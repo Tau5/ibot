@@ -15,7 +15,7 @@ module.exports = (client) => {
   const https = require('https');
   const { readFileSync } = require('fs');
 
-  client.app = express();
+  const app = express();
 
   // External
   const auth = require('../web/auth');
@@ -57,7 +57,7 @@ module.exports = (client) => {
   };
 
   // Middlewares
-  client.app
+  app
     .enable('trust proxy')
     .use(express.static(`${__dirname}/public/`))
     .use(bodyParser.urlencoded({
@@ -79,11 +79,11 @@ module.exports = (client) => {
     .set('views', `${__dirname}/templates/`);
 
   // Page handling
-  client.app.get('/', updateSession, (req, res) => {
+  app.get('/', updateSession, (req, res) => {
     res.status(200).render('index', { client, identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
   });
 
-  client.app
+  app
     .use('/auth', auth)
     .use('/api', require('./api')(client))
     .use('/admin', checkOwner, updateSession, require('./admin')(client))
@@ -94,10 +94,10 @@ module.exports = (client) => {
     .use('/tos', updateSession, require('./tos'))
     .use('*', (req, res) => res.status(404).render('error', { code: '404', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') }));
 
-  https.createServer({
+  client.app = https.createServer({
     key: readFileSync(`${__dirname}/public/certs/ibot_idroid_me.p7b`),
     cert: readFileSync(`${__dirname}/public/certs/server.crt`),
-  }, client.app).listen(client.config.dashboard.port, (err) => {
+  }, app).listen(client.config.dashboard.port, (err) => {
     if (err) console.error(err);
     else console.log(`[Express] Listening on ${client.config.dashboard.port}`);
   });
