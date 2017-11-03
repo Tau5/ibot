@@ -65,7 +65,7 @@
                 <th class="text-center">Name</th>
                 <th class="text-center">Members</th>
                 <th class="text-center">Owner</th>
-                <th class="text-center">Leave</th>
+                <th class="text-center">Bot join date (timestamp)</th>
               </tr>
             </thead>
             <tbody>
@@ -74,7 +74,7 @@
                 <td class="text-center"><span class="nav-item"><a href="/server/<%= g.id %>" style="color: grey;"><%= g.name %></a></span></td>
                 <td class="text-center"><%= g.memberCount %></td>
                 <td class="text-center"><span class="nav-item"><a href="/user/<%= g.ownerID %>" style="color: grey;"><%= g.owner.user.tag %></a></span></td>
-                <td class="text-center"><span class="nav-item"><a href="/admin/leave/<%= g.id %>" style="color: grey;">Leave</a></span></td>
+                <td class="text-center"><span class="nav-item"><%= g.me.joinedTimestamp %></span></td>
               </tr>
             <% }); %>
             </tbody>
