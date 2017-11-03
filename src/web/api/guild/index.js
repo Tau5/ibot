@@ -27,10 +27,10 @@ module.exports = (client) => {
       config.timezone = req.body.timezone,
       config.locale = req.body.locale,
 
-      client.servers.set(req.body.guildID, newConfig);
-      return res.header('Access-Control-Allow-Origin', '*').status(200).json({
+      client.servers.set(req.body.guildID, config);
+      res.header('Access-Control-Allow-Origin', '*').status(200).json({
         message: 'SUCCESS',
-        config: newConfig,
+        config,
       });
     } else {
       res.header('Access-Control-Allow-Origin', '*').status(401).json({
