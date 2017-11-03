@@ -80,7 +80,7 @@ module.exports = (client) => {
 
   // Page handling
   app.get('/', updateSession, (req, res) => {
-    res.status(200).render('index', { client, identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
+    res.status(200).render('index', { identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
   });
 
   app
