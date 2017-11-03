@@ -31,6 +31,7 @@ module.exports = (client) => {
         imported_tags: config.imported_tags,
         ignored_channels: config.ignored_channels,
         banned_words: config.banned_words,
+        blacklisted_numbers: config.blacklisted_numbers,
         timezone: req.body.timezone,
         locale: req.body.locale,
       };
