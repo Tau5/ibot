@@ -52,7 +52,7 @@ module.exports = (client) => {
     else if (req.signedCookies.accessToken) {
       updateSession(req, res, next);
     } else {
-      res.status(401).render('error', { code: '401', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') });
+      res.redirect(`/auth/login?redirectURI=${req.originalUrl}`);
     }
   };
 

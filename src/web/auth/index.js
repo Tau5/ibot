@@ -7,6 +7,10 @@ const router = express.Router();
 
 router
   .use('/login', async (req, res, next) => {
+    if (req.params.redirectURI) {
+      res.cookie('redirectURI', req.params.redirectURI, { maxAge: 2678400000, signed: true, path: '/' });
+    }
+
     if (!req.signedCookies.accessToken) return next();
     const profile = await request('https://discordapp.com/api/users/@me', { headers: { Authorization: `Bearer ${req.signedCookies.accessToken}` } });
     const guilds = await request('https://discordapp.com/api/users/@me/guilds', { headers: { Authorization: `Bearer ${req.signedCookies.accessToken}` } });
@@ -17,11 +21,11 @@ router
     req.login(user, e => (e ? res.render('error', { code: '500', identity: 'NO' }) : undefined));
     req.session.save(e => (e ? res.render('error', { code: '500', identity: 'NO' }) : undefined));
 
-    res.redirect('/');
+    res.redirect(req.params.redirectURI ? req.params.redirectURI : '/');
   }, authSystem.authenticate('discord'))
   .use('/callback', authSystem.authenticate('discord'), (req, res) => {
     res.cookie('accessToken', req.session.passport.user.accessToken, { maxAge: 2678400000, signed: true, path: '/' });
-    res.redirect('/');
+    res.redirect(req.signedCookies.redirectURI ? req.signedCookies.redirectURI : '/');
   })
   .use('/logout', (req, res) => {
     res.clearCookie('accessToken');
