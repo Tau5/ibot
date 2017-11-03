@@ -10,38 +10,49 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
-              <li class="navbar-item">
-                <a class="nav-link" href="/">Home</a>
-              </li>
-              <li class="navbar-item">
-                <a class="nav-link" href="https://discord.gg/UAmGEmS">Support</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="https://github.com/iDroid27210/ibot/wiki/Commands">Commands</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/tos">ToS</a>
-              </li>
               <% if (identity === 'NO') { %>
               <li class="nav-item">
+                <img src="https://canary.discordapp.com/assets/2bd74ab02e74e380eeae88a077051671.svg" height="30" width="30">
                 <a class="nav-link" href="/auth/login">Login</a>
               </li>
               <% } else { %>
               <li class="nav-item">
-                <a class="nav-link" href="/servers">Servers</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/invite">Invite</a>
-              </li>
-              <li class="nav-item">
+                <img src="https://canary.discordapp.com/assets/2bd74ab02e74e380eeae88a077051671.svg" height="30" width="30">
                 <a class="nav-link" href="/auth/logout">Logout</a>
               </li>
               <% } %>
+            </ul>
+            <ul class="navbar-nav justify-content-center">
+              <li class="navbar-item">
+                <img src="https://canary.discordapp.com/assets/904b7c9326d7282cce83957ae55fe61a.svg" height="30" width="30">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+              <li class="navbar-item">
+                <img src="https://canary.discordapp.com/assets/cdda47b108df90a11e4c9fd96ef1534b.svg" height="30" width="30">
+                <a class="nav-link" href="https://discord.gg/UAmGEmS">Support</a>
+              </li>
+              <li class="nav-item">
+                <img src="https://canary.discordapp.com/assets/f21f7f8b3a3f188d267438d936be035f.svg" height="30" width="30">
+                <a class="nav-link" href="https://github.com/iDroid27210/ibot/wiki/Commands">Commands</a>
+              </li>
+              <li class="nav-item">
+                <img src="https://canary.discordapp.com/assets/ffcdb50ce310bfbe221f01a8e72034a8.svg" height="30" width="30">
+                <a class="nav-link" href="/tos">ToS</a>
+              </li>
+              <% if (identity !== 'NO') { %>
+              <li class="nav-item">
+                <img src="https://canary.discordapp.com/assets/9c94147b257a3a5a0dbd0f7fcd4791df.svg" height="30" width="30">
+                <a class="nav-link" href="/servers">Servers</a>
+              </li>
+              <li class="nav-item">
+                <img src="https://canary.discordapp.com/assets/86ac473ccadf924d6b8a1cfec2417d63.svg" height="30" width="30">
+                <a class="nav-link" href="/invite">Invite</a>
+              </li>
               <% if (identity === 'iDroid#4441') { %>
               <li class="nav-item">
                 <a class="nav-link" href="/admin">Admin</a>
               </li>
-              <% } %>
+              <% } } %>
             </ul>
             <span class="navbar-text">
               <% if (identity !== 'NO') { %>
