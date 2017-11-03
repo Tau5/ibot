@@ -12,45 +12,37 @@
             <ul class="navbar-nav mr-auto">
               <% if (identity === 'NO') { %>
               <li class="nav-item">
-                <img src="https://canary.discordapp.com/assets/2bd74ab02e74e380eeae88a077051671.svg" height="30" width="30">
-                <a class="nav-link" href="/auth/login">Login</a>
+                <a class="nav-link" href="/auth/login"><img src="https://canary.discordapp.com/assets/2bd74ab02e74e380eeae88a077051671.svg" height="30" width="30"> Login</a>
               </li>
               <% } else { %>
               <li class="nav-item">
-                <img src="https://canary.discordapp.com/assets/2bd74ab02e74e380eeae88a077051671.svg" height="30" width="30">
-                <a class="nav-link" href="/auth/logout">Logout</a>
+                <a class="nav-link" href="/auth/logout"><img src="https://canary.discordapp.com/assets/2bd74ab02e74e380eeae88a077051671.svg" height="30" width="30"> Logout</a>
               </li>
               <% } %>
             </ul>
             <ul class="navbar-nav justify-content-center">
               <li class="navbar-item">
-                <img src="https://canary.discordapp.com/assets/904b7c9326d7282cce83957ae55fe61a.svg" height="30" width="30">
-                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/"><img src="https://canary.discordapp.com/assets/904b7c9326d7282cce83957ae55fe61a.svg" height="20" width="20"> Home</a>
               </li>
               <li class="navbar-item">
-                <img src="https://canary.discordapp.com/assets/cdda47b108df90a11e4c9fd96ef1534b.svg" height="30" width="30">
-                <a class="nav-link" href="https://discord.gg/UAmGEmS">Support</a>
+                <a class="nav-link" href="https://discord.gg/UAmGEmS"><img src="https://canary.discordapp.com/assets/cdda47b108df90a11e4c9fd96ef1534b.svg" height="20" width="20"> Support</a>
               </li>
               <li class="nav-item">
-                <img src="https://canary.discordapp.com/assets/f21f7f8b3a3f188d267438d936be035f.svg" height="30" width="30">
-                <a class="nav-link" href="https://github.com/iDroid27210/ibot/wiki/Commands">Commands</a>
+                <a class="nav-link" href="https://github.com/iDroid27210/ibot/wiki/Commands"><img src="https://canary.discordapp.com/assets/f21f7f8b3a3f188d267438d936be035f.svg" height="20" width="20"> Commands</a>
               </li>
               <li class="nav-item">
-                <img src="https://canary.discordapp.com/assets/ffcdb50ce310bfbe221f01a8e72034a8.svg" height="30" width="30">
-                <a class="nav-link" href="/tos">ToS</a>
+                <a class="nav-link" href="/tos"><img src="https://canary.discordapp.com/assets/ffcdb50ce310bfbe221f01a8e72034a8.svg" height="20" width="20"> ToS</a>
               </li>
               <% if (identity !== 'NO') { %>
               <li class="nav-item">
-                <img src="https://canary.discordapp.com/assets/9c94147b257a3a5a0dbd0f7fcd4791df.svg" height="30" width="30">
-                <a class="nav-link" href="/servers">Servers</a>
+                <a class="nav-link" href="/servers"><img src="https://canary.discordapp.com/assets/9c94147b257a3a5a0dbd0f7fcd4791df.svg" height="20" width="20"> Servers</a>
               </li>
               <li class="nav-item">
-                <img src="https://canary.discordapp.com/assets/86ac473ccadf924d6b8a1cfec2417d63.svg" height="30" width="30">
-                <a class="nav-link" href="/invite">Invite</a>
+                <a class="nav-link" href="/invite"><img src="https://canary.discordapp.com/assets/86ac473ccadf924d6b8a1cfec2417d63.svg" height="20" width="20"> Invite</a>
               </li>
               <% if (identity === 'iDroid#4441') { %>
               <li class="nav-item">
-                <a class="nav-link" href="/admin">Admin</a>
+                <a class="nav-link" href="/admin"><img src="https://canary.discordapp.com/assets/1223c2e358973af4766acf976e941520.svg" height="20" width="20"> Admin</a>
               </li>
               <% } } %>
             </ul>
