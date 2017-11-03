@@ -27,8 +27,8 @@ module.exports = (client) => {
         },
       }).then((newPresence) => {
         res.header('Access-Control-Allow-Origin', '*').status(200).json(newPresence);
-      }).catch(() => {
-        res.header('Access-Control-Allow-Origin', '*').status(500);
+      }).catch((e) => {
+        res.header('Access-Control-Allow-Origin', '*').status(500).json({ error: e.message });
       });
     } else {
       res.header('Access-Control-Allow-Origin', '*').status(401).json({
