@@ -17,5 +17,8 @@ module.exports = async (client, member) => {
     client.modUtil.Serverlog(client, member.guild, client.I18n.translate`📥 **${member.user.tag}** (ID:${member.id}) joined the server.\n__Account creation :__ ${member.user.createdAt.toUTCString()}`);
   }
 
-  await member.addRoles(config.auto_role_join, 'Auto-join roles');
+  config.auto_role_join.forEach(async (role) => {
+    await member.addRole(role, 'Auto-join role');
+    /* addRoles is not used because kinda buggy right now */
+  });
 };
