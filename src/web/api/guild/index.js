@@ -18,8 +18,8 @@ module.exports = (client) => {
       config.message_welcome = (req.body.message_welcome === '' || req.body.message_welcome === 'No message set') ? 'NOT_SET' : req.body.message_welcome;
       config.message_leaving = (req.body.message_leaving === '' || req.body.message_leaving === 'No message set') ? 'NOT_SET' : req.body.message_leaving;
       config.action_bannedword = config.action_bannedword;
-      config.switch_welcome = ((req.body.channel_welcome !== 'NOT_SET' && req.body.message_welcome !== 'NOT_SET') ? parseInt(req.body.switch_welcome) : 0);
-      config.switch_leaving = ((req.body.channel_welcome !== 'NOT_SET' && req.body.message_leaving !== 'NOT_SET') ? parseInt(req.body.switch_leaving) : 0);
+      config.switch_welcome = ((req.body.channel_welcome !== 'NOT_SET' && config.message_welcome !== 'NOT_SET') ? parseInt(req.body.switch_welcome) : 0);
+      config.switch_leaving = ((req.body.channel_welcome !== 'NOT_SET' && config.message_leaving !== 'NOT_SET') ? parseInt(req.body.switch_leaving) : 0);
       config.switch_serverlog = (req.body.channel_serverlog !== 'NOT_SET' ? parseInt(req.body.switch_serverlog) : 0);
       config.switch_modlog = (req.body.channel_modlog !== 'NOT_SET' ? parseInt(req.body.switch_modlog) : 0);
       config.switch_clearbackup = parseInt(req.body.switch_clearbackup);
