@@ -65,6 +65,13 @@
     "✅ Number `{0}` added to the blacklist!": "✅ Le numéro `{0}` a été ajouté à la liste noire !",
     "✅ Number `{0}` removed from the blacklist!": "✅ Le numéro `{0}` a été supprimé de la liste noire !",
     "❌ The number `{0}` is not assigned!": "❌ Le numéro `{0}` n'est pas assigné !",
+    "Channels": "Salons",
+    "Switches": "Switchs",
+    "Messages": "Messages",
+    "Roleme list": "Liste roleme",
+    "Auto-role join": "Auto-role à l'arrivée",
+    "Phonebook blacklist": "Liste noire du téléphone",
+    "🛠 Configuration for **{0}** :": "🛠 Configuration pour **{0}** :",
 
     "_note7": "hackban",
     "❌ You must specify a user ID to ban!": "❌ Vous devez inclure l'ID d'un utilisateur à bannir !",

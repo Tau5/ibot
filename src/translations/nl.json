@@ -65,6 +65,13 @@
     "✅ Number `{0}` added to the blacklist!": "✅ Number `{0}` added to the blacklist!",
     "✅ Number `{0}` removed from the blacklist!": "✅ Number `{0}` removed from the blacklist!",
     "❌ The number `{0}` is not assigned!": "❌ The number `{0}` is not assigned!",
+    "Channels": "Channels",
+    "Switches": "Switches",
+    "Messages": "Messages",
+    "Roleme list": "Roleme list",
+    "Auto-role join": "Auto-role join",
+    "Phonebook blacklist": "Phonebook blacklist",
+    "🛠 Configuration for **{0}** :": "🛠 Configuration for **{0}** :",
 
     "_note7": "hackban",
     "❌ You must specify a user ID to ban!": "❌ Je moet een gebruikersid aangeven om te bannen!",

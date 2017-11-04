@@ -169,6 +169,50 @@ exports.execute = async (client, ctx) => {
         ctx.channel.send(client.I18n.translate`✅ Number \`${number}\` removed from the blacklist!`);
       }
     }
+  } else {
+    const { MessageEmbed } = require('discord.js');
+    const embed = new MessageEmbed()
+      .addField(
+        client.I18n.translate`Channels`,
+        `**Welcome:** ${client.channels.has(config.channel_welcome) ? client.channels.get(config.channel_welcome).toString() : 'None'}\n
+        **Serverlog:** ${client.channels.has(config.channel_serverlog) ? client.channels.get(config.channel_serverlog).toString() : 'None'}\n
+        **Modlog:** ${client.channels.has(config.channel_modlog) ? client.channels.get(config.channel_modlog).toString() : 'None'}\n
+        **Phone:** ${client.channels.has(config.channel_modlog) ? client.channels.get(config.channel_modlog).toString() : 'None'}`,
+        true,
+      )
+      .addField(
+        client.I18n.translate`Switches`,
+        `**Welcome:** ${config.switch_welcome === 0 ? 'Disabled' : 'Enabled'}\n
+        **Serverlog:** ${config.switch_serverlog === 0 ? 'Disabled' : 'Enabled'}\n
+        **Modlog:** ${config.switch_modlog === 0 ? 'Disabled' : 'Enabled'}\n
+        **Phonebook:** ${config.switch_phonebook === 0 ? 'Disabled' : 'Enabled'}`,
+        true,
+      )
+      .addField(
+        client.I18n.translate`Messages`,
+        `**Welcome:** \`\`\`${config.message_welcome === 'NOT_SET' ? 'No message set' : config.message_welcome}\`\`\`\n
+        **Leaving:** \`\`\`${config.message_leaving === 'NOT_SET' ? 'No message set' : config.message_leaving}\`\`\``,
+        true,
+      )
+      .addField(
+        client.I18n.translate`Roleme list`,
+        config.roleme.length === 0 ? 'None' : config.roleme.map(r => `\`${ctx.guild.roles.get(r).name}\``),
+        true,
+      )
+      .addField(
+        client.I18n.translate`Auto-role join`,
+        config.auto_role_join.length === 0 ? 'None' : config.auto_role_join.map(r => `\`${ctx.guild.roles.get(r).name}\``),
+        true,
+      )
+      .addField(
+        client.I18n.translate`Phonebook blacklist`,
+        config.blacklisted_numbers.length === 0 ? 'None' : config.blacklisted_numbers.map(m => `\`${m}\``),
+        true,
+      )
+      .setColor(ctx.guild.me.displayHexColor)
+      .setThumbnail(ctx.guild.iconURL({ format: 'png', size: 512 }));
+
+    ctx.channel.send(`🛠 Configuration for **${ctx.guild.name}** :`, { embed });
   }
 };
 
