@@ -16,6 +16,12 @@ exports.execute = async (client, ctx) => {
   if (!profile || Object.keys(profile).indexOf('timezone') === -1) return ctx.channel.send(client.I18n.translate`❌ **${member.user.tag}** does not have a profile!`);
 
   const mtz = require('moment-timezone');
+  const regex = /(GMT|UTC|gmt|utc)(\+|-)([0-9])/;
+  if (regex.test(profile.timezone)) {
+    const matches = regex.exec(profile.timezone);
+    profile.timezone = `Etc/${matches[1]}${matches[2]}${matches[3]}`;
+  }
+
   if (mtz.tz.names().indexOf(profile.timezone) === -1) return ctx.channel.send(client.I18n.translate`❌ \`${profile.timezone}\` is not a valid timezone!`);
 
   const time = `${mtz().tz(profile.timezone).format('`HH:mm`')} (${mtz().tz(profile.timezone).format('`hh:mm A`')})`;
