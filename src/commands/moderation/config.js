@@ -174,23 +174,23 @@ exports.execute = async (client, ctx) => {
       .addField(
         client.I18n.translate`Channels`,
         `**Welcome:** ${client.channels.has(config.channel_welcome) ? client.channels.get(config.channel_welcome).toString() : 'None'}\n
-        **Serverlog:** ${client.channels.has(config.channel_serverlog) ? client.channels.get(config.channel_serverlog).toString() : 'None'}\n
-        **Modlog:** ${client.channels.has(config.channel_modlog) ? client.channels.get(config.channel_modlog).toString() : 'None'}\n
-        **Phone:** ${client.channels.has(config.channel_modlog) ? client.channels.get(config.channel_modlog).toString() : 'None'}`,
+**Serverlog:** ${client.channels.has(config.channel_serverlog) ? client.channels.get(config.channel_serverlog).toString() : 'None'}\n
+**Modlog:** ${client.channels.has(config.channel_modlog) ? client.channels.get(config.channel_modlog).toString() : 'None'}\n
+**Phone:** ${client.channels.has(config.channel_modlog) ? client.channels.get(config.channel_modlog).toString() : 'None'}`,
         true,
       )
       .addField(
         client.I18n.translate`Switches`,
         `**Welcome:** ${config.switch_welcome === 0 ? 'Disabled' : 'Enabled'}\n
-        **Serverlog:** ${config.switch_serverlog === 0 ? 'Disabled' : 'Enabled'}\n
-        **Modlog:** ${config.switch_modlog === 0 ? 'Disabled' : 'Enabled'}\n
-        **Phonebook:** ${config.switch_phonebook === 0 ? 'Disabled' : 'Enabled'}`,
+**Serverlog:** ${config.switch_serverlog === 0 ? 'Disabled' : 'Enabled'}\n
+**Modlog:** ${config.switch_modlog === 0 ? 'Disabled' : 'Enabled'}\n
+**Phonebook:** ${config.switch_phonebook === 0 ? 'Disabled' : 'Enabled'}`,
         true,
       )
       .addField(
         client.I18n.translate`Messages`,
         `**Welcome:** \`\`\`${config.message_welcome === 'NOT_SET' ? 'No message set' : config.message_welcome}\`\`\`\n
-        **Leaving:** \`\`\`${config.message_leaving === 'NOT_SET' ? 'No message set' : config.message_leaving}\`\`\``,
+**Leaving:** \`\`\`${config.message_leaving === 'NOT_SET' ? 'No message set' : config.message_leaving}\`\`\``,
         true,
       )
       .addField(
