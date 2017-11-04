@@ -20,5 +20,9 @@ module.exports = async (client, channel) => {
     config.channel_phone = 'NOT_SET';
   }
 
+  if (config.ignored_channels.indexOf(channel.id) !== -1) {
+    config.ignored_channels.splice(config.ignored_channels.indexOf(channel.id), 1);
+  }
+
   client.servers.set(channel.guild.id, config);
 };
