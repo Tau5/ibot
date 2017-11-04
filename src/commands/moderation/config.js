@@ -176,7 +176,7 @@ exports.execute = async (client, ctx) => {
         `**Welcome:** ${client.channels.has(config.channel_welcome) ? client.channels.get(config.channel_welcome).toString() : 'None'}\n
 **Serverlog:** ${client.channels.has(config.channel_serverlog) ? client.channels.get(config.channel_serverlog).toString() : 'None'}\n
 **Modlog:** ${client.channels.has(config.channel_modlog) ? client.channels.get(config.channel_modlog).toString() : 'None'}\n
-**Phone:** ${client.channels.has(config.channel_modlog) ? client.channels.get(config.channel_modlog).toString() : 'None'}`,
+**Phone:** ${client.channels.has(config.channel_phone) ? client.channels.get(config.channel_phone).toString() : 'None'}`,
         true,
       )
       .addField(
