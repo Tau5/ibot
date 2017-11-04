@@ -79,7 +79,7 @@ module.exports = (client) => {
     .set('views', `${__dirname}/templates/`);
 
   // Page handling
-  app.get('/', (req, res) => {
+  app.get('/', updateSession, (req, res) => {
     res.status(200).render('index', {
       identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO'),
     });
@@ -93,7 +93,7 @@ module.exports = (client) => {
     .use('/user', checkAuth, updateSession, require('./user')(client))
     .use('/server', checkAuth, updateSession, require('./server')(client))
     .use('/invite', checkAuth, updateSession, require('./invite')(client))
-    .use('/tos', require('./tos'))
+    .use('/tos', updateSession, require('./tos'))
     .use('*', (req, res) => res.status(404).render('error', { code: '404', identity: (req.isAuthenticated() ? `${req.user.username}#${req.user.discriminator}` : 'NO') }));
 
   client.app = https.createServer({
