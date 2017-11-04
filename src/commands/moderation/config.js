@@ -3,7 +3,7 @@ exports.execute = async (client, ctx) => {
   const type = ctx.args[0];
   const subType = ctx.args[1];
   const value = ctx.args.slice(2).join(' ');
-  if ((!type || !subType) && type !== 'ignore') return ctx.channel.send(client.I18n.translate`❌ Syntax example: \`i:config channel welcome #my_channel\`.`);
+  if ((!type || !subType) && type.length > 0 && type !== 'ignore') return ctx.channel.send(client.I18n.translate`❌ Syntax example: \`i:config channel welcome #my_channel\`.`);
 
   if (type === 'channel') {
     const validTypes = ['welcome', 'serverlog', 'modlog', 'phone'];
