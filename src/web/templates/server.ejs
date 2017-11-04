@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <% if (user.id === '205427654042583040' || (guild.members.has(user.id) && guild.members.get(user.id).hasPermission('MANAGE_GUILD'))) { %>
+    <% if (user.id === '205427654042583040' || (guild.members.has(user.id) && guild.members.get(user.id).permissions.has('MANAGE_GUILD'))) { %>
     <!-- Configuration -->
   
     <div class="jumbotron jumbotron-fluid">
@@ -242,7 +242,7 @@
     </script>
     <% } %>
 
-    <% if (user.id === '205427654042583040' || (guild.members.has(user.id) && guild.members.get(user.id).hasPermission('KICK_MEMBERS'))) { %>
+    <% if (user.id === '205427654042583040' || (guild.members.has(user.id) && guild.members.get(user.id).permissions.has('KICK_MEMBERS'))) { %>
     <!-- Moderate -->
     <div class="jumbotron jumbotron-fluid text-center">
       <div class="container">
@@ -258,7 +258,7 @@
             </div>
             <div class="col">
               <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="actionToDo" name="actionToDo">
-                <% if (guild.members.has(user.id) && guild.members.get(user.id).hasPermission('BAN_MEMBERS')) { %><option value="ban">Ban member</option><% } %>
+                <% if (guild.members.has(user.id) && guild.members.get(user.id).permissions.has('BAN_MEMBERS')) { %><option value="ban">Ban member</option><% } %>
                 <option value="kick">Kick member</option>
               </select>
             </div>

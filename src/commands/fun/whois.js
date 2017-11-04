@@ -16,7 +16,7 @@ exports.execute = async (client, ctx) => {
   const search = ctx.args.join(' ');
   if (!search) return ctx.channel.send(client.I18n.translate`❌ You must include something to search!`);
 
-  if (search === 'switch' && ctx.member.hasPermission('MANAGE_GUILD')) {
+  if (search === 'switch' && ctx.member.permissions.has('MANAGE_GUILD')) {
     const config = client.servers.get(ctx.guild.id);
     if (config.switch_phonebook === 0) {
       config.switch_phonebook = 1;

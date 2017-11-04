@@ -31,7 +31,7 @@ exports.execute = async (client, ctx) => {
     const author = await client.users.fetch(tag.author);
     ctx.channel.send(client.I18n.translate`✍ **${author.tag}** made the tag \`${tagName}\`.`);
   } else if (first === 'import') {
-    if (!ctx.member.hasPermission('MANAGE_GUILD')) return ctx.channel.send(client.I18n.translate`❌ You must have the \`MANAGE_GUILD\` permission to import a tag as a command!`);
+    if (!ctx.member.permissions.has('MANAGE_GUILD')) return ctx.channel.send(client.I18n.translate`❌ You must have the \`MANAGE_GUILD\` permission to import a tag as a command!`);
     const tagName = ctx.args[1];
     if (!tagName) return ctx.channel.send(client.I18n.translate`❌ To import a tag you must put its name!`);
     if (!client.tags.has(tagName)) return ctx.channel.send(client.I18n.translate`❌ The tag \`${tagName}\` does not exist!`);

@@ -8,7 +8,7 @@ module.exports = (client) => {
       const guild = client.guilds.get(req.body.guildID);
       if (!guild) return res.header('Access-Control-Allow-Origin', '*').status(404).json({ message: 'UNKNOWN_GUILD_ID' });
 
-      if (!guild.members.get(req.user.id).hasPermission('MANAGE_GUILD') && req.user.id !== '205427654042583040') return res.header('Access-Control-Allow-Origin', '*').status(403).json({ message: 'UNAUTHORIZED' });
+      if (!guild.members.get(req.user.id).permissions.has('MANAGE_GUILD') && req.user.id !== '205427654042583040') return res.header('Access-Control-Allow-Origin', '*').status(403).json({ message: 'UNAUTHORIZED' });
 
       const config = client.servers.get(req.body.guildID);
       config.channel_welcome = req.body.channel_welcome;
@@ -48,16 +48,16 @@ module.exports = (client) => {
 
       switch (req.body.actionToDo) {
         case 'ban':
-          if (!author.hasPermission('BAN_MEMBERS')) return res.header('Access-Control-Allow-Origin', '*').status(403).json({ message: 'You do not have the permission to ban a member!' });
+          if (!author.permissions.has('BAN_MEMBERS')) return res.header('Access-Control-Allow-Origin', '*').status(403).json({ message: 'You do not have the permission to ban a member!' });
           break;
         case 'kick':
-          if (!author.hasPermission('KICK_MEMBERS')) return res.header('Access-Control-Allow-Origin', '*').status(403).json({ message: 'You do not have the permission to kick a member!' });
+          if (!author.permissions.has('KICK_MEMBERS')) return res.header('Access-Control-Allow-Origin', '*').status(403).json({ message: 'You do not have the permission to kick a member!' });
           break;
         case 'warn':
-          if (!author.hasPermission('KICK_MEMBERS')) return res.header('Access-Control-Allow-Origin', '*').status(403).json({ message: 'You do not have the permission to warn a member!' });
+          if (!author.permissions.has('KICK_MEMBERS')) return res.header('Access-Control-Allow-Origin', '*').status(403).json({ message: 'You do not have the permission to warn a member!' });
           break;
         case 'unwarn':
-          if (!author.hasPermission('KICK_MEMBERS')) return res.header('Access-Control-Allow-Origin', '*').status(403).json({ message: 'You do not have the permission to unwarn a member!' });
+          if (!author.permissions.has('KICK_MEMBERS')) return res.header('Access-Control-Allow-Origin', '*').status(403).json({ message: 'You do not have the permission to unwarn a member!' });
           break;
         default:
           break;
