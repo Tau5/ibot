@@ -19,7 +19,7 @@ exports.execute = async (client, ctx) => {
   const regex = /(GMT|UTC|gmt|utc)(\+|-)([1-9])/;
   if (regex.test(profile.timezone)) {
     const matches = regex.exec(profile.timezone);
-    profile.timezone = `Etc/${matches[1]}${matches[2]}${matches[3]}`;
+    profile.timezone = `Etc/${matches[1]}${matches[2] === '+' ? '-' : '+'}${matches[3]}`;
   }
 
   if (mtz.tz.names().indexOf(profile.timezone) === -1) return ctx.channel.send(client.I18n.translate`❌ \`${profile.timezone}\` is not a valid timezone!`);
